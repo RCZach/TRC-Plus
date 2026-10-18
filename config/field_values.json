@@ -1,0 +1,183 @@
+{
+  "version": 1,
+  "builds": {
+    "6AA2013D:36558000": {
+      "signatures": {
+        "Jumpshot Base": {
+          "Tyrese Maxey": {
+            "value": 477,
+            "observed_player_id": "game-0"
+          }
+        },
+        "Release 1": {
+          "Tyrese Maxey": {
+            "value": 477,
+            "observed_player_id": "game-0"
+          }
+        },
+        "Release Timing": {
+          "Normal": {
+            "value": 2,
+            "observed_player_id": "game-0"
+          }
+        },
+        "Free Throw": {
+          "Free Throw 9": {
+            "value": 247,
+            "observed_player_id": "game-0"
+          }
+        },
+        "Go-To Shot": {
+          "Tyrese Maxey": {
+            "value": 51,
+            "observed_player_id": "game-0"
+          }
+        },
+        "Dribble Pull-Up": {
+          "Tyrese Maxey": {
+            "value": 87,
+            "observed_player_id": "game-0"
+          }
+        },
+        "Spin Jumper": {
+          "Pro": {
+            "value": 3,
+            "observed_player_id": "game-0"
+          }
+        },
+        "Hop Jumper": {
+          "Tyrese Maxey": {
+            "value": 50,
+            "observed_player_id": "game-0"
+          }
+        },
+        "Step Through Shot": {
+          "Pro": {
+            "value": 2,
+            "observed_player_id": "game-0"
+          }
+        },
+        "Layup Package": {
+          "Tyrese Maxey": {
+            "value": 59,
+            "observed_player_id": "game-0"
+          }
+        },
+        "Dunk Package 2": {
+          "Hangs Off One": {
+            "value": 20,
+            "observed_player_id": "game-0"
+          }
+        },
+        "Dunk Package 3": {
+          "Athletic One-Handers Off Two": {
+            "value": 19,
+            "observed_player_id": "game-0"
+          }
+        },
+        "Dunk Package 4": {
+          "Rim Grazers Off One": {
+            "value": 10,
+            "observed_player_id": "game-0"
+          }
+        },
+        "Dunk Package 5": {
+          "None": {
+            "value": 0,
+            "observed_player_id": "game-0"
+          }
+        },
+        "Post Fade": {
+          "Pro 2": {
+            "value": 7,
+            "observed_player_id": "game-0"
+          }
+        },
+        "Post Hook": {
+          "Normal": {
+            "value": 3,
+            "observed_player_id": "game-0"
+          }
+        },
+        "Post Hop Shot": {
+          "Pro": {
+            "value": 4,
+            "observed_player_id": "game-0"
+          }
+        },
+        "Post Go-To Shot": {
+          "Elite": {
+            "value": 6,
+            "observed_player_id": "game-0"
+          }
+        },
+        "Pass Style": {
+          "Tyrese Maxey": {
+            "value": 40,
+            "observed_player_id": "game-0"
+          }
+        },
+        "Dribble Style": {
+          "Tyrese Maxey": {
+            "value": 33,
+            "observed_player_id": "game-0"
+          }
+        },
+        "Signature Size-Up": {
+          "Stephen Curry": {
+            "value": 10,
+            "observed_player_id": "game-0"
+          }
+        },
+        "Breakdown Combos": {
+          "Tyrese Maxey": {
+            "value": 47,
+            "observed_player_id": "game-0"
+          }
+        },
+        "Moving Breakdown Combos": {
+          "Tyrese Maxey": {
+            "value": 26,
+            "observed_player_id": "game-0"
+          }
+        },
+        "Hesitation Escape": {
+          "Coby White": {
+            "value": 30,
+            "observed_player_id": "game-0"
+          }
+        },
+        "Motion Style": {
+          "Tyrese Maxey": {
+            "value": 219,
+            "observed_player_id": "game-0"
+          }
+        },
+        "Pre-Game 1": {
+          "None": {
+            "value": 0,
+            "observed_player_id": "game-0"
+          }
+        },
+        "Pre-Game 2": {
+          "None": {
+            "value": 0,
+            "observed_player_id": "game-0"
+          }
+        },
+        "Jumpball Ritual": {
+          "None": {
+            "value": 0,
+            "observed_player_id": "game-0"
+          }
+        },
+        "Chew Gum": {
+          "Off": {
+            "value": 0,
+            "observed_player_id": "game-0"
+          }
+        }
+      }
+    }
+  }
+}

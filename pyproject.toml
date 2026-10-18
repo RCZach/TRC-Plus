@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "trc-plus"
+version = "0.3.0"
+description = "TRC+ roster editor and TRC player data synchronization for NBA 2K27"
+requires-python = ">=3.11"
+dependencies = []
+
+[project.optional-dependencies]
+desktop = ["pywebview==6.1"]
+
+[project.scripts]
+trc-plus = "trc_plus.app:main"
+
+[tool.setuptools.package-data]
+trc_plus = ["ui/*.html", "ui/*.css", "ui/*.js"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]

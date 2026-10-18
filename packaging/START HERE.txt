@@ -1,0 +1,42 @@
+TRC+ - Windows portable release
+
+1. Extract the entire ZIP into a folder on your computer.
+2. Double-click TRC+.exe. Keep the _internal folder beside it.
+3. TRC+ opens in its own desktop app window.
+4. Start NBA 2K27 and open the custom roster you intend to edit.
+5. In Connection details, set your game folder or executable path and save.
+6. Check game connection, then Load game roster.
+7. Use Sync from TRC, review the changes, and Apply to game. If prompted,
+   select Start live editing to authorize writes for this session.
+8. Save the roster INSIDE NBA 2K27 to keep game edits.
+
+Python and Cheat Engine are not required. This release is for 64-bit Windows.
+Internet access is needed for Sync from TRC; manual JSON import is available.
+The editor runs locally on your computer. Close its window to stop the app.
+Import opens a file picker; Export opens a Save As dialog.
+The app asks before closing if you have unsaved workspace changes.
+The desktop window requires Microsoft Edge WebView2 Runtime and .NET Framework
+4.6.2 or newer, normally available on current Windows 10/11 computers.
+If WebView2 is missing, install it from:
+https://developer.microsoft.com/microsoft-edge/webview2/
+Startup errors are recorded in %LOCALAPPDATA%\TRC+\desktop.log.
+
+Your workspace, connection settings, learned names, and recovery logs are saved
+under %LOCALAPPDATA%\TRC+. Each Windows user has their own files.
+On first launch, existing TRC Roster Studio files are copied into the new
+TRC+ data folder if it does not exist yet. The original files are kept.
+A new install starts with fictional demo players until you load/import a roster.
+Save JSON workspace saves the local workspace; it does not save inside the game.
+
+To update, close the old app and extract the new release into a separate folder.
+Starting with version 0.3.0, you can instead select Check for updates in the app,
+read the release notes, and choose Update and restart. Save your workspace first.
+The updater keeps the previous app folder as a backup and preserves your saved
+files. Close additional copies of the app before installing an update.
+Your saved settings and workspace will still be available. Keep the previous
+release if you want to go back. Export JSON before making major roster changes.
+
+The game must use a compatible memory layout. A game update may require an
+updated app/profile. If connection or writes fail, read the displayed error;
+do not guess a different game's offsets or executable fingerprint.
+If the game runs as administrator, the editor may need the same privileges.

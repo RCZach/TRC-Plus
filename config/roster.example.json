@@ -1,0 +1,25 @@
+{
+  "version": 1,
+  "name": "My roster",
+  "teams": [
+    {
+      "team_id": "team-001",
+      "name": "Example Team",
+      "metadata": {"abbreviation": "EXM", "city": "Toronto"}
+    }
+  ],
+  "players": [
+    {
+      "player_id": "player-001",
+      "name": "Example Player",
+      "team_id": "team-001",
+      "attributes": {"Driving Layup": 85, "3pt Shot": 80, "Speed": 88},
+      "tendencies": {"Shoot": 75},
+      "badges": {"Float Game": 2},
+      "vitals": {},
+      "signatures": {},
+      "advanced": {},
+      "metadata": {"position": "PG", "number": "7"}
+    }
+  ]
+}

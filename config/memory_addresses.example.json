@@ -1,0 +1,13 @@
+{
+  "game": "NBA 2K27",
+  "platform": "replace-with-platform",
+  "build": "replace-with-exact-build",
+  "process": "replace-with-verified-process-name",
+  "addresses": {
+    "player_table": null,
+    "player_id": null,
+    "overall_rating": null,
+    "attributes": null
+  },
+  "notes": "Replace null values only with addresses verified for this exact build and runtime."
+}

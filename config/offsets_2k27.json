@@ -1,0 +1,6509 @@
+{
+    "Base": {
+        "Player Base Address": "0x0ABEBDA0",
+        "Player Offset Chain": [],
+        "Player Offset Length": "0x4F8",
+        "Offset First Name": "0x28",
+        "Offset Last Name": "0x0"
+    },
+    "Attributes": [
+        {
+            "name": "Driving Layup",
+            "offset": "0x43C",
+            "length": 8
+        },
+        {
+            "name": "Post Fade",
+            "offset": "0x43D",
+            "length": 8
+        },
+        {
+            "name": "Post Hook",
+            "offset": "0x43E",
+            "length": 8
+        },
+        {
+            "name": "Post Moves",
+            "offset": "0x43F",
+            "length": 8
+        },
+        {
+            "name": "Draw Foul",
+            "offset": "0x440",
+            "length": 8
+        },
+        {
+            "name": "Close Shot",
+            "offset": "0x441",
+            "length": 8
+        },
+        {
+            "name": "Midrange Shot",
+            "offset": "0x442",
+            "length": 8
+        },
+        {
+            "name": "3pt Shot",
+            "offset": "0x443",
+            "length": 8
+        },
+        {
+            "name": "Free Throw",
+            "offset": "0x444",
+            "length": 8
+        },
+        {
+            "name": "Ball Control",
+            "offset": "0x445",
+            "length": 8
+        },
+        {
+            "name": "Passing IQ",
+            "offset": "0x446",
+            "length": 8
+        },
+        {
+            "name": "Pass Accuracy",
+            "offset": "0x447",
+            "length": 8
+        },
+        {
+            "name": "Offensive Rebound",
+            "offset": "0x448",
+            "length": 8
+        },
+        {
+            "name": "Standing Dunk",
+            "offset": "0x451",
+            "length": 8
+        },
+        {
+            "name": "Driving Dunk",
+            "offset": "0x452",
+            "length": 8
+        },
+        {
+            "name": "Shot IQ",
+            "offset": "0x45A",
+            "length": 8
+        },
+        {
+            "name": "Passing Vision",
+            "offset": "0x46F",
+            "length": 8
+        },
+        {
+            "name": "Hands",
+            "offset": "0x470",
+            "length": 8
+        },
+        {
+            "name": "Defensive Rebound",
+            "offset": "0x449",
+            "length": 8
+        },
+        {
+            "name": "Interior Defense",
+            "offset": "0x44A",
+            "length": 8
+        },
+        {
+            "name": "Perimeter Defense",
+            "offset": "0x44B",
+            "length": 8
+        },
+        {
+            "name": "Block",
+            "offset": "0x44D",
+            "length": 8
+        },
+        {
+            "name": "Steal",
+            "offset": "0x44E",
+            "length": 8
+        },
+        {
+            "name": "Speed",
+            "offset": "0x453",
+            "length": 8
+        },
+        {
+            "name": "Speed with Ball",
+            "offset": "0x454",
+            "length": 8
+        },
+        {
+            "name": "Vertical",
+            "offset": "0x455",
+            "length": 8
+        },
+        {
+            "name": "Strength",
+            "offset": "0x456",
+            "length": 8
+        },
+        {
+            "name": "Stamina",
+            "offset": "0x457",
+            "length": 8
+        },
+        {
+            "name": "Hustle",
+            "offset": "0x458",
+            "length": 8
+        },
+        {
+            "name": "Agility",
+            "offset": "0x459",
+            "length": 8
+        },
+        {
+            "name": "Pass Perception",
+            "offset": "0x44C",
+            "length": 8
+        },
+        {
+            "name": "Defensive Consistency",
+            "offset": "0x44F",
+            "length": 8
+        },
+        {
+            "name": "Help Defense IQ",
+            "offset": "0x450",
+            "length": 8
+        },
+        {
+            "name": "Offensive Consistency",
+            "offset": "0x45B",
+            "length": 8
+        },
+        {
+            "name": "Intangibles",
+            "offset": "0x45C",
+            "length": 8
+        },
+        {
+            "name": "Potential",
+            "offset": "0x45D",
+            "length": 8
+        },
+        {
+            "name": "Head Durability",
+            "offset": "0x45E",
+            "length": 8
+        },
+        {
+            "name": "Left Shoulder Durability",
+            "offset": "0x45F",
+            "length": 8
+        },
+        {
+            "name": "Right Shoulder Durability",
+            "offset": "0x460",
+            "length": 8
+        },
+        {
+            "name": "Left Elbow Durability",
+            "offset": "0x461",
+            "length": 8
+        },
+        {
+            "name": "Right Elbow Durability",
+            "offset": "0x462",
+            "length": 8
+        },
+        {
+            "name": "Left Hand Durability",
+            "offset": "0x463",
+            "length": 8
+        },
+        {
+            "name": "Right Hand Durability",
+            "offset": "0x464",
+            "length": 8
+        },
+        {
+            "name": "Left Hip Durability",
+            "offset": "0x465",
+            "length": 8
+        },
+        {
+            "name": "Right Hip Durability",
+            "offset": "0x466",
+            "length": 8
+        },
+        {
+            "name": "Left Knee Durability",
+            "offset": "0x467",
+            "length": 8
+        },
+        {
+            "name": "Right Knee Durability",
+            "offset": "0x468",
+            "length": 8
+        },
+        {
+            "name": "Left Ankle Durability",
+            "offset": "0x469",
+            "length": 8
+        },
+        {
+            "name": "Right Ankle Durability",
+            "offset": "0x46A",
+            "length": 8
+        },
+        {
+            "name": "Left Foot Durability",
+            "offset": "0x46B",
+            "length": 8
+        },
+        {
+            "name": "Right Foot Durability",
+            "offset": "0x46C",
+            "length": 8
+        },
+        {
+            "name": "Miscanellous Durability",
+            "offset": "0x46D",
+            "length": 8
+        }
+    ],
+    "Tendencies": [
+        {
+            "name": "Shoot",
+            "offset": "0x471",
+            "startBit": 0,
+            "length": 7
+        },
+        {
+            "name": "Driving Layup Tendency",
+            "offset": "0x471",
+            "startBit": 7,
+            "length": 7
+        },
+        {
+            "name": "Standing Dunk Tendency",
+            "offset": "0x472",
+            "startBit": 6,
+            "length": 7
+        },
+        {
+            "name": "Driving Dunk Tendency",
+            "offset": "0x474",
+            "startBit": 0,
+            "length": 7
+        },
+        {
+            "name": "Flashy Dunk",
+            "offset": "0x474",
+            "startBit": 7,
+            "length": 7
+        },
+        {
+            "name": "Alley-Oop",
+            "offset": "0x475",
+            "startBit": 6,
+            "length": 7
+        },
+        {
+            "name": "Putback Dunk",
+            "offset": "0x476",
+            "startBit": 5,
+            "length": 7
+        },
+        {
+            "name": "Crash",
+            "offset": "0x478",
+            "startBit": 0,
+            "length": 7
+        },
+        {
+            "name": "Spin Layup",
+            "offset": "0x478",
+            "startBit": 7,
+            "length": 7
+        },
+        {
+            "name": "Hop Step Layup",
+            "offset": "0x479",
+            "startBit": 6,
+            "length": 7
+        },
+        {
+            "name": "Euro Step Layup",
+            "offset": "0x47A",
+            "startBit": 5,
+            "length": 7
+        },
+        {
+            "name": "Floater",
+            "offset": "0x47C",
+            "startBit": 0,
+            "length": 7
+        },
+        {
+            "name": "Step Through Shot",
+            "offset": "0x47C",
+            "startBit": 7,
+            "length": 7
+        },
+        {
+            "name": "Shot Under Basket",
+            "offset": "0x47D",
+            "startBit": 6,
+            "length": 7
+        },
+        {
+            "name": "Shot Close",
+            "offset": "0x47E",
+            "startBit": 5,
+            "length": 7
+        },
+        {
+            "name": "Shot Close Left",
+            "offset": "0x480",
+            "startBit": 0,
+            "length": 7
+        },
+        {
+            "name": "Shot Close Middle",
+            "offset": "0x480",
+            "startBit": 7,
+            "length": 7
+        },
+        {
+            "name": "Shot Close Right",
+            "offset": "0x481",
+            "startBit": 6,
+            "length": 7
+        },
+        {
+            "name": "Shot Mid",
+            "offset": "0x482",
+            "startBit": 5,
+            "length": 7
+        },
+        {
+            "name": "Spot Up Shot Mid",
+            "offset": "0x484",
+            "startBit": 0,
+            "length": 7
+        },
+        {
+            "name": "Off Screen Shot Mid",
+            "offset": "0x484",
+            "startBit": 7,
+            "length": 7
+        },
+        {
+            "name": "Shot Mid Left",
+            "offset": "0x485",
+            "startBit": 6,
+            "length": 7
+        },
+        {
+            "name": "Shot Mid Left Center",
+            "offset": "0x486",
+            "startBit": 5,
+            "length": 7
+        },
+        {
+            "name": "Shot Mid Center",
+            "offset": "0x488",
+            "startBit": 0,
+            "length": 7
+        },
+        {
+            "name": "Shot Mid Right Center",
+            "offset": "0x488",
+            "startBit": 7,
+            "length": 7
+        },
+        {
+            "name": "Shot Mid Right",
+            "offset": "0x489",
+            "startBit": 6,
+            "length": 7
+        },
+        {
+            "name": "Shot 3pt",
+            "offset": "0x48A",
+            "startBit": 5,
+            "length": 7
+        },
+        {
+            "name": "Spot Up Shot 3pt",
+            "offset": "0x48C",
+            "startBit": 0,
+            "length": 7
+        },
+        {
+            "name": "Off Screen Shot 3pt",
+            "offset": "0x48C",
+            "startBit": 7,
+            "length": 7
+        },
+        {
+            "name": "Shot 3pt Left",
+            "offset": "0x48D",
+            "startBit": 6,
+            "length": 7
+        },
+        {
+            "name": "Shot 3pt Left Center",
+            "offset": "0x48E",
+            "startBit": 5,
+            "length": 7
+        },
+        {
+            "name": "Shot 3pt Center",
+            "offset": "0x490",
+            "startBit": 0,
+            "length": 7
+        },
+        {
+            "name": "Shot 3pt Right Center",
+            "offset": "0x490",
+            "startBit": 7,
+            "length": 7
+        },
+        {
+            "name": "Shot 3pt Right",
+            "offset": "0x491",
+            "startBit": 6,
+            "length": 7
+        },
+        {
+            "name": "Contested Jumper 3pt",
+            "offset": "0x492",
+            "startBit": 5,
+            "length": 7
+        },
+        {
+            "name": "Contested Jumper Mid",
+            "offset": "0x494",
+            "startBit": 0,
+            "length": 7
+        },
+        {
+            "name": "Stepback Jumper 3pt",
+            "offset": "0x494",
+            "startBit": 7,
+            "length": 7
+        },
+        {
+            "name": "Stepback Jumper Mid",
+            "offset": "0x495",
+            "startBit": 6,
+            "length": 7
+        },
+        {
+            "name": "Spin Jumper Tendency",
+            "offset": "0x496",
+            "startBit": 5,
+            "length": 7
+        },
+        {
+            "name": "Transition Pull Up 3pt",
+            "offset": "0x498",
+            "startBit": 0,
+            "length": 7
+        },
+        {
+            "name": "Drive Pull Up 3pt",
+            "offset": "0x498",
+            "startBit": 7,
+            "length": 7
+        },
+        {
+            "name": "Drive Pull Up Mid",
+            "offset": "0x499",
+            "startBit": 6,
+            "length": 7
+        },
+        {
+            "name": "Use Glass",
+            "offset": "0x49A",
+            "startBit": 5,
+            "length": 7
+        },
+        {
+            "name": "Drive",
+            "offset": "0x49C",
+            "startBit": 0,
+            "length": 7
+        },
+        {
+            "name": "Spot Up Drive",
+            "offset": "0x49C",
+            "startBit": 7,
+            "length": 7
+        },
+        {
+            "name": "Off Screen Drive",
+            "offset": "0x49D",
+            "startBit": 6,
+            "length": 7
+        },
+        {
+            "name": "Drive Right",
+            "offset": "0x49E",
+            "startBit": 5,
+            "length": 7
+        },
+        {
+            "name": "Triple Threat Pump Fake",
+            "offset": "0x4A0",
+            "startBit": 0,
+            "length": 7
+        },
+        {
+            "name": "Triple Threat Jab Step",
+            "offset": "0x4A0",
+            "startBit": 7,
+            "length": 7
+        },
+        {
+            "name": "Triple Threat Idle",
+            "offset": "0x4A1",
+            "startBit": 6,
+            "length": 7
+        },
+        {
+            "name": "Triple Threat Shoot",
+            "offset": "0x4A2",
+            "startBit": 5,
+            "length": 7
+        },
+        {
+            "name": "Setup With Sizeup",
+            "offset": "0x4A4",
+            "startBit": 0,
+            "length": 7
+        },
+        {
+            "name": "Setup With Hesitation",
+            "offset": "0x4A4",
+            "startBit": 7,
+            "length": 7
+        },
+        {
+            "name": "No Setup Dribble",
+            "offset": "0x4A5",
+            "startBit": 6,
+            "length": 7
+        },
+        {
+            "name": "Driving Crossover",
+            "offset": "0x4A6",
+            "startBit": 5,
+            "length": 7
+        },
+        {
+            "name": "Driving Spin",
+            "offset": "0x4A8",
+            "startBit": 0,
+            "length": 7
+        },
+        {
+            "name": "Driving Step Back",
+            "offset": "0x4A8",
+            "startBit": 7,
+            "length": 7
+        },
+        {
+            "name": "Driving Half Spin",
+            "offset": "0x4A9",
+            "startBit": 6,
+            "length": 7
+        },
+        {
+            "name": "Driving Double Crossover",
+            "offset": "0x4AA",
+            "startBit": 5,
+            "length": 7
+        },
+        {
+            "name": "Driving Behind The Back",
+            "offset": "0x4AC",
+            "startBit": 0,
+            "length": 7
+        },
+        {
+            "name": "Driving Dribble Hesitation",
+            "offset": "0x4AC",
+            "startBit": 7,
+            "length": 7
+        },
+        {
+            "name": "Driving In And Out",
+            "offset": "0x4AD",
+            "startBit": 6,
+            "length": 7
+        },
+        {
+            "name": "No Driving Dribble Move",
+            "offset": "0x4AE",
+            "startBit": 5,
+            "length": 7
+        },
+        {
+            "name": "Attack Strong On Drive",
+            "offset": "0x4B0",
+            "startBit": 0,
+            "length": 7
+        },
+        {
+            "name": "Dish To Open Man",
+            "offset": "0x4B0",
+            "startBit": 7,
+            "length": 7
+        },
+        {
+            "name": "Touches",
+            "offset": "0x4B1",
+            "startBit": 6,
+            "length": 7
+        },
+        {
+            "name": "Post Up",
+            "offset": "0x4B2",
+            "startBit": 5,
+            "length": 7
+        },
+        {
+            "name": "Roll Vs Pop",
+            "offset": "0x4B4",
+            "startBit": 0,
+            "length": 7
+        },
+        {
+            "name": "Transition Spot Up",
+            "offset": "0x4B4",
+            "startBit": 7,
+            "length": 7
+        },
+        {
+            "name": "Iso Vs Elite Defender",
+            "offset": "0x4B5",
+            "startBit": 6,
+            "length": 7
+        },
+        {
+            "name": "Iso Vs Good Defender",
+            "offset": "0x4B6",
+            "startBit": 5,
+            "length": 7
+        },
+        {
+            "name": "Iso Vs Average Defender",
+            "offset": "0x4B8",
+            "startBit": 0,
+            "length": 7
+        },
+        {
+            "name": "Iso Vs Poor Defender",
+            "offset": "0x4B8",
+            "startBit": 7,
+            "length": 7
+        },
+        {
+            "name": "Play Discipline",
+            "offset": "0x4B9",
+            "startBit": 6,
+            "length": 7
+        },
+        {
+            "name": "Post Shimmy Shot",
+            "offset": "0x4BA",
+            "startBit": 5,
+            "length": 7
+        },
+        {
+            "name": "Post Face Up",
+            "offset": "0x4BC",
+            "startBit": 0,
+            "length": 7
+        },
+        {
+            "name": "Post Back Down",
+            "offset": "0x4BC",
+            "startBit": 7,
+            "length": 7
+        },
+        {
+            "name": "Post Aggressive Backdown",
+            "offset": "0x4BD",
+            "startBit": 6,
+            "length": 7
+        },
+        {
+            "name": "Shoot From Post",
+            "offset": "0x4BE",
+            "startBit": 5,
+            "length": 7
+        },
+        {
+            "name": "Post Hook Left",
+            "offset": "0x4C0",
+            "startBit": 0,
+            "length": 7
+        },
+        {
+            "name": "Post Hook Right",
+            "offset": "0x4C0",
+            "startBit": 7,
+            "length": 7
+        },
+        {
+            "name": "Post Fade Left",
+            "offset": "0x4C1",
+            "startBit": 6,
+            "length": 7
+        },
+        {
+            "name": "Post Fade Right",
+            "offset": "0x4C2",
+            "startBit": 5,
+            "length": 7
+        },
+        {
+            "name": "Post Up And Under",
+            "offset": "0x4C4",
+            "startBit": 0,
+            "length": 7
+        },
+        {
+            "name": "Post Hop Shot Tendency",
+            "offset": "0x4C4",
+            "startBit": 7,
+            "length": 7
+        },
+        {
+            "name": "Post Step Back Shot",
+            "offset": "0x4C5",
+            "startBit": 6,
+            "length": 7
+        },
+        {
+            "name": "Post Drive",
+            "offset": "0x4C6",
+            "startBit": 5,
+            "length": 7
+        },
+        {
+            "name": "Post Spin",
+            "offset": "0x4C8",
+            "startBit": 0,
+            "length": 7
+        },
+        {
+            "name": "Post Drop Step",
+            "offset": "0x4C8",
+            "startBit": 7,
+            "length": 7
+        },
+        {
+            "name": "Post Hop Step",
+            "offset": "0x4C9",
+            "startBit": 6,
+            "length": 7
+        },
+        {
+            "name": "Flashy Pass",
+            "offset": "0x4CA",
+            "startBit": 5,
+            "length": 7
+        },
+        {
+            "name": "Alley Oop Pass",
+            "offset": "0x4CC",
+            "startBit": 0,
+            "length": 7
+        },
+        {
+            "name": "Pass Interception",
+            "offset": "0x4CC",
+            "startBit": 7,
+            "length": 7
+        },
+        {
+            "name": "Take Charge",
+            "offset": "0x4CD",
+            "startBit": 6,
+            "length": 7
+        },
+        {
+            "name": "On Ball Steal",
+            "offset": "0x4CE",
+            "startBit": 5,
+            "length": 7
+        },
+        {
+            "name": "Contest Shot",
+            "offset": "0x4D0",
+            "startBit": 0,
+            "length": 7
+        },
+        {
+            "name": "Block Shot",
+            "offset": "0x4D0",
+            "startBit": 7,
+            "length": 7
+        },
+        {
+            "name": "Foul",
+            "offset": "0x4D1",
+            "startBit": 6,
+            "length": 7
+        },
+        {
+            "name": "Hard Foul",
+            "offset": "0x4D2",
+            "startBit": 5,
+            "length": 7
+        }
+    ],
+    "Badges": [
+        {
+            "name": "Float Game",
+            "offset": "0x4D6",
+            "startBit": 1,
+            "length": 3
+        },
+        {
+            "name": "Posterizer",
+            "offset": "0x4D6",
+            "startBit": 4,
+            "length": 3
+        },
+        {
+            "name": "Rise Up",
+            "offset": "0x4D6",
+            "startBit": 7,
+            "length": 3
+        },
+        {
+            "name": "Aerial Wizard",
+            "offset": "0x4D7",
+            "startBit": 2,
+            "length": 3
+        },
+        {
+            "name": "Hook Specialist",
+            "offset": "0x4D7",
+            "startBit": 5,
+            "length": 3
+        },
+        {
+            "name": "Layup Mixmaster",
+            "offset": "0x4DF",
+            "startBit": 0,
+            "length": 3
+        },
+        {
+            "name": "Paint Prodigy",
+            "offset": "0x4DF",
+            "startBit": 3,
+            "length": 3
+        },
+        {
+            "name": "Physical Finisher",
+            "offset": "0x4E0",
+            "startBit": 0,
+            "length": 3
+        },
+        {
+            "name": "Post Powerhouse",
+            "offset": "0x4E0",
+            "startBit": 3,
+            "length": 3
+        },
+        {
+            "name": "Ghost Stepper",
+            "offset": "0x4E3",
+            "startBit": 3,
+            "length": 3
+        },
+        {
+            "name": "Post Spin Catalyst",
+            "offset": "0x4E4",
+            "startBit": 0,
+            "length": 3
+        },
+        {
+            "name": "Post Fade Phenom",
+            "offset": "0x4D8",
+            "startBit": 0,
+            "length": 3
+        },
+        {
+            "name": "Deadeye",
+            "offset": "0x4D8",
+            "startBit": 3,
+            "length": 3
+        },
+        {
+            "name": "Limitless Range",
+            "offset": "0x4D8",
+            "startBit": 6,
+            "length": 3
+        },
+        {
+            "name": "Slippery Off-Ball",
+            "offset": "0x4D9",
+            "startBit": 1,
+            "length": 3
+        },
+        {
+            "name": "Mini Marksman",
+            "offset": "0x4E0",
+            "startBit": 6,
+            "length": 3
+        },
+        {
+            "name": "Set and Fire",
+            "offset": "0x4E4",
+            "startBit": 3,
+            "length": 3
+        },
+        {
+            "name": "Arc Cadence",
+            "offset": "0x4E4",
+            "startBit": 6,
+            "length": 3
+        },
+        {
+            "name": "Static Middy",
+            "offset": "0x4E5",
+            "startBit": 1,
+            "length": 3
+        },
+        {
+            "name": "Smooth Operator",
+            "offset": "0x4E5",
+            "startBit": 4,
+            "length": 3
+        },
+        {
+            "name": "Quick Trigger",
+            "offset": "0x4E5",
+            "startBit": 7,
+            "length": 3
+        },
+        {
+            "name": "Bail Out",
+            "offset": "0x4D9",
+            "startBit": 4,
+            "length": 3
+        },
+        {
+            "name": "Break Starter",
+            "offset": "0x4D9",
+            "startBit": 7,
+            "length": 3
+        },
+        {
+            "name": "Dimer",
+            "offset": "0x4DA",
+            "startBit": 2,
+            "length": 3
+        },
+        {
+            "name": "Handles for Days",
+            "offset": "0x4DA",
+            "startBit": 5,
+            "length": 3
+        },
+        {
+            "name": "Unpluckable",
+            "offset": "0x4DB",
+            "startBit": 0,
+            "length": 3
+        },
+        {
+            "name": "Versatile Visionary",
+            "offset": "0x4E1",
+            "startBit": 1,
+            "length": 3
+        },
+        {
+            "name": "Ankle Assassin",
+            "offset": "0x4E1",
+            "startBit": 4,
+            "length": 3
+        },
+        {
+            "name": "Lightning Launch",
+            "offset": "0x4E1",
+            "startBit": 7,
+            "length": 3
+        },
+        {
+            "name": "Strong Handle",
+            "offset": "0x4E2",
+            "startBit": 2,
+            "length": 3
+        },
+        {
+            "name": "Pace",
+            "offset": "0x4E6",
+            "startBit": 2,
+            "length": 3
+        },
+        {
+            "name": "Post Lockdown",
+            "offset": "0x4DB",
+            "startBit": 3,
+            "length": 3
+        },
+        {
+            "name": "Challenger",
+            "offset": "0x4DC",
+            "startBit": 0,
+            "length": 3
+        },
+        {
+            "name": "Off-Ball Pest",
+            "offset": "0x4DC",
+            "startBit": 3,
+            "length": 3
+        },
+        {
+            "name": "Pick Dodger",
+            "offset": "0x4DC",
+            "startBit": 6,
+            "length": 3
+        },
+        {
+            "name": "Glove",
+            "offset": "0x4DD",
+            "startBit": 1,
+            "length": 3
+        },
+        {
+            "name": "Interceptor",
+            "offset": "0x4DD",
+            "startBit": 4,
+            "length": 3
+        },
+        {
+            "name": "Pogo Stick",
+            "offset": "0x4DD",
+            "startBit": 7,
+            "length": 3
+        },
+        {
+            "name": "High-Flying Denier",
+            "offset": "0x4E2",
+            "startBit": 5,
+            "length": 3
+        },
+        {
+            "name": "Paint Patroller",
+            "offset": "0x4E3",
+            "startBit": 0,
+            "length": 3
+        },
+        {
+            "name": "Wall Up",
+            "offset": "0x4E6",
+            "startBit": 5,
+            "length": 3
+        },
+        {
+            "name": "Seatbelt",
+            "offset": "0x4E7",
+            "startBit": 0,
+            "length": 3
+        },
+        {
+            "name": "Ankle Braces",
+            "offset": "0x4E7",
+            "startBit": 3,
+            "length": 3
+        },
+        {
+            "name": "Brick Wall",
+            "offset": "0x4DE",
+            "startBit": 2,
+            "length": 3
+        },
+        {
+            "name": "Immovable Enforcer",
+            "offset": "0x4DE",
+            "startBit": 5,
+            "length": 3
+        },
+        {
+            "name": "Flash",
+            "offset": "0x4E9",
+            "startBit": 7,
+            "length": 3
+        },
+        {
+            "name": "Work Horse",
+            "offset": "0x4EA",
+            "startBit": 2,
+            "length": 3
+        },
+        {
+            "name": "Bruiser",
+            "offset": "0x4EA",
+            "startBit": 5,
+            "length": 3
+        },
+        {
+            "name": "Crasher",
+            "offset": "0x4E8",
+            "startBit": 0,
+            "length": 3
+        },
+        {
+            "name": "Possession Closer",
+            "offset": "0x4E8",
+            "startBit": 3,
+            "length": 3
+        },
+        {
+            "name": "Sync Snatcher",
+            "offset": "0x4E8",
+            "startBit": 6,
+            "length": 3
+        },
+        {
+            "name": "Boxout Boss",
+            "offset": "0x4E9",
+            "startBit": 1,
+            "length": 3
+        },
+        {
+            "name": "Breaker",
+            "offset": "0x4E9",
+            "startBit": 4,
+            "length": 3
+        }
+    ],
+    "Vitals": [
+        {
+            "name": "Position",
+            "offset": "0x12D",
+            "startBit": 0,
+            "length": 3
+        },
+        {
+            "name": "Secondary Position",
+            "offset": "0x12D",
+            "startBit": 3,
+            "length": 3
+        },
+        {
+            "name": "Play Initiator",
+            "offset": "0x2D6",
+            "startBit": 5,
+            "length": 1
+        },
+        {
+            "name": "Play Type 1",
+            "offset": "0x1A8",
+            "startBit": 0,
+            "length": 4
+        },
+        {
+            "name": "Play Type 2",
+            "offset": "0x1A8",
+            "startBit": 4,
+            "length": 4
+        },
+        {
+            "name": "Play Type 3",
+            "offset": "0x1A9",
+            "startBit": 0,
+            "length": 4
+        },
+        {
+            "name": "Play Type 4",
+            "offset": "0x1A9",
+            "startBit": 4,
+            "length": 4
+        }
+    ],
+    "Signatures": [
+        {
+            "name": "Jumpshot Base",
+            "offset": "0x408",
+            "startBit": 0,
+            "length": 10
+        },
+        {
+            "name": "Release 1",
+            "offset": "0x40C",
+            "startBit": 0,
+            "length": 10
+        },
+        {
+            "name": "Jumpshot Blending",
+            "offset": "0x3D1",
+            "startBit": 3,
+            "length": 7
+        },
+        {
+            "name": "Release 2",
+            "offset": "0x40D",
+            "startBit": 2,
+            "length": 10
+        }
+    ],
+  "Advanced Fields": [
+    {
+      "section": "Vitals",
+      "group": "ID",
+      "id": "CHINAFIRSTNAME",
+      "label": "China First Name",
+      "offset": 536,
+      "bits": 32,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Vitals",
+      "group": "ID",
+      "id": "CHINALASTNAME",
+      "label": "China Last Name",
+      "offset": 540,
+      "bits": 32,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Vitals",
+      "group": "ID",
+      "id": "FIRSTNAMEVETTED",
+      "label": "First Name Vetted",
+      "offset": 272,
+      "bits": 1,
+      "shift": 31,
+      "kind": "bits"
+    },
+    {
+      "section": "Vitals",
+      "group": "ID",
+      "id": "LASTNAMEVETTED",
+      "label": "Last Name Vetted",
+      "offset": 276,
+      "bits": 1,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Vitals",
+      "group": "Body",
+      "id": "FACETYPE",
+      "label": "Face Type",
+      "offset": 284,
+      "bits": 2,
+      "shift": 3,
+      "kind": "bits"
+    },
+    {
+      "section": "Vitals",
+      "group": "Body",
+      "id": "HAIRLENGTH",
+      "label": "Hair Length",
+      "offset": 280,
+      "bits": 8,
+      "shift": 10,
+      "kind": "bits"
+    },
+    {
+      "section": "Vitals",
+      "group": "Body",
+      "id": "SKINTYPE",
+      "label": "Skin Type",
+      "offset": 476,
+      "bits": 3,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Vitals",
+      "group": "Body",
+      "id": "WEIGHT",
+      "label": "Weight",
+      "offset": 264,
+      "bits": 32,
+      "shift": 0,
+      "kind": "float"
+    },
+    {
+      "section": "Vitals",
+      "group": "Vitals",
+      "id": "BIRTHDAY",
+      "label": "Birth Day",
+      "offset": 276,
+      "bits": 5,
+      "shift": 1,
+      "kind": "bits"
+    },
+    {
+      "section": "Vitals",
+      "group": "Vitals",
+      "id": "BIRTHMONTH",
+      "label": "Birth Month",
+      "offset": 874,
+      "bits": 4,
+      "shift": 12,
+      "kind": "bits"
+    },
+    {
+      "section": "Vitals",
+      "group": "Vitals",
+      "id": "BIRTHPLACE",
+      "label": "Birth Place",
+      "offset": 256,
+      "bits": 16,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Vitals",
+      "group": "Vitals",
+      "id": "BIRTHYEAR",
+      "label": "Birth Year",
+      "offset": 272,
+      "bits": 12,
+      "shift": 16,
+      "kind": "bits"
+    },
+    {
+      "section": "Vitals",
+      "group": "Vitals",
+      "id": "BORINGPERCENT",
+      "label": "Boredom Percentage",
+      "offset": 856,
+      "bits": 7,
+      "shift": 20,
+      "kind": "bits"
+    },
+    {
+      "section": "Vitals",
+      "group": "Vitals",
+      "id": "CREATEDPLAYERNICKNAME",
+      "label": "Created Player Nickname",
+      "offset": 1072,
+      "bits": 7,
+      "shift": 18,
+      "kind": "bits"
+    },
+    {
+      "section": "Vitals",
+      "group": "Vitals",
+      "id": "CROWDEXCITEMENTMULTIPLIER",
+      "label": "Crowd Excitement Multiplier",
+      "offset": 384,
+      "bits": 32,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Vitals",
+      "group": "Vitals",
+      "id": "DAYSINGLEAGUE",
+      "label": "Days in G League",
+      "offset": 976,
+      "bits": 3,
+      "shift": 18,
+      "kind": "bits"
+    },
+    {
+      "section": "Vitals",
+      "group": "Vitals",
+      "id": "DOMINANTDUNKHAND",
+      "label": "Dominant Dunk Hand",
+      "offset": 300,
+      "bits": 2,
+      "shift": 23,
+      "kind": "bits"
+    },
+    {
+      "section": "Vitals",
+      "group": "Vitals",
+      "id": "DOMINANTHAND",
+      "label": "Dominant Hand",
+      "offset": 300,
+      "bits": 1,
+      "shift": 22,
+      "kind": "bits"
+    },
+    {
+      "section": "Vitals",
+      "group": "Vitals",
+      "id": "DRAFTPICKNUMBER",
+      "label": "Draft Pick Number",
+      "offset": 874,
+      "bits": 6,
+      "shift": 6,
+      "kind": "bits"
+    },
+    {
+      "section": "Vitals",
+      "group": "Vitals",
+      "id": "DRAFTPROSPECTINDEX",
+      "label": "Draft Prospect Index",
+      "offset": 280,
+      "bits": 8,
+      "shift": 18,
+      "kind": "bits"
+    },
+    {
+      "section": "Vitals",
+      "group": "Vitals",
+      "id": "DRAFTEDFANTASYPICK",
+      "label": "Drafted Fantasy Pick",
+      "offset": 1076,
+      "bits": 6,
+      "shift": 23,
+      "kind": "bits"
+    },
+    {
+      "section": "Vitals",
+      "group": "Vitals",
+      "id": "DRAFTEDFANTASYROUND",
+      "label": "Drafted Fantasy Round",
+      "offset": 460,
+      "bits": 4,
+      "shift": 11,
+      "kind": "bits"
+    },
+    {
+      "section": "Vitals",
+      "group": "Vitals",
+      "id": "EUROSTASHREDRAFT",
+      "label": "Euro Stash Redraft",
+      "offset": 1024,
+      "bits": 1,
+      "shift": 31,
+      "kind": "bits"
+    },
+    {
+      "section": "Vitals",
+      "group": "Vitals",
+      "id": "EUROSTASHYEARSLEFT",
+      "label": "Euro Stash Years Left",
+      "offset": 836,
+      "bits": 3,
+      "shift": 26,
+      "kind": "bits"
+    },
+    {
+      "section": "Vitals",
+      "group": "Vitals",
+      "id": "EVOLUTIONLEVEL",
+      "label": "Evolution Level",
+      "offset": 836,
+      "bits": 3,
+      "shift": 29,
+      "kind": "bits"
+    },
+    {
+      "section": "Vitals",
+      "group": "Vitals",
+      "id": "FINANCIALSECURITY",
+      "label": "Financial Security",
+      "offset": 736,
+      "bits": 7,
+      "shift": 19,
+      "kind": "bits"
+    },
+    {
+      "section": "Vitals",
+      "group": "Vitals",
+      "id": "FLIPFIRSTLASTNAMES",
+      "label": "Flip First and Last Names",
+      "offset": 440,
+      "bits": 1,
+      "shift": 7,
+      "kind": "bits"
+    },
+    {
+      "section": "Vitals",
+      "group": "Vitals",
+      "id": "FORCENONSTARTER",
+      "label": "Force Non Starter",
+      "offset": 852,
+      "bits": 2,
+      "shift": 26,
+      "kind": "bits"
+    },
+    {
+      "section": "Vitals",
+      "group": "Vitals",
+      "id": "HIGHSCHOOL",
+      "label": "High School",
+      "offset": 256,
+      "bits": 16,
+      "shift": 16,
+      "kind": "bits"
+    },
+    {
+      "section": "Vitals",
+      "group": "Vitals",
+      "id": "ISFOUROUT",
+      "label": "Is Four Out",
+      "offset": 424,
+      "bits": 1,
+      "shift": 16,
+      "kind": "bits"
+    },
+    {
+      "section": "Vitals",
+      "group": "Vitals",
+      "id": "ISGLEAGUESENDDOWN",
+      "label": "Is G League Send-Down",
+      "offset": 276,
+      "bits": 1,
+      "shift": 9,
+      "kind": "bits"
+    },
+    {
+      "section": "Vitals",
+      "group": "Vitals",
+      "id": "ISSOCIALMEDIAFOLLOWER",
+      "label": "Is Social Media Follower",
+      "offset": 852,
+      "bits": 1,
+      "shift": 28,
+      "kind": "bits"
+    },
+    {
+      "section": "Vitals",
+      "group": "Vitals",
+      "id": "ISSUMMERLEAGUEATTENDEE",
+      "label": "Is Summer League Attendee",
+      "offset": 460,
+      "bits": 1,
+      "shift": 23,
+      "kind": "bits"
+    },
+    {
+      "section": "Vitals",
+      "group": "Vitals",
+      "id": "JERSEYNAMETYPE",
+      "label": "Jersey Name Type",
+      "offset": 836,
+      "bits": 2,
+      "shift": 22,
+      "kind": "bits"
+    },
+    {
+      "section": "Vitals",
+      "group": "Vitals",
+      "id": "LOYALTY",
+      "label": "Loyalty",
+      "offset": 736,
+      "bits": 7,
+      "shift": 5,
+      "kind": "bits"
+    },
+    {
+      "section": "Vitals",
+      "group": "Vitals",
+      "id": "MINEVOLEVELFORSECONDARYPOSITION",
+      "label": "Minimum Evolution Level for Secondary Position",
+      "offset": 460,
+      "bits": 3,
+      "shift": 19,
+      "kind": "bits"
+    },
+    {
+      "section": "Vitals",
+      "group": "Vitals",
+      "id": "NUMBER",
+      "label": "Number",
+      "offset": 276,
+      "bits": 7,
+      "shift": 11,
+      "kind": "bits"
+    },
+    {
+      "section": "Vitals",
+      "group": "Vitals",
+      "id": "ORIGINALPOTENTIAL",
+      "label": "Original Potential",
+      "offset": 873,
+      "bits": 8,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Vitals",
+      "group": "Vitals",
+      "id": "PEAKAGE",
+      "label": "Peak Age",
+      "offset": 276,
+      "bits": 6,
+      "shift": 18,
+      "kind": "bits"
+    },
+    {
+      "section": "Vitals",
+      "group": "Vitals",
+      "id": "PEAKENDAGE",
+      "label": "Peak End Age",
+      "offset": 276,
+      "bits": 6,
+      "shift": 24,
+      "kind": "bits"
+    },
+    {
+      "section": "Vitals",
+      "group": "Vitals",
+      "id": "PLAYFORWINNER",
+      "label": "Play For Winner",
+      "offset": 736,
+      "bits": 7,
+      "shift": 12,
+      "kind": "bits"
+    },
+    {
+      "section": "Vitals",
+      "group": "Vitals",
+      "id": "PLAYINGTIME",
+      "label": "Playing Time",
+      "offset": 300,
+      "bits": 7,
+      "shift": 15,
+      "kind": "bits"
+    },
+    {
+      "section": "Vitals",
+      "group": "Vitals",
+      "id": "POSITIONEDITED",
+      "label": "Position Edited",
+      "offset": 440,
+      "bits": 1,
+      "shift": 16,
+      "kind": "bits"
+    },
+    {
+      "section": "Vitals",
+      "group": "Vitals",
+      "id": "PROYEARCOUNTED",
+      "label": "Pro Year Counted",
+      "offset": 876,
+      "bits": 1,
+      "shift": 24,
+      "kind": "bits"
+    },
+    {
+      "section": "Vitals",
+      "group": "Vitals",
+      "id": "PROGRESSIONMINUTESPLAYED",
+      "label": "Progression Minutes Played",
+      "offset": 980,
+      "bits": 12,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Vitals",
+      "group": "Vitals",
+      "id": "PROGRESSIONTEAMGAMESPLAYED",
+      "label": "Progression Team Games Played",
+      "offset": 980,
+      "bits": 7,
+      "shift": 25,
+      "kind": "bits"
+    },
+    {
+      "section": "Vitals",
+      "group": "Vitals",
+      "id": "PROGRESSIONTOTALTEAMREGULATIONGAMELENGTH",
+      "label": "Progression Total Team Regulation Game Length",
+      "offset": 980,
+      "bits": 13,
+      "shift": 12,
+      "kind": "bits"
+    },
+    {
+      "section": "Vitals",
+      "group": "Vitals",
+      "id": "RECENTDRAFTSIGNING",
+      "label": "Recent Draft Signing",
+      "offset": 492,
+      "bits": 1,
+      "shift": 31,
+      "kind": "bits"
+    },
+    {
+      "section": "Vitals",
+      "group": "Vitals",
+      "id": "RETIREDJERSEYNUMBER",
+      "label": "Retired Jersey Number",
+      "offset": 880,
+      "bits": 1,
+      "shift": 23,
+      "kind": "bits"
+    },
+    {
+      "section": "Vitals",
+      "group": "Vitals",
+      "id": "ROUNDDRAFTED",
+      "label": "Round Drafted",
+      "offset": 856,
+      "bits": 4,
+      "shift": 27,
+      "kind": "bits"
+    },
+    {
+      "section": "Vitals",
+      "group": "Vitals",
+      "id": "SHUFFLEDDRAFTYEAR",
+      "label": "Shuffled Draft Year",
+      "offset": 888,
+      "bits": 7,
+      "shift": 9,
+      "kind": "bits"
+    },
+    {
+      "section": "Vitals",
+      "group": "Vitals",
+      "id": "SPECIALCASENAME",
+      "label": "Special Case Name",
+      "offset": 300,
+      "bits": 2,
+      "shift": 25,
+      "kind": "bits"
+    },
+    {
+      "section": "Vitals",
+      "group": "Vitals",
+      "id": "UNFAZEDHIDDENTRAIT",
+      "label": "Unfazed Hidden Trait",
+      "offset": 726,
+      "bits": 3,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Vitals",
+      "group": "Team",
+      "id": "FIBATEAMID",
+      "label": "FIBA Team ID",
+      "offset": 1056,
+      "bits": 16,
+      "shift": 16,
+      "kind": "bits"
+    },
+    {
+      "section": "Vitals",
+      "group": "Team",
+      "id": "TEAM",
+      "label": "Team",
+      "offset": 372,
+      "bits": 2,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Vitals",
+      "group": "Team",
+      "id": "TEAMHISTORY0DATE",
+      "label": "Team History 0 Date",
+      "offset": 800,
+      "bits": 32,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Vitals",
+      "group": "Team",
+      "id": "TEAMHISTORY0TEAMID",
+      "label": "Team History 0 Team ID",
+      "offset": 752,
+      "bits": 16,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Vitals",
+      "group": "Team",
+      "id": "TEAMHISTORY1DATE",
+      "label": "Team History 1 Date",
+      "offset": 804,
+      "bits": 32,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Vitals",
+      "group": "Team",
+      "id": "TEAMHISTORY1TEAMID",
+      "label": "Team History 1 Team ID",
+      "offset": 754,
+      "bits": 16,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Vitals",
+      "group": "Team",
+      "id": "TEAMHISTORY2DATE",
+      "label": "Team History 2 Date",
+      "offset": 808,
+      "bits": 32,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Vitals",
+      "group": "Team",
+      "id": "TEAMHISTORY2TEAMID",
+      "label": "Team History 2 Team ID",
+      "offset": 756,
+      "bits": 16,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Vitals",
+      "group": "Team",
+      "id": "YEARSWITHTEAM",
+      "label": "Years With Team",
+      "offset": 880,
+      "bits": 5,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Vitals",
+      "group": "Roster",
+      "id": "MYTEAMAUCTIONABLE",
+      "label": "MyTeam Auctionable",
+      "offset": 448,
+      "bits": 1,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Vitals",
+      "group": "Roster",
+      "id": "MYTEAMCOLOR",
+      "label": "Myteam Color",
+      "offset": 1012,
+      "bits": 5,
+      "shift": 13,
+      "kind": "bits"
+    },
+    {
+      "section": "Vitals",
+      "group": "Roster",
+      "id": "MYTEAMINCLUDE",
+      "label": "Myteam Include",
+      "offset": 852,
+      "bits": 1,
+      "shift": 29,
+      "kind": "bits"
+    },
+    {
+      "section": "Vitals",
+      "group": "Roster",
+      "id": "MYTEAMMOMENTDATE",
+      "label": "Myteam Moment Date",
+      "offset": 832,
+      "bits": 32,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Vitals",
+      "group": "Roster",
+      "id": "MYTEAMOFFLINEONLY",
+      "label": "Myteam Of Fl In Eonly",
+      "offset": 444,
+      "bits": 1,
+      "shift": 31,
+      "kind": "bits"
+    },
+    {
+      "section": "Vitals",
+      "group": "Roster",
+      "id": "MYTEAMREVEALUNIFORMID",
+      "label": "Myteam Reveal Uniform ID",
+      "offset": 1040,
+      "bits": 16,
+      "shift": 16,
+      "kind": "bits"
+    },
+    {
+      "section": "Vitals",
+      "group": "Roster",
+      "id": "MYTEAMSTADIUMREVEALANIM",
+      "label": "MyTeam Stadium Reveal Animation",
+      "offset": 472,
+      "bits": 32,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Vitals",
+      "group": "Roster",
+      "id": "MYTEAMTHEME",
+      "label": "Myteam Theme",
+      "offset": 468,
+      "bits": 32,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Vitals",
+      "group": "Roster",
+      "id": "ROSTERTYPE",
+      "label": "Roster Type",
+      "offset": 1024,
+      "bits": 3,
+      "shift": 22,
+      "kind": "bits"
+    },
+    {
+      "section": "Vitals",
+      "group": "Roster",
+      "id": "ROSTERYEAR",
+      "label": "Roster Year",
+      "offset": 896,
+      "bits": 11,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Vitals",
+      "group": "Health",
+      "id": "DAYSSINCELASTAGGRAVATION",
+      "label": "Days Since Last Aggravation",
+      "offset": 300,
+      "bits": 4,
+      "shift": 27,
+      "kind": "bits"
+    },
+    {
+      "section": "Vitals",
+      "group": "Health",
+      "id": "DISABLECAREERENDINGINJURY",
+      "label": "Disable Career-Ending Injury",
+      "offset": 884,
+      "bits": 1,
+      "shift": 31,
+      "kind": "bits"
+    },
+    {
+      "section": "Vitals",
+      "group": "Health",
+      "id": "DISALLOWEDINJURYFLAGS",
+      "label": "Disallowed Injury Flags",
+      "offset": 888,
+      "bits": 12,
+      "shift": 20,
+      "kind": "bits"
+    },
+    {
+      "section": "Vitals",
+      "group": "Health",
+      "id": "HADCAREERENDEDBYINJURY",
+      "label": "Had Career Ended by Injury",
+      "offset": 300,
+      "bits": 1,
+      "shift": 31,
+      "kind": "bits"
+    },
+    {
+      "section": "Vitals",
+      "group": "Health",
+      "id": "HADIMPORTANTINJURY",
+      "label": "Hadimportant Injury",
+      "offset": 1076,
+      "bits": 1,
+      "shift": 22,
+      "kind": "bits"
+    },
+    {
+      "section": "Vitals",
+      "group": "Health",
+      "id": "IMPORTANTINJURYRECOVERY",
+      "label": "Important Injury Recovery",
+      "offset": 1032,
+      "bits": 1,
+      "shift": 30,
+      "kind": "bits"
+    },
+    {
+      "section": "Vitals",
+      "group": "Health",
+      "id": "INJURY1DURATION",
+      "label": "Injury 1 Duration",
+      "offset": 852,
+      "bits": 20,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Vitals",
+      "group": "Health",
+      "id": "INJURY1STATUS",
+      "label": "Injury 1 Status",
+      "offset": 852,
+      "bits": 3,
+      "shift": 20,
+      "kind": "bits"
+    },
+    {
+      "section": "Vitals",
+      "group": "Health",
+      "id": "INJURY1TYPE",
+      "label": "Injury 1 Type",
+      "offset": 300,
+      "bits": 8,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Vitals",
+      "group": "Health",
+      "id": "INJURY2DURATION",
+      "label": "Injury 2 Duration",
+      "offset": 856,
+      "bits": 20,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Vitals",
+      "group": "Health",
+      "id": "INJURY2STATUS",
+      "label": "Injury 2 Status",
+      "offset": 852,
+      "bits": 3,
+      "shift": 23,
+      "kind": "bits"
+    },
+    {
+      "section": "Vitals",
+      "group": "Health",
+      "id": "INJURY2TYPE",
+      "label": "Injury 2 Type",
+      "offset": 860,
+      "bits": 8,
+      "shift": 13,
+      "kind": "bits"
+    },
+    {
+      "section": "Vitals",
+      "group": "Health",
+      "id": "INJURYHEALEDPERCENTAGE1",
+      "label": "Injury Healed Percentage 1",
+      "offset": 1012,
+      "bits": 7,
+      "shift": 25,
+      "kind": "bits"
+    },
+    {
+      "section": "Vitals",
+      "group": "Health",
+      "id": "INJURYHEALEDPERCENTAGE2",
+      "label": "Injury Healed Percentage 2",
+      "offset": 748,
+      "bits": 7,
+      "shift": 4,
+      "kind": "bits"
+    },
+    {
+      "section": "Vitals",
+      "group": "Health",
+      "id": "INJURYSTARTDATE1",
+      "label": "Injury Start Date 1",
+      "offset": 812,
+      "bits": 32,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Vitals",
+      "group": "Health",
+      "id": "INJURYSTARTDATE2",
+      "label": "Injury Start Date 2",
+      "offset": 816,
+      "bits": 32,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Vitals",
+      "group": "Health",
+      "id": "ISINJURY1TYPELEFTBODY",
+      "label": "Is Injury 1 Type Left Body",
+      "offset": 852,
+      "bits": 1,
+      "shift": 30,
+      "kind": "bits"
+    },
+    {
+      "section": "Vitals",
+      "group": "Health",
+      "id": "ISINJURY2TYPELEFTBODY",
+      "label": "Is Injury 2 Type Left Body",
+      "offset": 856,
+      "bits": 1,
+      "shift": 31,
+      "kind": "bits"
+    },
+    {
+      "section": "Vitals",
+      "group": "Health",
+      "id": "LATESTINJURYHEALEDDATE",
+      "label": "Latest Injury Healed Date",
+      "offset": 824,
+      "bits": 32,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Vitals",
+      "group": "Health",
+      "id": "LATESTINJURYHEALEDORIGINALTYPE",
+      "label": "Latest Injury Healed Original Type",
+      "offset": 976,
+      "bits": 8,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Vitals",
+      "group": "Health",
+      "id": "LATESTINJURYHEALEDSTARTDATE",
+      "label": "Latest Injury Healed Start Date",
+      "offset": 820,
+      "bits": 32,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Vitals",
+      "group": "Health",
+      "id": "LATESTINJURYSLOT",
+      "label": "Latest Injury Slot",
+      "offset": 852,
+      "bits": 1,
+      "shift": 31,
+      "kind": "bits"
+    },
+    {
+      "section": "Vitals",
+      "group": "Health",
+      "id": "NUMGAMESMISSEDDUETOINJURY",
+      "label": "Number Games Missed Due To Injury",
+      "offset": 1012,
+      "bits": 7,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Vitals",
+      "group": "Health",
+      "id": "ORIGINALINJURYTYPE1",
+      "label": "Original Injury Type 1",
+      "offset": 476,
+      "bits": 8,
+      "shift": 5,
+      "kind": "bits"
+    },
+    {
+      "section": "Vitals",
+      "group": "Health",
+      "id": "ORIGINALINJURYTYPE2",
+      "label": "Original Injury Type 2",
+      "offset": 860,
+      "bits": 8,
+      "shift": 21,
+      "kind": "bits"
+    },
+    {
+      "section": "Vitals",
+      "group": "Health",
+      "id": "PREINJURYACCESSORY1",
+      "label": "Pre Injury Accessory 1",
+      "offset": 444,
+      "bits": 5,
+      "shift": 7,
+      "kind": "bits"
+    },
+    {
+      "section": "Vitals",
+      "group": "Health",
+      "id": "PREINJURYACCESSORY2",
+      "label": "Pre Injury Accessory 2",
+      "offset": 444,
+      "bits": 5,
+      "shift": 12,
+      "kind": "bits"
+    },
+    {
+      "section": "Vitals",
+      "group": "Health",
+      "id": "PREINJURYACCESSORYAWAYCOLOR1",
+      "label": "Pre Injury Accessory Away Color 1",
+      "offset": 988,
+      "bits": 5,
+      "shift": 27,
+      "kind": "bits"
+    },
+    {
+      "section": "Vitals",
+      "group": "Health",
+      "id": "PREINJURYACCESSORYAWAYCOLOR2",
+      "label": "Pre Injury Accessory Away Color 2",
+      "offset": 280,
+      "bits": 5,
+      "shift": 26,
+      "kind": "bits"
+    },
+    {
+      "section": "Vitals",
+      "group": "Health",
+      "id": "PREINJURYACCESSORYBODYPART1",
+      "label": "Pre Injury Accessory Body Part 1",
+      "offset": 1076,
+      "bits": 4,
+      "shift": 18,
+      "kind": "bits"
+    },
+    {
+      "section": "Vitals",
+      "group": "Health",
+      "id": "PREINJURYACCESSORYBODYPART2",
+      "label": "Pre Injury Accessory Body Part 2",
+      "offset": 860,
+      "bits": 4,
+      "shift": 9,
+      "kind": "bits"
+    },
+    {
+      "section": "Vitals",
+      "group": "Health",
+      "id": "PREINJURYACCESSORYHOMECOLOR1",
+      "label": "Pre Injury Accessory Home Color 1",
+      "offset": 876,
+      "bits": 5,
+      "shift": 25,
+      "kind": "bits"
+    },
+    {
+      "section": "Vitals",
+      "group": "Health",
+      "id": "PREINJURYACCESSORYHOMECOLOR2",
+      "label": "Pre Injury Accessory Home Color 2",
+      "offset": 992,
+      "bits": 5,
+      "shift": 5,
+      "kind": "bits"
+    },
+    {
+      "section": "Vitals",
+      "group": "Personality",
+      "id": "GUMCHEWER",
+      "label": "Gum Chewer",
+      "offset": 268,
+      "bits": 1,
+      "shift": 30,
+      "kind": "bits"
+    },
+    {
+      "section": "Vitals",
+      "group": "Awards",
+      "id": "HALLOFFAMERATING",
+      "label": "Hall Of Fame Rating",
+      "offset": 380,
+      "bits": 32,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Vitals",
+      "group": "Awards",
+      "id": "MVPAWARDSHARES",
+      "label": "MVP Award Shares",
+      "offset": 376,
+      "bits": 32,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Vitals",
+      "group": "Awards",
+      "id": "PLAYEROFMONTH",
+      "label": "Player Of Month",
+      "offset": 1028,
+      "bits": 7,
+      "shift": 24,
+      "kind": "bits"
+    },
+    {
+      "section": "Vitals",
+      "group": "Awards",
+      "id": "PLAYEROFWEEK",
+      "label": "Player Of Week",
+      "offset": 1052,
+      "bits": 9,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Vitals",
+      "group": "Awards",
+      "id": "ROOKIEOFMONTH",
+      "label": "Rookie Of Month",
+      "offset": 460,
+      "bits": 3,
+      "shift": 15,
+      "kind": "bits"
+    },
+    {
+      "section": "Vitals",
+      "group": "Awards",
+      "id": "ROOKIEOFWEEK",
+      "label": "Rookie Of Week",
+      "offset": 736,
+      "bits": 5,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Vitals",
+      "group": "Type",
+      "id": "DEADCAPTEMPORARYPLAYERTYPE",
+      "label": "Deadca PT Emporary Player Type",
+      "offset": 460,
+      "bits": 2,
+      "shift": 30,
+      "kind": "bits"
+    },
+    {
+      "section": "Vitals",
+      "group": "Type",
+      "id": "ISACTIVEPRIVATE",
+      "label": "Is Active Private",
+      "offset": 276,
+      "bits": 1,
+      "shift": 6,
+      "kind": "bits"
+    },
+    {
+      "section": "Vitals",
+      "group": "Type",
+      "id": "ISCELEBRITY",
+      "label": "Is Celebrity",
+      "offset": 372,
+      "bits": 1,
+      "shift": 21,
+      "kind": "bits"
+    },
+    {
+      "section": "Vitals",
+      "group": "Type",
+      "id": "ISDRAFTEDINTEAMEXPANSION",
+      "label": "Is Drafted In Team Expansion",
+      "offset": 372,
+      "bits": 1,
+      "shift": 26,
+      "kind": "bits"
+    },
+    {
+      "section": "Vitals",
+      "group": "Type",
+      "id": "ISELIGIBLEFORFANTASYDRAFT",
+      "label": "Is Eligible For Fantasy Draft",
+      "offset": 424,
+      "bits": 1,
+      "shift": 26,
+      "kind": "bits"
+    },
+    {
+      "section": "Vitals",
+      "group": "Type",
+      "id": "ISGLEAGUE",
+      "label": "Is G League",
+      "offset": 488,
+      "bits": 1,
+      "shift": 31,
+      "kind": "bits"
+    },
+    {
+      "section": "Vitals",
+      "group": "Type",
+      "id": "ISGENERATED",
+      "label": "Is Generated",
+      "offset": 276,
+      "bits": 1,
+      "shift": 8,
+      "kind": "bits"
+    },
+    {
+      "section": "Vitals",
+      "group": "Type",
+      "id": "ISGENERATIONALPLAYER",
+      "label": "Is Generational Player",
+      "offset": 748,
+      "bits": 1,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Vitals",
+      "group": "Type",
+      "id": "ISHIDDEN",
+      "label": "Is Hidden",
+      "offset": 276,
+      "bits": 1,
+      "shift": 7,
+      "kind": "bits"
+    },
+    {
+      "section": "Vitals",
+      "group": "Type",
+      "id": "ISHISTORIC",
+      "label": "Is Historic",
+      "offset": 484,
+      "bits": 1,
+      "shift": 31,
+      "kind": "bits"
+    },
+    {
+      "section": "Vitals",
+      "group": "Type",
+      "id": "ISPLAYABLE",
+      "label": "Is Play Able",
+      "offset": 1032,
+      "bits": 1,
+      "shift": 31,
+      "kind": "bits"
+    },
+    {
+      "section": "Vitals",
+      "group": "Type",
+      "id": "ISPROTECTEDINDRAFT",
+      "label": "Is Protected In Draft",
+      "offset": 880,
+      "bits": 1,
+      "shift": 31,
+      "kind": "bits"
+    },
+    {
+      "section": "Vitals",
+      "group": "Type",
+      "id": "LEAGUE",
+      "label": "League",
+      "offset": 280,
+      "bits": 1,
+      "shift": 3,
+      "kind": "bits"
+    },
+    {
+      "section": "Vitals",
+      "group": "Type",
+      "id": "MUSTRETIRENEXTYEAR",
+      "label": "Must Retire Next Year",
+      "offset": 1012,
+      "bits": 1,
+      "shift": 18,
+      "kind": "bits"
+    },
+    {
+      "section": "Vitals",
+      "group": "Type",
+      "id": "OFFENSIVEPLAYERTYPE",
+      "label": "Offensive Player Type",
+      "offset": 748,
+      "bits": 5,
+      "shift": 11,
+      "kind": "bits"
+    },
+    {
+      "section": "Vitals",
+      "group": "Type",
+      "id": "ORGROLE",
+      "label": "Organization Role",
+      "offset": 280,
+      "bits": 3,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Vitals",
+      "group": "Type",
+      "id": "PLAYERTYPE",
+      "label": "Player Type",
+      "offset": 424,
+      "bits": 5,
+      "shift": 21,
+      "kind": "bits"
+    },
+    {
+      "section": "Vitals",
+      "group": "Type",
+      "id": "SEASONRETIRED",
+      "label": "Season Retired",
+      "offset": 884,
+      "bits": 7,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Vitals",
+      "group": "Type",
+      "id": "TWOWAYWASCALLEDUPTODAY",
+      "label": "Two Way Was Called Up Today",
+      "offset": 480,
+      "bits": 1,
+      "shift": 31,
+      "kind": "bits"
+    },
+    {
+      "section": "Vitals",
+      "group": "Type",
+      "id": "WASDRAFTED",
+      "label": "Was Drafted",
+      "offset": 276,
+      "bits": 1,
+      "shift": 10,
+      "kind": "bits"
+    },
+    {
+      "section": "Vitals",
+      "group": "Type",
+      "id": "WNBAARCHETYPE",
+      "label": "WNBA Arche Type",
+      "offset": 748,
+      "bits": 4,
+      "shift": 28,
+      "kind": "bits"
+    },
+    {
+      "section": "Attributes",
+      "group": "Offense",
+      "id": "PASSVISION",
+      "label": "Pass Vision",
+      "offset": 1132,
+      "bits": 8,
+      "shift": 16,
+      "kind": "bits"
+    },
+    {
+      "section": "Attributes",
+      "group": "Progression",
+      "id": "BOOMPERCENTAGE",
+      "label": "Boom Percentage",
+      "offset": 1020,
+      "bits": 7,
+      "shift": 14,
+      "kind": "bits"
+    },
+    {
+      "section": "Attributes",
+      "group": "Progression",
+      "id": "BUSTPERCENTAGE",
+      "label": "Bust Percentage",
+      "offset": 1020,
+      "bits": 7,
+      "shift": 21,
+      "kind": "bits"
+    },
+    {
+      "section": "Attributes",
+      "group": "Progression",
+      "id": "DECLINECURVE",
+      "label": "Decline Curve",
+      "offset": 1020,
+      "bits": 2,
+      "shift": 30,
+      "kind": "bits"
+    },
+    {
+      "section": "Attributes",
+      "group": "Progression",
+      "id": "GROWTHCURVE",
+      "label": "Growth Curve",
+      "offset": 1020,
+      "bits": 2,
+      "shift": 28,
+      "kind": "bits"
+    },
+    {
+      "section": "Attributes",
+      "group": "Progression",
+      "id": "MAXIMUMPOTENTIAL",
+      "label": "Maximum Potential",
+      "offset": 1020,
+      "bits": 7,
+      "shift": 7,
+      "kind": "bits"
+    },
+    {
+      "section": "Attributes",
+      "group": "Progression",
+      "id": "MINIMUMPOTENTIAL",
+      "label": "Minimum Potential",
+      "offset": 1020,
+      "bits": 7,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Attributes",
+      "group": "Progression",
+      "id": "PROGRESSIONPLAYERTYPE",
+      "label": "Progression Player Type",
+      "offset": 884,
+      "bits": 5,
+      "shift": 26,
+      "kind": "bits"
+    },
+    {
+      "section": "Attributes",
+      "group": "Progression",
+      "id": "YEARSPRO",
+      "label": "Years Pro",
+      "offset": 992,
+      "bits": 5,
+      "shift": 17,
+      "kind": "bits"
+    },
+    {
+      "section": "Attributes",
+      "group": "Misc",
+      "id": "CACHEDDEFENSERATINGNEVERCALL",
+      "label": "Cached Defense Rating Never Call",
+      "offset": 436,
+      "bits": 32,
+      "shift": 0,
+      "kind": "float"
+    },
+    {
+      "section": "Attributes",
+      "group": "Misc",
+      "id": "CACHEDOFFENSERATINGNEVERCALL",
+      "label": "Cached Of Fense Rating Never Call",
+      "offset": 432,
+      "bits": 32,
+      "shift": 0,
+      "kind": "float"
+    },
+    {
+      "section": "Attributes",
+      "group": "Misc",
+      "id": "CACHEDOVERALLRATINGNEVERCALL",
+      "label": "Cached Over All Rating Never Call",
+      "offset": 428,
+      "bits": 32,
+      "shift": 0,
+      "kind": "float"
+    },
+    {
+      "section": "Signature",
+      "group": "Layups And Dunks",
+      "id": "DUNKPACKAGE1",
+      "label": "Dunk Package 1",
+      "offset": 876,
+      "bits": 8,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Signature",
+      "group": "Layups And Dunks",
+      "id": "DUNKPACKAGE10",
+      "label": "Dunk Package 10",
+      "offset": 844,
+      "bits": 8,
+      "shift": 8,
+      "kind": "bits"
+    },
+    {
+      "section": "Signature",
+      "group": "Layups And Dunks",
+      "id": "DUNKPACKAGE11",
+      "label": "Dunk Package 11",
+      "offset": 844,
+      "bits": 8,
+      "shift": 16,
+      "kind": "bits"
+    },
+    {
+      "section": "Signature",
+      "group": "Layups And Dunks",
+      "id": "DUNKPACKAGE12",
+      "label": "Dunk Package 12",
+      "offset": 844,
+      "bits": 8,
+      "shift": 24,
+      "kind": "bits"
+    },
+    {
+      "section": "Signature",
+      "group": "Layups And Dunks",
+      "id": "DUNKPACKAGE13",
+      "label": "Dunk Package 13",
+      "offset": 864,
+      "bits": 8,
+      "shift": 8,
+      "kind": "bits"
+    },
+    {
+      "section": "Signature",
+      "group": "Layups And Dunks",
+      "id": "DUNKPACKAGE14",
+      "label": "Dunk Package 14",
+      "offset": 864,
+      "bits": 8,
+      "shift": 16,
+      "kind": "bits"
+    },
+    {
+      "section": "Signature",
+      "group": "Layups And Dunks",
+      "id": "DUNKPACKAGE15",
+      "label": "Dunk Package 15",
+      "offset": 864,
+      "bits": 8,
+      "shift": 24,
+      "kind": "bits"
+    },
+    {
+      "section": "Signature",
+      "group": "Layups And Dunks",
+      "id": "DUNKPACKAGE2",
+      "label": "Dunk Package 2",
+      "offset": 876,
+      "bits": 8,
+      "shift": 8,
+      "kind": "bits"
+    },
+    {
+      "section": "Signature",
+      "group": "Layups And Dunks",
+      "id": "DUNKPACKAGE3",
+      "label": "Dunk Package 3",
+      "offset": 876,
+      "bits": 8,
+      "shift": 16,
+      "kind": "bits"
+    },
+    {
+      "section": "Signature",
+      "group": "Layups And Dunks",
+      "id": "DUNKPACKAGE4",
+      "label": "Dunk Package 4",
+      "offset": 1028,
+      "bits": 8,
+      "shift": 16,
+      "kind": "bits"
+    },
+    {
+      "section": "Signature",
+      "group": "Layups And Dunks",
+      "id": "DUNKPACKAGE5",
+      "label": "Dunk Package 5",
+      "offset": 840,
+      "bits": 8,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Signature",
+      "group": "Layups And Dunks",
+      "id": "DUNKPACKAGE6",
+      "label": "Dunk Package 6",
+      "offset": 840,
+      "bits": 8,
+      "shift": 8,
+      "kind": "bits"
+    },
+    {
+      "section": "Signature",
+      "group": "Layups And Dunks",
+      "id": "DUNKPACKAGE7",
+      "label": "Dunk Package 7",
+      "offset": 840,
+      "bits": 8,
+      "shift": 16,
+      "kind": "bits"
+    },
+    {
+      "section": "Signature",
+      "group": "Layups And Dunks",
+      "id": "DUNKPACKAGE8",
+      "label": "Dunk Package 8",
+      "offset": 840,
+      "bits": 8,
+      "shift": 24,
+      "kind": "bits"
+    },
+    {
+      "section": "Signature",
+      "group": "Layups And Dunks",
+      "id": "DUNKPACKAGE9",
+      "label": "Dunk Package 9",
+      "offset": 844,
+      "bits": 8,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Signature",
+      "group": "Layups And Dunks",
+      "id": "LAYUPPACKAGE",
+      "label": "Layup Package",
+      "offset": 1068,
+      "bits": 7,
+      "shift": 25,
+      "kind": "bits"
+    },
+    {
+      "section": "Signature",
+      "group": "Ball Handling",
+      "id": "DRIBBLESTYLE",
+      "label": "Dribble Style",
+      "offset": 1012,
+      "bits": 6,
+      "shift": 19,
+      "kind": "bits"
+    },
+    {
+      "section": "Signature",
+      "group": "Ball Handling",
+      "id": "ISOBEHINDBACK",
+      "label": "Iso Behind Back",
+      "offset": 1044,
+      "bits": 7,
+      "shift": 7,
+      "kind": "bits"
+    },
+    {
+      "section": "Signature",
+      "group": "Ball Handling",
+      "id": "ISOBEHINDBACKLAUNCH",
+      "label": "Iso Behind Back Launch",
+      "offset": 1064,
+      "bits": 7,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Signature",
+      "group": "Ball Handling",
+      "id": "ISOBREAKDOWN",
+      "label": "Iso Breakdown",
+      "offset": 1044,
+      "bits": 7,
+      "shift": 25,
+      "kind": "bits"
+    },
+    {
+      "section": "Signature",
+      "group": "Ball Handling",
+      "id": "ISOBREAKDOWNMOVE",
+      "label": "Iso Breakdown Move",
+      "offset": 1076,
+      "bits": 7,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Signature",
+      "group": "Ball Handling",
+      "id": "ISOCOMBODOUBLECROSS",
+      "label": "Iso Combo Double Cross",
+      "offset": 1068,
+      "bits": 6,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Signature",
+      "group": "Ball Handling",
+      "id": "ISOCOMBOHESICROSS",
+      "label": "Iso Combo Hesi Cross",
+      "offset": 1064,
+      "bits": 7,
+      "shift": 20,
+      "kind": "bits"
+    },
+    {
+      "section": "Signature",
+      "group": "Ball Handling",
+      "id": "ISOCROSSCOMBO",
+      "label": "Iso Cross Combo",
+      "offset": 456,
+      "bits": 6,
+      "shift": 26,
+      "kind": "bits"
+    },
+    {
+      "section": "Signature",
+      "group": "Ball Handling",
+      "id": "ISOCROSSOVER",
+      "label": "Iso Cross Over",
+      "offset": 1048,
+      "bits": 7,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Signature",
+      "group": "Ball Handling",
+      "id": "ISOCROSSSPIN",
+      "label": "Iso Cross Spin",
+      "offset": 1060,
+      "bits": 6,
+      "shift": 7,
+      "kind": "bits"
+    },
+    {
+      "section": "Signature",
+      "group": "Ball Handling",
+      "id": "ISOESCAPEBEHINDBACK",
+      "label": "Iso Escape Behind Back",
+      "offset": 1072,
+      "bits": 6,
+      "shift": 12,
+      "kind": "bits"
+    },
+    {
+      "section": "Signature",
+      "group": "Ball Handling",
+      "id": "ISOESCAPECROSS",
+      "label": "Iso Escape Cross",
+      "offset": 1072,
+      "bits": 6,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Signature",
+      "group": "Ball Handling",
+      "id": "ISOESCAPEHES",
+      "label": "Iso Escape Hes",
+      "offset": 1016,
+      "bits": 6,
+      "shift": 7,
+      "kind": "bits"
+    },
+    {
+      "section": "Signature",
+      "group": "Ball Handling",
+      "id": "ISOESCAPETWEEN",
+      "label": "Iso Escape Tween",
+      "offset": 1072,
+      "bits": 6,
+      "shift": 6,
+      "kind": "bits"
+    },
+    {
+      "section": "Signature",
+      "group": "Ball Handling",
+      "id": "ISOHESITATION",
+      "label": "Iso Hesitation",
+      "offset": 1076,
+      "bits": 7,
+      "shift": 7,
+      "kind": "bits"
+    },
+    {
+      "section": "Signature",
+      "group": "Ball Handling",
+      "id": "ISOHESITATIONLATERAL",
+      "label": "Iso Hesitation Lateral",
+      "offset": 1060,
+      "bits": 7,
+      "shift": 20,
+      "kind": "bits"
+    },
+    {
+      "section": "Signature",
+      "group": "Ball Handling",
+      "id": "ISOINANDOUT",
+      "label": "Iso Inandout",
+      "offset": 1060,
+      "bits": 7,
+      "shift": 13,
+      "kind": "bits"
+    },
+    {
+      "section": "Signature",
+      "group": "Ball Handling",
+      "id": "ISOMISDIRECTBEHINDBACK",
+      "label": "Iso Mis Direct Behind Back",
+      "offset": 1068,
+      "bits": 7,
+      "shift": 13,
+      "kind": "bits"
+    },
+    {
+      "section": "Signature",
+      "group": "Ball Handling",
+      "id": "ISOMISDIRECTCROSS",
+      "label": "Iso Mis Direct Cross",
+      "offset": 1068,
+      "bits": 7,
+      "shift": 6,
+      "kind": "bits"
+    },
+    {
+      "section": "Signature",
+      "group": "Ball Handling",
+      "id": "ISOMISDIRECTHES",
+      "label": "Iso Mis Direct Hes",
+      "offset": 1072,
+      "bits": 7,
+      "shift": 25,
+      "kind": "bits"
+    },
+    {
+      "section": "Signature",
+      "group": "Ball Handling",
+      "id": "ISOSIZEUPSIG",
+      "label": "Iso Size Up Signature",
+      "offset": 1016,
+      "bits": 7,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Signature",
+      "group": "Ball Handling",
+      "id": "ISOSPIN",
+      "label": "Iso Spin",
+      "offset": 464,
+      "bits": 6,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Signature",
+      "group": "Ball Handling",
+      "id": "ISOSTEPBACK",
+      "label": "Iso Step Back",
+      "offset": 1024,
+      "bits": 6,
+      "shift": 25,
+      "kind": "bits"
+    },
+    {
+      "section": "Signature",
+      "group": "Ball Handling",
+      "id": "ISOSTEPBACKCROSS",
+      "label": "Iso Step Back Cross",
+      "offset": 1064,
+      "bits": 6,
+      "shift": 7,
+      "kind": "bits"
+    },
+    {
+      "section": "Signature",
+      "group": "Ball Handling",
+      "id": "ISOSTEPBACKLATERAL",
+      "label": "Iso Step Back Lateral",
+      "offset": 1064,
+      "bits": 7,
+      "shift": 13,
+      "kind": "bits"
+    },
+    {
+      "section": "Signature",
+      "group": "Ball Handling",
+      "id": "ISOTWEENLEGS",
+      "label": "Iso Tween Legs",
+      "offset": 1060,
+      "bits": 7,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Signature",
+      "group": "Ball Handling",
+      "id": "PASSSTYLE",
+      "label": "Pass Style",
+      "offset": 736,
+      "bits": 6,
+      "shift": 26,
+      "kind": "bits"
+    },
+    {
+      "section": "Signature",
+      "group": "Ball Handling",
+      "id": "TRIPLETHREATBREAKDOWN",
+      "label": "Triple Threat Breakdown",
+      "offset": 1060,
+      "bits": 5,
+      "shift": 27,
+      "kind": "bits"
+    },
+    {
+      "section": "Signature",
+      "group": "Ball Handling",
+      "id": "TRIPLETHREATJAB",
+      "label": "Triple Threat Jab",
+      "offset": 1064,
+      "bits": 5,
+      "shift": 27,
+      "kind": "bits"
+    },
+    {
+      "section": "Signature",
+      "group": "Ball Handling",
+      "id": "TRIPLETHREATSTEPOVER",
+      "label": "Triple Threat Step Over",
+      "offset": 1068,
+      "bits": 5,
+      "shift": 20,
+      "kind": "bits"
+    },
+    {
+      "section": "Signature",
+      "group": "Ball Handling",
+      "id": "TRIPLETHREATSTYLE",
+      "label": "Triple Threat Style",
+      "offset": 864,
+      "bits": 5,
+      "shift": 3,
+      "kind": "bits"
+    },
+    {
+      "section": "Signature",
+      "group": "Misc",
+      "id": "AMBIENTPACKAGE1",
+      "label": "Ambient Package 1",
+      "offset": 892,
+      "bits": 8,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Signature",
+      "group": "Misc",
+      "id": "AMBIENTPACKAGE1WEIGHT",
+      "label": "Ambient Package 1 Weight",
+      "offset": 892,
+      "bits": 7,
+      "shift": 16,
+      "kind": "bits"
+    },
+    {
+      "section": "Signature",
+      "group": "Misc",
+      "id": "AMBIENTPACKAGE2",
+      "label": "Ambient Package 2",
+      "offset": 892,
+      "bits": 8,
+      "shift": 8,
+      "kind": "bits"
+    },
+    {
+      "section": "Signature",
+      "group": "Misc",
+      "id": "AMBIENTPACKAGE2WEIGHT",
+      "label": "Ambient Package 2 Weight",
+      "offset": 880,
+      "bits": 7,
+      "shift": 24,
+      "kind": "bits"
+    },
+    {
+      "section": "Signature",
+      "group": "Misc",
+      "id": "AMBIENTPACKAGE3",
+      "label": "Ambient Package 3",
+      "offset": 988,
+      "bits": 8,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Signature",
+      "group": "Misc",
+      "id": "AMBIENTPACKAGE3WEIGHT",
+      "label": "Ambient Package 3 Weight",
+      "offset": 896,
+      "bits": 7,
+      "shift": 11,
+      "kind": "bits"
+    },
+    {
+      "section": "Signature",
+      "group": "Misc",
+      "id": "EMOTEDRB",
+      "label": "Emote Drb",
+      "offset": 1052,
+      "bits": 7,
+      "shift": 18,
+      "kind": "bits"
+    },
+    {
+      "section": "Signature",
+      "group": "Misc",
+      "id": "EMOTETT",
+      "label": "Emote Tt",
+      "offset": 1052,
+      "bits": 7,
+      "shift": 25,
+      "kind": "bits"
+    },
+    {
+      "section": "Signature",
+      "group": "Misc",
+      "id": "FREEFALLSTYLE",
+      "label": "Free Fall Style",
+      "offset": 1044,
+      "bits": 7,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Signature",
+      "group": "Misc",
+      "id": "MOTIONSTYLE",
+      "label": "Motion Style",
+      "offset": 860,
+      "bits": 9,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Signature",
+      "group": "Jump Shooting",
+      "id": "RELEASETIMING",
+      "label": "Release Timing",
+      "offset": 896,
+      "bits": 3,
+      "shift": 21,
+      "kind": "bits"
+    },
+    {
+      "section": "Signature",
+      "group": "Jump Shooting",
+      "id": "SHOTTIMINGIMPACTMODIFIER",
+      "label": "Shot Timing Impact Modifier",
+      "offset": 464,
+      "bits": 2,
+      "shift": 28,
+      "kind": "bits"
+    },
+    {
+      "section": "Signature",
+      "group": "Misc",
+      "id": "SIGJUMPBALLSTAND",
+      "label": "Signature Jump Ball Stand",
+      "offset": 880,
+      "bits": 5,
+      "shift": 14,
+      "kind": "bits"
+    },
+    {
+      "section": "Signature",
+      "group": "Misc",
+      "id": "SIGPLAYERINTRO1",
+      "label": "Signature Player Intro 1",
+      "offset": 748,
+      "bits": 8,
+      "shift": 20,
+      "kind": "bits"
+    },
+    {
+      "section": "Signature",
+      "group": "Misc",
+      "id": "SIGPLAYERINTRO2",
+      "label": "Signature Player Intro 2",
+      "offset": 836,
+      "bits": 8,
+      "shift": 14,
+      "kind": "bits"
+    },
+    {
+      "section": "Signature",
+      "group": "Misc",
+      "id": "VOICETYPE",
+      "label": "Voice Type",
+      "offset": 984,
+      "bits": 2,
+      "shift": 30,
+      "kind": "bits"
+    },
+    {
+      "section": "Signature",
+      "group": "Jump Shooting II",
+      "id": "DRIBBLEPULLUP",
+      "label": "Dribble Pullup",
+      "offset": 896,
+      "bits": 8,
+      "shift": 24,
+      "kind": "bits"
+    },
+    {
+      "section": "Signature",
+      "group": "Jump Shooting II",
+      "id": "FREETHROW",
+      "label": "Free Throw",
+      "offset": 1052,
+      "bits": 9,
+      "shift": 9,
+      "kind": "bits"
+    },
+    {
+      "section": "Signature",
+      "group": "Jump Shooting II",
+      "id": "GOTOSHOT",
+      "label": "Goto Shot",
+      "offset": 1032,
+      "bits": 7,
+      "shift": 20,
+      "kind": "bits"
+    },
+    {
+      "section": "Signature",
+      "group": "Jump Shooting II",
+      "id": "SHOTSIDEHOP",
+      "label": "Shot Side Hop",
+      "offset": 884,
+      "bits": 7,
+      "shift": 7,
+      "kind": "bits"
+    },
+    {
+      "section": "Signature",
+      "group": "Jump Shooting II",
+      "id": "SHOTSPIN",
+      "label": "Shot Spin",
+      "offset": 476,
+      "bits": 6,
+      "shift": 20,
+      "kind": "bits"
+    },
+    {
+      "section": "Signature",
+      "group": "Jump Shooting II",
+      "id": "SHOTSTEPTHRU",
+      "label": "Shot Step Thru",
+      "offset": 1076,
+      "bits": 3,
+      "shift": 15,
+      "kind": "bits"
+    },
+    {
+      "section": "Signature",
+      "group": "Post Game",
+      "id": "GOPOSTTOSHOT",
+      "label": "Go Post To Shot",
+      "offset": 464,
+      "bits": 6,
+      "shift": 12,
+      "kind": "bits"
+    },
+    {
+      "section": "Signature",
+      "group": "Post Game",
+      "id": "POSTFADE",
+      "label": "Post Fade",
+      "offset": 476,
+      "bits": 7,
+      "shift": 13,
+      "kind": "bits"
+    },
+    {
+      "section": "Signature",
+      "group": "Post Game",
+      "id": "POSTHOOK",
+      "label": "Post Hook",
+      "offset": 464,
+      "bits": 6,
+      "shift": 6,
+      "kind": "bits"
+    },
+    {
+      "section": "Signature",
+      "group": "Post Game",
+      "id": "POSTONESTEPPULLUP",
+      "label": "Post One Step Pullup",
+      "offset": 992,
+      "bits": 5,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Contract",
+      "group": "Contract Terms",
+      "id": "BIRDYEARS",
+      "label": "Bird Years",
+      "offset": 992,
+      "bits": 5,
+      "shift": 22,
+      "kind": "bits"
+    },
+    {
+      "section": "Contract",
+      "group": "Contract Terms",
+      "id": "CONTRACTINCENTIVE1",
+      "label": "Contract Incentive 1",
+      "offset": 512,
+      "bits": 28,
+      "shift": 4,
+      "kind": "bits"
+    },
+    {
+      "section": "Contract",
+      "group": "Contract Terms",
+      "id": "CONTRACTINCENTIVE2",
+      "label": "Contract Incentive 2",
+      "offset": 516,
+      "bits": 28,
+      "shift": 4,
+      "kind": "bits"
+    },
+    {
+      "section": "Contract",
+      "group": "Contract Terms",
+      "id": "CONTRACTINCENTIVE3",
+      "label": "Contract Incentive 3",
+      "offset": 520,
+      "bits": 28,
+      "shift": 4,
+      "kind": "bits"
+    },
+    {
+      "section": "Contract",
+      "group": "Contract Terms",
+      "id": "CONTRACTINCENTIVETYPE1",
+      "label": "Contract Incentive Type 1",
+      "offset": 512,
+      "bits": 4,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Contract",
+      "group": "Contract Terms",
+      "id": "CONTRACTINCENTIVETYPE2",
+      "label": "Contract Incentive Type 2",
+      "offset": 516,
+      "bits": 4,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Contract",
+      "group": "Contract Terms",
+      "id": "CONTRACTINCENTIVETYPE3",
+      "label": "Contract Incentive Type 3",
+      "offset": 520,
+      "bits": 4,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Contract",
+      "group": "Contract Terms",
+      "id": "CONTRACTLENGTH",
+      "label": "Contract Length",
+      "offset": 1076,
+      "bits": 3,
+      "shift": 29,
+      "kind": "bits"
+    },
+    {
+      "section": "Contract",
+      "group": "Contract Terms",
+      "id": "CONTRACTPROMISEIMPORTANCE1",
+      "label": "Contract Promise Importance 1",
+      "offset": 524,
+      "bits": 8,
+      "shift": 6,
+      "kind": "bits"
+    },
+    {
+      "section": "Contract",
+      "group": "Contract Terms",
+      "id": "CONTRACTPROMISEIMPORTANCE2",
+      "label": "Contract Promise Importance 2",
+      "offset": 524,
+      "bits": 8,
+      "shift": 14,
+      "kind": "bits"
+    },
+    {
+      "section": "Contract",
+      "group": "Contract Terms",
+      "id": "CONTRACTPROMISEPLAYERID1",
+      "label": "Contract Promise Player ID 1",
+      "offset": 528,
+      "bits": 16,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Contract",
+      "group": "Contract Terms",
+      "id": "CONTRACTPROMISEPLAYERID2",
+      "label": "Contract Promise Player ID 2",
+      "offset": 530,
+      "bits": 16,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Contract",
+      "group": "Contract Terms",
+      "id": "CONTRACTPROMISETYPE1",
+      "label": "Contract Promise Type 1",
+      "offset": 524,
+      "bits": 3,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Contract",
+      "group": "Contract Terms",
+      "id": "CONTRACTPROMISETYPE2",
+      "label": "Contract Promise Type 2",
+      "offset": 524,
+      "bits": 3,
+      "shift": 3,
+      "kind": "bits"
+    },
+    {
+      "section": "Contract",
+      "group": "Contract Terms",
+      "id": "EXTENSIONLENGTH",
+      "label": "Extension Length",
+      "offset": 896,
+      "bits": 3,
+      "shift": 18,
+      "kind": "bits"
+    },
+    {
+      "section": "Contract",
+      "group": "Contract Terms",
+      "id": "MYTEAMCONTRACTSREMAINING",
+      "label": "MyTeam Contracts Remaining",
+      "offset": 1048,
+      "bits": 8,
+      "shift": 8,
+      "kind": "bits"
+    },
+    {
+      "section": "Contract",
+      "group": "Contract Terms",
+      "id": "NUMCONTRACTINCENTIVES",
+      "label": "Number of Contract Incentives",
+      "offset": 504,
+      "bits": 2,
+      "shift": 30,
+      "kind": "bits"
+    },
+    {
+      "section": "Contract",
+      "group": "Contract Terms",
+      "id": "TENDAYCONTRACTDAYSLEFT",
+      "label": "Tenday Contract Days Left",
+      "offset": 424,
+      "bits": 4,
+      "shift": 17,
+      "kind": "bits"
+    },
+    {
+      "section": "Contract",
+      "group": "Contract Terms",
+      "id": "YEARSLEFT",
+      "label": "Years Left",
+      "offset": 448,
+      "bits": 5,
+      "shift": 27,
+      "kind": "bits"
+    },
+    {
+      "section": "Contract",
+      "group": "Contract Options",
+      "id": "CONTRACTOPTION",
+      "label": "Contract Option",
+      "offset": 880,
+      "bits": 2,
+      "shift": 21,
+      "kind": "bits"
+    },
+    {
+      "section": "Contract",
+      "group": "Contract Options",
+      "id": "EXTENSIONNOTRADE",
+      "label": "Extension No-Trade",
+      "offset": 880,
+      "bits": 1,
+      "shift": 5,
+      "kind": "bits"
+    },
+    {
+      "section": "Contract",
+      "group": "Contract Options",
+      "id": "EXTENSIONOPTION",
+      "label": "Extension Option",
+      "offset": 888,
+      "bits": 2,
+      "shift": 7,
+      "kind": "bits"
+    },
+    {
+      "section": "Contract",
+      "group": "Contract Options",
+      "id": "NOTRADEDAYSLEFT",
+      "label": "Not Rad Ed Ays Left",
+      "offset": 746,
+      "bits": 16,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Contract",
+      "group": "Contract Options",
+      "id": "NOTRADE",
+      "label": "Not Rade",
+      "offset": 456,
+      "bits": 1,
+      "shift": 18,
+      "kind": "bits"
+    },
+    {
+      "section": "Contract",
+      "group": "Contract Status",
+      "id": "2WAYNBADAYSLEFT",
+      "label": "2 Way NBA Days Left",
+      "offset": 412,
+      "bits": 6,
+      "shift": 26,
+      "kind": "bits"
+    },
+    {
+      "section": "Contract",
+      "group": "Contract Status",
+      "id": "FREEAGENCYTYPE",
+      "label": "Free Agency Type",
+      "offset": 1044,
+      "bits": 2,
+      "shift": 14,
+      "kind": "bits"
+    },
+    {
+      "section": "Contract",
+      "group": "Contract Status",
+      "id": "HASQUALIFYINGOFFER",
+      "label": "Has Qualifying Offer",
+      "offset": 726,
+      "bits": 1,
+      "shift": 3,
+      "kind": "bits"
+    },
+    {
+      "section": "Contract",
+      "group": "Contract Status",
+      "id": "ISWAIVED",
+      "label": "Is Waived",
+      "offset": 456,
+      "bits": 1,
+      "shift": 19,
+      "kind": "bits"
+    },
+    {
+      "section": "Contract",
+      "group": "Contract Status",
+      "id": "OFFSEASONFREEAGENT",
+      "label": "Offseason Free Agent",
+      "offset": 726,
+      "bits": 1,
+      "shift": 4,
+      "kind": "bits"
+    },
+    {
+      "section": "Contract",
+      "group": "Contract Status",
+      "id": "OFFSEASONFREEAGENTEXTENDEDDEADLINE",
+      "label": "Offseason Free Agent Extended Deadline",
+      "offset": 284,
+      "bits": 1,
+      "shift": 2,
+      "kind": "bits"
+    },
+    {
+      "section": "Contract",
+      "group": "Contract Status",
+      "id": "RESIGNSTATUS",
+      "label": "Resign Status",
+      "offset": 748,
+      "bits": 3,
+      "shift": 1,
+      "kind": "bits"
+    },
+    {
+      "section": "Contract",
+      "group": "Contract Status",
+      "id": "SIGNINGCOOLDOWNLEFT",
+      "label": "Signing Cooldown Left",
+      "offset": 888,
+      "bits": 7,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Contract",
+      "group": "Contract Status",
+      "id": "WASBOUGHTOUT",
+      "label": "Was Bought Out",
+      "offset": 1076,
+      "bits": 1,
+      "shift": 14,
+      "kind": "bits"
+    },
+    {
+      "section": "Contract",
+      "group": "Salary",
+      "id": "LASTYEARWAGE",
+      "label": "Last Year Wage",
+      "offset": 532,
+      "bits": 31,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Contract",
+      "group": "Salary",
+      "id": "SALARYYEAR1",
+      "label": "Salary Year 1",
+      "offset": 480,
+      "bits": 31,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Contract",
+      "group": "Salary",
+      "id": "SALARYYEAR2",
+      "label": "Salary Year 2",
+      "offset": 484,
+      "bits": 31,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Contract",
+      "group": "Salary",
+      "id": "SALARYYEAR3",
+      "label": "Salary Year 3",
+      "offset": 488,
+      "bits": 31,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Contract",
+      "group": "Salary",
+      "id": "SALARYYEAR4",
+      "label": "Salary Year 4",
+      "offset": 492,
+      "bits": 31,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Contract",
+      "group": "Salary",
+      "id": "SALARYYEAR5",
+      "label": "Salary Year 5",
+      "offset": 496,
+      "bits": 31,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Contract",
+      "group": "Salary",
+      "id": "SALARYYEAR6",
+      "label": "Salary Year 6",
+      "offset": 500,
+      "bits": 31,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Contract",
+      "group": "Salary",
+      "id": "WAGE7",
+      "label": "Wage 7",
+      "offset": 504,
+      "bits": 30,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Contract",
+      "group": "Salary",
+      "id": "WAGE8",
+      "label": "Wage 8",
+      "offset": 508,
+      "bits": 32,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Gear",
+      "group": "Upper Body Accessories",
+      "id": "ACCESSORIESWITHHEADBAND",
+      "label": "Accessories With Headband",
+      "offset": 1000,
+      "bits": 32,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Gear",
+      "group": "Upper Body Accessories",
+      "id": "ACCESSORIESWITHOUTHEADBAND",
+      "label": "Accessories With Out Headband",
+      "offset": 1004,
+      "bits": 32,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Gear",
+      "group": "Upper Body Accessories",
+      "id": "FACEMASKTYPE",
+      "label": "Facemask Type",
+      "offset": 284,
+      "bits": 2,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Gear",
+      "group": "Upper Body Accessories",
+      "id": "GOGGLESITEMSCOLOR",
+      "label": "Goggles Item Color",
+      "offset": 464,
+      "bits": 3,
+      "shift": 18,
+      "kind": "bits"
+    },
+    {
+      "section": "Gear",
+      "group": "Upper Body Accessories",
+      "id": "GOGGLESTYPE",
+      "label": "Goggles Type",
+      "offset": 464,
+      "bits": 4,
+      "shift": 24,
+      "kind": "bits"
+    },
+    {
+      "section": "Gear",
+      "group": "Upper Body Accessories",
+      "id": "HEADBAND",
+      "label": "Headband",
+      "offset": 456,
+      "bits": 4,
+      "shift": 22,
+      "kind": "bits"
+    },
+    {
+      "section": "Gear",
+      "group": "Upper Body Accessories",
+      "id": "HEADBANDABILITY",
+      "label": "Headband Ability",
+      "offset": 1016,
+      "bits": 1,
+      "shift": 31,
+      "kind": "bits"
+    },
+    {
+      "section": "Gear",
+      "group": "Upper Body Accessories",
+      "id": "HEADBANDCUSTOMCOLOR",
+      "label": "Headband Custom Color",
+      "offset": 400,
+      "bits": 32,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Gear",
+      "group": "Upper Body Accessories",
+      "id": "HEADBANDFREQUENCY",
+      "label": "Headband Frequency",
+      "offset": 984,
+      "bits": 3,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Gear",
+      "group": "Upper Body Accessories",
+      "id": "HEADBANDLOGOPOSITION",
+      "label": "Headband Logo Position",
+      "offset": 1032,
+      "bits": 3,
+      "shift": 27,
+      "kind": "bits"
+    },
+    {
+      "section": "Gear",
+      "group": "Upper Body Accessories",
+      "id": "ISARMFREQUENCYPAIRED",
+      "label": "Is Arm Frequency Paired",
+      "offset": 532,
+      "bits": 1,
+      "shift": 31,
+      "kind": "bits"
+    },
+    {
+      "section": "Gear",
+      "group": "Upper Body Accessories",
+      "id": "LEFTARM",
+      "label": "Left Arm",
+      "offset": 404,
+      "bits": 5,
+      "shift": 6,
+      "kind": "bits"
+    },
+    {
+      "section": "Gear",
+      "group": "Upper Body Accessories",
+      "id": "LEFTARMFREQUENCY",
+      "label": "Left Arm Frequency",
+      "offset": 984,
+      "bits": 3,
+      "shift": 21,
+      "kind": "bits"
+    },
+    {
+      "section": "Gear",
+      "group": "Upper Body Accessories",
+      "id": "LEFTARMITEMAWAYCOLOR",
+      "label": "Left Arm Item Away Color",
+      "offset": 404,
+      "bits": 3,
+      "shift": 14,
+      "kind": "bits"
+    },
+    {
+      "section": "Gear",
+      "group": "Upper Body Accessories",
+      "id": "LEFTARMITEMHOMECOLOR",
+      "label": "Left Arm Item Home Color",
+      "offset": 404,
+      "bits": 3,
+      "shift": 11,
+      "kind": "bits"
+    },
+    {
+      "section": "Gear",
+      "group": "Upper Body Accessories",
+      "id": "LEFTARMTAPEITEM",
+      "label": "Left Arm Tape Item",
+      "offset": 412,
+      "bits": 3,
+      "shift": 8,
+      "kind": "bits"
+    },
+    {
+      "section": "Gear",
+      "group": "Upper Body Accessories",
+      "id": "LEFTARMTAPEITEMAWAYCOLOR",
+      "label": "Left Arm Tape Item Away Color",
+      "offset": 412,
+      "bits": 3,
+      "shift": 14,
+      "kind": "bits"
+    },
+    {
+      "section": "Gear",
+      "group": "Upper Body Accessories",
+      "id": "LEFTARMTAPEITEMFREQUENCY",
+      "label": "Left Arm Tape Item Frequency",
+      "offset": 864,
+      "bits": 3,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Gear",
+      "group": "Upper Body Accessories",
+      "id": "LEFTARMTAPEITEMHOMECOLOR",
+      "label": "Left Arm Tape Item Home Color",
+      "offset": 412,
+      "bits": 3,
+      "shift": 11,
+      "kind": "bits"
+    },
+    {
+      "section": "Gear",
+      "group": "Upper Body Accessories",
+      "id": "LEFTELBOW",
+      "label": "Left Elbow",
+      "offset": 404,
+      "bits": 4,
+      "shift": 28,
+      "kind": "bits"
+    },
+    {
+      "section": "Gear",
+      "group": "Upper Body Accessories",
+      "id": "LEFTELBOWFREQUENCY",
+      "label": "Left Elbow Frequency",
+      "offset": 984,
+      "bits": 3,
+      "shift": 15,
+      "kind": "bits"
+    },
+    {
+      "section": "Gear",
+      "group": "Upper Body Accessories",
+      "id": "LEFTELBOWITEMAWAYCOLOR",
+      "label": "Left Elbow Item Away Color",
+      "offset": 408,
+      "bits": 3,
+      "shift": 3,
+      "kind": "bits"
+    },
+    {
+      "section": "Gear",
+      "group": "Upper Body Accessories",
+      "id": "LEFTELBOWITEMHOMECOLOR",
+      "label": "Left Elbow Item Home Color",
+      "offset": 408,
+      "bits": 3,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Gear",
+      "group": "Upper Body Accessories",
+      "id": "LEFTFINGERS",
+      "label": "Left Fingers",
+      "offset": 988,
+      "bits": 4,
+      "shift": 23,
+      "kind": "bits"
+    },
+    {
+      "section": "Gear",
+      "group": "Upper Body Accessories",
+      "id": "LEFTFINGERSFREQUENCY",
+      "label": "Left Fingers Frequency",
+      "offset": 988,
+      "bits": 3,
+      "shift": 20,
+      "kind": "bits"
+    },
+    {
+      "section": "Gear",
+      "group": "Upper Body Accessories",
+      "id": "LEFTFINGERSITEMAWAYCOLOR",
+      "label": "Left Fingers Item Away Color",
+      "offset": 416,
+      "bits": 3,
+      "shift": 3,
+      "kind": "bits"
+    },
+    {
+      "section": "Gear",
+      "group": "Upper Body Accessories",
+      "id": "LEFTFINGERSITEMHOMECOLOR",
+      "label": "Left Fingers Item Home Color",
+      "offset": 416,
+      "bits": 3,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Gear",
+      "group": "Upper Body Accessories",
+      "id": "LEFTWRIST",
+      "label": "Left Wrist",
+      "offset": 408,
+      "bits": 4,
+      "shift": 13,
+      "kind": "bits"
+    },
+    {
+      "section": "Gear",
+      "group": "Upper Body Accessories",
+      "id": "LEFTWRISTFREQUENCY",
+      "label": "Left Wrist Frequency",
+      "offset": 984,
+      "bits": 3,
+      "shift": 9,
+      "kind": "bits"
+    },
+    {
+      "section": "Gear",
+      "group": "Upper Body Accessories",
+      "id": "LEFTWRISTITEMAWAYCOLOR",
+      "label": "Left Wrist Item Away Color",
+      "offset": 408,
+      "bits": 5,
+      "shift": 22,
+      "kind": "bits"
+    },
+    {
+      "section": "Gear",
+      "group": "Upper Body Accessories",
+      "id": "LEFTWRISTITEMHOMECOLOR",
+      "label": "Left Wrist Item Home Color",
+      "offset": 408,
+      "bits": 5,
+      "shift": 17,
+      "kind": "bits"
+    },
+    {
+      "section": "Gear",
+      "group": "Upper Body Accessories",
+      "id": "RIGHTARM",
+      "label": "Right Arm",
+      "offset": 404,
+      "bits": 5,
+      "shift": 17,
+      "kind": "bits"
+    },
+    {
+      "section": "Gear",
+      "group": "Upper Body Accessories",
+      "id": "RIGHTARMFREQUENCY",
+      "label": "Right Arm Frequency",
+      "offset": 984,
+      "bits": 3,
+      "shift": 24,
+      "kind": "bits"
+    },
+    {
+      "section": "Gear",
+      "group": "Upper Body Accessories",
+      "id": "RIGHTARMITEMAWAYCOLOR",
+      "label": "Right Arm Item Away Color",
+      "offset": 404,
+      "bits": 3,
+      "shift": 25,
+      "kind": "bits"
+    },
+    {
+      "section": "Gear",
+      "group": "Upper Body Accessories",
+      "id": "RIGHTARMITEMHOMECOLOR",
+      "label": "Right Arm Item Home Color",
+      "offset": 404,
+      "bits": 3,
+      "shift": 22,
+      "kind": "bits"
+    },
+    {
+      "section": "Gear",
+      "group": "Upper Body Accessories",
+      "id": "RIGHTARMTAPEITEM",
+      "label": "Right Arm Tape Item",
+      "offset": 412,
+      "bits": 3,
+      "shift": 17,
+      "kind": "bits"
+    },
+    {
+      "section": "Gear",
+      "group": "Upper Body Accessories",
+      "id": "RIGHTARMTAPEITEMAWAYCOLOR",
+      "label": "Right Arm Tape Item Away Color",
+      "offset": 412,
+      "bits": 3,
+      "shift": 23,
+      "kind": "bits"
+    },
+    {
+      "section": "Gear",
+      "group": "Upper Body Accessories",
+      "id": "RIGHTARMTAPEITEMFREQUENCY",
+      "label": "Right Arm Tape Item Frequency",
+      "offset": 976,
+      "bits": 3,
+      "shift": 21,
+      "kind": "bits"
+    },
+    {
+      "section": "Gear",
+      "group": "Upper Body Accessories",
+      "id": "RIGHTARMTAPEITEMHOMECOLOR",
+      "label": "Right Arm Tape Item Home Color",
+      "offset": 412,
+      "bits": 3,
+      "shift": 20,
+      "kind": "bits"
+    },
+    {
+      "section": "Gear",
+      "group": "Upper Body Accessories",
+      "id": "RIGHTELBOW",
+      "label": "Right Elbow",
+      "offset": 408,
+      "bits": 4,
+      "shift": 6,
+      "kind": "bits"
+    },
+    {
+      "section": "Gear",
+      "group": "Upper Body Accessories",
+      "id": "RIGHTELBOWFREQUENCY",
+      "label": "Right Elbow Frequency",
+      "offset": 984,
+      "bits": 3,
+      "shift": 18,
+      "kind": "bits"
+    },
+    {
+      "section": "Gear",
+      "group": "Upper Body Accessories",
+      "id": "RIGHTELBOWITEMAWAYCOLOR",
+      "label": "Right Elbow Item Away Color",
+      "offset": 412,
+      "bits": 3,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Gear",
+      "group": "Upper Body Accessories",
+      "id": "RIGHTELBOWITEMHOMECOLOR",
+      "label": "Right Elbow Item Home Color",
+      "offset": 408,
+      "bits": 3,
+      "shift": 10,
+      "kind": "bits"
+    },
+    {
+      "section": "Gear",
+      "group": "Upper Body Accessories",
+      "id": "RIGHTFINGERS",
+      "label": "Right Fingers",
+      "offset": 992,
+      "bits": 4,
+      "shift": 13,
+      "kind": "bits"
+    },
+    {
+      "section": "Gear",
+      "group": "Upper Body Accessories",
+      "id": "RIGHTFINGERSFREQUENCY",
+      "label": "Right Fingers Frequency",
+      "offset": 992,
+      "bits": 3,
+      "shift": 10,
+      "kind": "bits"
+    },
+    {
+      "section": "Gear",
+      "group": "Upper Body Accessories",
+      "id": "RIGHTFINGERSITEMAWAYCOLOR",
+      "label": "Right Fingers Item Away Color",
+      "offset": 416,
+      "bits": 3,
+      "shift": 9,
+      "kind": "bits"
+    },
+    {
+      "section": "Gear",
+      "group": "Upper Body Accessories",
+      "id": "RIGHTFINGERSITEMHOMECOLOR",
+      "label": "Right Fingers Item Home Color",
+      "offset": 416,
+      "bits": 3,
+      "shift": 6,
+      "kind": "bits"
+    },
+    {
+      "section": "Gear",
+      "group": "Upper Body Accessories",
+      "id": "RIGHTWRIST",
+      "label": "Right Wrist",
+      "offset": 748,
+      "bits": 4,
+      "shift": 16,
+      "kind": "bits"
+    },
+    {
+      "section": "Gear",
+      "group": "Upper Body Accessories",
+      "id": "RIGHTWRISTFREQUENCY",
+      "label": "Right Wrist Frequency",
+      "offset": 984,
+      "bits": 3,
+      "shift": 12,
+      "kind": "bits"
+    },
+    {
+      "section": "Gear",
+      "group": "Upper Body Accessories",
+      "id": "RIGHTWRISTITEMAWAYCOLOR",
+      "label": "Right Wrist Item Away Color",
+      "offset": 412,
+      "bits": 5,
+      "shift": 3,
+      "kind": "bits"
+    },
+    {
+      "section": "Gear",
+      "group": "Upper Body Accessories",
+      "id": "RIGHTWRISTITEMHOMECOLOR",
+      "label": "Right Wrist Item Home Color",
+      "offset": 408,
+      "bits": 5,
+      "shift": 27,
+      "kind": "bits"
+    },
+    {
+      "section": "Gear",
+      "group": "Upper Body Accessories",
+      "id": "USESMOUTHPIECE",
+      "label": "Uses Mouthpiece",
+      "offset": 860,
+      "bits": 1,
+      "shift": 31,
+      "kind": "bits"
+    },
+    {
+      "section": "Gear",
+      "group": "Lower Body Accessories",
+      "id": "ISKNEEFREQUENCYPAIRED",
+      "label": "Is Knee Frequency Paired",
+      "offset": 496,
+      "bits": 1,
+      "shift": 31,
+      "kind": "bits"
+    },
+    {
+      "section": "Gear",
+      "group": "Lower Body Accessories",
+      "id": "ISLEGFREQUENCYPAIRED",
+      "label": "Is Leg Frequency Paired",
+      "offset": 460,
+      "bits": 1,
+      "shift": 18,
+      "kind": "bits"
+    },
+    {
+      "section": "Gear",
+      "group": "Lower Body Accessories",
+      "id": "LEFTANKLE",
+      "label": "Left Ankle",
+      "offset": 420,
+      "bits": 3,
+      "shift": 12,
+      "kind": "bits"
+    },
+    {
+      "section": "Gear",
+      "group": "Lower Body Accessories",
+      "id": "LEFTANKLEFREQUENCY",
+      "label": "Left Ankle Frequency",
+      "offset": 988,
+      "bits": 3,
+      "shift": 14,
+      "kind": "bits"
+    },
+    {
+      "section": "Gear",
+      "group": "Lower Body Accessories",
+      "id": "LEFTANKLEITEMAWAYCOLOR",
+      "label": "Left Ankle Item Away Color",
+      "offset": 420,
+      "bits": 3,
+      "shift": 18,
+      "kind": "bits"
+    },
+    {
+      "section": "Gear",
+      "group": "Lower Body Accessories",
+      "id": "LEFTANKLEITEMHOMECOLOR",
+      "label": "Left Ankle Item Home Color",
+      "offset": 420,
+      "bits": 3,
+      "shift": 15,
+      "kind": "bits"
+    },
+    {
+      "section": "Gear",
+      "group": "Lower Body Accessories",
+      "id": "LEFTKNEE",
+      "label": "Left Knee",
+      "offset": 880,
+      "bits": 4,
+      "shift": 7,
+      "kind": "bits"
+    },
+    {
+      "section": "Gear",
+      "group": "Lower Body Accessories",
+      "id": "LEFTKNEEFREQUENCY",
+      "label": "Left Knee Frequency",
+      "offset": 372,
+      "bits": 3,
+      "shift": 18,
+      "kind": "bits"
+    },
+    {
+      "section": "Gear",
+      "group": "Lower Body Accessories",
+      "id": "LEFTKNEEITEMAWAYCOLOR",
+      "label": "Left Knee Item Away Color",
+      "offset": 420,
+      "bits": 3,
+      "shift": 3,
+      "kind": "bits"
+    },
+    {
+      "section": "Gear",
+      "group": "Lower Body Accessories",
+      "id": "LEFTKNEEITEMHOMECOLOR",
+      "label": "Left Knee Item Home Color",
+      "offset": 420,
+      "bits": 3,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Gear",
+      "group": "Lower Body Accessories",
+      "id": "LEFTLEG",
+      "label": "Left Leg",
+      "offset": 416,
+      "bits": 4,
+      "shift": 12,
+      "kind": "bits"
+    },
+    {
+      "section": "Gear",
+      "group": "Lower Body Accessories",
+      "id": "LEFTLEGFREQUENCY",
+      "label": "Left Leg Frequency",
+      "offset": 984,
+      "bits": 3,
+      "shift": 27,
+      "kind": "bits"
+    },
+    {
+      "section": "Gear",
+      "group": "Lower Body Accessories",
+      "id": "LEFTLEGITEMAWAYCOLOR",
+      "label": "Left Leg Item Away Color",
+      "offset": 416,
+      "bits": 3,
+      "shift": 19,
+      "kind": "bits"
+    },
+    {
+      "section": "Gear",
+      "group": "Lower Body Accessories",
+      "id": "LEFTLEGITEMHOMECOLOR",
+      "label": "Left Leg Item Home Color",
+      "offset": 416,
+      "bits": 3,
+      "shift": 16,
+      "kind": "bits"
+    },
+    {
+      "section": "Gear",
+      "group": "Lower Body Accessories",
+      "id": "RIGHTANKLE",
+      "label": "Right Ankle",
+      "offset": 420,
+      "bits": 3,
+      "shift": 21,
+      "kind": "bits"
+    },
+    {
+      "section": "Gear",
+      "group": "Lower Body Accessories",
+      "id": "RIGHTANKLEFREQUENCY",
+      "label": "Right Ankle Frequency",
+      "offset": 988,
+      "bits": 3,
+      "shift": 17,
+      "kind": "bits"
+    },
+    {
+      "section": "Gear",
+      "group": "Lower Body Accessories",
+      "id": "RIGHTANKLEITEMAWAYCOLOR",
+      "label": "Right Ankle Item Away Color",
+      "offset": 420,
+      "bits": 3,
+      "shift": 27,
+      "kind": "bits"
+    },
+    {
+      "section": "Gear",
+      "group": "Lower Body Accessories",
+      "id": "RIGHTANKLEITEMHOMECOLOR",
+      "label": "Right Ankle Item Home Color",
+      "offset": 420,
+      "bits": 3,
+      "shift": 24,
+      "kind": "bits"
+    },
+    {
+      "section": "Gear",
+      "group": "Lower Body Accessories",
+      "id": "RIGHTKNEE",
+      "label": "Right Knee",
+      "offset": 1080,
+      "bits": 4,
+      "shift": 3,
+      "kind": "bits"
+    },
+    {
+      "section": "Gear",
+      "group": "Lower Body Accessories",
+      "id": "RIGHTKNEEFREQUENCY",
+      "label": "Right Knee Frequency",
+      "offset": 988,
+      "bits": 3,
+      "shift": 11,
+      "kind": "bits"
+    },
+    {
+      "section": "Gear",
+      "group": "Lower Body Accessories",
+      "id": "RIGHTKNEEITEMAWAYCOLOR",
+      "label": "Right Knee Item Away Color",
+      "offset": 420,
+      "bits": 3,
+      "shift": 9,
+      "kind": "bits"
+    },
+    {
+      "section": "Gear",
+      "group": "Lower Body Accessories",
+      "id": "RIGHTKNEEITEMHOMECOLOR",
+      "label": "Right Knee Item Home Color",
+      "offset": 420,
+      "bits": 3,
+      "shift": 6,
+      "kind": "bits"
+    },
+    {
+      "section": "Gear",
+      "group": "Lower Body Accessories",
+      "id": "RIGHTLEG",
+      "label": "Right Leg",
+      "offset": 416,
+      "bits": 4,
+      "shift": 22,
+      "kind": "bits"
+    },
+    {
+      "section": "Gear",
+      "group": "Lower Body Accessories",
+      "id": "RIGHTLEGFREQUENCY",
+      "label": "Right Leg Frequency",
+      "offset": 988,
+      "bits": 3,
+      "shift": 8,
+      "kind": "bits"
+    },
+    {
+      "section": "Gear",
+      "group": "Lower Body Accessories",
+      "id": "RIGHTLEGITEMAWAYCOLOR",
+      "label": "Right Leg Item Away Color",
+      "offset": 416,
+      "bits": 3,
+      "shift": 29,
+      "kind": "bits"
+    },
+    {
+      "section": "Gear",
+      "group": "Lower Body Accessories",
+      "id": "RIGHTLEGITEMHOMECOLOR",
+      "label": "Right Leg Item Home Color",
+      "offset": 416,
+      "bits": 3,
+      "shift": 26,
+      "kind": "bits"
+    },
+    {
+      "section": "Gear",
+      "group": "Lower Body Accessories",
+      "id": "SHORTSITEMFREQUENCY",
+      "label": "Shorts Item Frequency",
+      "offset": 984,
+      "bits": 3,
+      "shift": 6,
+      "kind": "bits"
+    },
+    {
+      "section": "Gear",
+      "group": "Lower Body Accessories",
+      "id": "SHORTSITEMS",
+      "label": "Shorts Items",
+      "offset": 420,
+      "bits": 2,
+      "shift": 30,
+      "kind": "bits"
+    },
+    {
+      "section": "Gear",
+      "group": "Lower Body Accessories",
+      "id": "SHORTSITEMSAWAYCOLOR",
+      "label": "Shorts Items Away Color",
+      "offset": 404,
+      "bits": 3,
+      "shift": 3,
+      "kind": "bits"
+    },
+    {
+      "section": "Gear",
+      "group": "Lower Body Accessories",
+      "id": "SHORTSITEMSHOMECOLOR",
+      "label": "Shorts Items Home Color",
+      "offset": 404,
+      "bits": 3,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Gear",
+      "group": "Shoes/Gear",
+      "id": "BENCHOUTFIT",
+      "label": "Bench Outfit",
+      "offset": 1008,
+      "bits": 32,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Gear",
+      "group": "Shoes/Gear",
+      "id": "INGAMEHOODIE",
+      "label": "In Game Hoodie",
+      "offset": 976,
+      "bits": 1,
+      "shift": 31,
+      "kind": "bits"
+    },
+    {
+      "section": "Gear",
+      "group": "Shoes/Gear",
+      "id": "PREGAMEOUTFIT",
+      "label": "Pre-Game Outfit",
+      "offset": 1012,
+      "bits": 2,
+      "shift": 7,
+      "kind": "bits"
+    },
+    {
+      "section": "Gear",
+      "group": "Shoes/Gear",
+      "id": "PREFERREDSHORTSTYPE",
+      "label": "Preferred Shorts Type",
+      "offset": 976,
+      "bits": 3,
+      "shift": 8,
+      "kind": "bits"
+    },
+    {
+      "section": "Gear",
+      "group": "Shoes/Gear",
+      "id": "SHIRTSITEMFREQUENCY",
+      "label": "Shirts Item Frequency",
+      "offset": 984,
+      "bits": 3,
+      "shift": 3,
+      "kind": "bits"
+    },
+    {
+      "section": "Gear",
+      "group": "Shoes/Gear",
+      "id": "SHIRTSITEMS",
+      "label": "Shirts Items",
+      "offset": 876,
+      "bits": 2,
+      "shift": 30,
+      "kind": "bits"
+    },
+    {
+      "section": "Gear",
+      "group": "Shoes/Gear",
+      "id": "SHIRTSITEMSAWAYCOLOR",
+      "label": "Shirts Items Away Color",
+      "offset": 880,
+      "bits": 3,
+      "shift": 11,
+      "kind": "bits"
+    },
+    {
+      "section": "Gear",
+      "group": "Shoes/Gear",
+      "id": "SHIRTSITEMSHOMECOLOR",
+      "label": "Shirts Items Home Color",
+      "offset": 976,
+      "bits": 3,
+      "shift": 24,
+      "kind": "bits"
+    },
+    {
+      "section": "Gear",
+      "group": "Shoes/Gear",
+      "id": "SHOEAWAYCOLORWAY",
+      "label": "Shoe Away Color Way",
+      "offset": 396,
+      "bits": 32,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Gear",
+      "group": "Shoes/Gear",
+      "id": "SHOEAWAYSTYLE",
+      "label": "Shoe Away Style",
+      "offset": 388,
+      "bits": 13,
+      "shift": 13,
+      "kind": "bits"
+    },
+    {
+      "section": "Gear",
+      "group": "Shoes/Gear",
+      "id": "SHOEHOMECOLORWAY",
+      "label": "Shoe Home Color Way",
+      "offset": 392,
+      "bits": 32,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Gear",
+      "group": "Shoes/Gear",
+      "id": "SHOEHOMESTYLE",
+      "label": "Shoe Home Style",
+      "offset": 388,
+      "bits": 13,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Gear",
+      "group": "Shoes/Gear",
+      "id": "SHOELOCKEDVENDOR",
+      "label": "Shoe Locked Vendor",
+      "offset": 388,
+      "bits": 6,
+      "shift": 26,
+      "kind": "bits"
+    },
+    {
+      "section": "Gear",
+      "group": "Shoes/Gear",
+      "id": "SHORTSLENGTH",
+      "label": "Shorts Length",
+      "offset": 1012,
+      "bits": 4,
+      "shift": 9,
+      "kind": "bits"
+    },
+    {
+      "section": "Gear",
+      "group": "Shoes/Gear",
+      "id": "SOCKITEMSAWAY",
+      "label": "Socks Item Away",
+      "offset": 372,
+      "bits": 4,
+      "shift": 8,
+      "kind": "bits"
+    },
+    {
+      "section": "Gear",
+      "group": "Shoes/Gear",
+      "id": "SOCKITEMSAWAYCOLOR",
+      "label": "Socks Item Away Color",
+      "offset": 372,
+      "bits": 3,
+      "shift": 15,
+      "kind": "bits"
+    },
+    {
+      "section": "Gear",
+      "group": "Shoes/Gear",
+      "id": "SOCKITEMSHOME",
+      "label": "Socks Item Home",
+      "offset": 372,
+      "bits": 4,
+      "shift": 4,
+      "kind": "bits"
+    },
+    {
+      "section": "Gear",
+      "group": "Shoes/Gear",
+      "id": "SOCKITEMSHOMECOLOR",
+      "label": "Socks Item Home Color",
+      "offset": 372,
+      "bits": 3,
+      "shift": 12,
+      "kind": "bits"
+    },
+    {
+      "section": "Gear",
+      "group": "Shoes/Gear",
+      "id": "WARMUPOUTFITCONFIGURATION",
+      "label": "Warm-Up Outfit Configuration",
+      "offset": 996,
+      "bits": 32,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Stats",
+      "group": "Stat IDs",
+      "id": "CURRENTYEARSTATID",
+      "label": "Current Years Tat ID",
+      "offset": 304,
+      "bits": 16,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Stats",
+      "group": "Stat IDs",
+      "id": "STATSID1",
+      "label": "Stats ID 1",
+      "offset": 306,
+      "bits": 16,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Stats",
+      "group": "Stat IDs",
+      "id": "STATSID10",
+      "label": "Stats ID 10",
+      "offset": 324,
+      "bits": 16,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Stats",
+      "group": "Stat IDs",
+      "id": "STATSID11",
+      "label": "Stats ID 11",
+      "offset": 326,
+      "bits": 16,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Stats",
+      "group": "Stat IDs",
+      "id": "STATSID12",
+      "label": "Stats ID 12",
+      "offset": 328,
+      "bits": 16,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Stats",
+      "group": "Stat IDs",
+      "id": "STATSID13",
+      "label": "Stats ID 13",
+      "offset": 330,
+      "bits": 16,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Stats",
+      "group": "Stat IDs",
+      "id": "STATSID14",
+      "label": "Stats ID 14",
+      "offset": 332,
+      "bits": 16,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Stats",
+      "group": "Stat IDs",
+      "id": "STATSID15",
+      "label": "Stats ID 15",
+      "offset": 334,
+      "bits": 16,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Stats",
+      "group": "Stat IDs",
+      "id": "STATSID16",
+      "label": "Stats ID 16",
+      "offset": 336,
+      "bits": 16,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Stats",
+      "group": "Stat IDs",
+      "id": "STATSID17",
+      "label": "Stats ID 17",
+      "offset": 338,
+      "bits": 16,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Stats",
+      "group": "Stat IDs",
+      "id": "STATSID18",
+      "label": "Stats ID 18",
+      "offset": 340,
+      "bits": 16,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Stats",
+      "group": "Stat IDs",
+      "id": "STATSID19",
+      "label": "Stats ID 19",
+      "offset": 342,
+      "bits": 16,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Stats",
+      "group": "Stat IDs",
+      "id": "STATSID2",
+      "label": "Stats ID 2",
+      "offset": 308,
+      "bits": 16,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Stats",
+      "group": "Stat IDs",
+      "id": "STATSID20",
+      "label": "Stats ID 20",
+      "offset": 344,
+      "bits": 16,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Stats",
+      "group": "Stat IDs",
+      "id": "STATSID21",
+      "label": "Stats ID 21",
+      "offset": 346,
+      "bits": 16,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Stats",
+      "group": "Stat IDs",
+      "id": "STATSID22",
+      "label": "Stats ID 22",
+      "offset": 348,
+      "bits": 16,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Stats",
+      "group": "Stat IDs",
+      "id": "STATSID23",
+      "label": "Stats ID 23",
+      "offset": 350,
+      "bits": 16,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Stats",
+      "group": "Stat IDs",
+      "id": "STATSID24",
+      "label": "Stats ID 24",
+      "offset": 352,
+      "bits": 16,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Stats",
+      "group": "Stat IDs",
+      "id": "STATSID25",
+      "label": "Stats ID 25",
+      "offset": 354,
+      "bits": 16,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Stats",
+      "group": "Stat IDs",
+      "id": "STATSID26",
+      "label": "Stats ID 26",
+      "offset": 356,
+      "bits": 16,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Stats",
+      "group": "Stat IDs",
+      "id": "STATSID27",
+      "label": "Stats ID 27",
+      "offset": 358,
+      "bits": 16,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Stats",
+      "group": "Stat IDs",
+      "id": "STATSID28",
+      "label": "Stats ID 28",
+      "offset": 360,
+      "bits": 16,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Stats",
+      "group": "Stat IDs",
+      "id": "STATSID29",
+      "label": "Stats ID 29",
+      "offset": 362,
+      "bits": 16,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Stats",
+      "group": "Stat IDs",
+      "id": "STATSID3",
+      "label": "Stats ID 3",
+      "offset": 310,
+      "bits": 16,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Stats",
+      "group": "Stat IDs",
+      "id": "STATSID30",
+      "label": "Stats ID 30",
+      "offset": 364,
+      "bits": 16,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Stats",
+      "group": "Stat IDs",
+      "id": "STATSID31",
+      "label": "Stats ID 31",
+      "offset": 366,
+      "bits": 16,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Stats",
+      "group": "Stat IDs",
+      "id": "STATSID32",
+      "label": "Stats ID 32",
+      "offset": 368,
+      "bits": 16,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Stats",
+      "group": "Stat IDs",
+      "id": "STATSID4",
+      "label": "Stats ID 4",
+      "offset": 312,
+      "bits": 16,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Stats",
+      "group": "Stat IDs",
+      "id": "STATSID5",
+      "label": "Stats ID 5",
+      "offset": 314,
+      "bits": 16,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Stats",
+      "group": "Stat IDs",
+      "id": "STATSID6",
+      "label": "Stats ID 6",
+      "offset": 316,
+      "bits": 16,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Stats",
+      "group": "Stat IDs",
+      "id": "STATSID7",
+      "label": "Stats ID 7",
+      "offset": 318,
+      "bits": 16,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Stats",
+      "group": "Stat IDs",
+      "id": "STATSID8",
+      "label": "Stats ID 8",
+      "offset": 320,
+      "bits": 16,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Stats",
+      "group": "Stat IDs",
+      "id": "STATSID9",
+      "label": "Stats ID 9",
+      "offset": 322,
+      "bits": 16,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Stats",
+      "group": "Season High Stats",
+      "id": "3POINTERSATTEMPTED",
+      "label": "3 Pointers Attempted",
+      "offset": 448,
+      "bits": 7,
+      "shift": 20,
+      "kind": "bits"
+    },
+    {
+      "section": "Stats",
+      "group": "Season High Stats",
+      "id": "3POINTERSMADE",
+      "label": "3 Pointers Made",
+      "offset": 1044,
+      "bits": 7,
+      "shift": 18,
+      "kind": "bits"
+    },
+    {
+      "section": "Stats",
+      "group": "Season High Stats",
+      "id": "ASSISTS",
+      "label": "Assists",
+      "offset": 456,
+      "bits": 6,
+      "shift": 12,
+      "kind": "bits"
+    },
+    {
+      "section": "Stats",
+      "group": "Season High Stats",
+      "id": "BLOCKS",
+      "label": "Blocks",
+      "offset": 452,
+      "bits": 5,
+      "shift": 22,
+      "kind": "bits"
+    },
+    {
+      "section": "Stats",
+      "group": "Season High Stats",
+      "id": "DEFENSEREBOUNDS",
+      "label": "Defensive Rebounds",
+      "offset": 280,
+      "bits": 6,
+      "shift": 4,
+      "kind": "bits"
+    },
+    {
+      "section": "Stats",
+      "group": "Season High Stats",
+      "id": "FIELDGOALSATTEMPTED",
+      "label": "Field Goals Attempted",
+      "offset": 452,
+      "bits": 7,
+      "shift": 15,
+      "kind": "bits"
+    },
+    {
+      "section": "Stats",
+      "group": "Season High Stats",
+      "id": "FIELDGOALSMADE",
+      "label": "Field Goals Made",
+      "offset": 452,
+      "bits": 7,
+      "shift": 8,
+      "kind": "bits"
+    },
+    {
+      "section": "Stats",
+      "group": "Season High Stats",
+      "id": "FREETHROWATTEMPTED",
+      "label": "Free Throw Attempted",
+      "offset": 456,
+      "bits": 6,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Stats",
+      "group": "Season High Stats",
+      "id": "FREETHROWMADE",
+      "label": "Free Throw Made",
+      "offset": 456,
+      "bits": 6,
+      "shift": 6,
+      "kind": "bits"
+    },
+    {
+      "section": "Stats",
+      "group": "Season High Stats",
+      "id": "MINUTESPLAYED",
+      "label": "Minutes Played",
+      "offset": 836,
+      "bits": 7,
+      "shift": 7,
+      "kind": "bits"
+    },
+    {
+      "section": "Stats",
+      "group": "Season High Stats",
+      "id": "OFFENSIVEREBOUNDS",
+      "label": "Offensive Rebounds",
+      "offset": 1016,
+      "bits": 6,
+      "shift": 25,
+      "kind": "bits"
+    },
+    {
+      "section": "Stats",
+      "group": "Season High Stats",
+      "id": "POINTS",
+      "label": "Points",
+      "offset": 452,
+      "bits": 8,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Stats",
+      "group": "Season High Stats",
+      "id": "REBOUNDS",
+      "label": "Rebounds",
+      "offset": 444,
+      "bits": 6,
+      "shift": 24,
+      "kind": "bits"
+    },
+    {
+      "section": "Stats",
+      "group": "Season High Stats",
+      "id": "STEALS",
+      "label": "Steals",
+      "offset": 452,
+      "bits": 5,
+      "shift": 27,
+      "kind": "bits"
+    },
+    {
+      "section": "Stats",
+      "group": "Career High Stats",
+      "id": "3POINTERSATTEMPTED",
+      "label": "3 Pointers Attempted",
+      "offset": 444,
+      "bits": 7,
+      "shift": 17,
+      "kind": "bits"
+    },
+    {
+      "section": "Stats",
+      "group": "Career High Stats",
+      "id": "3POINTERSMADE",
+      "label": "3 Pointers Made",
+      "offset": 448,
+      "bits": 7,
+      "shift": 13,
+      "kind": "bits"
+    },
+    {
+      "section": "Stats",
+      "group": "Career High Stats",
+      "id": "ASSISTS",
+      "label": "Assists",
+      "offset": 884,
+      "bits": 6,
+      "shift": 14,
+      "kind": "bits"
+    },
+    {
+      "section": "Stats",
+      "group": "Career High Stats",
+      "id": "BLOCKS",
+      "label": "Blocks",
+      "offset": 424,
+      "bits": 5,
+      "shift": 27,
+      "kind": "bits"
+    },
+    {
+      "section": "Stats",
+      "group": "Career High Stats",
+      "id": "DEFENSEREBOUNDS",
+      "label": "Defensive Rebounds",
+      "offset": 1016,
+      "bits": 6,
+      "shift": 19,
+      "kind": "bits"
+    },
+    {
+      "section": "Stats",
+      "group": "Career High Stats",
+      "id": "FIELDGOALSATTEMPTED",
+      "label": "Field Goals Attempted",
+      "offset": 444,
+      "bits": 7,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Stats",
+      "group": "Career High Stats",
+      "id": "FIELDGOALSMADE",
+      "label": "Field Goals Made",
+      "offset": 440,
+      "bits": 7,
+      "shift": 25,
+      "kind": "bits"
+    },
+    {
+      "section": "Stats",
+      "group": "Career High Stats",
+      "id": "FREETHROWATTEMPTED",
+      "label": "Free Throw Attempted",
+      "offset": 448,
+      "bits": 6,
+      "shift": 1,
+      "kind": "bits"
+    },
+    {
+      "section": "Stats",
+      "group": "Career High Stats",
+      "id": "FREETHROWMADE",
+      "label": "Free Throw Made",
+      "offset": 448,
+      "bits": 6,
+      "shift": 7,
+      "kind": "bits"
+    },
+    {
+      "section": "Stats",
+      "group": "Career High Stats",
+      "id": "MINUTESPLAYED",
+      "label": "Minutes Played",
+      "offset": 836,
+      "bits": 7,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Stats",
+      "group": "Career High Stats",
+      "id": "OFFENSIVEREBOUNDS",
+      "label": "Offensive Rebounds",
+      "offset": 1016,
+      "bits": 6,
+      "shift": 13,
+      "kind": "bits"
+    },
+    {
+      "section": "Stats",
+      "group": "Career High Stats",
+      "id": "POINTS",
+      "label": "Points",
+      "offset": 440,
+      "bits": 8,
+      "shift": 17,
+      "kind": "bits"
+    },
+    {
+      "section": "Stats",
+      "group": "Career High Stats",
+      "id": "REBOUNDS",
+      "label": "Rebounds",
+      "offset": 884,
+      "bits": 6,
+      "shift": 20,
+      "kind": "bits"
+    },
+    {
+      "section": "Stats",
+      "group": "Career High Stats",
+      "id": "STEALS",
+      "label": "Steals",
+      "offset": 372,
+      "bits": 5,
+      "shift": 27,
+      "kind": "bits"
+    },
+    {
+      "section": "Stats",
+      "group": "History",
+      "id": "CONFERENCEPERSCORERANKING",
+      "label": "Conference Perscore Ranking",
+      "offset": 732,
+      "bits": 16,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Stats",
+      "group": "History",
+      "id": "CONFERENCEPERSCORERANKINGBYPOSITION",
+      "label": "Conference Player Score Ranking by Position",
+      "offset": 734,
+      "bits": 16,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Stats",
+      "group": "History",
+      "id": "DEFENSERATINGRANKING",
+      "label": "Defense Rating Ranking",
+      "offset": 260,
+      "bits": 16,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Stats",
+      "group": "History",
+      "id": "GAMESCOREHISTORYDATE0",
+      "label": "Games Core History Date 0",
+      "offset": 780,
+      "bits": 32,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Stats",
+      "group": "History",
+      "id": "GAMESCOREHISTORYDATE1",
+      "label": "Games Core History Date 1",
+      "offset": 784,
+      "bits": 32,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Stats",
+      "group": "History",
+      "id": "GAMESCOREHISTORYDATE2",
+      "label": "Games Core History Date 2",
+      "offset": 788,
+      "bits": 32,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Stats",
+      "group": "History",
+      "id": "GAMESCOREHISTORYDATE3",
+      "label": "Games Core History Date 3",
+      "offset": 792,
+      "bits": 32,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Stats",
+      "group": "History",
+      "id": "GAMESCOREHISTORYDATE4",
+      "label": "Games Core History Date 4",
+      "offset": 796,
+      "bits": 32,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Stats",
+      "group": "History",
+      "id": "GAMESCOREHISTORYMINUTES0",
+      "label": "Games Core History Minutes 0",
+      "offset": 868,
+      "bits": 8,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Stats",
+      "group": "History",
+      "id": "GAMESCOREHISTORYMINUTES1",
+      "label": "Games Core History Minutes 1",
+      "offset": 869,
+      "bits": 8,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Stats",
+      "group": "History",
+      "id": "GAMESCOREHISTORYMINUTES2",
+      "label": "Games Core History Minutes 2",
+      "offset": 870,
+      "bits": 8,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Stats",
+      "group": "History",
+      "id": "GAMESCOREHISTORYMINUTES3",
+      "label": "Games Core History Minutes 3",
+      "offset": 871,
+      "bits": 8,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Stats",
+      "group": "History",
+      "id": "GAMESCOREHISTORYMINUTES4",
+      "label": "Games Core History Minutes 4",
+      "offset": 872,
+      "bits": 8,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Stats",
+      "group": "History",
+      "id": "GAMESCOREHISTORYVALUE0",
+      "label": "Games Core History Value 0",
+      "offset": 760,
+      "bits": 32,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Stats",
+      "group": "History",
+      "id": "GAMESCOREHISTORYVALUE1",
+      "label": "Games Core History Value 1",
+      "offset": 764,
+      "bits": 32,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Stats",
+      "group": "History",
+      "id": "GAMESCOREHISTORYVALUE2",
+      "label": "Games Core History Value 2",
+      "offset": 768,
+      "bits": 32,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Stats",
+      "group": "History",
+      "id": "GAMESCOREHISTORYVALUE3",
+      "label": "Games Core History Value 3",
+      "offset": 772,
+      "bits": 32,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Stats",
+      "group": "History",
+      "id": "GAMESCOREHISTORYVALUE4",
+      "label": "Games Core History Value 4",
+      "offset": 776,
+      "bits": 32,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Stats",
+      "group": "History",
+      "id": "LEAGUEPERSCORERANKING",
+      "label": "League Perscore Ranking",
+      "offset": 728,
+      "bits": 16,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Stats",
+      "group": "History",
+      "id": "LEAGUEPERSCORERANKINGBYPOSITION",
+      "label": "League Player Score Ranking by Position",
+      "offset": 730,
+      "bits": 16,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Stats",
+      "group": "History",
+      "id": "OFFENSERATINGRANKING",
+      "label": "Of Fense Rating Ranking",
+      "offset": 260,
+      "bits": 16,
+      "shift": 16,
+      "kind": "bits"
+    },
+    {
+      "section": "Appearance",
+      "group": "Presentation",
+      "id": "JERSEYBAGGINESS",
+      "label": "Jersey Bagginess",
+      "offset": 888,
+      "bits": 4,
+      "shift": 16,
+      "kind": "bits"
+    },
+    {
+      "section": "Appearance",
+      "group": "Presentation",
+      "id": "MYPLAYERCLOTHESTYPE",
+      "label": "My Player Clothes Type",
+      "offset": 1080,
+      "bits": 3,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Advanced",
+      "group": "IDs",
+      "id": "ACTIONSHOTID",
+      "label": "Action Shot ID",
+      "offset": 1056,
+      "bits": 16,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Advanced",
+      "group": "IDs",
+      "id": "AUDIOSIGNATUREID",
+      "label": "Audio Signature ID",
+      "offset": 292,
+      "bits": 32,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Advanced",
+      "group": "IDs",
+      "id": "CLANID",
+      "label": "Clan ID",
+      "offset": 268,
+      "bits": 30,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Advanced",
+      "group": "IDs",
+      "id": "FIRSTLASTNAMESID",
+      "label": "First/Last Names ID",
+      "offset": 744,
+      "bits": 16,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Advanced",
+      "group": "IDs",
+      "id": "FRANCHISEPLAYERDATAINDEX",
+      "label": "Franchise Player Data Index",
+      "offset": 1028,
+      "bits": 16,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Advanced",
+      "group": "IDs",
+      "id": "GRAPHICID",
+      "label": "Graphic ID",
+      "offset": 272,
+      "bits": 16,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Advanced",
+      "group": "IDs",
+      "id": "MURALID",
+      "label": "Mural ID",
+      "offset": 1024,
+      "bits": 22,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Advanced",
+      "group": "IDs",
+      "id": "OFFSPRINGPARENTUNIQUEID",
+      "label": "Offspring Parent Unique ID",
+      "offset": 1040,
+      "bits": 16,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Advanced",
+      "group": "IDs",
+      "id": "PHOTOID",
+      "label": "Photo ID",
+      "offset": 1048,
+      "bits": 16,
+      "shift": 16,
+      "kind": "bits"
+    },
+    {
+      "section": "Advanced",
+      "group": "IDs",
+      "id": "SHOTCHARTDATAINDEX",
+      "label": "Shot Chart Data Index",
+      "offset": 1036,
+      "bits": 11,
+      "shift": 20,
+      "kind": "bits"
+    },
+    {
+      "section": "Advanced",
+      "group": "IDs",
+      "id": "SIGNATUREID",
+      "label": "Signature ID",
+      "offset": 288,
+      "bits": 32,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Advanced",
+      "group": "IDs",
+      "id": "UNIQUESIGNATUREID",
+      "label": "Unique Signature ID",
+      "offset": 88,
+      "bits": 32,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Advanced",
+      "group": "Modes",
+      "id": "PNOTIER",
+      "label": "Mode Tier",
+      "offset": 836,
+      "bits": 2,
+      "shift": 24,
+      "kind": "bits"
+    },
+    {
+      "section": "Advanced",
+      "group": "Engine",
+      "id": "ARECACHEDRATINGSVALID",
+      "label": "Are Cached Ratings Valid",
+      "offset": 880,
+      "bits": 1,
+      "shift": 6,
+      "kind": "bits"
+    },
+    {
+      "section": "Advanced",
+      "group": "Engine",
+      "id": "ISCACHEDDESCRIPTIONVALID",
+      "label": "Is Cached Description Valid",
+      "offset": 1048,
+      "bits": 1,
+      "shift": 7,
+      "kind": "bits"
+    },
+    {
+      "section": "Advanced",
+      "group": "Engine",
+      "id": "ISGAMEDATAHACK",
+      "label": "Is Game Data Hack",
+      "offset": 300,
+      "bits": 1,
+      "shift": 14,
+      "kind": "bits"
+    },
+    {
+      "section": "Advanced",
+      "group": "Engine",
+      "id": "PRESERVEDID",
+      "label": "Preserved ID",
+      "offset": 848,
+      "bits": 32,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Advanced",
+      "group": "Engine",
+      "id": "SHOULDPRESERVEBITFIELD",
+      "label": "Should Preserve Bitfield",
+      "offset": 272,
+      "bits": 3,
+      "shift": 28,
+      "kind": "bits"
+    },
+    {
+      "section": "Advanced",
+      "group": "Engine",
+      "id": "SYSTEMMASTERYINTERNAL0",
+      "label": "System Mastery Internal 0",
+      "offset": 932,
+      "bits": 16,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Advanced",
+      "group": "Engine",
+      "id": "SYSTEMMASTERYINTERNAL1",
+      "label": "System Mastery Internal 1",
+      "offset": 934,
+      "bits": 16,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Advanced",
+      "group": "Engine",
+      "id": "SYSTEMMASTERYINTERNAL2",
+      "label": "System Mastery Internal 2",
+      "offset": 936,
+      "bits": 16,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Advanced",
+      "group": "Engine",
+      "id": "SYSTEMMASTERYINTERNAL3",
+      "label": "System Mastery Internal 3",
+      "offset": 938,
+      "bits": 16,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Advanced",
+      "group": "Engine",
+      "id": "SYSTEMMASTERYINTERNAL4",
+      "label": "System Mastery Internal 4",
+      "offset": 940,
+      "bits": 16,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Advanced",
+      "group": "Engine",
+      "id": "SYSTEMMASTERYINTERNAL5",
+      "label": "System Mastery Internal 5",
+      "offset": 942,
+      "bits": 16,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Advanced",
+      "group": "Engine",
+      "id": "SYSTEMMASTERYINTERNAL6",
+      "label": "System Mastery Internal 6",
+      "offset": 944,
+      "bits": 16,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Advanced",
+      "group": "Engine",
+      "id": "SYSTEMMASTERYINTERNAL7",
+      "label": "System Mastery Internal 7",
+      "offset": 946,
+      "bits": 16,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Advanced",
+      "group": "Engine",
+      "id": "TEMPORARYFLAG",
+      "label": "Temporary Flag",
+      "offset": 372,
+      "bits": 1,
+      "shift": 2,
+      "kind": "bits"
+    },
+    {
+      "section": "Advanced",
+      "group": "Engine",
+      "id": "WEARANDTEARINTERNAL0",
+      "label": "Wear And Tear Internal 0",
+      "offset": 900,
+      "bits": 16,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Advanced",
+      "group": "Engine",
+      "id": "WEARANDTEARINTERNAL1",
+      "label": "Wear And Tear Internal 1",
+      "offset": 902,
+      "bits": 16,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Advanced",
+      "group": "Engine",
+      "id": "WEARANDTEARINTERNAL10",
+      "label": "Wear And Tear Internal 10",
+      "offset": 920,
+      "bits": 16,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Advanced",
+      "group": "Engine",
+      "id": "WEARANDTEARINTERNAL11",
+      "label": "Wear And Tear Internal 11",
+      "offset": 922,
+      "bits": 16,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Advanced",
+      "group": "Engine",
+      "id": "WEARANDTEARINTERNAL12",
+      "label": "Wear And Tear Internal 12",
+      "offset": 924,
+      "bits": 16,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Advanced",
+      "group": "Engine",
+      "id": "WEARANDTEARINTERNAL13",
+      "label": "Wear And Tear Internal 13",
+      "offset": 926,
+      "bits": 16,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Advanced",
+      "group": "Engine",
+      "id": "WEARANDTEARINTERNAL14",
+      "label": "Wear And Tear Internal 14",
+      "offset": 928,
+      "bits": 16,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Advanced",
+      "group": "Engine",
+      "id": "WEARANDTEARINTERNAL15",
+      "label": "Wear And Tear Internal 15",
+      "offset": 930,
+      "bits": 16,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Advanced",
+      "group": "Engine",
+      "id": "WEARANDTEARINTERNAL2",
+      "label": "Wear And Tear Internal 2",
+      "offset": 904,
+      "bits": 16,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Advanced",
+      "group": "Engine",
+      "id": "WEARANDTEARINTERNAL3",
+      "label": "Wear And Tear Internal 3",
+      "offset": 906,
+      "bits": 16,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Advanced",
+      "group": "Engine",
+      "id": "WEARANDTEARINTERNAL4",
+      "label": "Wear And Tear Internal 4",
+      "offset": 908,
+      "bits": 16,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Advanced",
+      "group": "Engine",
+      "id": "WEARANDTEARINTERNAL5",
+      "label": "Wear And Tear Internal 5",
+      "offset": 910,
+      "bits": 16,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Advanced",
+      "group": "Engine",
+      "id": "WEARANDTEARINTERNAL6",
+      "label": "Wear And Tear Internal 6",
+      "offset": 912,
+      "bits": 16,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Advanced",
+      "group": "Engine",
+      "id": "WEARANDTEARINTERNAL7",
+      "label": "Wear And Tear Internal 7",
+      "offset": 914,
+      "bits": 16,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Advanced",
+      "group": "Engine",
+      "id": "WEARANDTEARINTERNAL8",
+      "label": "Wear And Tear Internal 8",
+      "offset": 916,
+      "bits": 16,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Advanced",
+      "group": "Engine",
+      "id": "WEARANDTEARINTERNAL9",
+      "label": "Wear And Tear Internal 9",
+      "offset": 918,
+      "bits": 16,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Advanced",
+      "group": "Engine",
+      "id": "YEARDRAFTEDINTERNAL",
+      "label": "Year Drafted Internal",
+      "offset": 440,
+      "bits": 8,
+      "shift": 8,
+      "kind": "bits"
+    },
+    {
+      "section": "Advanced",
+      "group": "Flags",
+      "id": "DISABLEBIGHEAD",
+      "label": "Disable Big Head",
+      "offset": 1028,
+      "bits": 1,
+      "shift": 31,
+      "kind": "bits"
+    },
+    {
+      "section": "Advanced",
+      "group": "Flags",
+      "id": "HASDONEDUNKCONTEST",
+      "label": "Has Done Dunk Contest",
+      "offset": 460,
+      "bits": 1,
+      "shift": 22,
+      "kind": "bits"
+    },
+    {
+      "section": "Advanced",
+      "group": "Flags",
+      "id": "HASFAKEATTRIBUTES",
+      "label": "Has Fake Attributes",
+      "offset": 372,
+      "bits": 1,
+      "shift": 23,
+      "kind": "bits"
+    },
+    {
+      "section": "Advanced",
+      "group": "Flags",
+      "id": "HASUSEDTRADEREASONTHISSEASONINTERNAL",
+      "label": "Has Used Trade Reason This Season Internal",
+      "offset": 476,
+      "bits": 6,
+      "shift": 26,
+      "kind": "bits"
+    },
+    {
+      "section": "Advanced",
+      "group": "Flags",
+      "id": "ISPENDINGACQUIREDPLAYER",
+      "label": "Is Pending Acquired Player",
+      "offset": 464,
+      "bits": 1,
+      "shift": 21,
+      "kind": "bits"
+    },
+    {
+      "section": "Advanced",
+      "group": "Flags",
+      "id": "LOADASCREATEDPLAYERIFARTISMISSING",
+      "label": "Load as Created Player if Art Is Missing",
+      "offset": 500,
+      "bits": 1,
+      "shift": 31,
+      "kind": "bits"
+    },
+    {
+      "section": "Advanced",
+      "group": "Flags",
+      "id": "LOADMANAGMENTREGIME",
+      "label": "Load Management Regime",
+      "offset": 456,
+      "bits": 2,
+      "shift": 20,
+      "kind": "bits"
+    },
+    {
+      "section": "Advanced",
+      "group": "Other",
+      "id": "ALLSTAR3PTER",
+      "label": "Allstar 3 PT Er",
+      "offset": 726,
+      "bits": 1,
+      "shift": 6,
+      "kind": "bits"
+    },
+    {
+      "section": "Advanced",
+      "group": "Other",
+      "id": "ALLSTARDUNKER",
+      "label": "Allstar Dunk Er",
+      "offset": 726,
+      "bits": 1,
+      "shift": 7,
+      "kind": "bits"
+    },
+    {
+      "section": "Advanced",
+      "group": "Other",
+      "id": "DATELASTCHITCHATUSED",
+      "label": "Date Last Chitchat Used",
+      "offset": 828,
+      "bits": 32,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Advanced",
+      "group": "Other",
+      "id": "DAYSSINCEDECLARATIONTOEXTEND",
+      "label": "Days Since Declaration to Extend",
+      "offset": 992,
+      "bits": 5,
+      "shift": 27,
+      "kind": "bits"
+    },
+    {
+      "section": "Advanced",
+      "group": "Other",
+      "id": "FACEOFTHEFRANCHISE",
+      "label": "Face Of The Franchise",
+      "offset": 372,
+      "bits": 1,
+      "shift": 22,
+      "kind": "bits"
+    },
+    {
+      "section": "Advanced",
+      "group": "Other",
+      "id": "GAMEFITNESS",
+      "label": "Game Fitness",
+      "offset": 1032,
+      "bits": 10,
+      "shift": 10,
+      "kind": "bits"
+    },
+    {
+      "section": "Advanced",
+      "group": "Other",
+      "id": "JERSEYSALES",
+      "label": "Jersey Sales",
+      "offset": 740,
+      "bits": 32,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Advanced",
+      "group": "Other",
+      "id": "MAKEACOACH",
+      "label": "Make a Coach",
+      "offset": 1036,
+      "bits": 1,
+      "shift": 31,
+      "kind": "bits"
+    },
+    {
+      "section": "Advanced",
+      "group": "Other",
+      "id": "NOMADDUNK",
+      "label": "Nomad Dunk",
+      "offset": 268,
+      "bits": 1,
+      "shift": 31,
+      "kind": "bits"
+    },
+    {
+      "section": "Advanced",
+      "group": "Other",
+      "id": "NOTINTERESTED",
+      "label": "Not Interested",
+      "offset": 372,
+      "bits": 1,
+      "shift": 3,
+      "kind": "bits"
+    },
+    {
+      "section": "Advanced",
+      "group": "Other",
+      "id": "PREFERREDJERSEYTYPE",
+      "label": "Preferred Jersey Type",
+      "offset": 460,
+      "bits": 3,
+      "shift": 8,
+      "kind": "bits"
+    },
+    {
+      "section": "Advanced",
+      "group": "Other",
+      "id": "PROSCOUTINGINDEX",
+      "label": "Pro Scouting Index",
+      "offset": 758,
+      "bits": 16,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Advanced",
+      "group": "Other",
+      "id": "PROGRESSIVEFATIGUE",
+      "label": "Progressive Fatigue",
+      "offset": 440,
+      "bits": 7,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Advanced",
+      "group": "Other",
+      "id": "RECENTLYTRADED",
+      "label": "Recently Traded",
+      "offset": 444,
+      "bits": 1,
+      "shift": 30,
+      "kind": "bits"
+    },
+    {
+      "section": "Advanced",
+      "group": "Other",
+      "id": "SHOTDEFENSIVEIMMUNITYMODIFIER",
+      "label": "Shot Defensiveimmunity Modifier",
+      "offset": 1044,
+      "bits": 2,
+      "shift": 16,
+      "kind": "bits"
+    },
+    {
+      "section": "Advanced",
+      "group": "Other",
+      "id": "TAKEOVERSPECIALABILITIES0",
+      "label": "Takeover Special Abilities 0",
+      "offset": 948,
+      "bits": 32,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Advanced",
+      "group": "Other",
+      "id": "TAKEOVERSPECIALABILITIES1",
+      "label": "Takeover Special Abilities 1",
+      "offset": 952,
+      "bits": 32,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Advanced",
+      "group": "Other",
+      "id": "TAKEOVERSPECIALABILITIES2",
+      "label": "Takeover Special Abilities 2",
+      "offset": 956,
+      "bits": 32,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Advanced",
+      "group": "Other",
+      "id": "TAKEOVERSPECIALABILITIES3",
+      "label": "Takeover Special Abilities 3",
+      "offset": 960,
+      "bits": 32,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Advanced",
+      "group": "Other",
+      "id": "TAKEOVERSPECIALABILITIES4",
+      "label": "Takeover Special Abilities 4",
+      "offset": 964,
+      "bits": 32,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Advanced",
+      "group": "Other",
+      "id": "TAKEOVERSPECIALABILITIES5",
+      "label": "Takeover Special Abilities 5",
+      "offset": 968,
+      "bits": 32,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Advanced",
+      "group": "Other",
+      "id": "TAKEOVERSPECIALABILITIES6",
+      "label": "Takeover Special Abilities 6",
+      "offset": 972,
+      "bits": 32,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Advanced",
+      "group": "Other",
+      "id": "TYPE",
+      "label": "Type",
+      "offset": 976,
+      "bits": 4,
+      "shift": 27,
+      "kind": "bits"
+    },
+    {
+      "section": "Advanced",
+      "group": "Other",
+      "id": "YEARSOFACQUIREDPLAYER",
+      "label": "Years Of Acquired Player",
+      "offset": 874,
+      "bits": 6,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Advanced",
+      "group": "Reserved",
+      "id": "AFTERBADGEPADDING",
+      "label": "After Badge Padding",
+      "offset": 1268,
+      "bits": 6,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Advanced",
+      "group": "Reserved",
+      "id": "AFTERSEASONSTATSPADDING",
+      "label": "After Season Stats Padding",
+      "offset": 370,
+      "bits": 16,
+      "shift": 0,
+      "kind": "bits"
+    },
+    {
+      "section": "Advanced",
+      "group": "Reserved",
+      "id": "CONTRACTPROMISEPADDING",
+      "label": "Contract Promise Padding",
+      "offset": 524,
+      "bits": 10,
+      "shift": 22,
+      "kind": "bits"
+    },
+    {
+      "section": "Advanced",
+      "group": "Reserved",
+      "id": "PADDING",
+      "label": "Padding",
+      "offset": 1080,
+      "bits": 25,
+      "shift": 7,
+      "kind": "bits"
+    },
+    {
+      "section": "Advanced",
+      "group": "Reserved",
+      "id": "UNUSEDPADDING",
+      "label": "Unused Padding",
+      "offset": 892,
+      "bits": 7,
+      "shift": 25,
+      "kind": "bits"
+    }
+  ]
+}

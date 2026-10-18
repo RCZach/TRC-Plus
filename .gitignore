@@ -1,0 +1,10 @@
+__pycache__/
+.pytest_cache/
+.pytest_tmp/
+*.egg-info/
+build/
+dist/
+data/
+config/game_connection.json
+tools/
+.test-tmp/
