@@ -8,9 +8,9 @@ from unittest.mock import Mock, patch
 
 import pytest
 
-from trc_plus.app import create_server
-from trc_plus.roster import RosterError
-from trc_plus.website import EXPORT_URL, NoRedirects, fetch_export
+from trace_app.app import create_server
+from trace_app.roster import RosterError
+from trace_app.website import EXPORT_URL, NoRedirects, fetch_export
 
 
 def response(document, content_type='application/json'):
@@ -21,7 +21,7 @@ def response(document, content_type='application/json'):
 
 
 def test_fetch_matches_manual_export_and_handles_no_pending_players():
-    with patch('trc_plus.website.build_opener') as factory:
+    with patch('trace_app.website.build_opener') as factory:
         factory.return_value.open.return_value = response({'Custom Player': {'Attributes': {'Speed': 80}}})
         roster = fetch_export()
         assert roster['players'][0]['attributes']['Speed'] == 80
@@ -36,14 +36,14 @@ def test_fetch_matches_manual_export_and_handles_no_pending_players():
                                                  ([], 'application/json'),
                                                  ({'Player': {'Attributes': {'Speed': 999}}}, 'application/json')])
 def test_invalid_website_response_is_rejected(document, content_type):
-    with patch('trc_plus.website.build_opener') as factory:
+    with patch('trace_app.website.build_opener') as factory:
         factory.return_value.open.return_value = response(document, content_type)
         with pytest.raises(RosterError):
             fetch_export()
 
 
 def test_network_failures_size_limit_and_redirects_are_reported():
-    with patch('trc_plus.website.build_opener') as factory:
+    with patch('trace_app.website.build_opener') as factory:
         factory.return_value.open.side_effect = URLError('offline')
         with pytest.raises(RosterError, match='Could not reach'):
             fetch_export()
@@ -52,7 +52,7 @@ def test_network_failures_size_limit_and_redirects_are_reported():
             fetch_export()
         factory.return_value.open.side_effect = None
         factory.return_value.open.return_value = response({'Player': {}})
-        with patch('trc_plus.website.MAX_EXPORT_BYTES', 5):
+        with patch('trace_app.website.MAX_EXPORT_BYTES', 5):
             with pytest.raises(RosterError, match='128 MB'):
                 fetch_export()
     with pytest.raises(RosterError, match='redirected'):
@@ -69,7 +69,7 @@ def test_website_api_requires_session_and_does_not_save_or_write(tmp_path):
     try:
         with urlopen(base + '/api/session') as stream:
             session = json.load(stream)
-        with patch('trc_plus.app.fetch_export', return_value={'players': [], 'teams': []}) as fetch:
+        with patch('trace_app.app.fetch_export', return_value={'players': [], 'teams': []}) as fetch:
             for token, expected_status in [('wrong', 403), (session['token'], 200)]:
                 request = Request(base + '/api/trc/export', data=b'{}', headers={'X-Editor-Token': token})
                 if expected_status == 403:

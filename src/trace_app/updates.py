@@ -29,7 +29,7 @@ def version_number(value):
 
 
 def read_url(url, limit):
-    request = Request(url, headers={'User-Agent': f'TRC-Plus/{VERSION}', 'Accept': 'application/vnd.github+json'})
+    request = Request(url, headers={'User-Agent': f'Trace/{VERSION}', 'Accept': 'application/vnd.github+json'})
     with urlopen(request, timeout=30) as response:
         if urlparse(response.url).scheme != 'https':
             raise ValueError('Update downloads must use HTTPS.')
@@ -59,7 +59,7 @@ def extract_release(archive, destination):
         for item in entries:
             path = PurePosixPath(item.filename)
             key = path.as_posix().casefold()
-            if (not path.parts or path.parts[0] != 'TRC+' or path.is_absolute()
+            if (not path.parts or path.parts[0] != 'Trace' or path.is_absolute()
                     or '..' in path.parts or '\\' in item.filename or ':' in item.filename
                     or item.filename.rstrip('/') != path.as_posix()
                     or any(part.endswith((' ', '.')) for part in path.parts)
@@ -68,8 +68,8 @@ def extract_release(archive, destination):
                 raise ValueError('The update archive contains an unsafe path.')
             seen.add(key)
         bundle.extractall(destination)
-    app = destination / 'TRC+'
-    for required in ('TRC+.exe', 'TRC+ Updater.exe'):
+    app = destination / 'Trace'
+    for required in ('Trace.exe', 'Trace Updater.exe'):
         if not (app / required).is_file():
             raise ValueError(f'The release is incomplete: missing {required}.')
     if not list(app.glob('_internal/python3*.dll')):
@@ -101,7 +101,7 @@ class UpdateManager:
                   'notes': str(release.get('body') or '')[:50000],
                   'message': 'An update is available.' if newer else 'You are up to date.'}
         if newer:
-            filename = f'TRC+-{tag.lstrip("v")}-windows-x64.zip'
+            filename = f'Trace-{tag.lstrip("v")}-windows-x64.zip'
             assets = {asset['name']: asset for asset in release.get('assets', [])}
             if filename not in assets:
                 raise ValueError('The latest release does not have its Windows app ZIP yet. Try again later.')
@@ -129,7 +129,7 @@ class UpdateManager:
             job = Path(temporary)
             archive = job / 'release.zip'
             asset = self.release['asset']
-            request = Request(asset_url(asset, self.release['tag']), headers={'User-Agent': f'TRC-Plus/{VERSION}'})
+            request = Request(asset_url(asset, self.release['tag']), headers={'User-Agent': f'Trace/{VERSION}'})
             try:
                 with urlopen(request, timeout=30) as response, archive.open('wb') as output:
                     if urlparse(response.url).scheme != 'https':
@@ -148,7 +148,7 @@ class UpdateManager:
             extracted = extract_release(archive, job / 'extracted')
             # Keep only this validated payload after the temporary download is cleaned up.
             destination = Path(tempfile.mkdtemp(prefix='ready-', dir=base))
-            shutil.move(str(extracted), destination / 'TRC+')
+            shutil.move(str(extracted), destination / 'Trace')
             self.prepared = destination
         return {'ready': True, 'version': self.release['tag'].lstrip('v')}
 
@@ -158,7 +158,7 @@ class UpdateManager:
         target = Path(sys.executable).resolve().parent
         if user_root().resolve().is_relative_to(target):
             raise ValueError('Move the app outside its saved-data folder before updating.')
-        helper = target / 'TRC+ Updater.exe'
+        helper = target / 'Trace Updater.exe'
         if not helper.is_file():
             raise ValueError('The updater is missing. Extract the complete app ZIP again.')
         job = self.prepared

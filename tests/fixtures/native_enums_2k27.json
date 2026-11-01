@@ -1,0 +1,807 @@
+{
+  "build": "6AD2E48C:36532000",
+  "enums": [
+    {
+      "enum": "PLAYERDATA_INJURY",
+      "table_rva": 144518144,
+      "table_hex": "2cba091e00000000000000003792e0210100000000000000554e390e02000000000000005e2e409a03000000000000004fe418260400000000000000642a340b05000000000000005dbb55040600000000000000d6a05049070000000000000012cc998c0800000000000000dc5417d609000000000000003937e26a0a00000000000000c2a2958b0b00000000000000254c0f840c00000000000000dff788d90d0000000000000010a2b3f20e000000000000000d5edea40f00000000000000796291231000000000000000ad60de9a11000000000000007ae3ca2e12000000000000006b8dff17130000000000000063250aa21400000000000000acbf702815000000000000005acb545516000000000000003c640b5e1700000000000000ca22679a18000000000000002c44d6931900000000000000006ab9111a0000000000000087bceaf41b0000000000000093216c261c00000000000000ee3db1f31d00000000000000c89900201e00000000000000b596839d1f000000000000003207598820000000000000003fb06842210000000000000039a25ebd2200000000000000d5117ac22300000000000000a52abff324000000000000001fc696132500000000000000e9a97b1926000000000000002d9dedfc270000000000000002476e25280000000000000071a01a072900000000000000196650972a000000000000000d019f772b0000000000000003bf93e12c00000000000000128d9bcc2d000000000000009225431f2e00000000000000a5cacadd2f00000000000000879b37cb3000000000000000033c15b6310000000000000053b93c863200000000000000d8c29b5b33000000000000000d6a7d5834000000000000008957945c3500000000000000f8203e993600000000000000d04a723337000000000000009a66b9aa3800000000000000321cbaf9390000000000000065c1325b3a00000000000000dccaf27d3b00000000000000999b9f5b3c000000000000004a2890023d000000000000006a7933df3e0000000000000053ab15623f0000000000000052838f384000000000000000358e979341000000000000001abb15e24200000000000000eb47bd084300000000000000d5a6e7d7440000000000000061ff62c6450000000000000003c008624600000000000000e31cb19947000000000000000d378a1548000000000000002419646349000000000000001918d8914a00000000000000e08627d84b000000000000009ba908d64c000000000000000a61e6754d000000000000004d5963214e00000000000000b946cbd34f000000000000004a18108e500000000000000095c3a8fd510000000000000024264cd252000000000000005b1b2e035300000000000000075af6da54000000000000005ac25f975500000000000000fb59fed65600000000000000b5c0f79057000000000000006c04877458000000000000009871e87659000000000000003c89a9d25a00000000000000bddc49555b0000000000000020f2443c5c00000000000000aef35eb15d00000000000000fc66373b5e000000000000006b7486255f00000000000000f8310f036000000000000000b2f82e246100000000000000fd8fe2ac620000000000000076d082e663000000000000004c6b247e6400000000000000de11d31d65000000000000007f1f0a656600000000000000b5882f7567000000000000005c30a34568000000000000008d9b6e5b69000000000000008bc55eb96a0000000000000080aff6986b000000000000006be55b6c6c00000000000000b20ab49c6d0000000000000038e9ba486e00000000000000847568fb6f00000000000000aa034d137000000000000000f3bfbc947100000000000000006566d672000000000000005924692273000000000000003f183089740000000000000071c56bd4750000000000000034d9e87876000000000000006f8180e677000000000000009c0727fc78000000000000009dee712f790000000000000039f1a5137a00000000000000ac26f2f57b00000000000000567a42307c000000000000008869d7d77d0000000000000094123a397e000000000000000b789aef7f00000000000000f9082ad3800000000000000044a514dc8100000000000000c67b16de8200000000000000bc0c304a830000000000000049f82168840000000000000013335b21850000000000000043b16c6c8600000000000000d9eae9888700000000000000e58a30588800000000000000a41200cc8900000000000000cbcfb2d08a00000000000000fe601f368b0000000000000047198fb58c00000000000000e021225e8d000000000000009a27f0928e000000000000003148a2448f000000000000004539d7bd900000000000000027d9b3bd91000000000000005584e6b4920000000000000019527624930000000000000058b8c15b9400000000000000d278a9f59500000000000000321ec5b39600000000000000b2da494e9700000000000000e789da859800000000000000ddbac70d9900000000000000e61e04c79a000000000000007bc338ec9b00000000000000d3588dcb9c00000000000000",
+      "names_rva": 97617917,
+      "names_hex": "504c41594552444154415f494e4a555259004e4f5f494e4a55525900415050454e444543544f4d590041525448524f53434f5049435f53555247455259004241434b5f535041534d5300424c4f4f44595f4e4f534500424f4e455f53505552530042524f4b454e5f414e4b4c450042524f4b454e5f41524d0042524f4b454e5f454c424f570042524f4b454e5f46494e4745520042524f4b454e5f464f4f540042524f4b454e5f464f524541524d0042524f4b454e5f48414e440042524f4b454e5f4a41570042524f4b454e5f4b4e45454341500042524f4b454e5f4c45470042524f4b454e5f4e4f53450042524f4b454e5f524942530042524f4b454e5f53484f554c4445520042524f4b454e5f54484947480042524f4b454e5f544f450042524f4b454e5f5645525445425241450042524f4b454e5f575249535400425255495345445f424943455000425255495345445f464f524541524d00425255495345445f4845454c00425255495345445f48495000425255495345445f4b4e454500425255495345445f4c4f5745525f4241434b00425255495345445f52494200425255495345445f53484f554c44455200425255495345445f535445524e554d00425255495345445f5441494c424f4e4500434f4c4c41505345445f4c554e4700434f4e43555353494f4e00435241434b45445f4e45434b5f56455254454252414500444545505f54484947485f425255495345004445485944524154494f4e004449534c4f43415445445f454c424f57004449534c4f43415445445f46494e474552004449534c4f43415445445f504154454c4c4100454c424f575f5355524745525900454c424f575f54454e44494e49544953004559455f53555247455259004641544947554500464c5500464f4f445f504f49534f4e494e4700464f4f545f5354524553535f465241435455524500464f4f545f53555247455259004652414354555245445f41524d004652414354555245445f4559455f534f434b4554004652414354555245445f4c454700484149524c494e455f41524d5f465241435455524500484149524c494e455f46494e4745525f465241435455524500484149524c494e455f48414e445f46524143545552450048414e445f5355524745525900484541445f4c414345524154494f4e004845524e494100484947485f414e4b4c455f53505241494e004849505f53555247455259004859504552455854454e4445445f454c424f57004859504552455854454e4445445f4b4e4545004859504552455854454e4445445f53484f554c44455200494e4e45525f4541525f494e46454354494f4e004b4e45455f53555247455259004b4e45455f54454e44494e49544953004c45475f4352414d50004c4f5745525f4241434b5f53545241494e004c4f5745525f4c45475f5354524553535f4652414354555245004d4943524f46524143545552455f53555247455259004d49475241494e45004e45434b5f535041534d53004e4f53455f4c414345524154494f4e00504552534f4e414c5f524541534f4e0050494e434845445f4241434b5f4e455256450050494e434845445f454c424f575f4e455256450050494e434845445f4e45434b5f4e455256450050494e434845445f53484f554c4445525f4e4552564500504c414e5441525f46415343494954495300504f4b455f494e5f4559450050554c4c45445f42494345500052555054555245445f414348494c4c45530053454c465f49534f4c4154494e47005345504152415445445f53484f554c444552005345564552455f414e4b4c455f53505241494e005348494e5f53504c494e54530053484f554c4445525f54454e44494e495449530053505241494e45445f53484f554c44455200534f52455f414e4b4c4500534f52455f4241434b00534f52455f464f4f5400534f52455f48414d535452494e4700534f52455f48414e4400534f52455f4b4e454500534f52455f4e45434b00534f52455f5752495354005350494e414c5f494e4a5552590053505241494e45445f414e4b4c450053505241494e45445f454c424f570053505241494e45445f46494e4745520053505241494e45445f464f4f540053505241494e45445f4b4e45450053505241494e45445f544f450053505241494e45445f57524953540053544f4d4143485f56495255530053545241494e45445f4142444f4d454e0053545241494e45445f414348494c4c45530053545241494e45445f43414c460053545241494e45445f454c424f570053545241494e45445f47524f494e0053545241494e45445f48414d535452494e470053545241494e45445f4849500053545241494e45445f4d434c0053545241494e45445f4e45434b0053545241494e45445f4f424c495155450053545241494e45445f515541440053555350454e53494f4e0054484947485f4352414d5000544f524e5f414348494c4c455300544f524e5f41434c00544f524e5f424943455000544f524e5f43414c465f4d5553434c4500544f524e5f48414d535452494e4700544f524e5f4c414252554d00544f524e5f4c4947414d454e545f454c424f5700544f524e5f4c4947414d454e545f464f4f5400544f524e5f4c4947414d454e545f48414e4400544f524e5f4d434c00544f524e5f4d454e495343555300544f524e5f504154454c4c41525f54454e444f4e00544f524e5f54524943455000545749535445445f414e4b4c4500545749535445445f4b4e454500554e4b4e4f574e5f4142444f4d454e5f494e4a55525900554e4b4e4f574e5f414e4b4c455f494e4a55525900554e4b4e4f574e5f41524d5f494e4a55525900554e4b4e4f574e5f4241434b5f494e4a55525900554e4b4e4f574e5f454c424f575f494e4a55525900554e4b4e4f574e5f4559455f494e4a55525900554e4b4e4f574e5f46494e4745525f494e4a55525900554e4b4e4f574e5f464f4f545f494e4a55525900554e4b4e4f574e5f464f524541524d5f494e4a55525900554e4b4e4f574e5f48414e445f494e4a55525900554e4b4e4f574e5f484541445f494e4a55525900554e4b4e4f574e5f4849505f494e4a55525900554e4b4e4f574e5f494c4c4e45535300554e4b4e4f574e5f4b4e45455f494e4a55525900554e4b4e4f574e5f4c45475f494e4a55525900554e4b4e4f574e5f4e45434b5f494e4a55525900554e4b4e4f574e5f4e4f53455f494e4a55525900554e4b4e4f574e5f5249425f494e4a55525900554e4b4e4f574e5f53484f554c4445525f494e4a55525900554e4b4e4f574e5f535445524e554d5f494e4a55525900554e4b4e4f574e5f54484947485f494e4a55525900554e4b4e4f574e5f544f455f494e4a55525900554e4b4e4f574e5f57524953545f494e4a5552590057494e4445445f4142444f4d454e00",
+      "entries": [
+        {
+          "enum_name": "NO_INJURY",
+          "value": 0
+        },
+        {
+          "enum_name": "APPENDECTOMY",
+          "value": 1
+        },
+        {
+          "enum_name": "ARTHROSCOPIC_SURGERY",
+          "value": 2
+        },
+        {
+          "enum_name": "BACK_SPASMS",
+          "value": 3
+        },
+        {
+          "enum_name": "BLOODY_NOSE",
+          "value": 4
+        },
+        {
+          "enum_name": "BONE_SPURS",
+          "value": 5
+        },
+        {
+          "enum_name": "BROKEN_ANKLE",
+          "value": 6
+        },
+        {
+          "enum_name": "BROKEN_ARM",
+          "value": 7
+        },
+        {
+          "enum_name": "BROKEN_ELBOW",
+          "value": 8
+        },
+        {
+          "enum_name": "BROKEN_FINGER",
+          "value": 9
+        },
+        {
+          "enum_name": "BROKEN_FOOT",
+          "value": 10
+        },
+        {
+          "enum_name": "BROKEN_FOREARM",
+          "value": 11
+        },
+        {
+          "enum_name": "BROKEN_HAND",
+          "value": 12
+        },
+        {
+          "enum_name": "BROKEN_JAW",
+          "value": 13
+        },
+        {
+          "enum_name": "BROKEN_KNEECAP",
+          "value": 14
+        },
+        {
+          "enum_name": "BROKEN_LEG",
+          "value": 15
+        },
+        {
+          "enum_name": "BROKEN_NOSE",
+          "value": 16
+        },
+        {
+          "enum_name": "BROKEN_RIBS",
+          "value": 17
+        },
+        {
+          "enum_name": "BROKEN_SHOULDER",
+          "value": 18
+        },
+        {
+          "enum_name": "BROKEN_THIGH",
+          "value": 19
+        },
+        {
+          "enum_name": "BROKEN_TOE",
+          "value": 20
+        },
+        {
+          "enum_name": "BROKEN_VERTEBRAE",
+          "value": 21
+        },
+        {
+          "enum_name": "BROKEN_WRIST",
+          "value": 22
+        },
+        {
+          "enum_name": "BRUISED_BICEP",
+          "value": 23
+        },
+        {
+          "enum_name": "BRUISED_FOREARM",
+          "value": 24
+        },
+        {
+          "enum_name": "BRUISED_HEEL",
+          "value": 25
+        },
+        {
+          "enum_name": "BRUISED_HIP",
+          "value": 26
+        },
+        {
+          "enum_name": "BRUISED_KNEE",
+          "value": 27
+        },
+        {
+          "enum_name": "BRUISED_LOWER_BACK",
+          "value": 28
+        },
+        {
+          "enum_name": "BRUISED_RIB",
+          "value": 29
+        },
+        {
+          "enum_name": "BRUISED_SHOULDER",
+          "value": 30
+        },
+        {
+          "enum_name": "BRUISED_STERNUM",
+          "value": 31
+        },
+        {
+          "enum_name": "BRUISED_TAILBONE",
+          "value": 32
+        },
+        {
+          "enum_name": "COLLAPSED_LUNG",
+          "value": 33
+        },
+        {
+          "enum_name": "CONCUSSION",
+          "value": 34
+        },
+        {
+          "enum_name": "CRACKED_NECK_VERTEBRAE",
+          "value": 35
+        },
+        {
+          "enum_name": "DEEP_THIGH_BRUISE",
+          "value": 36
+        },
+        {
+          "enum_name": "DEHYDRATION",
+          "value": 37
+        },
+        {
+          "enum_name": "DISLOCATED_ELBOW",
+          "value": 38
+        },
+        {
+          "enum_name": "DISLOCATED_FINGER",
+          "value": 39
+        },
+        {
+          "enum_name": "DISLOCATED_PATELLA",
+          "value": 40
+        },
+        {
+          "enum_name": "ELBOW_SURGERY",
+          "value": 41
+        },
+        {
+          "enum_name": "ELBOW_TENDINITIS",
+          "value": 42
+        },
+        {
+          "enum_name": "EYE_SURGERY",
+          "value": 43
+        },
+        {
+          "enum_name": "FATIGUE",
+          "value": 44
+        },
+        {
+          "enum_name": "FLU",
+          "value": 45
+        },
+        {
+          "enum_name": "FOOD_POISONING",
+          "value": 46
+        },
+        {
+          "enum_name": "FOOT_STRESS_FRACTURE",
+          "value": 47
+        },
+        {
+          "enum_name": "FOOT_SURGERY",
+          "value": 48
+        },
+        {
+          "enum_name": "FRACTURED_ARM",
+          "value": 49
+        },
+        {
+          "enum_name": "FRACTURED_EYE_SOCKET",
+          "value": 50
+        },
+        {
+          "enum_name": "FRACTURED_LEG",
+          "value": 51
+        },
+        {
+          "enum_name": "HAIRLINE_ARM_FRACTURE",
+          "value": 52
+        },
+        {
+          "enum_name": "HAIRLINE_FINGER_FRACTURE",
+          "value": 53
+        },
+        {
+          "enum_name": "HAIRLINE_HAND_FRACTURE",
+          "value": 54
+        },
+        {
+          "enum_name": "HAND_SURGERY",
+          "value": 55
+        },
+        {
+          "enum_name": "HEAD_LACERATION",
+          "value": 56
+        },
+        {
+          "enum_name": "HERNIA",
+          "value": 57
+        },
+        {
+          "enum_name": "HIGH_ANKLE_SPRAIN",
+          "value": 58
+        },
+        {
+          "enum_name": "HIP_SURGERY",
+          "value": 59
+        },
+        {
+          "enum_name": "HYPEREXTENDED_ELBOW",
+          "value": 60
+        },
+        {
+          "enum_name": "HYPEREXTENDED_KNEE",
+          "value": 61
+        },
+        {
+          "enum_name": "HYPEREXTENDED_SHOULDER",
+          "value": 62
+        },
+        {
+          "enum_name": "INNER_EAR_INFECTION",
+          "value": 63
+        },
+        {
+          "enum_name": "KNEE_SURGERY",
+          "value": 64
+        },
+        {
+          "enum_name": "KNEE_TENDINITIS",
+          "value": 65
+        },
+        {
+          "enum_name": "LEG_CRAMP",
+          "value": 66
+        },
+        {
+          "enum_name": "LOWER_BACK_STRAIN",
+          "value": 67
+        },
+        {
+          "enum_name": "LOWER_LEG_STRESS_FRACTURE",
+          "value": 68
+        },
+        {
+          "enum_name": "MICROFRACTURE_SURGERY",
+          "value": 69
+        },
+        {
+          "enum_name": "MIGRAINE",
+          "value": 70
+        },
+        {
+          "enum_name": "NECK_SPASMS",
+          "value": 71
+        },
+        {
+          "enum_name": "NOSE_LACERATION",
+          "value": 72
+        },
+        {
+          "enum_name": "PERSONAL_REASON",
+          "value": 73
+        },
+        {
+          "enum_name": "PINCHED_BACK_NERVE",
+          "value": 74
+        },
+        {
+          "enum_name": "PINCHED_ELBOW_NERVE",
+          "value": 75
+        },
+        {
+          "enum_name": "PINCHED_NECK_NERVE",
+          "value": 76
+        },
+        {
+          "enum_name": "PINCHED_SHOULDER_NERVE",
+          "value": 77
+        },
+        {
+          "enum_name": "PLANTAR_FASCIITIS",
+          "value": 78
+        },
+        {
+          "enum_name": "POKE_IN_EYE",
+          "value": 79
+        },
+        {
+          "enum_name": "PULLED_BICEP",
+          "value": 80
+        },
+        {
+          "enum_name": "RUPTURED_ACHILLES",
+          "value": 81
+        },
+        {
+          "enum_name": "SELF_ISOLATING",
+          "value": 82
+        },
+        {
+          "enum_name": "SEPARATED_SHOULDER",
+          "value": 83
+        },
+        {
+          "enum_name": "SEVERE_ANKLE_SPRAIN",
+          "value": 84
+        },
+        {
+          "enum_name": "SHIN_SPLINTS",
+          "value": 85
+        },
+        {
+          "enum_name": "SHOULDER_TENDINITIS",
+          "value": 86
+        },
+        {
+          "enum_name": "SPRAINED_SHOULDER",
+          "value": 87
+        },
+        {
+          "enum_name": "SORE_ANKLE",
+          "value": 88
+        },
+        {
+          "enum_name": "SORE_BACK",
+          "value": 89
+        },
+        {
+          "enum_name": "SORE_FOOT",
+          "value": 90
+        },
+        {
+          "enum_name": "SORE_HAMSTRING",
+          "value": 91
+        },
+        {
+          "enum_name": "SORE_HAND",
+          "value": 92
+        },
+        {
+          "enum_name": "SORE_KNEE",
+          "value": 93
+        },
+        {
+          "enum_name": "SORE_NECK",
+          "value": 94
+        },
+        {
+          "enum_name": "SORE_WRIST",
+          "value": 95
+        },
+        {
+          "enum_name": "SPINAL_INJURY",
+          "value": 96
+        },
+        {
+          "enum_name": "SPRAINED_ANKLE",
+          "value": 97
+        },
+        {
+          "enum_name": "SPRAINED_ELBOW",
+          "value": 98
+        },
+        {
+          "enum_name": "SPRAINED_FINGER",
+          "value": 99
+        },
+        {
+          "enum_name": "SPRAINED_FOOT",
+          "value": 100
+        },
+        {
+          "enum_name": "SPRAINED_KNEE",
+          "value": 101
+        },
+        {
+          "enum_name": "SPRAINED_TOE",
+          "value": 102
+        },
+        {
+          "enum_name": "SPRAINED_WRIST",
+          "value": 103
+        },
+        {
+          "enum_name": "STOMACH_VIRUS",
+          "value": 104
+        },
+        {
+          "enum_name": "STRAINED_ABDOMEN",
+          "value": 105
+        },
+        {
+          "enum_name": "STRAINED_ACHILLES",
+          "value": 106
+        },
+        {
+          "enum_name": "STRAINED_CALF",
+          "value": 107
+        },
+        {
+          "enum_name": "STRAINED_ELBOW",
+          "value": 108
+        },
+        {
+          "enum_name": "STRAINED_GROIN",
+          "value": 109
+        },
+        {
+          "enum_name": "STRAINED_HAMSTRING",
+          "value": 110
+        },
+        {
+          "enum_name": "STRAINED_HIP",
+          "value": 111
+        },
+        {
+          "enum_name": "STRAINED_MCL",
+          "value": 112
+        },
+        {
+          "enum_name": "STRAINED_NECK",
+          "value": 113
+        },
+        {
+          "enum_name": "STRAINED_OBLIQUE",
+          "value": 114
+        },
+        {
+          "enum_name": "STRAINED_QUAD",
+          "value": 115
+        },
+        {
+          "enum_name": "SUSPENSION",
+          "value": 116
+        },
+        {
+          "enum_name": "THIGH_CRAMP",
+          "value": 117
+        },
+        {
+          "enum_name": "TORN_ACHILLES",
+          "value": 118
+        },
+        {
+          "enum_name": "TORN_ACL",
+          "value": 119
+        },
+        {
+          "enum_name": "TORN_BICEP",
+          "value": 120
+        },
+        {
+          "enum_name": "TORN_CALF_MUSCLE",
+          "value": 121
+        },
+        {
+          "enum_name": "TORN_HAMSTRING",
+          "value": 122
+        },
+        {
+          "enum_name": "TORN_LABRUM",
+          "value": 123
+        },
+        {
+          "enum_name": "TORN_LIGAMENT_ELBOW",
+          "value": 124
+        },
+        {
+          "enum_name": "TORN_LIGAMENT_FOOT",
+          "value": 125
+        },
+        {
+          "enum_name": "TORN_LIGAMENT_HAND",
+          "value": 126
+        },
+        {
+          "enum_name": "TORN_MCL",
+          "value": 127
+        },
+        {
+          "enum_name": "TORN_MENISCUS",
+          "value": 128
+        },
+        {
+          "enum_name": "TORN_PATELLAR_TENDON",
+          "value": 129
+        },
+        {
+          "enum_name": "TORN_TRICEP",
+          "value": 130
+        },
+        {
+          "enum_name": "TWISTED_ANKLE",
+          "value": 131
+        },
+        {
+          "enum_name": "TWISTED_KNEE",
+          "value": 132
+        },
+        {
+          "enum_name": "UNKNOWN_ABDOMEN_INJURY",
+          "value": 133
+        },
+        {
+          "enum_name": "UNKNOWN_ANKLE_INJURY",
+          "value": 134
+        },
+        {
+          "enum_name": "UNKNOWN_ARM_INJURY",
+          "value": 135
+        },
+        {
+          "enum_name": "UNKNOWN_BACK_INJURY",
+          "value": 136
+        },
+        {
+          "enum_name": "UNKNOWN_ELBOW_INJURY",
+          "value": 137
+        },
+        {
+          "enum_name": "UNKNOWN_EYE_INJURY",
+          "value": 138
+        },
+        {
+          "enum_name": "UNKNOWN_FINGER_INJURY",
+          "value": 139
+        },
+        {
+          "enum_name": "UNKNOWN_FOOT_INJURY",
+          "value": 140
+        },
+        {
+          "enum_name": "UNKNOWN_FOREARM_INJURY",
+          "value": 141
+        },
+        {
+          "enum_name": "UNKNOWN_HAND_INJURY",
+          "value": 142
+        },
+        {
+          "enum_name": "UNKNOWN_HEAD_INJURY",
+          "value": 143
+        },
+        {
+          "enum_name": "UNKNOWN_HIP_INJURY",
+          "value": 144
+        },
+        {
+          "enum_name": "UNKNOWN_ILLNESS",
+          "value": 145
+        },
+        {
+          "enum_name": "UNKNOWN_KNEE_INJURY",
+          "value": 146
+        },
+        {
+          "enum_name": "UNKNOWN_LEG_INJURY",
+          "value": 147
+        },
+        {
+          "enum_name": "UNKNOWN_NECK_INJURY",
+          "value": 148
+        },
+        {
+          "enum_name": "UNKNOWN_NOSE_INJURY",
+          "value": 149
+        },
+        {
+          "enum_name": "UNKNOWN_RIB_INJURY",
+          "value": 150
+        },
+        {
+          "enum_name": "UNKNOWN_SHOULDER_INJURY",
+          "value": 151
+        },
+        {
+          "enum_name": "UNKNOWN_STERNUM_INJURY",
+          "value": 152
+        },
+        {
+          "enum_name": "UNKNOWN_THIGH_INJURY",
+          "value": 153
+        },
+        {
+          "enum_name": "UNKNOWN_TOE_INJURY",
+          "value": 154
+        },
+        {
+          "enum_name": "UNKNOWN_WRIST_INJURY",
+          "value": 155
+        },
+        {
+          "enum_name": "WINDED_ABDOMEN",
+          "value": 156
+        }
+      ],
+      "runtime_match": true
+    },
+    {
+      "enum": "PLAYERDATA_ACCESSORY_FREQUENCY",
+      "table_rva": 144520768,
+      "table_hex": "9dfb5c560000000000000000df6e21d501000000000000001bed830b0200000000000000fd1839cc0300000000000000a06071ed0400000000000000",
+      "names_rva": 97621048,
+      "names_hex": "504c41594552444154415f4143434553534f52595f4652455155454e435900414c57415953004f4654454e00534f4d4554494d455300524152454c59004e4556455200",
+      "entries": [
+        {
+          "enum_name": "ALWAYS",
+          "value": 0
+        },
+        {
+          "enum_name": "OFTEN",
+          "value": 1
+        },
+        {
+          "enum_name": "SOMETIMES",
+          "value": 2
+        },
+        {
+          "enum_name": "RARELY",
+          "value": 3
+        },
+        {
+          "enum_name": "NEVER",
+          "value": 4
+        }
+      ],
+      "runtime_match": true
+    },
+    {
+      "enum": "PLAYERDATA_SKINTYPE",
+      "table_rva": 144525360,
+      "table_hex": "62af7dd10000000000000000bc2d69fe0100000000000000c96eb95c0200000000000000",
+      "names_rva": 97625354,
+      "names_hex": "504c41594552444154415f534b494e54595045004e4f524d414c0052495050454400444f5547485900",
+      "entries": [
+        {
+          "enum_name": "NORMAL",
+          "value": 0
+        },
+        {
+          "enum_name": "RIPPED",
+          "value": 1
+        },
+        {
+          "enum_name": "DOUGHY",
+          "value": 2
+        }
+      ],
+      "runtime_match": true
+    },
+    {
+      "enum": "PLAYERDATA_HEADBANDLOGO_POSITION",
+      "table_rva": 144559344,
+      "table_hex": "7bed05490000000000000000a22c08b0010000000000000070225a680200000000000000a4b79e430300000000000000832c5b5b0400000000000000dc0af24c0500000000000000664c3d3c0600000000000000",
+      "names_rva": 97665554,
+      "names_hex": "504c41594552444154415f4845414442414e444c4f474f5f504f534954494f4e004e4f4e450043454e544552005448524545515541525445525f5249474854005249474854004241434b004c454654005448524545515541525445525f4c45465400",
+      "entries": [
+        {
+          "enum_name": "NONE",
+          "value": 0
+        },
+        {
+          "enum_name": "CENTER",
+          "value": 1
+        },
+        {
+          "enum_name": "THREEQUARTER_RIGHT",
+          "value": 2
+        },
+        {
+          "enum_name": "RIGHT",
+          "value": 3
+        },
+        {
+          "enum_name": "BACK",
+          "value": 4
+        },
+        {
+          "enum_name": "LEFT",
+          "value": 5
+        },
+        {
+          "enum_name": "THREEQUARTER_LEFT",
+          "value": 6
+        }
+      ],
+      "runtime_match": true
+    },
+    {
+      "enum": "PLAYERDATA_PLAYTYPE",
+      "table_rva": 144522496,
+      "table_hex": "7bed054900000000000000004efa7a3d0100000000000000ec2cd9860200000000000000ca2253aa03000000000000004bdd277c040000000000000032010d67050000000000000081e4e67006000000000000000110207207000000000000002b33c04f0800000000000000bea92e2009000000000000003e0485950a00000000000000db0c4cef0b0000000000000030d2639f0c000000000000005889aad10d00000000000000cfc9f6540e00000000000000e9352e8c0f00000000000000",
+      "names_rva": 97622791,
+      "names_hex": "504c41594552444154415f504c415954595045004e4f4e450049534f4c4154494f4e0049534f5f504f494e540049534f5f57494e4700504e525f42414c4c48414e444c455200504e525f504f494e5400504e525f57494e4700504e525f53435245454e4552004c4f575f504f535400484947485f504f53540047554152445f504f5354004355545445520048414e444f46460048414e444f46465f42414c4c48414e444c45520053435245454e5f4d49440053435245454e5f33505400",
+      "entries": [
+        {
+          "enum_name": "NONE",
+          "value": 0
+        },
+        {
+          "enum_name": "ISOLATION",
+          "value": 1
+        },
+        {
+          "enum_name": "ISO_POINT",
+          "value": 2
+        },
+        {
+          "enum_name": "ISO_WING",
+          "value": 3
+        },
+        {
+          "enum_name": "PNR_BALLHANDLER",
+          "value": 4
+        },
+        {
+          "enum_name": "PNR_POINT",
+          "value": 5
+        },
+        {
+          "enum_name": "PNR_WING",
+          "value": 6
+        },
+        {
+          "enum_name": "PNR_SCREENER",
+          "value": 7
+        },
+        {
+          "enum_name": "LOW_POST",
+          "value": 8
+        },
+        {
+          "enum_name": "HIGH_POST",
+          "value": 9
+        },
+        {
+          "enum_name": "GUARD_POST",
+          "value": 10
+        },
+        {
+          "enum_name": "CUTTER",
+          "value": 11
+        },
+        {
+          "enum_name": "HANDOFF",
+          "value": 12
+        },
+        {
+          "enum_name": "HANDOFF_BALLHANDLER",
+          "value": 13
+        },
+        {
+          "enum_name": "SCREEN_MID",
+          "value": 14
+        },
+        {
+          "enum_name": "SCREEN_3PT",
+          "value": 15
+        }
+      ],
+      "runtime_match": true
+    }
+  ]
+}

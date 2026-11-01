@@ -4,8 +4,8 @@ import sys
 
 import pytest
 
-from trc_plus.app import create_server
-from trc_plus.desktop import protect_unsaved_changes, run_desktop
+from trace_app.app import create_server
+from trace_app.desktop import protect_unsaved_changes, run_desktop
 
 
 class ClosingEvent:

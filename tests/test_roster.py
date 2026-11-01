@@ -6,8 +6,8 @@ from urllib.request import Request, urlopen
 
 import pytest
 
-from trc_plus.app import create_server
-from trc_plus.roster import RosterError, demo_roster, save_roster, validate_roster
+from trace_app.app import create_server
+from trace_app.roster import RosterError, demo_roster, save_roster, validate_roster
 
 
 def test_round_trip_preserves_custom_fields(tmp_path):
@@ -67,7 +67,7 @@ def test_editor_api_save_reload_validation_and_session_guard(tmp_path):
         with urlopen(base + '/api/session') as response:
             assert json.load(response)['roster']['players'][0]['attributes']['Speed'] == 95
         with urlopen(base + '/') as response:
-            assert b'TRC+' in response.read()
+            assert b'Trace' in response.read()
     finally:
         server.shutdown()
         server.server_close()

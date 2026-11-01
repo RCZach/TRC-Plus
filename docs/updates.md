@@ -1,4 +1,4 @@
-# Publishing and installing TRC+ updates
+# Publishing and installing Trace updates
 
 The public repository is https://github.com/RCZach/TRC-Plus. The app's **Check
 for updates** button looks at its latest stable GitHub Release. Checking never
@@ -8,22 +8,26 @@ before downloading or installing. Internet failures leave the current app usable
 
 Downloads must match the release's SHA-256 digest (or the generated checksum
 sidecar). The ZIP is checked for unsafe paths and missing application files.
-Only public releases with version tags such as `v0.3.0` and a matching
-`TRC+-0.3.0-windows-x64.zip` asset are supported. Drafts, prereleases, older
+Only stable public releases with version tags such as `v0.3.0` and a matching
+`Trace-0.3.0-windows-x64.zip` asset are supported. Drafts, prereleases, older
 versions, and GitHub's source-code ZIPs are not installed.
+Beta prereleases must be downloaded and extracted manually; the in-app updater
+does not offer them.
 
 The separate bundled updater waits for the running app to exit, copies the
 validated release to a sibling folder, preserves the old installation as
-`TRC+-previous-<unique id>`, and restarts the app at the original path. It restores
+`Trace-previous-<unique id>`, and restarts the app at the original path. It restores
 the old app if replacement or starting the executable fails. Each user's
-workspace, settings, logs, and learned mappings remain in `%LOCALAPPDATA%\TRC+`.
+workspace, settings, logs, and learned mappings remain in `%LOCALAPPDATA%\Trace`.
 Update diagnostics are kept under its `updates` subfolder. The portable app must
 be in a folder the user can update; no elevation is requested automatically.
-Close any additional copies of TRC+ before installing an update.
+Close any additional copies of Trace before installing an update. Installing
+Trace over an older TRC+ release requires extracting the renamed app once; the
+first launch copies existing data from `%LOCALAPPDATA%\TRC+`.
 
 ## Publish the next release
 
-1. Make the changes and update `pyproject.toml` and `src/trc_plus/version.py` to
+1. Make the changes and update `pyproject.toml` and `src/trace_app/version.py` to
    the same version. The UI reads the exact version from the running server.
 2. Commit the changes and push to the repository.
 3. Create and push the corresponding tag, for example `v0.4.0`.

@@ -23,6 +23,8 @@ class Field:
     shift: int
     kind: str = 'bits'
     writable: bool = True
+    verified_build: str | None = None
+    allowed_values: tuple | None = None
 
     @property
     def size(self):
@@ -39,6 +41,8 @@ class Field:
             end = next((i for i in range(0, len(raw), 2) if raw[i:i+2] == b'\0\0'), len(raw))
             return raw[:end].decode('utf-16-le')
         value = (int.from_bytes(raw, 'little') >> self.shift) & ((1 << self.bits) - 1)
+        if self.kind == 'injury_days':
+            return value // 1440 if value % 1440 == 0 else None
         return value // 3 + 25 if self.category == 'attributes' else value
 
     def encode(self, record, value):
@@ -62,14 +66,20 @@ class Field:
             return
         if type(value) is not int:
             raise RosterError(f'{self.name}: requires a numeric game ID or integer value.')
+        if self.kind == 'college_reference' and (not 0x10000 <= value <= 0x7FFFFFFFFFFF or value % 8):
+            raise RosterError('College / From: invalid internal catalog reference.')
+        if self.allowed_values is not None and value not in self.allowed_values:
+            raise RosterError(f'{self.name}: choose a supported field value.')
         minimum, maximum = (25, 99) if self.category == 'attributes' else (0, (1 << self.bits) - 1)
+        if self.kind == 'injury_days':
+            maximum = ((1 << self.bits) - 1) // 1440
         if self.category == 'tendencies':
             maximum = 100
         if self.category == 'badges':
             maximum = 5
         if not minimum <= value <= maximum:
             raise RosterError(f'{self.name}: game value must be from {minimum} to {maximum}.')
-        encoded = (value - 25) * 3 if self.category == 'attributes' else value
+        encoded = value * 1440 if self.kind == 'injury_days' else (value - 25) * 3 if self.category == 'attributes' else value
         raw = int.from_bytes(record[self.offset:self.offset + self.size], 'little')
         mask = ((1 << self.bits) - 1) << self.shift
         record[self.offset:self.offset + self.size] = ((raw & ~mask) | (encoded << self.shift)).to_bytes(self.size, 'little')
@@ -88,7 +98,10 @@ class RecordProfile:
             for item in document.get(section, []):
                 field = Field(category, item.get('id', item.get('name')), number(item['offset']),
                               number(item.get('bits', item.get('length'))),
-                              number(item.get('shift', item.get('startBit', 0))), item.get('kind', 'bits'), item.get('writable', True))
+                              number(item.get('shift', item.get('startBit', 0))), item.get('kind', 'bits'), item.get('writable', True),
+                              item.get('verified_build'), (None if item.get('allow_numeric_ids') else
+                              tuple(item['options'].values()) if item.get('options') else
+                              tuple(range(item.get('minimum', 0), item['maximum'] + 1)) if 'maximum' in item else None))
                 if field.bits <= 0 or field.shift < 0 or field.offset < 0 or field.offset + field.size > self.stride:
                     raise RosterError(f'{field.name}: field is outside the player record.')
                 key = (category, field.name)
@@ -113,6 +126,8 @@ class RecordProfile:
             if ('gear', name) in self.fields:
                 self.aliases['gear', label_key(alias)] = name
         self.aliases['accessories', label_key('Headband Logo')] = 'Headband Logo Position'
+        if ('attributes', 'Miscellaneous Durability') in self.fields:
+            self.aliases['attributes', label_key('Miscanellous Durability')] = 'Miscellaneous Durability'
 
     def canonical_name(self, category, name):
         return self.aliases.get((category, label_key(name)), name)
@@ -131,29 +146,38 @@ class RecordProfile:
                 player[category] = normalized
         return result
 
-    def decode(self, record):
+    def decode(self, record, build=None):
         values = {category: {} for category in CATEGORIES.values()}
         for field in self.fields.values():
+            if field.kind == 'college_reference':
+                continue  # References are resolved to portable labels by GameConnection.
+            if field.verified_build and (build or '').casefold() != field.verified_build.casefold():
+                continue
             value = field.decode(record)
+            if field.allowed_values is not None and value not in field.allowed_values:
+                continue
             # Reserved bit patterns are not valid roster values.
             maximum = {'attributes': 99, 'tendencies': 100, 'badges': 5}.get(field.category)
             if value is not None and (maximum is None or value <= maximum):
                 values[field.category][field.name] = value
         return values
 
-    def patch(self, before, player, normalize=None):
+    def patch(self, before, player, normalize=None, build=None):
         after, changes, warnings = bytearray(before), [], []
         for category in CATEGORIES.values():
             for name, value in player.get(category, {}).items():
                 field = self.fields.get((category, name))
                 # Advanced definitions include caches, IDs and overlapping fields.
-                if not field or not field.writable:
+                if (not field or not field.writable or
+                        (field.verified_build and (build or '').casefold() != field.verified_build.casefold())):
                     if category != 'advanced' or value != (field.decode(before) if field else None):
                         warnings.append(f'{name}: no enabled memory mapping; skipped.')
                     continue
                 if value == field.decode(before):
                     continue
                 try:
+                    if field.kind == 'college_reference' and normalize is None:
+                        raise RosterError('College / From requires a validated live catalog.')
                     if normalize:
                         value = normalize(category, name, value)
                     if value == field.decode(before):

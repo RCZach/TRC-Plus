@@ -9,261 +9,313 @@
     "Attributes": [
         {
             "name": "Driving Layup",
+            "ui_group": "Inside Scoring",
             "offset": "0x43C",
             "length": 8
         },
         {
             "name": "Post Fade",
+            "ui_group": "Inside Scoring",
             "offset": "0x43D",
             "length": 8
         },
         {
             "name": "Post Hook",
+            "ui_group": "Inside Scoring",
             "offset": "0x43E",
             "length": 8
         },
         {
             "name": "Post Moves",
+            "ui_group": "Inside Scoring",
             "offset": "0x43F",
             "length": 8
         },
         {
             "name": "Draw Foul",
+            "ui_group": "Inside Scoring",
             "offset": "0x440",
             "length": 8
         },
         {
             "name": "Close Shot",
+            "ui_group": "Outside Scoring",
             "offset": "0x441",
             "length": 8
         },
         {
             "name": "Midrange Shot",
+            "ui_group": "Outside Scoring",
             "offset": "0x442",
             "length": 8
         },
         {
             "name": "3pt Shot",
+            "ui_group": "Outside Scoring",
             "offset": "0x443",
             "length": 8
         },
         {
             "name": "Free Throw",
+            "ui_group": "Outside Scoring",
             "offset": "0x444",
             "length": 8
         },
         {
             "name": "Ball Control",
+            "ui_group": "Playmaking",
             "offset": "0x445",
             "length": 8
         },
         {
             "name": "Passing IQ",
+            "ui_group": "Playmaking",
             "offset": "0x446",
             "length": 8
         },
         {
             "name": "Pass Accuracy",
+            "ui_group": "Playmaking",
             "offset": "0x447",
             "length": 8
         },
         {
             "name": "Offensive Rebound",
+            "ui_group": "Defense",
             "offset": "0x448",
             "length": 8
         },
         {
             "name": "Standing Dunk",
+            "ui_group": "Inside Scoring",
             "offset": "0x451",
             "length": 8
         },
         {
             "name": "Driving Dunk",
+            "ui_group": "Inside Scoring",
             "offset": "0x452",
             "length": 8
         },
         {
             "name": "Shot IQ",
+            "ui_group": "Outside Scoring",
             "offset": "0x45A",
             "length": 8
         },
         {
             "name": "Passing Vision",
+            "ui_group": "Playmaking",
             "offset": "0x46F",
             "length": 8
         },
         {
             "name": "Hands",
+            "ui_group": "Inside Scoring",
             "offset": "0x470",
             "length": 8
         },
         {
             "name": "Defensive Rebound",
+            "ui_group": "Defense",
             "offset": "0x449",
             "length": 8
         },
         {
             "name": "Interior Defense",
+            "ui_group": "Defense",
             "offset": "0x44A",
             "length": 8
         },
         {
             "name": "Perimeter Defense",
+            "ui_group": "Defense",
             "offset": "0x44B",
             "length": 8
         },
         {
             "name": "Block",
+            "ui_group": "Defense",
             "offset": "0x44D",
             "length": 8
         },
         {
             "name": "Steal",
+            "ui_group": "Defense",
             "offset": "0x44E",
             "length": 8
         },
         {
             "name": "Speed",
+            "ui_group": "Athleticism",
             "offset": "0x453",
             "length": 8
         },
         {
             "name": "Speed with Ball",
+            "ui_group": "Playmaking",
             "offset": "0x454",
             "length": 8
         },
         {
             "name": "Vertical",
+            "ui_group": "Athleticism",
             "offset": "0x455",
             "length": 8
         },
         {
             "name": "Strength",
+            "ui_group": "Athleticism",
             "offset": "0x456",
             "length": 8
         },
         {
             "name": "Stamina",
+            "ui_group": "Athleticism",
             "offset": "0x457",
             "length": 8
         },
         {
             "name": "Hustle",
+            "ui_group": "Athleticism",
             "offset": "0x458",
             "length": 8
         },
         {
             "name": "Agility",
+            "ui_group": "Athleticism",
             "offset": "0x459",
             "length": 8
         },
         {
             "name": "Pass Perception",
+            "ui_group": "Defense",
             "offset": "0x44C",
             "length": 8
         },
         {
             "name": "Defensive Consistency",
+            "ui_group": "Defense",
             "offset": "0x44F",
             "length": 8
         },
         {
             "name": "Help Defense IQ",
+            "ui_group": "Defense",
             "offset": "0x450",
             "length": 8
         },
         {
             "name": "Offensive Consistency",
+            "ui_group": "Outside Scoring",
             "offset": "0x45B",
             "length": 8
         },
         {
             "name": "Intangibles",
+            "ui_group": "Miscellaneous",
             "offset": "0x45C",
             "length": 8
         },
         {
             "name": "Potential",
+            "ui_group": "Miscellaneous",
             "offset": "0x45D",
             "length": 8
         },
         {
             "name": "Head Durability",
+            "ui_group": "Durability",
             "offset": "0x45E",
             "length": 8
         },
         {
             "name": "Left Shoulder Durability",
+            "ui_group": "Durability",
             "offset": "0x45F",
             "length": 8
         },
         {
             "name": "Right Shoulder Durability",
+            "ui_group": "Durability",
             "offset": "0x460",
             "length": 8
         },
         {
             "name": "Left Elbow Durability",
+            "ui_group": "Durability",
             "offset": "0x461",
             "length": 8
         },
         {
             "name": "Right Elbow Durability",
+            "ui_group": "Durability",
             "offset": "0x462",
             "length": 8
         },
         {
             "name": "Left Hand Durability",
+            "ui_group": "Durability",
             "offset": "0x463",
             "length": 8
         },
         {
             "name": "Right Hand Durability",
+            "ui_group": "Durability",
             "offset": "0x464",
             "length": 8
         },
         {
             "name": "Left Hip Durability",
+            "ui_group": "Durability",
             "offset": "0x465",
             "length": 8
         },
         {
             "name": "Right Hip Durability",
+            "ui_group": "Durability",
             "offset": "0x466",
             "length": 8
         },
         {
             "name": "Left Knee Durability",
+            "ui_group": "Durability",
             "offset": "0x467",
             "length": 8
         },
         {
             "name": "Right Knee Durability",
+            "ui_group": "Durability",
             "offset": "0x468",
             "length": 8
         },
         {
             "name": "Left Ankle Durability",
+            "ui_group": "Durability",
             "offset": "0x469",
             "length": 8
         },
         {
             "name": "Right Ankle Durability",
+            "ui_group": "Durability",
             "offset": "0x46A",
             "length": 8
         },
         {
             "name": "Left Foot Durability",
+            "ui_group": "Durability",
             "offset": "0x46B",
             "length": 8
         },
         {
             "name": "Right Foot Durability",
+            "ui_group": "Durability",
             "offset": "0x46C",
             "length": 8
         },
         {
-            "name": "Miscanellous Durability",
+            "name": "Miscellaneous Durability",
+            "ui_group": "Durability",
             "offset": "0x46D",
             "length": 8
         }
@@ -271,594 +323,693 @@
     "Tendencies": [
         {
             "name": "Shoot",
+            "ui_group": "Freelance",
             "offset": "0x471",
             "startBit": 0,
             "length": 7
         },
         {
             "name": "Driving Layup Tendency",
+            "ui_group": "Layups and Dunks",
             "offset": "0x471",
             "startBit": 7,
             "length": 7
         },
         {
             "name": "Standing Dunk Tendency",
+            "ui_group": "Layups and Dunks",
             "offset": "0x472",
             "startBit": 6,
             "length": 7
         },
         {
             "name": "Driving Dunk Tendency",
+            "ui_group": "Layups and Dunks",
             "offset": "0x474",
             "startBit": 0,
             "length": 7
         },
         {
             "name": "Flashy Dunk",
+            "ui_group": "Layups and Dunks",
             "offset": "0x474",
             "startBit": 7,
             "length": 7
         },
         {
             "name": "Alley-Oop",
+            "ui_group": "Layups and Dunks",
             "offset": "0x475",
             "startBit": 6,
             "length": 7
         },
         {
             "name": "Putback Dunk",
+            "ui_group": "Layups and Dunks",
             "offset": "0x476",
             "startBit": 5,
             "length": 7
         },
         {
             "name": "Crash",
+            "ui_group": "Layups and Dunks",
             "offset": "0x478",
             "startBit": 0,
             "length": 7
         },
         {
             "name": "Spin Layup",
+            "ui_group": "Layups and Dunks",
             "offset": "0x478",
             "startBit": 7,
             "length": 7
         },
         {
             "name": "Hop Step Layup",
+            "ui_group": "Layups and Dunks",
             "offset": "0x479",
             "startBit": 6,
             "length": 7
         },
         {
             "name": "Euro Step Layup",
+            "ui_group": "Layups and Dunks",
             "offset": "0x47A",
             "startBit": 5,
             "length": 7
         },
         {
             "name": "Floater",
+            "ui_group": "Layups and Dunks",
             "offset": "0x47C",
             "startBit": 0,
             "length": 7
         },
         {
             "name": "Step Through Shot",
+            "ui_group": "Jump Shooting",
             "offset": "0x47C",
             "startBit": 7,
             "length": 7
         },
         {
             "name": "Shot Under Basket",
+            "ui_group": "Jump Shooting",
             "offset": "0x47D",
             "startBit": 6,
             "length": 7
         },
         {
             "name": "Shot Close",
+            "ui_group": "Jump Shooting",
             "offset": "0x47E",
             "startBit": 5,
             "length": 7
         },
         {
             "name": "Shot Close Left",
+            "ui_group": "Jump Shooting",
             "offset": "0x480",
             "startBit": 0,
             "length": 7
         },
         {
             "name": "Shot Close Middle",
+            "ui_group": "Jump Shooting",
             "offset": "0x480",
             "startBit": 7,
             "length": 7
         },
         {
             "name": "Shot Close Right",
+            "ui_group": "Jump Shooting",
             "offset": "0x481",
             "startBit": 6,
             "length": 7
         },
         {
             "name": "Shot Mid",
+            "ui_group": "Jump Shooting",
             "offset": "0x482",
             "startBit": 5,
             "length": 7
         },
         {
             "name": "Spot Up Shot Mid",
+            "ui_group": "Jump Shooting",
             "offset": "0x484",
             "startBit": 0,
             "length": 7
         },
         {
             "name": "Off Screen Shot Mid",
+            "ui_group": "Jump Shooting",
             "offset": "0x484",
             "startBit": 7,
             "length": 7
         },
         {
             "name": "Shot Mid Left",
+            "ui_group": "Jump Shooting",
             "offset": "0x485",
             "startBit": 6,
             "length": 7
         },
         {
             "name": "Shot Mid Left Center",
+            "ui_group": "Jump Shooting",
             "offset": "0x486",
             "startBit": 5,
             "length": 7
         },
         {
             "name": "Shot Mid Center",
+            "ui_group": "Jump Shooting",
             "offset": "0x488",
             "startBit": 0,
             "length": 7
         },
         {
             "name": "Shot Mid Right Center",
+            "ui_group": "Jump Shooting",
             "offset": "0x488",
             "startBit": 7,
             "length": 7
         },
         {
             "name": "Shot Mid Right",
+            "ui_group": "Jump Shooting",
             "offset": "0x489",
             "startBit": 6,
             "length": 7
         },
         {
             "name": "Shot 3pt",
+            "ui_group": "Jump Shooting",
             "offset": "0x48A",
             "startBit": 5,
             "length": 7
         },
         {
             "name": "Spot Up Shot 3pt",
+            "ui_group": "Jump Shooting",
             "offset": "0x48C",
             "startBit": 0,
             "length": 7
         },
         {
             "name": "Off Screen Shot 3pt",
+            "ui_group": "Jump Shooting",
             "offset": "0x48C",
             "startBit": 7,
             "length": 7
         },
         {
             "name": "Shot 3pt Left",
+            "ui_group": "Jump Shooting",
             "offset": "0x48D",
             "startBit": 6,
             "length": 7
         },
         {
             "name": "Shot 3pt Left Center",
+            "ui_group": "Jump Shooting",
             "offset": "0x48E",
             "startBit": 5,
             "length": 7
         },
         {
             "name": "Shot 3pt Center",
+            "ui_group": "Jump Shooting",
             "offset": "0x490",
             "startBit": 0,
             "length": 7
         },
         {
             "name": "Shot 3pt Right Center",
+            "ui_group": "Jump Shooting",
             "offset": "0x490",
             "startBit": 7,
             "length": 7
         },
         {
             "name": "Shot 3pt Right",
+            "ui_group": "Jump Shooting",
             "offset": "0x491",
             "startBit": 6,
             "length": 7
         },
         {
             "name": "Contested Jumper 3pt",
+            "ui_group": "Jump Shooting",
             "offset": "0x492",
             "startBit": 5,
             "length": 7
         },
         {
             "name": "Contested Jumper Mid",
+            "ui_group": "Jump Shooting",
             "offset": "0x494",
             "startBit": 0,
             "length": 7
         },
         {
             "name": "Stepback Jumper 3pt",
+            "ui_group": "Jump Shooting",
             "offset": "0x494",
             "startBit": 7,
             "length": 7
         },
         {
             "name": "Stepback Jumper Mid",
+            "ui_group": "Jump Shooting",
             "offset": "0x495",
             "startBit": 6,
             "length": 7
         },
         {
             "name": "Spin Jumper Tendency",
+            "ui_group": "Jump Shooting",
             "offset": "0x496",
             "startBit": 5,
             "length": 7
         },
         {
             "name": "Transition Pull Up 3pt",
+            "ui_group": "Jump Shooting",
             "offset": "0x498",
             "startBit": 0,
             "length": 7
         },
         {
             "name": "Drive Pull Up 3pt",
+            "ui_group": "Jump Shooting",
             "offset": "0x498",
             "startBit": 7,
             "length": 7
         },
         {
             "name": "Drive Pull Up Mid",
+            "ui_group": "Jump Shooting",
             "offset": "0x499",
             "startBit": 6,
             "length": 7
         },
         {
             "name": "Use Glass",
+            "ui_group": "Jump Shooting",
             "offset": "0x49A",
             "startBit": 5,
             "length": 7
         },
         {
             "name": "Drive",
+            "ui_group": "Driving",
             "offset": "0x49C",
             "startBit": 0,
             "length": 7
         },
         {
             "name": "Spot Up Drive",
+            "ui_group": "Driving",
             "offset": "0x49C",
             "startBit": 7,
             "length": 7
         },
         {
             "name": "Off Screen Drive",
+            "ui_group": "Driving",
             "offset": "0x49D",
             "startBit": 6,
             "length": 7
         },
         {
             "name": "Drive Right",
+            "ui_group": "Driving",
             "offset": "0x49E",
             "startBit": 5,
             "length": 7
         },
         {
             "name": "Triple Threat Pump Fake",
+            "ui_group": "Drive Setup",
             "offset": "0x4A0",
             "startBit": 0,
             "length": 7
         },
         {
             "name": "Triple Threat Jab Step",
+            "ui_group": "Drive Setup",
             "offset": "0x4A0",
             "startBit": 7,
             "length": 7
         },
         {
             "name": "Triple Threat Idle",
+            "ui_group": "Drive Setup",
             "offset": "0x4A1",
             "startBit": 6,
             "length": 7
         },
         {
             "name": "Triple Threat Shoot",
+            "ui_group": "Drive Setup",
             "offset": "0x4A2",
             "startBit": 5,
             "length": 7
         },
         {
             "name": "Setup With Sizeup",
+            "ui_group": "Drive Setup",
             "offset": "0x4A4",
             "startBit": 0,
             "length": 7
         },
         {
             "name": "Setup With Hesitation",
+            "ui_group": "Drive Setup",
             "offset": "0x4A4",
             "startBit": 7,
             "length": 7
         },
         {
             "name": "No Setup Dribble",
+            "ui_group": "Drive Setup",
             "offset": "0x4A5",
             "startBit": 6,
             "length": 7
         },
         {
             "name": "Driving Crossover",
+            "ui_group": "Driving",
             "offset": "0x4A6",
             "startBit": 5,
             "length": 7
         },
         {
             "name": "Driving Spin",
+            "ui_group": "Driving",
             "offset": "0x4A8",
             "startBit": 0,
             "length": 7
         },
         {
             "name": "Driving Step Back",
+            "ui_group": "Driving",
             "offset": "0x4A8",
             "startBit": 7,
             "length": 7
         },
         {
             "name": "Driving Half Spin",
+            "ui_group": "Driving",
             "offset": "0x4A9",
             "startBit": 6,
             "length": 7
         },
         {
             "name": "Driving Double Crossover",
+            "ui_group": "Driving",
             "offset": "0x4AA",
             "startBit": 5,
             "length": 7
         },
         {
             "name": "Driving Behind The Back",
+            "ui_group": "Driving",
             "offset": "0x4AC",
             "startBit": 0,
             "length": 7
         },
         {
             "name": "Driving Dribble Hesitation",
+            "ui_group": "Driving",
             "offset": "0x4AC",
             "startBit": 7,
             "length": 7
         },
         {
             "name": "Driving In And Out",
+            "ui_group": "Driving",
             "offset": "0x4AD",
             "startBit": 6,
             "length": 7
         },
         {
             "name": "No Driving Dribble Move",
+            "ui_group": "Driving",
             "offset": "0x4AE",
             "startBit": 5,
             "length": 7
         },
         {
             "name": "Attack Strong On Drive",
+            "ui_group": "Driving",
             "offset": "0x4B0",
             "startBit": 0,
             "length": 7
         },
         {
             "name": "Dish To Open Man",
+            "ui_group": "Passing",
             "offset": "0x4B0",
             "startBit": 7,
             "length": 7
         },
         {
             "name": "Touches",
+            "ui_group": "Freelance",
             "offset": "0x4B1",
             "startBit": 6,
             "length": 7
         },
         {
             "name": "Post Up",
+            "ui_group": "Post Game",
             "offset": "0x4B2",
             "startBit": 5,
             "length": 7
         },
         {
             "name": "Roll Vs Pop",
+            "ui_group": "Freelance",
             "offset": "0x4B4",
             "startBit": 0,
             "length": 7
         },
         {
             "name": "Transition Spot Up",
+            "ui_group": "Freelance",
             "offset": "0x4B4",
             "startBit": 7,
             "length": 7
         },
         {
             "name": "Iso Vs Elite Defender",
+            "ui_group": "Freelance",
             "offset": "0x4B5",
             "startBit": 6,
             "length": 7
         },
         {
             "name": "Iso Vs Good Defender",
+            "ui_group": "Freelance",
             "offset": "0x4B6",
             "startBit": 5,
             "length": 7
         },
         {
             "name": "Iso Vs Average Defender",
+            "ui_group": "Freelance",
             "offset": "0x4B8",
             "startBit": 0,
             "length": 7
         },
         {
             "name": "Iso Vs Poor Defender",
+            "ui_group": "Freelance",
             "offset": "0x4B8",
             "startBit": 7,
             "length": 7
         },
         {
             "name": "Play Discipline",
+            "ui_group": "Freelance",
             "offset": "0x4B9",
             "startBit": 6,
             "length": 7
         },
         {
             "name": "Post Shimmy Shot",
+            "ui_group": "Post Game",
             "offset": "0x4BA",
             "startBit": 5,
             "length": 7
         },
         {
             "name": "Post Face Up",
+            "ui_group": "Post Game",
             "offset": "0x4BC",
             "startBit": 0,
             "length": 7
         },
         {
             "name": "Post Back Down",
+            "ui_group": "Post Game",
             "offset": "0x4BC",
             "startBit": 7,
             "length": 7
         },
         {
             "name": "Post Aggressive Backdown",
+            "ui_group": "Post Game",
             "offset": "0x4BD",
             "startBit": 6,
             "length": 7
         },
         {
             "name": "Shoot From Post",
+            "ui_group": "Post Game",
             "offset": "0x4BE",
             "startBit": 5,
             "length": 7
         },
         {
             "name": "Post Hook Left",
+            "ui_group": "Post Game",
             "offset": "0x4C0",
             "startBit": 0,
             "length": 7
         },
         {
             "name": "Post Hook Right",
+            "ui_group": "Post Game",
             "offset": "0x4C0",
             "startBit": 7,
             "length": 7
         },
         {
             "name": "Post Fade Left",
+            "ui_group": "Post Game",
             "offset": "0x4C1",
             "startBit": 6,
             "length": 7
         },
         {
             "name": "Post Fade Right",
+            "ui_group": "Post Game",
             "offset": "0x4C2",
             "startBit": 5,
             "length": 7
         },
         {
             "name": "Post Up And Under",
+            "ui_group": "Post Game",
             "offset": "0x4C4",
             "startBit": 0,
             "length": 7
         },
         {
             "name": "Post Hop Shot Tendency",
+            "ui_group": "Post Game",
             "offset": "0x4C4",
             "startBit": 7,
             "length": 7
         },
         {
             "name": "Post Step Back Shot",
+            "ui_group": "Post Game",
             "offset": "0x4C5",
             "startBit": 6,
             "length": 7
         },
         {
             "name": "Post Drive",
+            "ui_group": "Post Game",
             "offset": "0x4C6",
             "startBit": 5,
             "length": 7
         },
         {
             "name": "Post Spin",
+            "ui_group": "Post Game",
             "offset": "0x4C8",
             "startBit": 0,
             "length": 7
         },
         {
             "name": "Post Drop Step",
+            "ui_group": "Post Game",
             "offset": "0x4C8",
             "startBit": 7,
             "length": 7
         },
         {
             "name": "Post Hop Step",
+            "ui_group": "Post Game",
             "offset": "0x4C9",
             "startBit": 6,
             "length": 7
         },
         {
             "name": "Flashy Pass",
+            "ui_group": "Passing",
             "offset": "0x4CA",
             "startBit": 5,
             "length": 7
         },
         {
             "name": "Alley Oop Pass",
+            "ui_group": "Passing",
             "offset": "0x4CC",
             "startBit": 0,
             "length": 7
         },
         {
             "name": "Pass Interception",
+            "ui_group": "Defense",
             "offset": "0x4CC",
             "startBit": 7,
             "length": 7
         },
         {
             "name": "Take Charge",
+            "ui_group": "Defense",
             "offset": "0x4CD",
             "startBit": 6,
             "length": 7
         },
         {
             "name": "On Ball Steal",
+            "ui_group": "Defense",
             "offset": "0x4CE",
             "startBit": 5,
             "length": 7
         },
         {
             "name": "Contest Shot",
+            "ui_group": "Defense",
             "offset": "0x4D0",
             "startBit": 0,
             "length": 7
         },
         {
             "name": "Block Shot",
+            "ui_group": "Defense",
             "offset": "0x4D0",
             "startBit": 7,
             "length": 7
         },
         {
             "name": "Foul",
+            "ui_group": "Defense",
             "offset": "0x4D1",
             "startBit": 6,
             "length": 7
         },
         {
             "name": "Hard Foul",
+            "ui_group": "Defense",
             "offset": "0x4D2",
             "startBit": 5,
             "length": 7
@@ -867,367 +1018,1261 @@
     "Badges": [
         {
             "name": "Float Game",
+            "ui_group": "Finishing",
             "offset": "0x4D6",
             "startBit": 1,
             "length": 3
         },
         {
             "name": "Posterizer",
+            "ui_group": "Finishing",
             "offset": "0x4D6",
             "startBit": 4,
             "length": 3
         },
         {
             "name": "Rise Up",
+            "ui_group": "Finishing",
             "offset": "0x4D6",
             "startBit": 7,
             "length": 3
         },
         {
             "name": "Aerial Wizard",
+            "ui_group": "Finishing",
             "offset": "0x4D7",
             "startBit": 2,
             "length": 3
         },
         {
             "name": "Hook Specialist",
+            "ui_group": "Finishing",
             "offset": "0x4D7",
             "startBit": 5,
             "length": 3
         },
         {
             "name": "Layup Mixmaster",
+            "ui_group": "Finishing",
             "offset": "0x4DF",
             "startBit": 0,
             "length": 3
         },
         {
             "name": "Paint Prodigy",
+            "ui_group": "Finishing",
             "offset": "0x4DF",
             "startBit": 3,
             "length": 3
         },
         {
             "name": "Physical Finisher",
+            "ui_group": "Finishing",
             "offset": "0x4E0",
             "startBit": 0,
             "length": 3
         },
         {
             "name": "Post Powerhouse",
+            "ui_group": "Finishing",
             "offset": "0x4E0",
             "startBit": 3,
             "length": 3
         },
         {
             "name": "Ghost Stepper",
+            "ui_group": "Finishing",
             "offset": "0x4E3",
             "startBit": 3,
             "length": 3
         },
         {
             "name": "Post Spin Catalyst",
+            "ui_group": "Finishing",
             "offset": "0x4E4",
             "startBit": 0,
             "length": 3
         },
         {
             "name": "Post Fade Phenom",
+            "ui_group": "Shooting",
             "offset": "0x4D8",
             "startBit": 0,
             "length": 3
         },
         {
             "name": "Deadeye",
+            "ui_group": "Shooting",
             "offset": "0x4D8",
             "startBit": 3,
             "length": 3
         },
         {
             "name": "Limitless Range",
+            "ui_group": "Shooting",
             "offset": "0x4D8",
             "startBit": 6,
             "length": 3
         },
         {
             "name": "Slippery Off-Ball",
+            "ui_group": "Physicals",
             "offset": "0x4D9",
             "startBit": 1,
             "length": 3
         },
         {
             "name": "Mini Marksman",
+            "ui_group": "Shooting",
             "offset": "0x4E0",
             "startBit": 6,
             "length": 3
         },
         {
             "name": "Set and Fire",
+            "ui_group": "Shooting",
             "offset": "0x4E4",
             "startBit": 3,
             "length": 3
         },
         {
             "name": "Arc Cadence",
+            "ui_group": "Shooting",
             "offset": "0x4E4",
             "startBit": 6,
             "length": 3
         },
         {
             "name": "Static Middy",
+            "ui_group": "Shooting",
             "offset": "0x4E5",
             "startBit": 1,
             "length": 3
         },
         {
             "name": "Smooth Operator",
+            "ui_group": "Shooting",
             "offset": "0x4E5",
             "startBit": 4,
             "length": 3
         },
         {
             "name": "Quick Trigger",
+            "ui_group": "Shooting",
             "offset": "0x4E5",
             "startBit": 7,
             "length": 3
         },
         {
             "name": "Bail Out",
+            "ui_group": "Playmaking",
             "offset": "0x4D9",
             "startBit": 4,
             "length": 3
         },
         {
             "name": "Break Starter",
+            "ui_group": "Playmaking",
             "offset": "0x4D9",
             "startBit": 7,
             "length": 3
         },
         {
             "name": "Dimer",
+            "ui_group": "Playmaking",
             "offset": "0x4DA",
             "startBit": 2,
             "length": 3
         },
         {
             "name": "Handles for Days",
+            "ui_group": "Playmaking",
             "offset": "0x4DA",
             "startBit": 5,
             "length": 3
         },
         {
             "name": "Unpluckable",
+            "ui_group": "Playmaking",
             "offset": "0x4DB",
             "startBit": 0,
             "length": 3
         },
         {
             "name": "Versatile Visionary",
+            "ui_group": "Playmaking",
             "offset": "0x4E1",
             "startBit": 1,
             "length": 3
         },
         {
             "name": "Ankle Assassin",
+            "ui_group": "Playmaking",
             "offset": "0x4E1",
             "startBit": 4,
             "length": 3
         },
         {
             "name": "Lightning Launch",
+            "ui_group": "Playmaking",
             "offset": "0x4E1",
             "startBit": 7,
             "length": 3
         },
         {
             "name": "Strong Handle",
+            "ui_group": "Playmaking",
             "offset": "0x4E2",
             "startBit": 2,
             "length": 3
         },
         {
             "name": "Pace",
+            "ui_group": "Playmaking",
             "offset": "0x4E6",
             "startBit": 2,
             "length": 3
         },
         {
             "name": "Post Lockdown",
+            "ui_group": "Defense",
             "offset": "0x4DB",
             "startBit": 3,
             "length": 3
         },
         {
             "name": "Challenger",
+            "ui_group": "Defense",
             "offset": "0x4DC",
             "startBit": 0,
             "length": 3
         },
         {
             "name": "Off-Ball Pest",
+            "ui_group": "Defense",
             "offset": "0x4DC",
             "startBit": 3,
             "length": 3
         },
         {
             "name": "Pick Dodger",
+            "ui_group": "Defense",
             "offset": "0x4DC",
             "startBit": 6,
             "length": 3
         },
         {
             "name": "Glove",
+            "ui_group": "Defense",
             "offset": "0x4DD",
             "startBit": 1,
             "length": 3
         },
         {
             "name": "Interceptor",
+            "ui_group": "Defense",
             "offset": "0x4DD",
             "startBit": 4,
             "length": 3
         },
         {
             "name": "Pogo Stick",
+            "ui_group": "Physicals",
             "offset": "0x4DD",
             "startBit": 7,
             "length": 3
         },
         {
             "name": "High-Flying Denier",
+            "ui_group": "Defense",
             "offset": "0x4E2",
             "startBit": 5,
             "length": 3
         },
         {
             "name": "Paint Patroller",
+            "ui_group": "Defense",
             "offset": "0x4E3",
             "startBit": 0,
             "length": 3
         },
         {
             "name": "Wall Up",
+            "ui_group": "Defense",
             "offset": "0x4E6",
             "startBit": 5,
             "length": 3
         },
         {
             "name": "Seatbelt",
+            "ui_group": "Defense",
             "offset": "0x4E7",
             "startBit": 0,
             "length": 3
         },
         {
             "name": "Ankle Braces",
+            "ui_group": "Defense",
             "offset": "0x4E7",
             "startBit": 3,
             "length": 3
         },
         {
             "name": "Brick Wall",
+            "ui_group": "Physicals",
             "offset": "0x4DE",
             "startBit": 2,
             "length": 3
         },
         {
             "name": "Immovable Enforcer",
+            "ui_group": "Defense",
             "offset": "0x4DE",
             "startBit": 5,
             "length": 3
         },
         {
             "name": "Flash",
+            "ui_group": "Physicals",
             "offset": "0x4E9",
             "startBit": 7,
             "length": 3
         },
         {
             "name": "Work Horse",
+            "ui_group": "Physicals",
             "offset": "0x4EA",
             "startBit": 2,
             "length": 3
         },
         {
             "name": "Bruiser",
+            "ui_group": "Physicals",
             "offset": "0x4EA",
             "startBit": 5,
             "length": 3
         },
         {
             "name": "Crasher",
+            "ui_group": "Rebounding",
             "offset": "0x4E8",
             "startBit": 0,
             "length": 3
         },
         {
             "name": "Possession Closer",
+            "ui_group": "Rebounding",
             "offset": "0x4E8",
             "startBit": 3,
             "length": 3
         },
         {
             "name": "Sync Snatcher",
+            "ui_group": "Rebounding",
             "offset": "0x4E8",
             "startBit": 6,
             "length": 3
         },
         {
             "name": "Boxout Boss",
+            "ui_group": "Rebounding",
             "offset": "0x4E9",
             "startBit": 1,
             "length": 3
         },
         {
             "name": "Breaker",
+            "ui_group": "Rebounding",
             "offset": "0x4E9",
             "startBit": 4,
             "length": 3
+        },
+        {
+            "name": "Reserved",
+            "ui_group": "Personality",
+            "offset": "0x4d3",
+            "length": 1,
+            "startBit": 5,
+            "verified_build": "6AD2E48C:36532000",
+            "options": {
+                "Unequipped": 0,
+                "Equipped": 1
+            },
+            "verification": {
+                "method": "named setter code matched in running exact build",
+                "setter": "PLAYERDATA::SetLowFriendlinessBadge",
+                "setter_rva": "0x2fccaf0"
+            }
+        },
+        {
+            "name": "Friendly",
+            "ui_group": "Personality",
+            "offset": "0x4d3",
+            "length": 1,
+            "startBit": 6,
+            "verified_build": "6AD2E48C:36532000",
+            "options": {
+                "Unequipped": 0,
+                "Equipped": 1
+            },
+            "verification": {
+                "method": "named setter code matched in running exact build",
+                "setter": "PLAYERDATA::SetHighFriendlinessBadge",
+                "setter_rva": "0x2fccbc0"
+            }
+        },
+        {
+            "name": "Team Player",
+            "ui_group": "Personality",
+            "offset": "0x4d3",
+            "length": 1,
+            "startBit": 7,
+            "verified_build": "6AD2E48C:36532000",
+            "options": {
+                "Unequipped": 0,
+                "Equipped": 1
+            },
+            "verification": {
+                "method": "named setter code matched in running exact build",
+                "setter": "PLAYERDATA::SetSmallEgoBadge",
+                "setter_rva": "0x2fccc90"
+            }
+        },
+        {
+            "name": "Extremely Confident",
+            "ui_group": "Personality",
+            "offset": "0x4d4",
+            "length": 1,
+            "startBit": 0,
+            "verified_build": "6AD2E48C:36532000",
+            "options": {
+                "Unequipped": 0,
+                "Equipped": 1
+            },
+            "verification": {
+                "method": "named setter code matched in running exact build",
+                "setter": "PLAYERDATA::SetBigEgoBadge",
+                "setter_rva": "0x2fccd60"
+            }
+        },
+        {
+            "name": "Keep It Real",
+            "ui_group": "Personality",
+            "offset": "0x4d4",
+            "length": 1,
+            "startBit": 1,
+            "verified_build": "6AD2E48C:36532000",
+            "options": {
+                "Unequipped": 0,
+                "Equipped": 1
+            },
+            "verification": {
+                "method": "named setter code matched in running exact build",
+                "setter": "PLAYERDATA::SetNegativelyMotivatedBadge",
+                "setter_rva": "0x2fcce30"
+            }
+        },
+        {
+            "name": "Pat My Back",
+            "ui_group": "Personality",
+            "offset": "0x4d4",
+            "length": 1,
+            "startBit": 2,
+            "verified_build": "6AD2E48C:36532000",
+            "options": {
+                "Unequipped": 0,
+                "Equipped": 1
+            },
+            "verification": {
+                "method": "named setter code matched in running exact build",
+                "setter": "PLAYERDATA::SetPositivelyMotivatedBadge",
+                "setter_rva": "0x2fccf00"
+            }
+        },
+        {
+            "name": "Expressive",
+            "ui_group": "Personality",
+            "offset": "0x4d4",
+            "length": 1,
+            "startBit": 3,
+            "verified_build": "6AD2E48C:36532000",
+            "options": {
+                "Unequipped": 0,
+                "Equipped": 1
+            },
+            "verification": {
+                "method": "named setter code matched in running exact build",
+                "setter": "PLAYERDATA::SetExpressiveBadge",
+                "setter_rva": "0x2fccfd0"
+            }
+        },
+        {
+            "name": "Unpredictable",
+            "ui_group": "Personality",
+            "offset": "0x4d4",
+            "length": 1,
+            "startBit": 4,
+            "verified_build": "6AD2E48C:36532000",
+            "options": {
+                "Unequipped": 0,
+                "Equipped": 1
+            },
+            "verification": {
+                "method": "named setter code matched in running exact build",
+                "setter": "PLAYERDATA::SetUnpredictableBadge",
+                "setter_rva": "0x2fcd0a0"
+            }
+        },
+        {
+            "name": "Laid Back",
+            "ui_group": "Personality",
+            "offset": "0x4d4",
+            "length": 1,
+            "startBit": 5,
+            "verified_build": "6AD2E48C:36532000",
+            "options": {
+                "Unequipped": 0,
+                "Equipped": 1
+            },
+            "verification": {
+                "method": "named setter code matched in running exact build",
+                "setter": "PLAYERDATA::SetLaidBackBadge",
+                "setter_rva": "0x2fcd170"
+            }
+        },
+        {
+            "name": "Media Ringmaster",
+            "ui_group": "Personality",
+            "offset": "0x4d4",
+            "length": 1,
+            "startBit": 6,
+            "verified_build": "6AD2E48C:36532000",
+            "options": {
+                "Unequipped": 0,
+                "Equipped": 1
+            },
+            "verification": {
+                "method": "named setter code matched in running exact build",
+                "setter": "PLAYERDATA::SetBigMarketPlayerBadge",
+                "setter_rva": "0x2fcd240"
+            }
+        },
+        {
+            "name": "Warm Weather Fan",
+            "ui_group": "Personality",
+            "offset": "0x4d4",
+            "length": 1,
+            "startBit": 7,
+            "verified_build": "6AD2E48C:36532000",
+            "options": {
+                "Unequipped": 0,
+                "Equipped": 1
+            },
+            "verification": {
+                "method": "named setter code matched in running exact build",
+                "setter": "PLAYERDATA::SetFairWeatherPlayerBadge",
+                "setter_rva": "0x2fcd310"
+            }
+        },
+        {
+            "name": "Finance Savvy",
+            "ui_group": "Personality",
+            "offset": "0x4d5",
+            "length": 1,
+            "startBit": 0,
+            "verified_build": "6AD2E48C:36532000",
+            "options": {
+                "Unequipped": 0,
+                "Equipped": 1
+            },
+            "verification": {
+                "method": "named setter code matched in running exact build",
+                "setter": "PLAYERDATA::SetTaxAvoiderPlayerBadge",
+                "setter_rva": "0x2fcd3e0"
+            }
+        },
+        {
+            "name": "Alpha Dog",
+            "ui_group": "Personality",
+            "offset": "0x4d5",
+            "length": 1,
+            "startBit": 1,
+            "verified_build": "6AD2E48C:36532000",
+            "options": {
+                "Unequipped": 0,
+                "Equipped": 1
+            },
+            "verification": {
+                "method": "named setter code matched in running exact build",
+                "setter": "PLAYERDATA::SetAlphaDogBadge",
+                "setter_rva": "0x2fcd4b0"
+            }
+        },
+        {
+            "name": "Enforcer",
+            "ui_group": "Personality",
+            "offset": "0x4d5",
+            "length": 1,
+            "startBit": 2,
+            "verified_build": "6AD2E48C:36532000",
+            "options": {
+                "Unequipped": 0,
+                "Equipped": 1
+            },
+            "verification": {
+                "method": "named setter code matched in running exact build",
+                "setter": "PLAYERDATA::SetEnforcerBadge",
+                "setter_rva": "0x2fcd580"
+            }
+        },
+        {
+            "name": "Work Ethic",
+            "ui_group": "Personality",
+            "offset": "0x4d5",
+            "length": 3,
+            "startBit": 3,
+            "verified_build": "6AD2E48C:36532000",
+            "options": {
+                "Unequipped": 0,
+                "Bronze": 1,
+                "Silver": 2,
+                "Gold": 3,
+                "Hall of Fame": 4
+            },
+            "verification": {
+                "method": "named setter code matched in running exact build",
+                "setter": "PLAYERDATA::SetWorkEthicBadge",
+                "setter_rva": "0x2fcd650"
+            }
+        },
+        {
+            "name": "Marketability",
+            "ui_group": "Personality",
+            "offset": "0x4d5",
+            "length": 3,
+            "startBit": 6,
+            "verified_build": "6AD2E48C:36532000",
+            "options": {
+                "Unequipped": 0,
+                "Bronze": 1,
+                "Silver": 2,
+                "Gold": 3,
+                "Hall of Fame": 4
+            },
+            "verification": {
+                "method": "named setter code matched in running exact build",
+                "setter": "PLAYERDATA::SetMarketabilityBadge",
+                "setter_rva": "0x2fcd730"
+            }
         }
     ],
     "Vitals": [
-        {
-            "name": "Position",
-            "offset": "0x12D",
-            "startBit": 0,
-            "length": 3
-        },
-        {
-            "name": "Secondary Position",
-            "offset": "0x12D",
-            "startBit": 3,
-            "length": 3
-        },
-        {
-            "name": "Play Initiator",
-            "offset": "0x2D6",
-            "startBit": 5,
-            "length": 1
-        },
-        {
-            "name": "Play Type 1",
-            "offset": "0x1A8",
-            "startBit": 0,
-            "length": 4
-        },
-        {
-            "name": "Play Type 2",
-            "offset": "0x1A8",
-            "startBit": 4,
-            "length": 4
-        },
-        {
-            "name": "Play Type 3",
-            "offset": "0x1A9",
-            "startBit": 0,
-            "length": 4
-        },
-        {
-            "name": "Play Type 4",
-            "offset": "0x1A9",
-            "startBit": 4,
-            "length": 4
-        }
-    ],
+    {
+      "name": "Injury 2 Duration Days",
+      "offset": "0x358",
+      "bits": 20,
+      "shift": 0,
+      "kind": "injury_days",
+      "minimum": 0,
+      "maximum": 728,
+      "verified_build": "6AD2E48C:36532000"
+    },
+    {
+      "name": "Injury 1 Duration Days",
+      "offset": "0x354",
+      "bits": 20,
+      "shift": 0,
+      "kind": "injury_days",
+      "minimum": 0,
+      "maximum": 728,
+      "verified_build": "6AD2E48C:36532000"
+    },
+    {
+      "name": "FIBA Team",
+      "offset": "0x420",
+      "bits": 16,
+      "shift": 16,
+      "options": {
+        "None": 65535,
+        "USA": 69
+      },
+      "verified_build": "6AD2E48C:36532000",
+      "allow_numeric_ids": true
+    },
+    {
+      "name": "High School",
+      "offset": "0x100",
+      "bits": 16,
+      "shift": 16,
+      "options": {
+        "Anaheim": 47,
+        "Anchorage": 48,
+        "Atlanta": 50,
+        "Austin": 51,
+        "Baltimore": 52,
+        "Boston": 53,
+        "Brooklyn": 55,
+        "Buffalo": 56,
+        "Charlotte": 57,
+        "Chicago": 58,
+        "Cincinnati": 59,
+        "Cleveland": 60,
+        "Columbus": 61,
+        "Dallas": 62,
+        "Denver": 63,
+        "Detroit": 64,
+        "Hartford": 65,
+        "Houston": 67,
+        "Indianapolis": 68,
+        "Jacksonville": 69,
+        "Kansas City": 70,
+        "Las Vegas": 71,
+        "Los Angeles": 72,
+        "Louisville": 73,
+        "Memphis": 74,
+        "Miami": 75,
+        "Milwaukee": 76,
+        "Minneapolis": 77,
+        "Montreal": 78,
+        "Nashville": 79,
+        "New Orleans": 80,
+        "New York": 81,
+        "Oakland": 82,
+        "Oklahoma City": 83,
+        "Omaha": 84,
+        "Orlando": 85,
+        "Philadelphia": 86,
+        "Phoenix": 87,
+        "Pittsburgh": 88,
+        "Providence": 90,
+        "Richmond": 91,
+        "Sacramento": 92,
+        "Salt Lake City": 93,
+        "San Antonio": 94,
+        "San Diego": 95,
+        "San Francisco": 96,
+        "San Jose": 97,
+        "Seattle": 98,
+        "St Louis": 99,
+        "Tampa": 100,
+        "Toronto": 101,
+        "Vancouver": 102,
+        "Virginia Beach": 103,
+        "Washington": 104,
+        "East Rutherford": 105,
+        "Albuquerque": 106,
+        "Colorado Springs": 107,
+        "El Paso": 108,
+        "Fort Worth": 109,
+        "Fresno": 110,
+        "Long Beach": 111,
+        "Mesa": 112,
+        "Raleigh": 113,
+        "Tucson": 114,
+        "Wilmington": 115,
+        "Uniondale": 116,
+        "Mississauga": 118,
+        "White Plains": 119,
+        "Canton": 120,
+        "Fort Wayne": 121,
+        "Walker": 122,
+        "Hoffman Estates": 123,
+        "Oshkosh": 124,
+        "College Park": 125,
+        "Erie": 126,
+        "Greensboro": 127,
+        "Lakeland": 128,
+        "Des Moines": 129,
+        "Southaven": 130,
+        "Sioux Falls": 131,
+        "Ontario": 132,
+        "Prescott Valley": 133,
+        "Santa Cruz": 134,
+        "El Segundo": 135,
+        "Stockton": 136,
+        "Cedar Park": 137,
+        "Edinburg": 138,
+        "Taylorsville": 139,
+        "Frisco": 140,
+        "Birmingham": 141,
+        "Berlin": 144,
+        "Istanbul": 145,
+        "Bamberg": 146,
+        "Kyiv": 147,
+        "Belgrade": 148,
+        "Moscow": 149,
+        "Milan": 150,
+        "Barcelona": 151,
+        "Munich": 152,
+        "Nanterre": 153,
+        "Vitoria": 154,
+        "Vilnius": 155,
+        "Krasnodar": 156,
+        "Tel Aviv": 157,
+        "Siena": 158,
+        "Piraeus": 159,
+        "Madrid": 161,
+        "Zielona Gora": 162,
+        "Strasbourg": 163,
+        "Malaga": 164,
+        "Kaunas": 165,
+        "Mexico City": 166,
+        "Calgary": 167
+      },
+      "verified_build": "6AD2E48C:36532000",
+      "allow_numeric_ids": true
+    },
+    {
+      "name": "Birthplace",
+      "offset": "0x100",
+      "bits": 16,
+      "shift": 0,
+      "options": {
+        "Anaheim": 47,
+        "Anchorage": 48,
+        "Atlanta": 50,
+        "Austin": 51,
+        "Baltimore": 52,
+        "Boston": 53,
+        "Brooklyn": 55,
+        "Buffalo": 56,
+        "Charlotte": 57,
+        "Chicago": 58,
+        "Cincinnati": 59,
+        "Cleveland": 60,
+        "Columbus": 61,
+        "Dallas": 62,
+        "Denver": 63,
+        "Detroit": 64,
+        "Hartford": 65,
+        "Houston": 67,
+        "Indianapolis": 68,
+        "Jacksonville": 69,
+        "Kansas City": 70,
+        "Las Vegas": 71,
+        "Los Angeles": 72,
+        "Louisville": 73,
+        "Memphis": 74,
+        "Miami": 75,
+        "Milwaukee": 76,
+        "Minneapolis": 77,
+        "Montreal": 78,
+        "Nashville": 79,
+        "New Orleans": 80,
+        "New York": 81,
+        "Oakland": 82,
+        "Oklahoma City": 83,
+        "Omaha": 84,
+        "Orlando": 85,
+        "Philadelphia": 86,
+        "Phoenix": 87,
+        "Pittsburgh": 88,
+        "Providence": 90,
+        "Richmond": 91,
+        "Sacramento": 92,
+        "Salt Lake City": 93,
+        "San Antonio": 94,
+        "San Diego": 95,
+        "San Francisco": 96,
+        "San Jose": 97,
+        "Seattle": 98,
+        "St Louis": 99,
+        "Tampa": 100,
+        "Toronto": 101,
+        "Vancouver": 102,
+        "Virginia Beach": 103,
+        "Washington": 104,
+        "East Rutherford": 105,
+        "Albuquerque": 106,
+        "Colorado Springs": 107,
+        "El Paso": 108,
+        "Fort Worth": 109,
+        "Fresno": 110,
+        "Long Beach": 111,
+        "Mesa": 112,
+        "Raleigh": 113,
+        "Tucson": 114,
+        "Wilmington": 115,
+        "Uniondale": 116,
+        "Mississauga": 118,
+        "White Plains": 119,
+        "Canton": 120,
+        "Fort Wayne": 121,
+        "Walker": 122,
+        "Hoffman Estates": 123,
+        "Oshkosh": 124,
+        "College Park": 125,
+        "Erie": 126,
+        "Greensboro": 127,
+        "Lakeland": 128,
+        "Des Moines": 129,
+        "Southaven": 130,
+        "Sioux Falls": 131,
+        "Ontario": 132,
+        "Prescott Valley": 133,
+        "Santa Cruz": 134,
+        "El Segundo": 135,
+        "Stockton": 136,
+        "Cedar Park": 137,
+        "Edinburg": 138,
+        "Taylorsville": 139,
+        "Frisco": 140,
+        "Birmingham": 141,
+        "Berlin": 144,
+        "Istanbul": 145,
+        "Bamberg": 146,
+        "Kyiv": 147,
+        "Belgrade": 148,
+        "Moscow": 149,
+        "Milan": 150,
+        "Barcelona": 151,
+        "Munich": 152,
+        "Nanterre": 153,
+        "Vitoria": 154,
+        "Vilnius": 155,
+        "Krasnodar": 156,
+        "Tel Aviv": 157,
+        "Siena": 158,
+        "Piraeus": 159,
+        "Madrid": 161,
+        "Zielona Gora": 162,
+        "Strasbourg": 163,
+        "Malaga": 164,
+        "Kaunas": 165,
+        "Mexico City": 166,
+        "Calgary": 167
+      },
+      "verified_build": "6AD2E48C:36532000",
+      "allow_numeric_ids": true
+    },
+    {
+      "name": "Birth Month",
+      "offset": "0x36A",
+      "bits": 4,
+      "shift": 12,
+      "minimum": 1,
+      "maximum": 12,
+      "verified_build": "6AD2E48C:36532000"
+    },
+    {
+      "name": "Dominant Hand",
+      "offset": "0x12C",
+      "bits": 1,
+      "shift": 22,
+      "options": {
+        "Left": 0,
+        "Right": 1
+      },
+      "verified_build": "6AD2E48C:36532000"
+    },
+    {
+      "name": "Dominant Dunk Hand",
+      "offset": "0x12C",
+      "bits": 2,
+      "shift": 23,
+      "options": {
+        "Left": 0,
+        "Right": 1,
+        "Either": 2
+      },
+      "verified_build": "6AD2E48C:36532000"
+    },
+    {
+      "name": "Forced Non-Starter",
+      "offset": "0x354",
+      "bits": 2,
+      "shift": 26,
+      "options": {
+        "Off": 0,
+        "On": 2
+      },
+      "verified_build": "6AD2E48C:36532000"
+    },
+    {
+      "name": "Min Potential",
+      "offset": "0x3fc",
+      "bits": 7,
+      "shift": 0,
+      "minimum": 25,
+      "maximum": 99,
+      "verified_build": "6AD2E48C:36532000"
+    },
+    {
+      "name": "Max Potential",
+      "offset": "0x3fc",
+      "bits": 7,
+      "shift": 7,
+      "minimum": 25,
+      "maximum": 99,
+      "verified_build": "6AD2E48C:36532000"
+    },
+    {
+      "name": "Bust Percent",
+      "offset": "0x3fc",
+      "bits": 7,
+      "shift": 21,
+      "minimum": 0,
+      "maximum": 100,
+      "verified_build": "6AD2E48C:36532000"
+    },
+    {
+      "name": "Boom Percent",
+      "offset": "0x3fc",
+      "bits": 7,
+      "shift": 14,
+      "minimum": 0,
+      "maximum": 100,
+      "verified_build": "6AD2E48C:36532000"
+    },
+    {
+      "name": "Play for Winner",
+      "offset": "0x2e0",
+      "bits": 7,
+      "shift": 12,
+      "minimum": 0,
+      "maximum": 100,
+      "verified_build": "6AD2E48C:36532000"
+    },
+    {
+      "name": "Financial Security",
+      "offset": "0x2e0",
+      "bits": 7,
+      "shift": 19,
+      "minimum": 0,
+      "maximum": 100,
+      "verified_build": "6AD2E48C:36532000"
+    },
+    {
+      "name": "Loyalty",
+      "offset": "0x2e0",
+      "bits": 7,
+      "shift": 5,
+      "minimum": 0,
+      "maximum": 100,
+      "verified_build": "6AD2E48C:36532000"
+    },
+    {
+      "name": "Years Pro",
+      "offset": "0x3E0",
+      "bits": 5,
+      "shift": 17,
+      "verified_build": "6AD2E48C:36532000"
+    },
+    {
+      "name": "Position",
+      "offset": "0x12D",
+      "startBit": 0,
+      "length": 3,
+      "options": {
+        "PG": 0,
+        "SG": 1,
+        "SF": 2,
+        "PF": 3,
+        "C": 4
+      },
+      "verified_build": "6AD2E48C:36532000"
+    },
+    {
+      "name": "Secondary Position",
+      "offset": "0x12D",
+      "startBit": 3,
+      "length": 3,
+      "options": {
+        "PG": 0,
+        "SG": 1,
+        "SF": 2,
+        "PF": 3,
+        "C": 4,
+        "None": 5
+      },
+      "verified_build": "6AD2E48C:36532000"
+    },
+    {
+      "name": "Play Initiator",
+      "offset": "0x2D6",
+      "startBit": 5,
+      "length": 1,
+      "options": {
+        "No": 0,
+        "Yes": 1
+      },
+      "verified_build": "6AD2E48C:36532000"
+    },
+    {
+      "name": "Play Type 1",
+      "offset": "0x1A8",
+      "startBit": 0,
+      "length": 4,
+      "options": {
+        "None": 0,
+        "Isolation": 1,
+        "Isolation Point": 2,
+        "Iso Wing": 3,
+        "Pnr Ballhandler": 4,
+        "P&R Point": 5,
+        "Pnr Wing": 6,
+        "Pnr Screener": 7,
+        "Low Post": 8,
+        "High Post": 9,
+        "Guard Post": 10,
+        "Cutter": 11,
+        "Handoff": 12,
+        "Handoff Ballhandler": 13,
+        "Mid Range": 14,
+        "3PT": 15
+      },
+      "verified_build": "6AD2E48C:36532000",
+      "allow_numeric_ids": true,
+      "option_source": {
+        "method": "unique CRC32-name/value enum table and name block matched in running exact build",
+        "enum": "PLAYERDATA_PLAYTYPE",
+        "table_rva": "0x89d3d00"
+      }
+    },
+    {
+      "name": "Play Type 2",
+      "offset": "0x1A8",
+      "startBit": 4,
+      "length": 4,
+      "options": {
+        "None": 0,
+        "Isolation": 1,
+        "Isolation Point": 2,
+        "Iso Wing": 3,
+        "Pnr Ballhandler": 4,
+        "P&R Point": 5,
+        "Pnr Wing": 6,
+        "Pnr Screener": 7,
+        "Low Post": 8,
+        "High Post": 9,
+        "Guard Post": 10,
+        "Cutter": 11,
+        "Handoff": 12,
+        "Handoff Ballhandler": 13,
+        "Mid Range": 14,
+        "3PT": 15
+      },
+      "verified_build": "6AD2E48C:36532000",
+      "allow_numeric_ids": true,
+      "option_source": {
+        "method": "unique CRC32-name/value enum table and name block matched in running exact build",
+        "enum": "PLAYERDATA_PLAYTYPE",
+        "table_rva": "0x89d3d00"
+      }
+    },
+    {
+      "name": "Play Type 3",
+      "offset": "0x1A9",
+      "startBit": 0,
+      "length": 4,
+      "options": {
+        "None": 0,
+        "Isolation": 1,
+        "Isolation Point": 2,
+        "Iso Wing": 3,
+        "Pnr Ballhandler": 4,
+        "P&R Point": 5,
+        "Pnr Wing": 6,
+        "Pnr Screener": 7,
+        "Low Post": 8,
+        "High Post": 9,
+        "Guard Post": 10,
+        "Cutter": 11,
+        "Handoff": 12,
+        "Handoff Ballhandler": 13,
+        "Mid Range": 14,
+        "3PT": 15
+      },
+      "verified_build": "6AD2E48C:36532000",
+      "allow_numeric_ids": true,
+      "option_source": {
+        "method": "unique CRC32-name/value enum table and name block matched in running exact build",
+        "enum": "PLAYERDATA_PLAYTYPE",
+        "table_rva": "0x89d3d00"
+      }
+    },
+    {
+      "name": "Play Type 4",
+      "offset": "0x1A9",
+      "startBit": 4,
+      "length": 4,
+      "options": {
+        "None": 0,
+        "Isolation": 1,
+        "Isolation Point": 2,
+        "Iso Wing": 3,
+        "Pnr Ballhandler": 4,
+        "P&R Point": 5,
+        "Pnr Wing": 6,
+        "Pnr Screener": 7,
+        "Low Post": 8,
+        "High Post": 9,
+        "Guard Post": 10,
+        "Cutter": 11,
+        "Handoff": 12,
+        "Handoff Ballhandler": 13,
+        "Mid Range": 14,
+        "3PT": 15
+      },
+      "verified_build": "6AD2E48C:36532000",
+      "allow_numeric_ids": true,
+      "option_source": {
+        "method": "unique CRC32-name/value enum table and name block matched in running exact build",
+        "enum": "PLAYERDATA_PLAYTYPE",
+        "table_rva": "0x89d3d00"
+      }
+    },
+    {
+      "name": "AVG Percent",
+      "offset": "0x358",
+      "bits": 7,
+      "shift": 20,
+      "kind": "bits",
+      "minimum": 0,
+      "maximum": 100,
+      "verified_build": "6AD2E48C:36532000"
+    },
+    {
+      "section": "Vitals",
+      "group": "Body",
+      "label": "Skin Type",
+      "offset": 476,
+      "bits": 3,
+      "shift": 0,
+      "kind": "bits",
+      "name": "Skin Type",
+      "source_id": "SKINTYPE",
+      "writable": true,
+      "minimum": 0,
+      "maximum": 2,
+      "verified_build": "6AD2E48C:36532000",
+      "verification": {
+        "method": "bounded named setter; complete code matched running exact build",
+        "code_rva": "0x34605f0",
+        "code_size": 171,
+        "code_sha256": "7251f6408b81e092292764ca00f58222118a600f36faae67cd3e95760365736b"
+      },
+      "options": {
+        "Normal": 0,
+        "Ripped": 1,
+        "Doughy": 2
+      },
+      "option_source": {
+        "method": "unique CRC32-name/value enum table and name block matched in running exact build",
+        "enum": "PLAYERDATA_SKINTYPE",
+        "table_rva": "0x89d4830"
+      }
+    },
+    {
+      "name": "College / From",
+      "offset": "0xB0",
+      "bits": 64,
+      "shift": 0,
+      "kind": "college_reference",
+      "verified_build": "6AD2E48C:36532000",
+      "writable": true
+    }
+  ],
     "Signatures": [
         {
             "name": "Jumpshot Base",
@@ -6504,6 +7549,1548 @@
       "bits": 7,
       "shift": 25,
       "kind": "bits"
+    }
+  ],
+  "Hotzones": [
+    {
+      "name": "Under Basket",
+      "offset": "0x1CC",
+      "bits": 2,
+      "shift": 0,
+      "kind": "bits",
+      "verified_build": "6AD2E48C:36532000",
+      "options": {
+        "Cold": 0,
+        "Neutral": 1,
+        "Hot": 2
+      }
+    },
+    {
+      "name": "Close Left",
+      "offset": "0x1CF",
+      "bits": 2,
+      "shift": 2,
+      "kind": "bits",
+      "verified_build": "6AD2E48C:36532000",
+      "options": {
+        "Cold": 0,
+        "Neutral": 1,
+        "Hot": 2
+      }
+    },
+    {
+      "name": "Close Middle",
+      "offset": "0x1CC",
+      "bits": 2,
+      "shift": 2,
+      "kind": "bits",
+      "verified_build": "6AD2E48C:36532000",
+      "options": {
+        "Cold": 0,
+        "Neutral": 1,
+        "Hot": 2
+      }
+    },
+    {
+      "name": "Close Right",
+      "offset": "0x1CF",
+      "bits": 2,
+      "shift": 4,
+      "kind": "bits",
+      "verified_build": "6AD2E48C:36532000",
+      "options": {
+        "Cold": 0,
+        "Neutral": 1,
+        "Hot": 2
+      }
+    },
+    {
+      "name": "Mid-Range Left",
+      "offset": "0x1DC",
+      "bits": 2,
+      "shift": 3,
+      "kind": "bits",
+      "verified_build": "6AD2E48C:36532000",
+      "options": {
+        "Cold": 0,
+        "Neutral": 1,
+        "Hot": 2
+      }
+    },
+    {
+      "name": "Mid-Range Left Center",
+      "offset": "0x1CC",
+      "bits": 2,
+      "shift": 4,
+      "kind": "bits",
+      "verified_build": "6AD2E48C:36532000",
+      "options": {
+        "Cold": 0,
+        "Neutral": 1,
+        "Hot": 2
+      }
+    },
+    {
+      "name": "Mid-Range Center",
+      "offset": "0x1CC",
+      "bits": 2,
+      "shift": 6,
+      "kind": "bits",
+      "verified_build": "6AD2E48C:36532000",
+      "options": {
+        "Cold": 0,
+        "Neutral": 1,
+        "Hot": 2
+      }
+    },
+    {
+      "name": "Mid-Range Right Center",
+      "offset": "0x372",
+      "bits": 2,
+      "shift": 3,
+      "kind": "bits",
+      "verified_build": "6AD2E48C:36532000",
+      "options": {
+        "Cold": 0,
+        "Neutral": 1,
+        "Hot": 2
+      }
+    },
+    {
+      "name": "Mid-Range Right",
+      "offset": "0x37E",
+      "bits": 2,
+      "shift": 7,
+      "kind": "bits",
+      "verified_build": "6AD2E48C:36532000",
+      "options": {
+        "Cold": 0,
+        "Neutral": 1,
+        "Hot": 2
+      }
+    },
+    {
+      "name": "Three Left",
+      "offset": "0x1D2",
+      "bits": 2,
+      "shift": 6,
+      "kind": "bits",
+      "verified_build": "6AD2E48C:36532000",
+      "options": {
+        "Cold": 0,
+        "Neutral": 1,
+        "Hot": 2
+      }
+    },
+    {
+      "name": "Three Left Center",
+      "offset": "0x1D3",
+      "bits": 2,
+      "shift": 6,
+      "kind": "bits",
+      "verified_build": "6AD2E48C:36532000",
+      "options": {
+        "Cold": 0,
+        "Neutral": 1,
+        "Hot": 2
+      }
+    },
+    {
+      "name": "Three Center",
+      "offset": "0x177",
+      "bits": 2,
+      "shift": 0,
+      "kind": "bits",
+      "verified_build": "6AD2E48C:36532000",
+      "options": {
+        "Cold": 0,
+        "Neutral": 1,
+        "Hot": 2
+      }
+    },
+    {
+      "name": "Three Right Center",
+      "offset": "0x35F",
+      "bits": 2,
+      "shift": 5,
+      "kind": "bits",
+      "verified_build": "6AD2E48C:36532000",
+      "options": {
+        "Cold": 0,
+        "Neutral": 1,
+        "Hot": 2
+      }
+    },
+    {
+      "name": "Three Right",
+      "offset": "0x1CF",
+      "bits": 2,
+      "shift": 0,
+      "kind": "bits",
+      "verified_build": "6AD2E48C:36532000",
+      "options": {
+        "Cold": 0,
+        "Neutral": 1,
+        "Hot": 2
+      }
+    }
+  ],
+  "Gear": [
+    {
+      "section": "Gear",
+      "group": "Shoes/Gear",
+      "label": "Preferred Shorts Type",
+      "offset": 976,
+      "bits": 3,
+      "shift": 8,
+      "kind": "bits",
+      "name": "Preferred Shorts Type",
+      "source_id": "PREFERREDSHORTSTYPE",
+      "writable": true,
+      "minimum": 0,
+      "maximum": 3,
+      "verified_build": "6AD2E48C:36532000",
+      "verification": {
+        "method": "bounded named setter; complete code matched running exact build",
+        "code_rva": "0x3460a30",
+        "code_size": 176,
+        "code_sha256": "769e549b68802867aaf1cb8021d8c714e2e1f047b921d433faa96c09ac834b63"
+      }
+    },
+    {
+      "section": "Gear",
+      "group": "Shoes/Gear",
+      "label": "Shirts Items Away Color",
+      "offset": 880,
+      "bits": 3,
+      "shift": 11,
+      "kind": "bits",
+      "name": "Shirts Items Away Color",
+      "source_id": "SHIRTSITEMSAWAYCOLOR",
+      "writable": true,
+      "minimum": 0,
+      "maximum": 7,
+      "verified_build": "6AD2E48C:36532000",
+      "verification": {
+        "method": "bounded named setter; complete code matched running exact build",
+        "code_rva": "0x2fc46e0",
+        "code_size": 176,
+        "code_sha256": "74e207ac461a3d11911b189fe42e16a445a6dca36383c95ce536822bd0ea48bf"
+      }
+    },
+    {
+      "section": "Gear",
+      "group": "Shoes/Gear",
+      "label": "Shirts Items Home Color",
+      "offset": 976,
+      "bits": 3,
+      "shift": 24,
+      "kind": "bits",
+      "name": "Shirts Items Home Color",
+      "source_id": "SHIRTSITEMSHOMECOLOR",
+      "writable": true,
+      "minimum": 0,
+      "maximum": 7,
+      "verified_build": "6AD2E48C:36532000",
+      "verification": {
+        "method": "bounded named setter; complete code matched running exact build",
+        "code_rva": "0x2fc4630",
+        "code_size": 176,
+        "code_sha256": "d4d00a0cb7e60baa70056752d909223e5e1c432bde1a5418a9503d0a15b081d4"
+      }
+    },
+    {
+      "section": "Gear",
+      "group": "Shoes/Gear",
+      "label": "Shorts Length",
+      "offset": 1012,
+      "bits": 4,
+      "shift": 9,
+      "kind": "bits",
+      "name": "Shorts Length",
+      "source_id": "SHORTSLENGTH",
+      "writable": true,
+      "minimum": 0,
+      "maximum": 10,
+      "verified_build": "6AD2E48C:36532000",
+      "verification": {
+        "method": "bounded named setter; complete code matched running exact build",
+        "code_rva": "0x3460af0",
+        "code_size": 176,
+        "code_sha256": "ac8a1d5aa8fcc01ea30aeb05c5a347855c4d719134a717fb09c48f8e9a768530"
+      }
+    },
+    {
+      "section": "Gear",
+      "group": "Shoes/Gear",
+      "label": "Shirts Item Frequency",
+      "offset": 984,
+      "bits": 3,
+      "shift": 3,
+      "kind": "bits",
+      "name": "Shirts Item Frequency",
+      "source_id": "SHIRTSITEMFREQUENCY",
+      "writable": true,
+      "minimum": 0,
+      "maximum": 4,
+      "verified_build": "6AD2E48C:36532000",
+      "verification": {
+        "method": "bounded named setter with scaled LEA; full code matched running exact build",
+        "code_rva": "0x3460d30",
+        "code_size": 172,
+        "code_sha256": "cee573e14d372ed10b83535211013eb4c359505912c0576a98e90a879d8208af"
+      },
+      "options": {
+        "Always": 0,
+        "Often": 1,
+        "Sometimes": 2,
+        "Rarely": 3,
+        "Never": 4
+      },
+      "option_source": {
+        "method": "unique CRC32-name/value enum table and name block matched in running exact build",
+        "enum": "PLAYERDATA_ACCESSORY_FREQUENCY",
+        "table_rva": "0x89d3640"
+      }
+    },
+    {
+      "section": "Gear",
+      "group": "Shoes/Gear",
+      "label": "Shoe Away Style",
+      "offset": 388,
+      "bits": 13,
+      "shift": 13,
+      "kind": "bits",
+      "name": "Shoe Away Style",
+      "source_id": "SHOEAWAYSTYLE",
+      "writable": true,
+      "minimum": 0,
+      "maximum": 8191,
+      "verified_build": "6AD2E48C:36532000",
+      "verification": {
+        "method": "named away branch of shared home/away setter; full code matched running exact build",
+        "code_rva": "0x2e0d8e0",
+        "code_size": 424,
+        "code_sha256": "0c9f55fdf641c73e2a4d60d97db18ca5fdc63342dece99d3106525fc04336efe"
+      }
+    }
+  ],
+  "Accessories": [
+    {
+      "section": "Gear",
+      "group": "Upper Body Accessories",
+      "label": "Headband Frequency",
+      "offset": 984,
+      "bits": 3,
+      "shift": 0,
+      "kind": "bits",
+      "name": "Headband Frequency",
+      "source_id": "HEADBANDFREQUENCY",
+      "writable": true,
+      "minimum": 0,
+      "maximum": 4,
+      "verified_build": "6AD2E48C:36532000",
+      "verification": {
+        "method": "bounded named setter; complete code matched running exact build",
+        "code_rva": "0x3460c70",
+        "code_size": 171,
+        "code_sha256": "b0e0f3f38fb28dfcd0e3ba5f1037453e87857b7ebba884d81da7cb61376a92f2"
+      },
+      "options": {
+        "Always": 0,
+        "Often": 1,
+        "Sometimes": 2,
+        "Rarely": 3,
+        "Never": 4
+      },
+      "option_source": {
+        "method": "unique CRC32-name/value enum table and name block matched in running exact build",
+        "enum": "PLAYERDATA_ACCESSORY_FREQUENCY",
+        "table_rva": "0x89d3640"
+      }
+    },
+    {
+      "section": "Gear",
+      "group": "Upper Body Accessories",
+      "label": "Headband Logo Position",
+      "offset": 1032,
+      "bits": 3,
+      "shift": 27,
+      "kind": "bits",
+      "name": "Headband Logo Position",
+      "source_id": "HEADBANDLOGOPOSITION",
+      "writable": true,
+      "minimum": 0,
+      "maximum": 6,
+      "verified_build": "6AD2E48C:36532000",
+      "verification": {
+        "method": "bounded named setter; complete code matched running exact build",
+        "code_rva": "0x3460970",
+        "code_size": 176,
+        "code_sha256": "dd236e4070015466b353d05e1607a461ab32a6ca8db56eeb8eb46f5b5b025d85"
+      },
+      "options": {
+        "None": 0,
+        "Center": 1,
+        "Threequarter Right": 2,
+        "Right": 3,
+        "Back": 4,
+        "Left": 5,
+        "Threequarter Left": 6
+      },
+      "option_source": {
+        "method": "unique CRC32-name/value enum table and name block matched in running exact build",
+        "enum": "PLAYERDATA_HEADBANDLOGO_POSITION",
+        "table_rva": "0x89dccf0"
+      }
+    },
+    {
+      "section": "Gear",
+      "group": "Lower Body Accessories",
+      "label": "Left Ankle Frequency",
+      "offset": 988,
+      "bits": 3,
+      "shift": 14,
+      "kind": "bits",
+      "name": "Left Ankle Frequency",
+      "source_id": "LEFTANKLEFREQUENCY",
+      "writable": true,
+      "minimum": 0,
+      "maximum": 4,
+      "verified_build": "6AD2E48C:36532000",
+      "verification": {
+        "method": "bounded named setter; complete code matched running exact build",
+        "code_rva": "0x34617b0",
+        "code_size": 176,
+        "code_sha256": "124686c62d174757449a2c94c67f3f379fc34c4e98ed7de3a34782c5a16153c7"
+      },
+      "options": {
+        "Always": 0,
+        "Often": 1,
+        "Sometimes": 2,
+        "Rarely": 3,
+        "Never": 4
+      },
+      "option_source": {
+        "method": "unique CRC32-name/value enum table and name block matched in running exact build",
+        "enum": "PLAYERDATA_ACCESSORY_FREQUENCY",
+        "table_rva": "0x89d3640"
+      }
+    },
+    {
+      "section": "Gear",
+      "group": "Lower Body Accessories",
+      "label": "Left Ankle Item Away Color",
+      "offset": 420,
+      "bits": 3,
+      "shift": 18,
+      "kind": "bits",
+      "name": "Left Ankle Item Away Color",
+      "source_id": "LEFTANKLEITEMAWAYCOLOR",
+      "writable": true,
+      "minimum": 0,
+      "maximum": 7,
+      "verified_build": "6AD2E48C:36532000",
+      "verification": {
+        "method": "bounded named setter; complete code matched running exact build",
+        "code_rva": "0x2fc5760",
+        "code_size": 176,
+        "code_sha256": "2bf10234ce3b7b90975188e8fb89cfe79f1e27c350ae0d95baff8e2881dd5453"
+      }
+    },
+    {
+      "section": "Gear",
+      "group": "Lower Body Accessories",
+      "label": "Left Ankle Item Home Color",
+      "offset": 420,
+      "bits": 3,
+      "shift": 15,
+      "kind": "bits",
+      "name": "Left Ankle Item Home Color",
+      "source_id": "LEFTANKLEITEMHOMECOLOR",
+      "writable": true,
+      "minimum": 0,
+      "maximum": 7,
+      "verified_build": "6AD2E48C:36532000",
+      "verification": {
+        "method": "bounded named setter; complete code matched running exact build",
+        "code_rva": "0x2fc56b0",
+        "code_size": 176,
+        "code_sha256": "5f78fd6c47abddb56ae81f3427b113f6ec68e89ca7375f2c674e5d9ea4e84716"
+      }
+    },
+    {
+      "section": "Gear",
+      "group": "Upper Body Accessories",
+      "label": "Left Arm Frequency",
+      "offset": 984,
+      "bits": 3,
+      "shift": 21,
+      "kind": "bits",
+      "name": "Left Arm Frequency",
+      "source_id": "LEFTARMFREQUENCY",
+      "writable": true,
+      "minimum": 0,
+      "maximum": 4,
+      "verified_build": "6AD2E48C:36532000",
+      "verification": {
+        "method": "bounded named setter; complete code matched running exact build",
+        "code_rva": "0x3461330",
+        "code_size": 176,
+        "code_sha256": "a534f251592d09b6c0a6de409c359083c2ad880a40170a1842ef95b0df1b2d0e"
+      },
+      "options": {
+        "Always": 0,
+        "Often": 1,
+        "Sometimes": 2,
+        "Rarely": 3,
+        "Never": 4
+      },
+      "option_source": {
+        "method": "unique CRC32-name/value enum table and name block matched in running exact build",
+        "enum": "PLAYERDATA_ACCESSORY_FREQUENCY",
+        "table_rva": "0x89d3640"
+      }
+    },
+    {
+      "section": "Gear",
+      "group": "Upper Body Accessories",
+      "label": "Left Arm Item Away Color",
+      "offset": 404,
+      "bits": 3,
+      "shift": 14,
+      "kind": "bits",
+      "name": "Left Arm Item Away Color",
+      "source_id": "LEFTARMITEMAWAYCOLOR",
+      "writable": true,
+      "minimum": 0,
+      "maximum": 7,
+      "verified_build": "6AD2E48C:36532000",
+      "verification": {
+        "method": "bounded named setter; complete code matched running exact build",
+        "code_rva": "0x2fc4f20",
+        "code_size": 176,
+        "code_sha256": "cb192746c7ef7c5b5ccaf2ab805cc82d32a95585be2613ea7cf23b5ec4dcba61"
+      }
+    },
+    {
+      "section": "Gear",
+      "group": "Upper Body Accessories",
+      "label": "Left Arm Item Home Color",
+      "offset": 404,
+      "bits": 3,
+      "shift": 11,
+      "kind": "bits",
+      "name": "Left Arm Item Home Color",
+      "source_id": "LEFTARMITEMHOMECOLOR",
+      "writable": true,
+      "minimum": 0,
+      "maximum": 7,
+      "verified_build": "6AD2E48C:36532000",
+      "verification": {
+        "method": "bounded named setter; complete code matched running exact build",
+        "code_rva": "0x2fc4e70",
+        "code_size": 176,
+        "code_sha256": "a47c451a647a7d3c0f671163f9e7bbd67655be7976aea7fa6bd99f668217a070"
+      }
+    },
+    {
+      "section": "Gear",
+      "group": "Upper Body Accessories",
+      "label": "Left Elbow Frequency",
+      "offset": 984,
+      "bits": 3,
+      "shift": 15,
+      "kind": "bits",
+      "name": "Left Elbow Frequency",
+      "source_id": "LEFTELBOWFREQUENCY",
+      "writable": true,
+      "minimum": 0,
+      "maximum": 4,
+      "verified_build": "6AD2E48C:36532000",
+      "verification": {
+        "method": "bounded named setter; complete code matched running exact build",
+        "code_rva": "0x34611b0",
+        "code_size": 176,
+        "code_sha256": "3947e55e8dfdcd4fde4e2ac67c5c90a0c78a780d705b0ff1e595b0e8d2ba2d80"
+      },
+      "options": {
+        "Always": 0,
+        "Often": 1,
+        "Sometimes": 2,
+        "Rarely": 3,
+        "Never": 4
+      },
+      "option_source": {
+        "method": "unique CRC32-name/value enum table and name block matched in running exact build",
+        "enum": "PLAYERDATA_ACCESSORY_FREQUENCY",
+        "table_rva": "0x89d3640"
+      }
+    },
+    {
+      "section": "Gear",
+      "group": "Upper Body Accessories",
+      "label": "Left Elbow Item Home Color",
+      "offset": 408,
+      "bits": 3,
+      "shift": 0,
+      "kind": "bits",
+      "name": "Left Elbow Item Home Color",
+      "source_id": "LEFTELBOWITEMHOMECOLOR",
+      "writable": true,
+      "minimum": 0,
+      "maximum": 7,
+      "verified_build": "6AD2E48C:36532000",
+      "verification": {
+        "method": "bounded named setter; complete code matched running exact build",
+        "code_rva": "0x2fc4bb0",
+        "code_size": 171,
+        "code_sha256": "03dea07644801f28f852ab9b99de079a37296e743133c6cbd5a8c268f72e7072"
+      }
+    },
+    {
+      "section": "Gear",
+      "group": "Upper Body Accessories",
+      "label": "Left Fingers Frequency",
+      "offset": 988,
+      "bits": 3,
+      "shift": 20,
+      "kind": "bits",
+      "name": "Left Fingers Frequency",
+      "source_id": "LEFTFINGERSFREQUENCY",
+      "writable": true,
+      "minimum": 0,
+      "maximum": 4,
+      "verified_build": "6AD2E48C:36532000",
+      "verification": {
+        "method": "bounded named setter; complete code matched running exact build",
+        "code_rva": "0x3460eb0",
+        "code_size": 176,
+        "code_sha256": "d5f29e6757281c2c8b32fd2d15b77b4bf7f93efb15f2acb4344bb98548525551"
+      },
+      "options": {
+        "Always": 0,
+        "Often": 1,
+        "Sometimes": 2,
+        "Rarely": 3,
+        "Never": 4
+      },
+      "option_source": {
+        "method": "unique CRC32-name/value enum table and name block matched in running exact build",
+        "enum": "PLAYERDATA_ACCESSORY_FREQUENCY",
+        "table_rva": "0x89d3640"
+      }
+    },
+    {
+      "section": "Gear",
+      "group": "Upper Body Accessories",
+      "label": "Left Fingers Item Home Color",
+      "offset": 416,
+      "bits": 3,
+      "shift": 0,
+      "kind": "bits",
+      "name": "Left Fingers Item Home Color",
+      "source_id": "LEFTFINGERSITEMHOMECOLOR",
+      "writable": true,
+      "minimum": 0,
+      "maximum": 7,
+      "verified_build": "6AD2E48C:36532000",
+      "verification": {
+        "method": "bounded named setter; complete code matched running exact build",
+        "code_rva": "0x2fc5970",
+        "code_size": 171,
+        "code_sha256": "2f9da71a99340362668d485e4b08b58fc0b39db575d55f2c3fd683b24f1c2ccd"
+      }
+    },
+    {
+      "section": "Gear",
+      "group": "Lower Body Accessories",
+      "label": "Left Knee Frequency",
+      "offset": 372,
+      "bits": 3,
+      "shift": 18,
+      "kind": "bits",
+      "name": "Left Knee Frequency",
+      "source_id": "LEFTKNEEFREQUENCY",
+      "writable": true,
+      "minimum": 0,
+      "maximum": 4,
+      "verified_build": "6AD2E48C:36532000",
+      "verification": {
+        "method": "bounded named setter; complete code matched running exact build",
+        "code_rva": "0x34614b0",
+        "code_size": 176,
+        "code_sha256": "54e35dfedbbfa92abf9daaf46a9d654b9def8a36902b86c841ff4b46ca74281c"
+      },
+      "options": {
+        "Always": 0,
+        "Often": 1,
+        "Sometimes": 2,
+        "Rarely": 3,
+        "Never": 4
+      },
+      "option_source": {
+        "method": "unique CRC32-name/value enum table and name block matched in running exact build",
+        "enum": "PLAYERDATA_ACCESSORY_FREQUENCY",
+        "table_rva": "0x89d3640"
+      }
+    },
+    {
+      "section": "Gear",
+      "group": "Lower Body Accessories",
+      "label": "Left Knee Item Home Color",
+      "offset": 420,
+      "bits": 3,
+      "shift": 0,
+      "kind": "bits",
+      "name": "Left Knee Item Home Color",
+      "source_id": "LEFTKNEEITEMHOMECOLOR",
+      "writable": true,
+      "minimum": 0,
+      "maximum": 7,
+      "verified_build": "6AD2E48C:36532000",
+      "verification": {
+        "method": "bounded named setter; complete code matched running exact build",
+        "code_rva": "0x2fc53f0",
+        "code_size": 171,
+        "code_sha256": "f5278ee505190ce532422ff36a96050c0a964130fbc13c2f66caddbcabc54113"
+      }
+    },
+    {
+      "section": "Gear",
+      "group": "Lower Body Accessories",
+      "label": "Left Leg Frequency",
+      "offset": 984,
+      "bits": 3,
+      "shift": 27,
+      "kind": "bits",
+      "name": "Left Leg Frequency",
+      "source_id": "LEFTLEGFREQUENCY",
+      "writable": true,
+      "minimum": 0,
+      "maximum": 4,
+      "verified_build": "6AD2E48C:36532000",
+      "verification": {
+        "method": "bounded named setter; complete code matched running exact build",
+        "code_rva": "0x3461630",
+        "code_size": 176,
+        "code_sha256": "76b62fe40385b502814e890b3444b1b6e271e6647b4bb342a73e8f56d4c8e025"
+      },
+      "options": {
+        "Always": 0,
+        "Often": 1,
+        "Sometimes": 2,
+        "Rarely": 3,
+        "Never": 4
+      },
+      "option_source": {
+        "method": "unique CRC32-name/value enum table and name block matched in running exact build",
+        "enum": "PLAYERDATA_ACCESSORY_FREQUENCY",
+        "table_rva": "0x89d3640"
+      }
+    },
+    {
+      "section": "Gear",
+      "group": "Lower Body Accessories",
+      "label": "Left Leg Item Away Color",
+      "offset": 416,
+      "bits": 3,
+      "shift": 19,
+      "kind": "bits",
+      "name": "Left Leg Item Away Color",
+      "source_id": "LEFTLEGITEMAWAYCOLOR",
+      "writable": true,
+      "minimum": 0,
+      "maximum": 7,
+      "verified_build": "6AD2E48C:36532000",
+      "verification": {
+        "method": "bounded named setter; complete code matched running exact build",
+        "code_rva": "0x2fc51e0",
+        "code_size": 176,
+        "code_sha256": "a43d18dd7257cb412093908e06947d6d52eb6afaa87b949acbddc9917b2d7380"
+      }
+    },
+    {
+      "section": "Gear",
+      "group": "Lower Body Accessories",
+      "label": "Left Leg Item Home Color",
+      "offset": 416,
+      "bits": 3,
+      "shift": 16,
+      "kind": "bits",
+      "name": "Left Leg Item Home Color",
+      "source_id": "LEFTLEGITEMHOMECOLOR",
+      "writable": true,
+      "minimum": 0,
+      "maximum": 7,
+      "verified_build": "6AD2E48C:36532000",
+      "verification": {
+        "method": "bounded named setter; complete code matched running exact build",
+        "code_rva": "0x2fc5130",
+        "code_size": 176,
+        "code_sha256": "7b0009c7f5b9b1246d0a6fe93392e4a092370c68b3d115d6804f700622855f8f"
+      }
+    },
+    {
+      "section": "Gear",
+      "group": "Upper Body Accessories",
+      "label": "Left Wrist Frequency",
+      "offset": 984,
+      "bits": 3,
+      "shift": 9,
+      "kind": "bits",
+      "name": "Left Wrist Frequency",
+      "source_id": "LEFTWRISTFREQUENCY",
+      "writable": true,
+      "minimum": 0,
+      "maximum": 4,
+      "verified_build": "6AD2E48C:36532000",
+      "verification": {
+        "method": "bounded named setter; complete code matched running exact build",
+        "code_rva": "0x3461030",
+        "code_size": 176,
+        "code_sha256": "9bd90688cfec0b91b27a279d1da2fcdc233e685e32b66feef5f052d1a88098c0"
+      },
+      "options": {
+        "Always": 0,
+        "Often": 1,
+        "Sometimes": 2,
+        "Rarely": 3,
+        "Never": 4
+      },
+      "option_source": {
+        "method": "unique CRC32-name/value enum table and name block matched in running exact build",
+        "enum": "PLAYERDATA_ACCESSORY_FREQUENCY",
+        "table_rva": "0x89d3640"
+      }
+    },
+    {
+      "section": "Gear",
+      "group": "Upper Body Accessories",
+      "label": "Left Wrist Item Away Color",
+      "offset": 408,
+      "bits": 5,
+      "shift": 22,
+      "kind": "bits",
+      "name": "Left Wrist Item Away Color",
+      "source_id": "LEFTWRISTITEMAWAYCOLOR",
+      "writable": true,
+      "minimum": 0,
+      "maximum": 16,
+      "verified_build": "6AD2E48C:36532000",
+      "verification": {
+        "method": "bounded named setter; complete code matched running exact build",
+        "code_rva": "0x2fc49a0",
+        "code_size": 176,
+        "code_sha256": "21fb97aee8e4d369a160954d08ea81fca1935f6c07e19359a4a9bd7e7aed883f"
+      }
+    },
+    {
+      "section": "Gear",
+      "group": "Upper Body Accessories",
+      "label": "Left Wrist Item Home Color",
+      "offset": 408,
+      "bits": 5,
+      "shift": 17,
+      "kind": "bits",
+      "name": "Left Wrist Item Home Color",
+      "source_id": "LEFTWRISTITEMHOMECOLOR",
+      "writable": true,
+      "minimum": 0,
+      "maximum": 16,
+      "verified_build": "6AD2E48C:36532000",
+      "verification": {
+        "method": "bounded named setter; complete code matched running exact build",
+        "code_rva": "0x2fc48f0",
+        "code_size": 176,
+        "code_sha256": "83b31f07f9b4661869958a79db7d3526ff490760a124e36c2eadcfc81d25bee2"
+      }
+    },
+    {
+      "section": "Gear",
+      "group": "Lower Body Accessories",
+      "label": "Right Ankle Frequency",
+      "offset": 988,
+      "bits": 3,
+      "shift": 17,
+      "kind": "bits",
+      "name": "Right Ankle Frequency",
+      "source_id": "RIGHTANKLEFREQUENCY",
+      "writable": true,
+      "minimum": 0,
+      "maximum": 4,
+      "verified_build": "6AD2E48C:36532000",
+      "verification": {
+        "method": "bounded named setter; complete code matched running exact build",
+        "code_rva": "0x3461870",
+        "code_size": 176,
+        "code_sha256": "576638c0e466994b51b863f066de17b150cb9c1cdb622ff07c6c276d9ee8a865"
+      },
+      "options": {
+        "Always": 0,
+        "Often": 1,
+        "Sometimes": 2,
+        "Rarely": 3,
+        "Never": 4
+      },
+      "option_source": {
+        "method": "unique CRC32-name/value enum table and name block matched in running exact build",
+        "enum": "PLAYERDATA_ACCESSORY_FREQUENCY",
+        "table_rva": "0x89d3640"
+      }
+    },
+    {
+      "section": "Gear",
+      "group": "Lower Body Accessories",
+      "label": "Right Ankle Item Away Color",
+      "offset": 420,
+      "bits": 3,
+      "shift": 27,
+      "kind": "bits",
+      "name": "Right Ankle Item Away Color",
+      "source_id": "RIGHTANKLEITEMAWAYCOLOR",
+      "writable": true,
+      "minimum": 0,
+      "maximum": 7,
+      "verified_build": "6AD2E48C:36532000",
+      "verification": {
+        "method": "bounded named setter; complete code matched running exact build",
+        "code_rva": "0x2fc58c0",
+        "code_size": 176,
+        "code_sha256": "4b67682f1a797e0dd519c9007fc1e34b26242464e78746b023a311ddf46f6f12"
+      }
+    },
+    {
+      "section": "Gear",
+      "group": "Lower Body Accessories",
+      "label": "Right Ankle Item Home Color",
+      "offset": 420,
+      "bits": 3,
+      "shift": 24,
+      "kind": "bits",
+      "name": "Right Ankle Item Home Color",
+      "source_id": "RIGHTANKLEITEMHOMECOLOR",
+      "writable": true,
+      "minimum": 0,
+      "maximum": 7,
+      "verified_build": "6AD2E48C:36532000",
+      "verification": {
+        "method": "bounded named setter; complete code matched running exact build",
+        "code_rva": "0x2fc5810",
+        "code_size": 176,
+        "code_sha256": "16f7a69d2610fe2100c677859540870fee5902e538925a93c094dc744da13248"
+      }
+    },
+    {
+      "section": "Gear",
+      "group": "Upper Body Accessories",
+      "label": "Right Arm Frequency",
+      "offset": 984,
+      "bits": 3,
+      "shift": 24,
+      "kind": "bits",
+      "name": "Right Arm Frequency",
+      "source_id": "RIGHTARMFREQUENCY",
+      "writable": true,
+      "minimum": 0,
+      "maximum": 4,
+      "verified_build": "6AD2E48C:36532000",
+      "verification": {
+        "method": "bounded named setter; complete code matched running exact build",
+        "code_rva": "0x34613f0",
+        "code_size": 176,
+        "code_sha256": "f7919d1b7c055d42dd85298e866d9f936cdb36647283776318f22ac473a8c2a0"
+      },
+      "options": {
+        "Always": 0,
+        "Often": 1,
+        "Sometimes": 2,
+        "Rarely": 3,
+        "Never": 4
+      },
+      "option_source": {
+        "method": "unique CRC32-name/value enum table and name block matched in running exact build",
+        "enum": "PLAYERDATA_ACCESSORY_FREQUENCY",
+        "table_rva": "0x89d3640"
+      }
+    },
+    {
+      "section": "Gear",
+      "group": "Upper Body Accessories",
+      "label": "Right Arm Item Away Color",
+      "offset": 404,
+      "bits": 3,
+      "shift": 25,
+      "kind": "bits",
+      "name": "Right Arm Item Away Color",
+      "source_id": "RIGHTARMITEMAWAYCOLOR",
+      "writable": true,
+      "minimum": 0,
+      "maximum": 7,
+      "verified_build": "6AD2E48C:36532000",
+      "verification": {
+        "method": "bounded named setter; complete code matched running exact build",
+        "code_rva": "0x2fc5080",
+        "code_size": 176,
+        "code_sha256": "af0532351c89978d3c95e0bda4553edfec2439d303471d7d791e321d7d8c2415"
+      }
+    },
+    {
+      "section": "Gear",
+      "group": "Upper Body Accessories",
+      "label": "Right Arm Item Home Color",
+      "offset": 404,
+      "bits": 3,
+      "shift": 22,
+      "kind": "bits",
+      "name": "Right Arm Item Home Color",
+      "source_id": "RIGHTARMITEMHOMECOLOR",
+      "writable": true,
+      "minimum": 0,
+      "maximum": 7,
+      "verified_build": "6AD2E48C:36532000",
+      "verification": {
+        "method": "bounded named setter; complete code matched running exact build",
+        "code_rva": "0x2fc4fd0",
+        "code_size": 176,
+        "code_sha256": "cf517039f7927c5d1411ce212be8c4abc2d3ecf71f6b17a28e5e29ae553a8669"
+      }
+    },
+    {
+      "section": "Gear",
+      "group": "Upper Body Accessories",
+      "label": "Right Elbow Frequency",
+      "offset": 984,
+      "bits": 3,
+      "shift": 18,
+      "kind": "bits",
+      "name": "Right Elbow Frequency",
+      "source_id": "RIGHTELBOWFREQUENCY",
+      "writable": true,
+      "minimum": 0,
+      "maximum": 4,
+      "verified_build": "6AD2E48C:36532000",
+      "verification": {
+        "method": "bounded named setter; complete code matched running exact build",
+        "code_rva": "0x3461270",
+        "code_size": 176,
+        "code_sha256": "3fb46281af8f4eed08693d9554cd4feb3d2ce26b1e933b1decc40f838f6b4117"
+      },
+      "options": {
+        "Always": 0,
+        "Often": 1,
+        "Sometimes": 2,
+        "Rarely": 3,
+        "Never": 4
+      },
+      "option_source": {
+        "method": "unique CRC32-name/value enum table and name block matched in running exact build",
+        "enum": "PLAYERDATA_ACCESSORY_FREQUENCY",
+        "table_rva": "0x89d3640"
+      }
+    },
+    {
+      "section": "Gear",
+      "group": "Upper Body Accessories",
+      "label": "Right Elbow Item Away Color",
+      "offset": 412,
+      "bits": 3,
+      "shift": 0,
+      "kind": "bits",
+      "name": "Right Elbow Item Away Color",
+      "source_id": "RIGHTELBOWITEMAWAYCOLOR",
+      "writable": true,
+      "minimum": 0,
+      "maximum": 7,
+      "verified_build": "6AD2E48C:36532000",
+      "verification": {
+        "method": "bounded named setter; complete code matched running exact build",
+        "code_rva": "0x2fc4dc0",
+        "code_size": 171,
+        "code_sha256": "b108968be1d0197b5a379d64e5b1942c723d6c6220a3d659b78f7cc8fc5c05ce"
+      }
+    },
+    {
+      "section": "Gear",
+      "group": "Upper Body Accessories",
+      "label": "Right Elbow Item Home Color",
+      "offset": 408,
+      "bits": 3,
+      "shift": 10,
+      "kind": "bits",
+      "name": "Right Elbow Item Home Color",
+      "source_id": "RIGHTELBOWITEMHOMECOLOR",
+      "writable": true,
+      "minimum": 0,
+      "maximum": 7,
+      "verified_build": "6AD2E48C:36532000",
+      "verification": {
+        "method": "bounded named setter; complete code matched running exact build",
+        "code_rva": "0x2fc4d10",
+        "code_size": 176,
+        "code_sha256": "b5f9f6ba7a81809f6c2df1f6a8731889de43d7998f31dbc0d1d59b9a4ee9a952"
+      }
+    },
+    {
+      "section": "Gear",
+      "group": "Upper Body Accessories",
+      "label": "Right Fingers Frequency",
+      "offset": 992,
+      "bits": 3,
+      "shift": 10,
+      "kind": "bits",
+      "name": "Right Fingers Frequency",
+      "source_id": "RIGHTFINGERSFREQUENCY",
+      "writable": true,
+      "minimum": 0,
+      "maximum": 4,
+      "verified_build": "6AD2E48C:36532000",
+      "verification": {
+        "method": "bounded named setter; complete code matched running exact build",
+        "code_rva": "0x3460f70",
+        "code_size": 176,
+        "code_sha256": "ac8c31214e096cb962d702146599b5b2f547fe55cad36249daaf808b0aea27c3"
+      },
+      "options": {
+        "Always": 0,
+        "Often": 1,
+        "Sometimes": 2,
+        "Rarely": 3,
+        "Never": 4
+      },
+      "option_source": {
+        "method": "unique CRC32-name/value enum table and name block matched in running exact build",
+        "enum": "PLAYERDATA_ACCESSORY_FREQUENCY",
+        "table_rva": "0x89d3640"
+      }
+    },
+    {
+      "section": "Gear",
+      "group": "Upper Body Accessories",
+      "label": "Right Fingers Item Away Color",
+      "offset": 416,
+      "bits": 3,
+      "shift": 9,
+      "kind": "bits",
+      "name": "Right Fingers Item Away Color",
+      "source_id": "RIGHTFINGERSITEMAWAYCOLOR",
+      "writable": true,
+      "minimum": 0,
+      "maximum": 7,
+      "verified_build": "6AD2E48C:36532000",
+      "verification": {
+        "method": "bounded named setter; complete code matched running exact build",
+        "code_rva": "0x2fc5b80",
+        "code_size": 176,
+        "code_sha256": "e96fcb6ed9dd9dcbfe78e5dee6b50eb159c100b15d47b36dfb12c9e23cf4f935"
+      }
+    },
+    {
+      "section": "Gear",
+      "group": "Upper Body Accessories",
+      "label": "Right Fingers Item Home Color",
+      "offset": 416,
+      "bits": 3,
+      "shift": 6,
+      "kind": "bits",
+      "name": "Right Fingers Item Home Color",
+      "source_id": "RIGHTFINGERSITEMHOMECOLOR",
+      "writable": true,
+      "minimum": 0,
+      "maximum": 7,
+      "verified_build": "6AD2E48C:36532000",
+      "verification": {
+        "method": "bounded named setter; complete code matched running exact build",
+        "code_rva": "0x2fc5ad0",
+        "code_size": 176,
+        "code_sha256": "3cac483795a56cffcea1e249083968ca5a3716640405ad64003786b648b8ccc6"
+      }
+    },
+    {
+      "section": "Gear",
+      "group": "Lower Body Accessories",
+      "label": "Right Knee Frequency",
+      "offset": 988,
+      "bits": 3,
+      "shift": 11,
+      "kind": "bits",
+      "name": "Right Knee Frequency",
+      "source_id": "RIGHTKNEEFREQUENCY",
+      "writable": true,
+      "minimum": 0,
+      "maximum": 4,
+      "verified_build": "6AD2E48C:36532000",
+      "verification": {
+        "method": "bounded named setter; complete code matched running exact build",
+        "code_rva": "0x3461570",
+        "code_size": 176,
+        "code_sha256": "64ea7b44c02a215d0e8a04ab1cc9422d2b8ffca0fca80e9c76b2ff5e1ce41210"
+      },
+      "options": {
+        "Always": 0,
+        "Often": 1,
+        "Sometimes": 2,
+        "Rarely": 3,
+        "Never": 4
+      },
+      "option_source": {
+        "method": "unique CRC32-name/value enum table and name block matched in running exact build",
+        "enum": "PLAYERDATA_ACCESSORY_FREQUENCY",
+        "table_rva": "0x89d3640"
+      }
+    },
+    {
+      "section": "Gear",
+      "group": "Lower Body Accessories",
+      "label": "Right Knee Item Away Color",
+      "offset": 420,
+      "bits": 3,
+      "shift": 9,
+      "kind": "bits",
+      "name": "Right Knee Item Away Color",
+      "source_id": "RIGHTKNEEITEMAWAYCOLOR",
+      "writable": true,
+      "minimum": 0,
+      "maximum": 7,
+      "verified_build": "6AD2E48C:36532000",
+      "verification": {
+        "method": "bounded named setter; complete code matched running exact build",
+        "code_rva": "0x2fc5600",
+        "code_size": 176,
+        "code_sha256": "980befb15e25d63eec3089029e308239d343e14ceedcdbdf65417576988fb371"
+      }
+    },
+    {
+      "section": "Gear",
+      "group": "Lower Body Accessories",
+      "label": "Right Knee Item Home Color",
+      "offset": 420,
+      "bits": 3,
+      "shift": 6,
+      "kind": "bits",
+      "name": "Right Knee Item Home Color",
+      "source_id": "RIGHTKNEEITEMHOMECOLOR",
+      "writable": true,
+      "minimum": 0,
+      "maximum": 7,
+      "verified_build": "6AD2E48C:36532000",
+      "verification": {
+        "method": "bounded named setter; complete code matched running exact build",
+        "code_rva": "0x2fc5550",
+        "code_size": 176,
+        "code_sha256": "3e8250a06edea7fb05f9424fc4bc9c00163a2477f172101d692d8e3c2b5eb9d1"
+      }
+    },
+    {
+      "section": "Gear",
+      "group": "Lower Body Accessories",
+      "label": "Right Leg Frequency",
+      "offset": 988,
+      "bits": 3,
+      "shift": 8,
+      "kind": "bits",
+      "name": "Right Leg Frequency",
+      "source_id": "RIGHTLEGFREQUENCY",
+      "writable": true,
+      "minimum": 0,
+      "maximum": 4,
+      "verified_build": "6AD2E48C:36532000",
+      "verification": {
+        "method": "bounded named setter; complete code matched running exact build",
+        "code_rva": "0x34616f0",
+        "code_size": 176,
+        "code_sha256": "756bcda0ac12adace540a324b57c797e53938d37ea0fec75944a3c6f780ebbce"
+      },
+      "options": {
+        "Always": 0,
+        "Often": 1,
+        "Sometimes": 2,
+        "Rarely": 3,
+        "Never": 4
+      },
+      "option_source": {
+        "method": "unique CRC32-name/value enum table and name block matched in running exact build",
+        "enum": "PLAYERDATA_ACCESSORY_FREQUENCY",
+        "table_rva": "0x89d3640"
+      }
+    },
+    {
+      "section": "Gear",
+      "group": "Lower Body Accessories",
+      "label": "Right Leg Item Away Color",
+      "offset": 416,
+      "bits": 3,
+      "shift": 29,
+      "kind": "bits",
+      "name": "Right Leg Item Away Color",
+      "source_id": "RIGHTLEGITEMAWAYCOLOR",
+      "writable": true,
+      "minimum": 0,
+      "maximum": 7,
+      "verified_build": "6AD2E48C:36532000",
+      "verification": {
+        "method": "bounded named setter; complete code matched running exact build",
+        "code_rva": "0x2fc5340",
+        "code_size": 176,
+        "code_sha256": "81da6a7ae310eb6690696eb4a9e26f7ca3bc2f6922a0674699e729a4108ead84"
+      }
+    },
+    {
+      "section": "Gear",
+      "group": "Lower Body Accessories",
+      "label": "Right Leg Item Home Color",
+      "offset": 416,
+      "bits": 3,
+      "shift": 26,
+      "kind": "bits",
+      "name": "Right Leg Item Home Color",
+      "source_id": "RIGHTLEGITEMHOMECOLOR",
+      "writable": true,
+      "minimum": 0,
+      "maximum": 7,
+      "verified_build": "6AD2E48C:36532000",
+      "verification": {
+        "method": "bounded named setter; complete code matched running exact build",
+        "code_rva": "0x2fc5290",
+        "code_size": 176,
+        "code_sha256": "0f0a98e4f30f44777d095bcdd95411316bf0a5c0c6a999a608459afc88d71e49"
+      }
+    },
+    {
+      "section": "Gear",
+      "group": "Upper Body Accessories",
+      "label": "Right Wrist Frequency",
+      "offset": 984,
+      "bits": 3,
+      "shift": 12,
+      "kind": "bits",
+      "name": "Right Wrist Frequency",
+      "source_id": "RIGHTWRISTFREQUENCY",
+      "writable": true,
+      "minimum": 0,
+      "maximum": 4,
+      "verified_build": "6AD2E48C:36532000",
+      "verification": {
+        "method": "bounded named setter; complete code matched running exact build",
+        "code_rva": "0x34610f0",
+        "code_size": 176,
+        "code_sha256": "c5336c694eeb4335e8256ef24eed4002b80d3cc461792f935246d447abe22b87"
+      },
+      "options": {
+        "Always": 0,
+        "Often": 1,
+        "Sometimes": 2,
+        "Rarely": 3,
+        "Never": 4
+      },
+      "option_source": {
+        "method": "unique CRC32-name/value enum table and name block matched in running exact build",
+        "enum": "PLAYERDATA_ACCESSORY_FREQUENCY",
+        "table_rva": "0x89d3640"
+      }
+    },
+    {
+      "section": "Gear",
+      "group": "Upper Body Accessories",
+      "label": "Right Wrist Item Home Color",
+      "offset": 408,
+      "bits": 5,
+      "shift": 27,
+      "kind": "bits",
+      "name": "Right Wrist Item Home Color",
+      "source_id": "RIGHTWRISTITEMHOMECOLOR",
+      "writable": true,
+      "minimum": 0,
+      "maximum": 16,
+      "verified_build": "6AD2E48C:36532000",
+      "verification": {
+        "method": "bounded named setter; complete code matched running exact build",
+        "code_rva": "0x2fc4a50",
+        "code_size": 176,
+        "code_sha256": "f181fdb38e6bbece8420ad8d9643642c9cdbf6a9faa4c24639265055526f9fa8"
+      }
+    },
+    {
+      "section": "Gear",
+      "group": "Lower Body Accessories",
+      "label": "Shorts Item Frequency",
+      "offset": 984,
+      "bits": 3,
+      "shift": 6,
+      "kind": "bits",
+      "name": "Shorts Item Frequency",
+      "source_id": "SHORTSITEMFREQUENCY",
+      "writable": true,
+      "minimum": 0,
+      "maximum": 4,
+      "verified_build": "6AD2E48C:36532000",
+      "verification": {
+        "method": "bounded named setter; complete code matched running exact build",
+        "code_rva": "0x3460df0",
+        "code_size": 176,
+        "code_sha256": "9f16f89ff03745aefe92464e36822c3a7dec6393dc60bc56b01009b7685133eb"
+      },
+      "options": {
+        "Always": 0,
+        "Often": 1,
+        "Sometimes": 2,
+        "Rarely": 3,
+        "Never": 4
+      },
+      "option_source": {
+        "method": "unique CRC32-name/value enum table and name block matched in running exact build",
+        "enum": "PLAYERDATA_ACCESSORY_FREQUENCY",
+        "table_rva": "0x89d3640"
+      }
+    },
+    {
+      "section": "Gear",
+      "group": "Lower Body Accessories",
+      "label": "Shorts Items Home Color",
+      "offset": 404,
+      "bits": 3,
+      "shift": 0,
+      "kind": "bits",
+      "name": "Shorts Items Home Color",
+      "source_id": "SHORTSITEMSHOMECOLOR",
+      "writable": true,
+      "minimum": 0,
+      "maximum": 7,
+      "verified_build": "6AD2E48C:36532000",
+      "verification": {
+        "method": "bounded named setter; complete code matched running exact build",
+        "code_rva": "0x2fc4790",
+        "code_size": 171,
+        "code_sha256": "6c3af55607d47890b9ab197225d79cd1800eebeb9cb6f6a6d75b9202287b2025"
+      }
+    },
+    {
+      "section": "Gear",
+      "group": "Upper Body Accessories",
+      "label": "Left Elbow Item Away Color",
+      "offset": 408,
+      "bits": 3,
+      "shift": 3,
+      "kind": "bits",
+      "name": "Left Elbow Item Away Color",
+      "source_id": "LEFTELBOWITEMAWAYCOLOR",
+      "writable": true,
+      "minimum": 0,
+      "maximum": 7,
+      "verified_build": "6AD2E48C:36532000",
+      "verification": {
+        "method": "bounded named setter with scaled LEA; full code matched running exact build",
+        "code_rva": "0x2fc4c60",
+        "code_size": 172,
+        "code_sha256": "c062450edf84122049c9b41579a9897db2fca982dd374fb87c08afe4a1d888f7"
+      }
+    },
+    {
+      "section": "Gear",
+      "group": "Upper Body Accessories",
+      "label": "Left Fingers Item Away Color",
+      "offset": 416,
+      "bits": 3,
+      "shift": 3,
+      "kind": "bits",
+      "name": "Left Fingers Item Away Color",
+      "source_id": "LEFTFINGERSITEMAWAYCOLOR",
+      "writable": true,
+      "minimum": 0,
+      "maximum": 7,
+      "verified_build": "6AD2E48C:36532000",
+      "verification": {
+        "method": "bounded named setter with scaled LEA; full code matched running exact build",
+        "code_rva": "0x2fc5a20",
+        "code_size": 172,
+        "code_sha256": "834674c50f57e6e4444a4b3e5eae616630e6860165d3c566b32f910439208185"
+      }
+    },
+    {
+      "section": "Gear",
+      "group": "Lower Body Accessories",
+      "label": "Left Knee Item Away Color",
+      "offset": 420,
+      "bits": 3,
+      "shift": 3,
+      "kind": "bits",
+      "name": "Left Knee Item Away Color",
+      "source_id": "LEFTKNEEITEMAWAYCOLOR",
+      "writable": true,
+      "minimum": 0,
+      "maximum": 7,
+      "verified_build": "6AD2E48C:36532000",
+      "verification": {
+        "method": "bounded named setter with scaled LEA; full code matched running exact build",
+        "code_rva": "0x2fc54a0",
+        "code_size": 172,
+        "code_sha256": "d944dfc32dbfb56256c53421aa848760ee633b9b2049a3208ee8ccc6b7dcf3c4"
+      }
+    },
+    {
+      "section": "Gear",
+      "group": "Lower Body Accessories",
+      "label": "Shorts Items Away Color",
+      "offset": 404,
+      "bits": 3,
+      "shift": 3,
+      "kind": "bits",
+      "name": "Shorts Items Away Color",
+      "source_id": "SHORTSITEMSAWAYCOLOR",
+      "writable": true,
+      "minimum": 0,
+      "maximum": 7,
+      "verified_build": "6AD2E48C:36532000",
+      "verification": {
+        "method": "bounded named setter with scaled LEA; full code matched running exact build",
+        "code_rva": "0x2fc4840",
+        "code_size": 172,
+        "code_sha256": "b09f0d55bfd684b221c651478dfb1e974499dd11ecf3f9104d73dfec5bf54f60"
+      }
+    },
+    {
+      "section": "Gear",
+      "group": "Upper Body Accessories",
+      "label": "Right Wrist Item Away Color",
+      "offset": 412,
+      "bits": 5,
+      "shift": 3,
+      "kind": "bits",
+      "name": "Right Wrist Item Away Color",
+      "source_id": "RIGHTWRISTITEMAWAYCOLOR",
+      "writable": true,
+      "minimum": 0,
+      "maximum": 16,
+      "verified_build": "6AD2E48C:36532000",
+      "verification": {
+        "method": "bounded named setter with scaled LEA; full code matched running exact build",
+        "code_rva": "0x2fc4b00",
+        "code_size": 174,
+        "code_sha256": "b68f968bb6d954282cc2006180ab1747bca09361ccdb999932ad6384e2241e4b"
+      }
+    }
+  ],
+  "Appearance": [
+    {
+      "section": "Appearance",
+      "group": "Presentation",
+      "label": "Jersey Bagginess",
+      "offset": 888,
+      "bits": 4,
+      "shift": 16,
+      "kind": "bits",
+      "name": "Jersey Bagginess",
+      "source_id": "JERSEYBAGGINESS",
+      "writable": true,
+      "minimum": 0,
+      "maximum": 10,
+      "verified_build": "6AD2E48C:36532000",
+      "verification": {
+        "method": "bounded named setter; complete code matched running exact build",
+        "code_rva": "0x3460bb0",
+        "code_size": 176,
+        "code_sha256": "073d2195365a62b1afeffbe7767ad0cbeeffcb3304841994bd6cc8c979e572fa"
+      }
     }
   ]
 }

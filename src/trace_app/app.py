@@ -1,4 +1,4 @@
-"""Local-only roster editor. Run with python -m trc_plus.app."""
+"""Local-only roster editor. Run with python -m trace_app.app."""
 
 import argparse
 import json
@@ -46,6 +46,10 @@ def create_server(port: int, data_path: Path, profile_path: Path = DEFAULT_PROFI
     profile = expand_profile(json.loads(profile_path.read_text(encoding='utf-8'))) if profile_path.exists() else {}
     roster = validate_roster(json.loads(data_path.read_text(encoding='utf-8'))) if data_path.exists() else demo_roster()
     connection_settings = load_settings(settings_path)
+    # Ignore legacy saved write authorization; the UI now enables writes only
+    # through the explicit, session-scoped Start live editing action.
+    connection_settings['verified_build'] = ''
+    connection_settings['enable_writes'] = False
     for key, value in [('game_path', game_path), ('verified_build', game_build), ('enable_writes', enable_game_writes)]:
         if value is not None:
             connection_settings[key] = value
@@ -54,6 +58,8 @@ def create_server(port: int, data_path: Path, profile_path: Path = DEFAULT_PROFI
                                    enable_writes=connection_settings['enable_writes'],
                                    game_path=connection_settings['game_path'],
                                    audit_path=data_path.parent / 'game_updates.jsonl') if profile else None)
+    if game is not None:
+        roster = game.profile.canonical_document(roster)
 
     class Handler(BaseHTTPRequestHandler):
         def log_message(self, *_):
@@ -98,7 +104,7 @@ def create_server(port: int, data_path: Path, profile_path: Path = DEFAULT_PROFI
             nonlocal roster, connection_settings
             if not self.valid_host() or self.headers.get('X-Editor-Token') != token:
                 return self.reply(403, {'error': 'Invalid editor session. Reload the page.'})
-            if self.path not in ('/api/updates/check', '/api/updates/download', '/api/updates/install', '/api/trc/export', '/api/roster', '/api/import', '/api/game/settings', '/api/game/load', '/api/game/preview', '/api/game/apply', '/api/game/live', '/api/game/edit', '/api/game/undo', '/api/game/redo', '/api/game/learn-value', '/api/game/capture', '/api/game/compare'):
+            if self.path not in ('/api/updates/check', '/api/updates/download', '/api/updates/install', '/api/trc/export', '/api/roster', '/api/import', '/api/game/settings', '/api/game/load', '/api/game/diagnostics', '/api/game/preview', '/api/game/apply', '/api/game/live', '/api/game/edit', '/api/game/undo', '/api/game/redo', '/api/game/learn-value', '/api/game/capture', '/api/game/compare'):
                 return self.reply(404, {'error': 'Not found.'})
             try:
                 length = int(self.headers.get('Content-Length', '0'))
@@ -140,6 +146,8 @@ def create_server(port: int, data_path: Path, profile_path: Path = DEFAULT_PROFI
                     return self.reply(200, {'game_settings': connection_settings})
                 if self.path == '/api/game/load':
                     return self.reply(200, game.load())
+                if self.path == '/api/game/diagnostics':
+                    return self.reply(200, game.diagnostics())
                 if self.path == '/api/game/live':
                     return self.reply(200, game.set_live(document.get('enabled')))
                 if self.path == '/api/game/edit':
@@ -166,7 +174,7 @@ def create_server(port: int, data_path: Path, profile_path: Path = DEFAULT_PROFI
 
 
 def main():
-    parser = argparse.ArgumentParser(description='TRC+ — local roster editor')
+    parser = argparse.ArgumentParser(description='Trace — local roster editor')
     parser.add_argument('--port', type=int, default=8765)
     parser.add_argument('--data', type=Path, default=user_root() / 'data' / 'roster.json')
     parser.add_argument('--profile', type=Path, default=DEFAULT_PROFILE)
@@ -192,7 +200,7 @@ def main():
     if not args.no_browser and (args.desktop or (getattr(sys, 'frozen', False) and not args.browser)):
         from .desktop import run_desktop
         return run_desktop(server, url)
-    print(f'TRC+: {url}\nKeep this window open while using the editor. Press Ctrl+C or close this window to stop.\n'
+    print(f'Trace: {url}\nKeep this window open while using the editor. Press Ctrl+C or close this window to stop.\n'
           f'Workspace: {args.data.resolve()}\nSettings: {args.settings.resolve()}', flush=True)
     if not args.no_browser:
         webbrowser.open(url)

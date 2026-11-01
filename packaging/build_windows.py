@@ -10,7 +10,7 @@ import tomllib
 
 
 ROOT = Path(__file__).resolve().parents[1]
-APP_NAME = 'TRC+'
+APP_NAME = 'Trace'
 
 
 def main():
@@ -18,7 +18,7 @@ def main():
         raise SystemExit('Build this release using 64-bit Python on Windows.')
     version = tomllib.loads((ROOT / 'pyproject.toml').read_text(encoding='utf-8'))['project']['version']
     sys.path.insert(0, str(ROOT / 'src'))
-    from trc_plus.version import VERSION
+    from trace_app.version import VERSION
     if VERSION != version:
         raise SystemExit('Update version.py and pyproject.toml to the same release version.')
     release_root = ROOT / 'dist' / version
@@ -43,7 +43,7 @@ def main():
         '--version-file', str(version_info),
         '--specpath', str(ROOT / 'build'), '--paths', str(ROOT / 'src'),
         '--paths', str(ROOT / 'build' / 'desktop-deps'),
-        '--collect-data', 'trc_plus',
+        '--collect-data', 'trace_app',
         '--collect-data', 'webview',
         '--hidden-import', 'webview.platforms.edgechromium',
         '--exclude-module', 'webview.platforms.qt',
@@ -56,13 +56,13 @@ def main():
     ], cwd=ROOT, check=True)
     subprocess.run([
         sys.executable, '-m', 'PyInstaller', '--noconfirm', '--clean', '--onefile', '--windowed',
-        '--name', 'TRC+ Updater', '--distpath', str(release_root / APP_NAME),
+        '--name', 'Trace Updater', '--distpath', str(release_root / APP_NAME),
         '--workpath', str(ROOT / 'build' / 'updater'), '--specpath', str(ROOT / 'build'),
         '--paths', str(ROOT / 'src'), str(ROOT / 'packaging' / 'updater_launcher.py'),
     ], cwd=ROOT, check=True)
     shutil.copyfile(ROOT / 'packaging' / 'START HERE.txt', release_root / APP_NAME / 'START HERE.txt')
     archive = Path(shutil.make_archive(
-        str(ROOT / 'dist' / f'TRC+-{version}-windows-x64'),
+        str(ROOT / 'dist' / f'Trace-{version}-windows-x64'),
         'zip', root_dir=release_root, base_dir=APP_NAME,
     ))
     checksum = hashlib.sha256(archive.read_bytes()).hexdigest()

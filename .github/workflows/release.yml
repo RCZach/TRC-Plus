@@ -39,6 +39,10 @@ jobs:
           if ($LASTEXITCODE -eq 0) {
             gh release upload $env:RELEASE_TAG dist/*.zip dist/*.sha256 --clobber
           } else {
-            gh release create $env:RELEASE_TAG dist/*.zip dist/*.sha256 --verify-tag --generate-notes --title "TRC+ $env:RELEASE_TAG"
+            if ($env:RELEASE_TAG -eq 'v0.4.0') {
+              gh release create $env:RELEASE_TAG dist/*.zip dist/*.sha256 --verify-tag --prerelease --notes-file docs/releases/0.4.0.md --title "Trace 0.4.0 Beta"
+            } else {
+              gh release create $env:RELEASE_TAG dist/*.zip dist/*.sha256 --verify-tag --generate-notes --title "Trace $env:RELEASE_TAG"
+            }
           }
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }

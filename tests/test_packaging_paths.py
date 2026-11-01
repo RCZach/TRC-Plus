@@ -1,7 +1,7 @@
 from pathlib import Path
 import sys
 
-from trc_plus import paths
+from trace_app import paths
 
 
 def test_frozen_resources_and_user_files_are_separate(tmp_path, monkeypatch):
@@ -11,7 +11,7 @@ def test_frozen_resources_and_user_files_are_separate(tmp_path, monkeypatch):
     monkeypatch.setattr(sys, '_MEIPASS', str(bundle), raising=False)
     monkeypatch.setenv('LOCALAPPDATA', str(local))
     assert paths.resource_root() == bundle
-    assert paths.user_root() == local / 'TRC+'
+    assert paths.user_root() == local / 'Trace'
     (bundle / 'config').mkdir(parents=True)
     (bundle / 'config' / 'field_values.json').write_text('{"version": 1, "builds": {}}')
     catalog = paths.default_values_path()
@@ -46,7 +46,7 @@ def test_frozen_upgrade_preserves_legacy_workspace(tmp_path, monkeypatch):
         path.write_text(contents, encoding='utf-8')
 
     destination = paths.user_root()
-    assert destination == tmp_path / 'TRC+'
+    assert destination == tmp_path / 'Trace'
     for name, contents in files.items():
         assert (destination / name).read_text(encoding='utf-8') == contents
         assert (legacy / name).read_text(encoding='utf-8') == contents
@@ -54,7 +54,7 @@ def test_frozen_upgrade_preserves_legacy_workspace(tmp_path, monkeypatch):
     (destination / 'data/roster.json').write_text('New workspace', encoding='utf-8')
     assert paths.user_root() == destination
     assert (destination / 'data/roster.json').read_text(encoding='utf-8') == 'New workspace'
-    assert not list(tmp_path.glob('trc-plus-migration-*'))
+    assert not list(tmp_path.glob('trace-migration-*'))
 
 
 def test_failed_migration_can_be_retried(tmp_path, monkeypatch):
@@ -73,7 +73,7 @@ def test_failed_migration_can_be_retried(tmp_path, monkeypatch):
         patch.setattr(paths.shutil, 'copytree', interrupted_copy)
         with pytest.raises(OSError, match='Interrupted copy'):
             paths.user_root()
-    assert not (tmp_path / 'TRC+').exists()
-    assert not list(tmp_path.glob('trc-plus-migration-*'))
+    assert not (tmp_path / 'Trace').exists()
+    assert not list(tmp_path.glob('trace-migration-*'))
     assert paths.shutil.copytree is copytree
     assert (paths.user_root() / 'roster.json').read_text(encoding='utf-8') == 'Saved roster'

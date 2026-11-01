@@ -12,14 +12,14 @@ import uuid
 
 def replace_application(target, staged, launch):
     target, staged = target.resolve(), staged.resolve()
-    if target == target.parent or staged.name != 'TRC+' or target == staged or target.is_relative_to(staged) or staged.is_relative_to(target):
+    if target == target.parent or staged.name != 'Trace' or target == staged or target.is_relative_to(staged) or staged.is_relative_to(target):
         raise ValueError('Unexpected update installation folders.')
     for directory in (target, staged):
-        if not (directory / 'TRC+.exe').is_file() or not (directory / '_internal').is_dir():
+        if not (directory / 'Trace.exe').is_file() or not (directory / '_internal').is_dir():
             raise ValueError('The application folder is incomplete.')
     suffix = uuid.uuid4().hex
-    incoming = target.parent / f'.TRC+-incoming-{suffix}'
-    backup = target.parent / f'TRC+-previous-{suffix}'
+    incoming = target.parent / f'.Trace-incoming-{suffix}'
+    backup = target.parent / f'Trace-previous-{suffix}'
     # Both paths are verified siblings of the explicitly selected app folder.
     assert incoming.parent == backup.parent == target.parent
     shutil.copytree(staged, incoming)
@@ -35,13 +35,13 @@ def replace_application(target, staged, launch):
                     raise
                 time.sleep(0.25)
         incoming.rename(target)
-        launch(target / 'TRC+.exe')
+        launch(target / 'Trace.exe')
     except Exception:
         if moved:
             if target.exists():
-                target.rename(target.parent / f'TRC+-failed-{suffix}')
+                target.rename(target.parent / f'Trace-failed-{suffix}')
             backup.rename(target)
-            launch(target / 'TRC+.exe')
+            launch(target / 'Trace.exe')
         raise
     return backup
 
@@ -54,10 +54,10 @@ def main(manifest_path):
     if not isinstance(arguments, list) or not all(isinstance(value, str) for value in arguments):
         raise ValueError('Unexpected restart arguments.')
     target = Path(document['target']).resolve()
-    if target == target.parent or not (target / 'TRC+.exe').is_file():
+    if target == target.parent or not (target / 'Trace.exe').is_file():
         raise ValueError('Unexpected installation folder.')
-    staged = job / 'TRC+'
-    if not (staged / 'TRC+.exe').is_file():
+    staged = job / 'Trace'
+    if not (staged / 'Trace.exe').is_file():
         raise ValueError('The downloaded application is missing.')
     kernel = ctypes.WinDLL('kernel32', use_last_error=True)
     kernel.OpenProcess.argtypes = [ctypes.c_ulong, ctypes.c_int, ctypes.c_ulong]

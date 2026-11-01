@@ -1,5 +1,5 @@
-from trc_plus.models import PlayerData
-from trc_plus.sync import build_dry_run_plan
+from trace_app.models import PlayerData
+from trace_app.sync import build_dry_run_plan
 
 
 def test_dry_run_plan_contains_only_changed_valid_attributes() -> None:

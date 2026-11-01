@@ -5,6 +5,7 @@ import json
 import re
 
 from .roster import RosterError
+from .player_body import body_schema
 
 
 def label_key(value):
@@ -29,6 +30,7 @@ DISPLAY_NAMES = {
 
 def expand_profile(document):
     profile = copy.deepcopy(document)
+    profile['Body'] = body_schema()
     for section in ('Gear', 'Accessories', 'Appearance', 'Hotzones'):
         profile.setdefault(section, [])
     keys = {section: {label_key(f.get('name', f.get('label', ''))) for f in values}

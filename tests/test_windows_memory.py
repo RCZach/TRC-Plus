@@ -9,9 +9,9 @@ from pathlib import Path
 
 import pytest
 
-from trc_plus.roster import RosterError
-from trc_plus.settings import load_settings, save_settings
-from trc_plus.windows_memory import ProcessMemory, executable_path, file_build
+from trace_app.roster import RosterError
+from trace_app.settings import load_settings, save_settings
+from trace_app.windows_memory import ProcessMemory, executable_path, file_build
 
 
 def test_settings_round_trip_and_write_gate(tmp_path):

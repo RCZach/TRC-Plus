@@ -30,7 +30,7 @@ def request(url, document=None, token=None):
 
 @contextmanager
 def running_app(executable, work, environment, port):
-    log = Path(environment['LOCALAPPDATA']) / 'TRC+' / 'desktop.log'
+    log = Path(environment['LOCALAPPDATA']) / 'Trace' / 'desktop.log'
     if log.exists():
         log.write_text('')
     with (work / f'launch-{port}.log').open('wb') as output:
@@ -43,7 +43,7 @@ def running_app(executable, work, environment, port):
             deadline = time.monotonic() + 20
             while time.monotonic() < deadline:
                 contents = log.read_text(encoding='utf-8', errors='replace') if log.exists() else ''
-                match = re.search(r'TRC\+: (http://127\.0\.0\.1:\d+)', contents)
+                match = re.search(r'Trace: (http://127\.0\.0\.1:\d+)', contents)
                 if match:
                     yield match[1], contents
                     break
@@ -60,7 +60,7 @@ def running_app(executable, work, environment, port):
 
 def main():
     version = tomllib.loads((ROOT / 'pyproject.toml').read_text(encoding='utf-8'))['project']['version']
-    archive = ROOT / 'dist' / f'TRC+-{version}-windows-x64.zip'
+    archive = ROOT / 'dist' / f'Trace-{version}-windows-x64.zip'
     with tempfile.TemporaryDirectory(prefix='release-smoke-', dir=ROOT / 'build') as directory:
         work = Path(directory).resolve()
         with ZipFile(archive) as bundle:
@@ -69,7 +69,7 @@ def main():
                 assert (work / name).resolve().is_relative_to(work), name
             assert not any('/data/' in name or name.endswith('game_connection.json') for name in names)
             bundle.extractall(work)
-        executable = work / 'TRC+' / 'TRC+.exe'
+        executable = work / 'Trace' / 'Trace.exe'
         environment = os.environ.copy()
         environment['LOCALAPPDATA'] = str(work / 'user')
         for name in list(environment):
@@ -77,7 +77,7 @@ def main():
                 environment.pop(name)
         environment['LOCALAPPDATA'] = str(work / 'user')
         environment['PATH'] = str(Path(os.environ.get('SystemRoot', r'C:\Windows')) / 'System32')
-        state = work / 'user' / 'TRC+'
+        state = work / 'user' / 'Trace'
         with socket.socket() as occupied:
             occupied.bind(('127.0.0.1', 0))
             occupied.listen()
@@ -86,12 +86,12 @@ def main():
                 assert not url.endswith(f':{port}'), 'Occupied-port fallback failed'
                 assert 'already in use' in log
                 page = request(url + '/')
-                assert b'<title>TRC+</title>' in page
-                assert b'aria-label="TRC+ home"' in page
+                assert b'<title>Trace</title>' in page
+                assert b'aria-label="Trace home"' in page
                 assert b'ROSTER STUDIO' not in page.upper()
                 script = request(url + '/app.js')
                 assert len(script) > 1000
-                assert b"link.download='TRC+-roster.json'" in script
+                assert b"link.download='Trace-roster.json'" in script
                 assert len(request(url + '/style.css')) > 1000
                 session = json.loads(request(url + '/api/session'))
                 assert session['profile']['Attributes']

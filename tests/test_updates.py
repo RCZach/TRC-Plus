@@ -9,13 +9,13 @@ from zipfile import ZipFile
 
 import pytest
 
-from trc_plus import updates
-from trc_plus.app import create_server
-from trc_plus.update_installer import replace_application
+from trace_app import updates
+from trace_app.app import create_server
+from trace_app.update_installer import replace_application
 
 
 def release(version='0.4.0', **overrides):
-    name = f'TRC+-{version}-windows-x64.zip'
+    name = f'Trace-{version}-windows-x64.zip'
     return {'tag_name': 'v' + version, 'body': 'New features', 'assets': [
         {'name': name, 'size': 1, 'digest': 'sha256:' + 'a' * 64,
          'browser_download_url': f'https://github.com/{updates.REPOSITORY}/releases/download/v{version}/{name}'}], **overrides}
@@ -68,14 +68,14 @@ def test_checksum_sidecar_fallback(monkeypatch):
 def zip_content(extra=None):
     output = io.BytesIO()
     with ZipFile(output, 'w') as archive:
-        for name in ['TRC+/TRC+.exe', 'TRC+/TRC+ Updater.exe', 'TRC+/_internal/python311.dll']:
+        for name in ['Trace/Trace.exe', 'Trace/Trace Updater.exe', 'Trace/_internal/python311.dll']:
             archive.writestr(name, b'test')
         if extra:
             archive.writestr(extra, b'unsafe')
     return output.getvalue()
 
 
-@pytest.mark.parametrize('name', ['../escape', 'TRC+/../escape', 'TRC+/file:stream', 'TRC+/..\\escape', 'Other/app.exe', 'TRC+/bad./file', 'TRC+/trc+.exe'])
+@pytest.mark.parametrize('name', ['../escape', 'Trace/../escape', 'Trace/file:stream', 'Trace/..\\escape', 'Other/app.exe', 'Trace/bad./file', 'Trace/trc+.exe'])
 def test_archive_cannot_escape_or_replace_duplicate_files(tmp_path, name):
     archive = tmp_path / 'update.zip'
     archive.write_bytes(zip_content(name))
@@ -98,7 +98,7 @@ def test_download_checks_digest_before_extracting(tmp_path, monkeypatch, valid):
                        'sha256': hashlib.sha256(payload).hexdigest() if valid else '0' * 64}
     if valid:
         assert manager.download()['ready']
-        assert (manager.prepared / 'TRC+' / 'TRC+.exe').is_file()
+        assert (manager.prepared / 'Trace' / 'Trace.exe').is_file()
     else:
         with pytest.raises(ValueError, match='integrity'):
             manager.download()
@@ -108,27 +108,27 @@ def test_download_checks_digest_before_extracting(tmp_path, monkeypatch, valid):
 def app_folder(path, value):
     path.mkdir(parents=True)
     (path / '_internal').mkdir()
-    (path / 'TRC+.exe').write_text(value)
+    (path / 'Trace.exe').write_text(value)
     return path
 
 
 def test_install_retains_old_version_and_does_not_touch_saved_data(tmp_path):
-    old = app_folder(tmp_path / 'install' / 'TRC+', 'old')
-    staged = app_folder(tmp_path / 'staged' / 'TRC+', 'new')
+    old = app_folder(tmp_path / 'install' / 'Trace', 'old')
+    staged = app_folder(tmp_path / 'staged' / 'Trace', 'new')
     state = tmp_path / 'user' / 'roster.json'
     state.parent.mkdir()
     state.write_text('saved roster')
     launches = []
     backup = replace_application(old, staged, launches.append)
-    assert (old / 'TRC+.exe').read_text() == 'new'
-    assert (backup / 'TRC+.exe').read_text() == 'old'
+    assert (old / 'Trace.exe').read_text() == 'new'
+    assert (backup / 'Trace.exe').read_text() == 'old'
     assert state.read_text() == 'saved roster'
-    assert launches == [old / 'TRC+.exe']
+    assert launches == [old / 'Trace.exe']
 
 
 def test_install_restores_old_app_when_restart_fails(tmp_path):
-    old = app_folder(tmp_path / 'install' / 'TRC+', 'old')
-    staged = app_folder(tmp_path / 'staged' / 'TRC+', 'new')
+    old = app_folder(tmp_path / 'install' / 'Trace', 'old')
+    staged = app_folder(tmp_path / 'staged' / 'Trace', 'new')
     attempts = []
     def launch(executable):
         attempts.append(executable.read_text())
@@ -136,7 +136,7 @@ def test_install_restores_old_app_when_restart_fails(tmp_path):
             raise OSError('Restart failed')
     with pytest.raises(OSError, match='Restart failed'):
         replace_application(old, staged, launch)
-    assert (old / 'TRC+.exe').read_text() == 'old'
+    assert (old / 'Trace.exe').read_text() == 'old'
     assert attempts == ['new', 'old']
 
 
