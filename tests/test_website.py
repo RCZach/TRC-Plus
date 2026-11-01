@@ -62,6 +62,7 @@ def test_network_failures_size_limit_and_redirects_are_reported():
 def test_website_api_requires_session_and_does_not_save_or_write(tmp_path):
     data = tmp_path / 'roster.json'
     game = Mock()
+    game.profile.canonical_document = lambda roster: roster
     server = create_server(0, data, game=game)
     worker = Thread(target=server.serve_forever, daemon=True)
     worker.start()

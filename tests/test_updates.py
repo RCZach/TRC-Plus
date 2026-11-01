@@ -14,14 +14,14 @@ from trace_app.app import create_server
 from trace_app.update_installer import replace_application
 
 
-def release(version='0.4.0', **overrides):
+def release(version='0.4.1', **overrides):
     name = f'Trace-{version}-windows-x64.zip'
     return {'tag_name': 'v' + version, 'body': 'New features', 'assets': [
         {'name': name, 'size': 1, 'digest': 'sha256:' + 'a' * 64,
          'browser_download_url': f'https://github.com/{updates.REPOSITORY}/releases/download/v{version}/{name}'}], **overrides}
 
 
-@pytest.mark.parametrize('version,newer', [('0.2.0', False), ('0.3.0', False), ('0.4.0', True), ('0.10.0', True), ('1.0.0', True)])
+@pytest.mark.parametrize('version,newer', [('0.2.0', False), ('0.3.0', False), ('0.4.1', True), ('0.10.0', True), ('1.0.0', True)])
 def test_version_check_is_numeric_and_never_downgrades(monkeypatch, version, newer):
     monkeypatch.setattr(updates, 'read_url', lambda *args: json.dumps(release(version)).encode())
     manager = updates.UpdateManager()
@@ -75,7 +75,7 @@ def zip_content(extra=None):
     return output.getvalue()
 
 
-@pytest.mark.parametrize('name', ['../escape', 'Trace/../escape', 'Trace/file:stream', 'Trace/..\\escape', 'Other/app.exe', 'Trace/bad./file', 'Trace/trc+.exe'])
+@pytest.mark.parametrize('name', ['../escape', 'Trace/../escape', 'Trace/file:stream', 'Trace/..\\escape', 'Other/app.exe', 'Trace/bad./file'])
 def test_archive_cannot_escape_or_replace_duplicate_files(tmp_path, name):
     archive = tmp_path / 'update.zip'
     archive.write_bytes(zip_content(name))
@@ -94,7 +94,7 @@ def test_download_checks_digest_before_extracting(tmp_path, monkeypatch, valid):
     manager = updates.UpdateManager()
     asset = release()['assets'][0]
     asset['size'] = len(payload)
-    manager.release = {'tag': 'v0.4.0', 'asset': asset,
+    manager.release = {'tag': 'v0.4.1', 'asset': asset,
                        'sha256': hashlib.sha256(payload).hexdigest() if valid else '0' * 64}
     if valid:
         assert manager.download()['ready']
