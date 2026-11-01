@@ -17,7 +17,7 @@ class NoRedirects(HTTPRedirectHandler):
 
 
 def fetch_export():
-    request = Request(EXPORT_URL, headers={'Accept': 'application/json', 'User-Agent': 'Trace/0.1'})
+    request = Request(EXPORT_URL, headers={'Accept': 'application/json', 'User-Agent': 'TRACE/0.1'})
     try:
         with build_opener(NoRedirects()).open(request, timeout=20) as response:
             if response.headers.get_content_type() != 'application/json':

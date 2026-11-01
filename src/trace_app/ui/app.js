@@ -17,7 +17,7 @@ let importDocument, gameStatus, gameLoaded = false, gamePlan, plannedRoster, gam
 async function api(path, document){
  const options=document===undefined?{}:{method:'POST',headers:{'Content-Type':'application/json','X-Editor-Token':token},body:JSON.stringify(document)};
  const response=await fetch(path,options),result=await response.json();
- if(response.status===404)throw Error('An older editor is still running. Close its terminal and relaunch Trace, then use the newly opened page.');
+ if(response.status===404)throw Error('An older editor is still running. Close its terminal and relaunch TRACE, then use the newly opened page.');
  if(!response.ok)throw Error(result.error||'Request failed.');return result;
 }
 const categories = {vitals:'Vitals',body:'Body',gear:'Shoes / Gear',accessories:'Accessories',attributes:'Attributes',tendencies:'Tendencies',hotzones:'Hot Zones',signatures:'Signature',contract:'Contract',badges:'Badges',advanced:'Advanced',metadata:'Metadata',appearance:'Appearance',identity:'Details'};
@@ -378,7 +378,7 @@ $('import').onclick=()=>$('file').click();
 $('file').onchange=async()=>{const file=$('file').files[0];if(!file)return;try{if(file.size>128_000_000)throw Error('Roster must be smaller than 128 MB.');importDocument=JSON.parse(await file.text());const result=await api('/api/import',{document:importDocument});imported=result.roster;$('merge-import').checked=gameLoaded;$('import-summary').textContent=`${file.name} · ${imported.players.length} players · ${imported.teams.length} teams`;$('import-warnings').replaceChildren();$('import-dialog').showModal();}catch(error){toast(`Import failed: ${error.message}`,true);}finally{$('file').value='';}};
 $('cancel-import').onclick=()=>$('import-dialog').close();
 $('confirm-import').onclick=async()=>{if(!imported)return;const button=$('confirm-import');button.disabled=true;try{stopLiveLocally();const merging=$('merge-import').checked;const snapshot=JSON.stringify(roster);const result=merging?await api('/api/import',{document:importDocument,merge:true,target:roster}):{roster:imported,warnings:[]};if(snapshot!==JSON.stringify(roster))throw Error('Workspace changed during import. Try again.');roster=result.roster;syncWarnings=[];for(const kind of ['players','teams'])for(const record of roster[kind])dirtyRecords.add(`${kind}:${record[idKey(kind)]}`);imported=null;gamePlan=null;$('import-dialog').close();setView('players');if(result.warnings.length){showGameWarnings(result.warnings);$('game-changes').replaceChildren();$('game-summary').textContent='Import completed. These players were skipped:';$('apply-game').disabled=true;$('game-dialog').showModal();}toast(merging?'TRC values merged. Review changes before saving or applying.':'Roster imported. Review and save your workspace.');}catch(error){toast(`Import failed: ${error.message}`,true);}finally{button.disabled=false;}};
-$('export').onclick=()=>{const blob=new Blob([JSON.stringify(roster,null,2)],{type:'application/json'}),url=URL.createObjectURL(blob),link=element('a');link.href=url;link.download='Trace-roster.json';link.click();setTimeout(()=>URL.revokeObjectURL(url),1000);toast('Roster exported, including unsaved edits.');};
+$('export').onclick=()=>{const blob=new Blob([JSON.stringify(roster,null,2)],{type:'application/json'}),url=URL.createObjectURL(blob),link=element('a');link.href=url;link.download='TRACE-roster.json';link.click();setTimeout(()=>URL.revokeObjectURL(url),1000);toast('Roster exported, including unsaved edits.');};
 $('save').onclick=async()=>{
  if(saving||(!changes().length&&!workspaceNeedsSave))return;
  if(!document.querySelector('input:invalid')){
@@ -400,7 +400,7 @@ $('check-updates').onclick=async()=>{
  $('install-update').hidden=true;$('update-notes').textContent='';$('update-title').textContent='App updates';
  $('update-status').textContent='Checking GitHub for a new release…';$('update-dialog').showModal();lockForUpdate(true);
  try{const result=await api('/api/updates/check',{});$('update-status').textContent=result.message;
-  if(result.available){$('update-title').textContent=`Trace ${result.version} is available`;$('update-notes').textContent=result.notes;$('install-update').hidden=!desktopUpdates;
+  if(result.available){$('update-title').textContent=`TRACE ${result.version} is available`;$('update-notes').textContent=result.notes;$('install-update').hidden=!desktopUpdates;
    if(!desktopUpdates)$('update-status').textContent+=' Open the packaged desktop app to install it.';}
  }catch(error){$('update-status').textContent=error.message;}finally{lockForUpdate(false);}
 };
@@ -408,7 +408,7 @@ $('install-update').onclick=async()=>{
  if(updateBusy)return;
  if(window.trcHasUnsavedChanges()){toast('Save your workspace and finish pending edits before updating.',true);return;}
  lockForUpdate(true);$('update-status').textContent='Downloading and verifying the update. Keep the app open…';
- try{await api('/api/updates/download',{});$('update-status').textContent='Installing the update. Trace will restart shortly…';await api('/api/updates/install',{});}
+ try{await api('/api/updates/download',{});$('update-status').textContent='Installing the update. TRACE will restart shortly…';await api('/api/updates/install',{});}
  catch(error){$('update-status').textContent=error.message;lockForUpdate(false);}
 };
 window.addEventListener('keydown',e=>{if((e.ctrlKey||e.metaKey)&&e.key==='s'){e.preventDefault();$('save').click();}});
@@ -485,7 +485,7 @@ $('build-diagnostic').onclick=async()=>{
  if(gameBusy)return;gameBusy=true;$('build-diagnostic').disabled=true;
  try{
   const report=await api('/api/game/diagnostics',{});
-  const prompt=`Help diagnose Trace's NBA 2K27 roster-load failure using this read-only live report. Identify exactly which lookup step failed and what evidence supports the next fix. Do not guess or recommend unverified addresses. If the report is inconclusive, tell me the next safe observation to collect.\n\n${JSON.stringify(report,null,2)}`;
+  const prompt=`Help diagnose TRACE's NBA 2K27 roster-load failure using this read-only live report. Identify exactly which lookup step failed and what evidence supports the next fix. Do not guess or recommend unverified addresses. If the report is inconclusive, tell me the next safe observation to collect.\n\n${JSON.stringify(report,null,2)}`;
   $('diagnostic-prompt').value=prompt;$('info-dialog').close();$('diagnostic-dialog').showModal();
  }catch(error){toast(`Could not collect game diagnostics: ${error.message}`,true);}
  finally{gameBusy=false;$('build-diagnostic').disabled=false;}
@@ -547,4 +547,4 @@ $('apply-game').onclick=async()=>{
  try{const result=await api('/api/game/apply',{plan_id:gamePlan.plan_id});gamePlan=null;acceptGameChanges(result);$('game-dialog').close();toast(`Applied ${result.applied} game field changes. Save the roster in-game to keep them.`);}
  catch(error){gamePlan=null;toast(`Game update failed: ${error.message}`,true);}finally{gameBusy=false;updateLiveControls();}
 };
-fetch('/api/session').then(async response=>{if(!response.ok)throw Error('Could not load the editor session.');return response.json();}).then(session=>{if(session.api_version!==6)throw Error('An older editor is still running. Close its terminal and relaunch Trace, then use the newly opened page.');roster=session.roster;baseline=clone(roster);profile=session.profile;token=session.token;connectionSettings=session.game_settings;desktopUpdates=session.desktop_updates;$('app-version').textContent=`v${session.app_version}`;fillConnectionSettings();selected=roster.players[0]?.player_id;render();}).catch(error=>{document.querySelectorAll('button,input,select').forEach(control=>control.disabled=true);toast(error.message,true);});
+fetch('/api/session').then(async response=>{if(!response.ok)throw Error('Could not load the editor session.');return response.json();}).then(session=>{if(session.api_version!==6)throw Error('An older editor is still running. Close its terminal and relaunch TRACE, then use the newly opened page.');roster=session.roster;baseline=clone(roster);profile=session.profile;token=session.token;connectionSettings=session.game_settings;desktopUpdates=session.desktop_updates;$('app-version').textContent=`v${session.app_version}`;fillConnectionSettings();selected=roster.players[0]?.player_id;render();}).catch(error=>{document.querySelectorAll('button,input,select').forEach(control=>control.disabled=true);toast(error.message,true);});

@@ -27,7 +27,7 @@ from .coaching import enable_coaching, prepare_coaching, validate_coaching_conte
 
 # Read-only fallback chain reported by the public NBA 2K27 player editor.
 # The chain is only a candidate on other builds; _validate_roster_table must
-# prove it points to this profile's player records before Trace uses it.
+# prove it points to this profile's player records before TRACE uses it.
 COMMUNITY_ROOT_RVA = 161861320
 COMMUNITY_ROSTER_POINTER_OFFSET = 168
 COMMUNITY_PLAYER_COUNT_OFFSET = 16
@@ -522,7 +522,7 @@ class GameConnection:
                 raise RosterError(
                     f'No player array was found at profile offset 0x{self.profile.pointer_offset:X} '
                     f'for game build {status["build"]}. Confirm a roster is open in NBA 2K27. '
-                    'Trace also checked the read-only fallback paths, but could not validate them. '
+                    'TRACE also checked the read-only fallback paths, but could not validate them. '
                     'The player layout or game-build offsets may have changed.'
                 )
             for index in range(min(status.get('array_count') or 6000, 6000)):
@@ -754,7 +754,7 @@ class GameConnection:
                 raise RosterError('Load the game roster before starting live editing.')
             if (self.identity.get('array_source') != 'profile' and
                     not self.identity.get('writable_fields')):
-                raise RosterError('Trace found the roster using a recovery path. Reading is available, but live editing needs a verified profile for this game build.')
+                raise RosterError('TRACE found the roster using a recovery path. Reading is available, but live editing needs a verified profile for this game build.')
             with self.memory.open(writable=True) as process:
                 status = self._status(process)
                 if status != self.identity:
@@ -983,7 +983,7 @@ class GameConnection:
                         active_status = self.profile.fields['advanced', f'INJURY{slot}STATUS'].decode(before)
                         duration = field.decode(before)
                         if not 1 <= active_type <= 156 or active_status not in (1, 4) or not duration or change['value'] <= 0:
-                            raise RosterError('Create or clear injuries inside NBA 2K27; Trace can adjust an existing active injury duration.')
+                            raise RosterError('Create or clear injuries inside NBA 2K27; TRACE can adjust an existing active injury duration.')
                     if field.decode(before) != change['old']:
                         raise RosterError('Roster changed in an edited field; reload before applying.')
                     if field.kind == 'utf16':

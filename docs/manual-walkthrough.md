@@ -1,11 +1,11 @@
-# Trace manual walkthrough
+# TRACE manual walkthrough
 
 Use this guide to walk through the app by hand and note anything that behaves
 unexpectedly. It is a practical feature check, not an automated test suite.
 
 ## Before you start
 
-1. Launch Trace with `Trace.cmd` or the packaged `Trace.exe`.
+1. Launch TRACE with `TRACE.cmd` or the packaged `TRACE.exe`.
 2. If you plan to change a roster you care about, use **Export JSON** first and
    save a backup copy somewhere you can find it.
 3. Start with the demo or a spare JSON roster. The first section does not need
@@ -32,7 +32,7 @@ unexpectedly. It is a practical feature check, not an automated test suite.
    returns to its saved state.
 6. **Save a workspace edit.** Change one value, review it, then select **Save
    JSON workspace** (or press Ctrl+S). The unsaved-change indicator should
-   clear. Restart Trace and confirm the saved value remains.
+   clear. Restart TRACE and confirm the saved value remains.
 7. **Edit a team.** Select **Teams**, choose a team, and change its name or
    editable metadata. Confirm the change appears in review. Revert the team or
    discard the edit if you do not want to keep it.
@@ -51,14 +51,14 @@ unexpectedly. It is a practical feature check, not an automated test suite.
 These steps read the running game roster but do not write to it.
 
 1. Start NBA 2K27 and load the custom roster you intend to inspect.
-2. In Trace, open **Connection details**. Check the game folder or executable
+2. In TRACE, open **Connection details**. Check the game folder or executable
    path; update it if needed and save the settings.
-3. Select **Check game connection**. Trace should report whether the expected
+3. Select **Check game connection**. TRACE should report whether the expected
    NBA 2K27 process is available; the sidebar should say **Connected to NBA 2K27**.
    If it cannot connect, read the displayed
    error and verify the selected executable path before continuing.
 4. Select **Load game roster**. Confirm that the players and teams populate in
-   Trace. Loading stages a working copy; it does not save changes inside the
+   TRACE. Loading stages a working copy; it does not save changes inside the
    game.
 5. Inspect a few players and fields, then select **Teams**. Confirm that the
    loaded game data is visible and that unsupported or blank fields remain
@@ -95,7 +95,7 @@ loaded game session. Use a roster you can safely restore.
    game edit** to restore it.
 5. If you have a supported named field, try **Learn name**. Enter the name
    currently shown for that exact player and field in NBA 2K27. Confirm that
-   Trace reads and stores the value for the current build without changing the
+   TRACE reads and stores the value for the current build without changing the
    game.
 
 
@@ -103,14 +103,14 @@ loaded game session. Use a roster you can safely restore.
 
 1. Undo any test game changes you want to discard. Save inside NBA 2K27 only
    if you intend to keep the game roster changes.
-2. Save or discard Trace workspace changes. Export a final JSON copy if you
+2. Save or discard TRACE workspace changes. Export a final JSON copy if you
    want a separate backup.
-3. Close Trace. In the desktop app, confirm that the unsaved-changes prompt
+3. Close TRACE. In the desktop app, confirm that the unsaved-changes prompt
    appears when there are workspace edits to save or discard.
 
 ## Optional packaged-app check
 
-For a portable release, also launch `Trace.exe` from the extracted release
+For a portable release, also launch `TRACE.exe` from the extracted release
 folder, verify the WebView window opens, use **Check for updates**, and close
 the window. The update check should report either an available version or that
-Trace is up to date; checking by itself should not install an update.
+TRACE is up to date; checking by itself should not install an update.

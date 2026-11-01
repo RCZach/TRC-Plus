@@ -25,7 +25,7 @@ The GLOBALDATA_PERSISTENT_PER_USER::SetPlayerMinutes name was investigated and r
 
 1. Resolve the 24 coaching attribute indices and active team-to-staff linkage, then read the matching coach values.
 2. Distinguish roster coaching defaults from franchise game-plan overrides.
-3. Trace the rotation-editor read path and advanced-rotation identity/timeline representation.
+3. TRACE the rotation-editor read path and advanced-rotation identity/timeline representation.
 4. Add readouts first, then reviewed team/linked-object transactions only after identity, range, dependency, journaling, rollback and Undo behavior are supported.
 
 
@@ -116,6 +116,6 @@ zero changes and a single staged coaching edit produced exactly one coaching
 change. Game write authorization remained disabled throughout.
 
 The final regression run reported 326 passed and the same two pre-existing
-failures: the updater archive case for `Trace/trc+.exe` and the website API
+failures: the updater archive case for `TRACE/trc+.exe` and the website API
 mock serialization case. Coaching transaction, team reader and UI checks
 passed; JavaScript syntax validation also passed.

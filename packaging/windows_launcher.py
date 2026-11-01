@@ -22,8 +22,8 @@ if __name__ == '__main__':
         except (OSError, NameError):
             pass
         ctypes.windll.user32.MessageBoxW(None,
-            'Trace could not start.\n\n' + details.splitlines()[-1] +
-            '\n\nDetails are in %LOCALAPPDATA%\\Trace\\desktop.log.\n'
+            'TRACE could not start.\n\n' + details.splitlines()[-1] +
+            '\n\nDetails are in %LOCALAPPDATA%\\TRACE\\desktop.log.\n'
             'The desktop interface requires Microsoft Edge WebView2 Runtime and .NET Framework 4.6.2 or newer.',
-            'Trace startup error', 0x10)
+            'TRACE startup error', 0x10)
         sys.exit(1)

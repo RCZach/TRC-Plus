@@ -16,7 +16,7 @@ def resource_root():
 def user_root():
     if getattr(sys, 'frozen', False):
         local = Path(os.environ.get('LOCALAPPDATA') or Path.home() / 'AppData' / 'Local')
-        destination = local / 'Trace'
+        destination = local / 'TRACE'
         legacy_sources = (local / 'TRC+', local / 'TRC Roster Studio')
         legacy = next((path for path in legacy_sources if path.is_dir()), None)
         if not destination.exists() and legacy is not None:

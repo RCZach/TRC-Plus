@@ -15,14 +15,14 @@ def protect_unsaved_changes(window):
         try:
             dirty = window.evaluate_js('Boolean(window.trcHasUnsavedChanges?.())')
             if dirty and not window.create_confirmation_dialog(
-                'Unsaved workspace', 'Close Trace without saving your workspace changes?'
+                'Unsaved workspace', 'Close TRACE without saving your workspace changes?'
             ):
                 return
             approved.set()
             window.destroy()
         except Exception:
             logging.exception('Could not check unsaved changes before closing')
-            if window.create_confirmation_dialog('Close Trace', 'Could not check for unsaved changes. Close anyway?'):
+            if window.create_confirmation_dialog('Close TRACE', 'Could not check for unsaved changes. Close anyway?'):
                 approved.set()
                 window.destroy()
         finally:
@@ -46,12 +46,12 @@ def protect_unsaved_changes(window):
 
 
 def run_desktop(server, url):
-    worker = Thread(target=server.serve_forever, name='Trace local backend', daemon=True)
+    worker = Thread(target=server.serve_forever, name='TRACE local backend', daemon=True)
     try:
         import webview
 
         webview.settings['ALLOW_DOWNLOADS'] = True
-        window = webview.create_window('Trace', url, width=1440, height=900,
+        window = webview.create_window('TRACE', url, width=1440, height=900,
                                        min_size=(1000, 680), background_color='#10151e')
         missing_runtime = Event()
 
@@ -71,10 +71,10 @@ def run_desktop(server, url):
             server.check_update_ready = check_update_ready
             server.finish_update = lambda: Timer(0.5, close_after_update).start()
         worker.start()
-        print(f'Trace: {url}', flush=True)
+        print(f'TRACE: {url}', flush=True)
         webview.start(gui='edgechromium', storage_path=str(user_root() / 'webview'), private_mode=False)
         if missing_runtime.is_set():
-            raise RuntimeError('Install Microsoft Edge WebView2 Runtime to use the Trace desktop interface.')
+            raise RuntimeError('Install Microsoft Edge WebView2 Runtime to use the TRACE desktop interface.')
     finally:
         if worker.ident is not None:
             server.shutdown()

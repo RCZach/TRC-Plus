@@ -31,30 +31,30 @@ def main():
     sys.path.insert(0, str(ROOT / 'src'))
     from trace_app.updates import extract_release
     version = tomllib.loads((ROOT / 'pyproject.toml').read_text())['project']['version']
-    archive = ROOT / 'dist' / f'Trace-{version}-windows-x64.zip'
+    archive = ROOT / 'dist' / f'TRACE-{version}-windows-x64.zip'
     with tempfile.TemporaryDirectory(prefix='updater-smoke-', dir=ROOT / 'build') as directory:
         work = Path(directory).resolve()
         target = extract_release(archive, work / 'install')
         job = work / 'job'
         extract_release(archive, job)
         (target / 'old-install-marker.txt').write_text('previous installation')
-        (job / 'Trace' / 'new-install-marker.txt').write_text('updated installation')
+        (job / 'TRACE' / 'new-install-marker.txt').write_text('updated installation')
         environment = os.environ.copy()
         environment['LOCALAPPDATA'] = str(work / 'user')
         for name in list(environment):
             if name.upper() in ('PATH', 'PYTHONPATH', 'PYTHONHOME'):
                 environment.pop(name)
         environment['PATH'] = str(Path(os.environ.get('SystemRoot', r'C:\Windows')) / 'System32')
-        log = work / 'user' / 'Trace' / 'desktop.log'
+        log = work / 'user' / 'TRACE' / 'desktop.log'
         arguments = ['--no-browser', '--port', '0']
-        old = subprocess.Popen([str(target / 'Trace.exe'), *arguments], env=environment,
+        old = subprocess.Popen([str(target / 'TRACE.exe'), *arguments], env=environment,
                                stdin=subprocess.DEVNULL, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL,
                                creationflags=subprocess.CREATE_NO_WINDOW)
         helper, restarted_pid = None, None
         try:
             def address():
                 content = log.read_text(encoding='utf-8') if log.exists() else ''
-                matches = re.findall(r'Trace: (http://127\.0\.0\.1:\d+)', content)
+                matches = re.findall(r'TRACE: (http://127\.0\.0\.1:\d+)', content)
                 if not matches:
                     return None
                 try:
@@ -67,7 +67,7 @@ def main():
             roster = session['roster']
             roster['players'][0]['name'] = 'Updater persistence check'
             request(url + '/api/roster', roster, session['token'])
-            shutil.copyfile(target / 'Trace Updater.exe', job / 'helper.exe')
+            shutil.copyfile(target / 'TRACE Updater.exe', job / 'helper.exe')
             manifest = job / 'install.json'
             manifest.write_text(json.dumps({'target': str(target), 'parent_pid': old.pid, 'args': arguments}))
             helper = subprocess.Popen([str(job / 'helper.exe'), str(manifest)], env=environment,

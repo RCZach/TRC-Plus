@@ -11,7 +11,7 @@ def test_frozen_resources_and_user_files_are_separate(tmp_path, monkeypatch):
     monkeypatch.setattr(sys, '_MEIPASS', str(bundle), raising=False)
     monkeypatch.setenv('LOCALAPPDATA', str(local))
     assert paths.resource_root() == bundle
-    assert paths.user_root() == local / 'Trace'
+    assert paths.user_root() == local / 'TRACE'
     (bundle / 'config').mkdir(parents=True)
     (bundle / 'config' / 'field_values.json').write_text('{"version": 1, "builds": {}}')
     catalog = paths.default_values_path()
@@ -46,7 +46,7 @@ def test_frozen_upgrade_preserves_legacy_workspace(tmp_path, monkeypatch):
         path.write_text(contents, encoding='utf-8')
 
     destination = paths.user_root()
-    assert destination == tmp_path / 'Trace'
+    assert destination == tmp_path / 'TRACE'
     for name, contents in files.items():
         assert (destination / name).read_text(encoding='utf-8') == contents
         assert (legacy / name).read_text(encoding='utf-8') == contents
@@ -73,7 +73,7 @@ def test_failed_migration_can_be_retried(tmp_path, monkeypatch):
         patch.setattr(paths.shutil, 'copytree', interrupted_copy)
         with pytest.raises(OSError, match='Interrupted copy'):
             paths.user_root()
-    assert not (tmp_path / 'Trace').exists()
+    assert not (tmp_path / 'TRACE').exists()
     assert not list(tmp_path.glob('trace-migration-*'))
     assert paths.shutil.copytree is copytree
     assert (paths.user_root() / 'roster.json').read_text(encoding='utf-8') == 'Saved roster'

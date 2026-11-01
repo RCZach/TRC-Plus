@@ -1,30 +1,30 @@
-# Trace
+# TRACE
 
-[Download the Trace 0.4.0 beta](https://github.com/RCZach/TRC-Plus/releases/tag/v0.4.0).
+[Download the TRACE 0.4.0 beta](https://github.com/RCZach/TRC-Plus/releases/tag/v0.4.0).
 Beta downloads are manual; the in-app updater checks stable releases only. See
 [publishing updates](docs/updates.md) for the release process.
 
-## Trace UI
+## TRACE UI
 
 ### Portable Windows release
 
-Extract the entire `Trace-0.4.0-windows-x64.zip`, then double-click
-`Trace.exe`. It opens its own desktop window. Keep its `_internal` folder beside
+Extract the entire `TRACE-0.4.0-windows-x64.zip`, then double-click
+`TRACE.exe`. It opens its own desktop window. Keep its `_internal` folder beside
 the executable. Closing the app window also stops its local backend.
 Python and Cheat Engine are not
 required. See `START HERE.txt` in the release for the game connection workflow.
 The window uses Microsoft Edge WebView2 Runtime and .NET Framework 4.6.2 or
 newer, normally available on current Windows 10/11 computers. If WebView2 is
 missing, install it from https://developer.microsoft.com/microsoft-edge/webview2/.
-Startup errors are recorded in `%LOCALAPPDATA%\Trace\desktop.log`.
+Startup errors are recorded in `%LOCALAPPDATA%\TRACE\desktop.log`.
 
 Packaged releases keep each Windows user's settings, workspace, learned names,
-and recovery logs in `%LOCALAPPDATA%\Trace`. Updates can be extracted
+and recovery logs in `%LOCALAPPDATA%\TRACE`. Updates can be extracted
 into a new folder without replacing those files. Personal rosters, connection
 settings, recovery logs, and development tools are excluded from the release.
-On first launch, Trace copies saved files from the previous TRC+ or TRC Roster
-Studio data folder if the Trace folder does not exist yet. The original files
-are kept. Install Trace from a new folder once when upgrading from TRC+; the
+On first launch, TRACE copies saved files from the previous TRC+ or TRC Roster
+Studio data folder if the TRACE folder does not exist yet. The original files
+are kept. Install TRACE from a new folder once when upgrading from TRC+; the
 renamed app uses a new release package name.
 
 To build on 64-bit Windows with Python 3.11+, install
@@ -36,11 +36,11 @@ isolated user directory and Python removed from its executable search path.
 
 ### Running from source
 
-Double-click `Trace.cmd` on Windows (Python 3.11+ required). The editor opens at `http://127.0.0.1:8765` and runs only on your computer. Leave its terminal open while using the editor; press Ctrl+C there to stop it.
+Double-click `TRACE.cmd` on Windows (Python 3.11+ required). The editor opens at `http://127.0.0.1:8765` and runs only on your computer. Leave its terminal open while using the editor; press Ctrl+C there to stop it.
 
-Alternatively, install with `python -m pip install -e .`, then run `trace` or `python -m trace_app.app`. Options: `--port 8765`, `--data path/to/roster.json`, `--profile config/offsets_2k27.json`, `--no-browser`.
+Alternatively, install with `python -m pip install -e .`, then run `TRACE` or `python -m trace_app.app`. Options: `--port 8765`, `--data path/to/roster.json`, `--profile config/offsets_2k27.json`, `--no-browser`.
 For the desktop window from source, install `python -m pip install -e ".[desktop]"`
-and run `trace --desktop`. Packaged releases default to the desktop window;
+and run `TRACE --desktop`. Packaged releases default to the desktop window;
 `--browser` is available as an explicit fallback, and `--no-browser` runs only
 the local server for diagnostics.
 
@@ -80,7 +80,7 @@ The website currently serves this export without a login. No website changes or 
 ### Manual export
 
 1. Start NBA 2K27 normally and load the roster you want to edit. Cheat Engine, a relay, and external memory tools are not required.
-2. Double-click `Trace.cmd` and select **Connection details**. The game folder defaults to `D:\Program Files (x86)\Steam\steamapps\common\NBA 2K27`. Change the folder or executable path there and save if needed. Settings persist in `config/game_connection.json`; `--game-path` and `--settings` are also available.
+2. Double-click `TRACE.cmd` and select **Connection details**. The game folder defaults to `D:\Program Files (x86)\Steam\steamapps\common\NBA 2K27`. Change the folder or executable path there and save if needed. Settings persist in `config/game_connection.json`; `--game-path` and `--settings` are also available.
 3. Select **Check game connection**, then **Load game roster**. The editor verifies the running executable at the configured path and reads its player array directly. Loading stages the roster in the workspace; it does not save a JSON file.
 4. Select **Import JSON** with your TRC export and leave **Merge matching players** checked. The converter supports name-keyed exports. Target record IDs and team assignments are retained; unmatched or ambiguous names are skipped and reported. Current and historical versions of a player can share a name, so ambiguous matches require an explicit record selection rather than guessing. You can also import directly for local editing without connecting.
 5. For individual edits, click **Start live editing** once. This authorizes writes for the loaded game session and checks Windows write access. Change a supported field: it writes after a 450 ms pause, pressing Enter, or leaving the field. No preview/apply step is needed. Supported fields include numeric values, learned animation names, and first/last names under Vitals. Fields without a supported memory mapping and blank values remain local only. On an error, live editing pauses and reports the failure.
@@ -119,7 +119,7 @@ These artifacts are build- and runtime-specific. Verify the exact NBA 2K27 execu
 ## Layout
 
 ```text
-Trace/
+TRACE/
 ├── config/
 │   ├── 2k27_helpers.lua
 │   ├── memory_addresses.example.json
@@ -141,7 +141,7 @@ The editor expands the existing offset profile into 406 writable field definitio
 
 `config/field_values.json` stores observed display-name → numeric-ID pairs separately for each executable build and field. The initial catalog contains 29 observations from the supplied Tyrese Maxey signature screenshots, paired with native memory reads. It does not assume, for example, that a player's name has the same ID for a jumpshot, release, and dribble style.
 
-Mapped signature, gear, and accessory fields accept either a numeric game ID or an observed name. Learned names appear as input suggestions. Unknown named values are rejected during live editing and reported during bulk preview. To expand the catalog, select the exact game player, open the corresponding field in 2K, click **Learn name** in Trace, and enter the name currently shown in 2K. The editor reads the ID without writing to the game. Conflicting observations cannot overwrite an existing name mapping. Game numeric IDs are still available when no display name has been learned.
+Mapped signature, gear, and accessory fields accept either a numeric game ID or an observed name. Learned names appear as input suggestions. Unknown named values are rejected during live editing and reported during bulk preview. To expand the catalog, select the exact game player, open the corresponding field in 2K, click **Learn name** in TRACE, and enter the name currently shown in 2K. The editor reads the ID without writing to the game. Conflicting observations cannot overwrite an existing name mapping. Game numeric IDs are still available when no display name has been learned.
 
 Build `6AD2E48C:36532000` includes 559 Home Shoe names obtained from two agreeing loaded shoe catalogs, checked against Air Jordan III, Air Jordan 2010, and Air Jordan XXXIII selections. Duplicate-name conflicts and entries whose two catalog IDs differ are excluded. These names apply to Home Shoe on that build; they do not automatically populate other fields or game builds.
 

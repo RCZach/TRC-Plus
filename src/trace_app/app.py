@@ -174,7 +174,7 @@ def create_server(port: int, data_path: Path, profile_path: Path = DEFAULT_PROFI
 
 
 def main():
-    parser = argparse.ArgumentParser(description='Trace — local roster editor')
+    parser = argparse.ArgumentParser(description='TRACE — local roster editor')
     parser.add_argument('--port', type=int, default=8765)
     parser.add_argument('--data', type=Path, default=user_root() / 'data' / 'roster.json')
     parser.add_argument('--profile', type=Path, default=DEFAULT_PROFILE)
@@ -200,7 +200,7 @@ def main():
     if not args.no_browser and (args.desktop or (getattr(sys, 'frozen', False) and not args.browser)):
         from .desktop import run_desktop
         return run_desktop(server, url)
-    print(f'Trace: {url}\nKeep this window open while using the editor. Press Ctrl+C or close this window to stop.\n'
+    print(f'TRACE: {url}\nKeep this window open while using the editor. Press Ctrl+C or close this window to stop.\n'
           f'Workspace: {args.data.resolve()}\nSettings: {args.settings.resolve()}', flush=True)
     if not args.no_browser:
         webbrowser.open(url)

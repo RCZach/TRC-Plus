@@ -15,7 +15,7 @@ if __name__ == '__main__':
             Path(sys.argv[1]).parent.joinpath('error.log').write_text(details, encoding='utf-8')
         except Exception:
             pass
-        ctypes.windll.user32.MessageBoxW(None, 'Trace could not finish the update.\n\n' + details.splitlines()[-1] +
+        ctypes.windll.user32.MessageBoxW(None, 'TRACE could not finish the update.\n\n' + details.splitlines()[-1] +
                                        '\n\nYour saved workspace and settings are kept in your app data folder.',
-                                       'Trace update', 0x10)
+                                       'TRACE update', 0x10)
         sys.exit(1)

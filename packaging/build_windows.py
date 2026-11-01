@@ -10,7 +10,7 @@ import tomllib
 
 
 ROOT = Path(__file__).resolve().parents[1]
-APP_NAME = 'Trace'
+APP_NAME = 'TRACE'
 
 
 def main():
@@ -56,13 +56,13 @@ def main():
     ], cwd=ROOT, check=True)
     subprocess.run([
         sys.executable, '-m', 'PyInstaller', '--noconfirm', '--clean', '--onefile', '--windowed',
-        '--name', 'Trace Updater', '--distpath', str(release_root / APP_NAME),
+        '--name', 'TRACE Updater', '--distpath', str(release_root / APP_NAME),
         '--workpath', str(ROOT / 'build' / 'updater'), '--specpath', str(ROOT / 'build'),
         '--paths', str(ROOT / 'src'), str(ROOT / 'packaging' / 'updater_launcher.py'),
     ], cwd=ROOT, check=True)
     shutil.copyfile(ROOT / 'packaging' / 'START HERE.txt', release_root / APP_NAME / 'START HERE.txt')
     archive = Path(shutil.make_archive(
-        str(ROOT / 'dist' / f'Trace-{version}-windows-x64'),
+        str(ROOT / 'dist' / f'TRACE-{version}-windows-x64'),
         'zip', root_dir=release_root, base_dir=APP_NAME,
     ))
     checksum = hashlib.sha256(archive.read_bytes()).hexdigest()

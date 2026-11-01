@@ -15,7 +15,7 @@ is shipped in the application or test fixtures.
 | Neck Length | 0x10 | float32: `1 + (slider - 50) * 0.004` |
 
 Both measurement words have an unrelated high bit. The native setters mask
-with 0x7FFF and preserve that bit; Trace does the same. The lower-body and
+with 0x7FFF and preserve that bit; TRACE does the same. The lower-body and
 hand scales at +0x14 and +0x18 are read as calculation dependencies and remain
 unchanged by these controls. Height input uses positive whole inches that
 fit the 15-bit field. Slider input is integral 0–100. Calculated measurements
@@ -30,7 +30,7 @@ divides the encoded height in centimetres by the loaded model's base height,
 calls the geometry helper at RVA 0x3D1DB90, multiplies by the arm scale, and
 rounds the result to tenths of a millimetre while preserving the other flag.
 
-The geometry helper follows the loaded model's bone hierarchy. Trace supports
+The geometry helper follows the loaded model's bone hierarchy. TRACE supports
 the observed 22-bone topology only: the hand is bone 13 and its shoulder is
 bone 10. It reproduces the arm-length and shoulder-position accumulation,
 the base model span adjustment, and the native float32 rounding sequence.

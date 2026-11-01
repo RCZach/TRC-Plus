@@ -67,7 +67,7 @@ def test_editor_api_save_reload_validation_and_session_guard(tmp_path):
         with urlopen(base + '/api/session') as response:
             assert json.load(response)['roster']['players'][0]['attributes']['Speed'] == 95
         with urlopen(base + '/') as response:
-            assert b'Trace' in response.read()
+            assert b'TRACE' in response.read()
     finally:
         server.shutdown()
         server.server_close()

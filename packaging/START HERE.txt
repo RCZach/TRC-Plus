@@ -1,7 +1,7 @@
 TRACE BETA — QUICK START
 
-1. Extract the whole ZIP. Keep the _internal folder beside Trace.exe.
-2. Open Trace.exe.
+1. Extract the whole ZIP. Keep the _internal folder beside TRACE.exe.
+2. Open TRACE.exe.
 3. Start NBA 2K27 and load the roster you want to edit.
-4. In Trace, choose Check game connection, then Load game roster.
+4. In TRACE, choose Check game connection, then Load game roster.
 5. Save edits inside NBA 2K27 to keep them in the game.

@@ -3,9 +3,9 @@ requires = ["setuptools>=68"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "trace"
+name = "TRACE"
 version = "0.4.0"
-description = "Trace roster editor and TRC player data synchronization for NBA 2K27"
+description = "TRACE roster editor and TRC player data synchronization for NBA 2K27"
 requires-python = ">=3.11"
 dependencies = []
 
@@ -13,7 +13,7 @@ dependencies = []
 desktop = ["pywebview==6.1"]
 
 [project.scripts]
-trace = "trace_app.app:main"
+TRACE = "trace_app.app:main"
 
 [tool.setuptools.package-data]
 trace_app = ["ui/*.html", "ui/*.css", "ui/*.js"]

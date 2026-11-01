@@ -37,12 +37,21 @@ jobs:
         run: |
           gh release view $env:RELEASE_TAG *> $null
           if ($LASTEXITCODE -eq 0) {
+            if ($env:RELEASE_TAG -eq 'v0.4.0') {
+              $assets = gh release view $env:RELEASE_TAG --json assets --jq '.assets[].name'
+              if ($assets -contains 'Trace-0.4.0-windows-x64.zip') {
+                gh release delete-asset $env:RELEASE_TAG Trace-0.4.0-windows-x64.zip --yes
+              }
+              if ($assets -contains 'Trace-0.4.0-windows-x64.zip.sha256') {
+                gh release delete-asset $env:RELEASE_TAG Trace-0.4.0-windows-x64.zip.sha256 --yes
+              }
+            }
             gh release upload $env:RELEASE_TAG dist/*.zip dist/*.sha256 --clobber
           } else {
             if ($env:RELEASE_TAG -eq 'v0.4.0') {
-              gh release create $env:RELEASE_TAG dist/*.zip dist/*.sha256 --verify-tag --prerelease --notes-file docs/releases/0.4.0.md --title "Trace 0.4.0 Beta"
+              gh release create $env:RELEASE_TAG dist/*.zip dist/*.sha256 --verify-tag --prerelease --notes-file docs/releases/0.4.0.md --title "TRACE 0.4.0 Beta"
             } else {
-              gh release create $env:RELEASE_TAG dist/*.zip dist/*.sha256 --verify-tag --generate-notes --title "Trace $env:RELEASE_TAG"
+              gh release create $env:RELEASE_TAG dist/*.zip dist/*.sha256 --verify-tag --generate-notes --title "TRACE $env:RELEASE_TAG"
             }
           }
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
