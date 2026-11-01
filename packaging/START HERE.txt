@@ -4,9 +4,4 @@ TRACE BETA — QUICK START
 2. Open Trace.exe.
 3. Start NBA 2K27 and load the roster you want to edit.
 4. In Trace, choose Check game connection, then Load game roster.
-5. Back up your roster. Review changes before applying them.
-6. Save edits inside NBA 2K27 to keep them in the game.
-
-Trace runs locally. Python and Cheat Engine are not needed. Beta updates must
-be downloaded manually from GitHub Releases. Live editing works only for
-supported fields on compatible game builds.
+5. Save edits inside NBA 2K27 to keep them in the game.
