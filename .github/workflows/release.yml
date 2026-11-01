@@ -45,6 +45,7 @@ jobs:
               if ($assets -contains 'Trace-0.4.0-windows-x64.zip.sha256') {
                 gh release delete-asset $env:RELEASE_TAG Trace-0.4.0-windows-x64.zip.sha256 --yes
               }
+              gh release edit $env:RELEASE_TAG --title "TRACE 0.4.0 Beta" --notes-file docs/releases/0.4.0.md
             }
             gh release upload $env:RELEASE_TAG dist/*.zip dist/*.sha256 --clobber
           } else {
