@@ -70,6 +70,9 @@ def main():
             assert not any('/data/' in name or name.endswith('game_connection.json') for name in names)
             bundle.extractall(work)
         executable = work / 'TRACE' / 'TRACE.exe'
+        pythonnet_assembly = work / 'TRACE' / '_internal' / 'pythonnet' / 'runtime' / 'Python.Runtime.dll'
+        internet_mark = Path(str(pythonnet_assembly) + ':Zone.Identifier')
+        internet_mark.write_text('[ZoneTransfer]\nZoneId=3\n', encoding='ascii')
         environment = os.environ.copy()
         environment['LOCALAPPDATA'] = str(work / 'user')
         for name in list(environment):
@@ -83,6 +86,7 @@ def main():
             occupied.listen()
             port = occupied.getsockname()[1]
             with running_app(executable, work, environment, port) as (url, log):
+                assert not internet_mark.exists(), 'Downloaded .NET assembly stayed blocked'
                 assert not url.endswith(f':{port}'), 'Occupied-port fallback failed'
                 assert 'already in use' in log
                 page = request(url + '/')
