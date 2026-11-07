@@ -13,7 +13,7 @@ from urllib.parse import urlparse
 from .roster import RosterError, demo_roster, save_roster, validate_roster
 from .game import GameConnection
 from .settings import load_settings, save_settings, validate_settings
-from .trc import import_document, merge_trc
+from .trc import import_document, merge_trc_with_scope, convert_2k25_roster_badges
 from .mappings import expand_profile
 from .website import fetch_export
 from .paths import resource_root, user_root
@@ -129,15 +129,24 @@ def create_server(port: int, data_path: Path, profile_path: Path = DEFAULT_PROFI
                     self.server.finish_update()
                     return
                 if self.path == '/api/trc/export':
-                    return self.reply(200, {'roster': fetch_export()})
+                    return self.reply(200, {'roster': fetch_export(document.get('names'))})
                 if self.path == '/api/import':
                     if document.get('merge'):
-                        imported, warnings = merge_trc(document.get('document'), document.get('target'))
+                        source = import_document(document.get('document'))
+                        if game is not None:
+                            source = game.profile.canonical_document(source)
+                        imported, sync_roster, warnings = merge_trc_with_scope(source, document.get('target'))
                     else:
-                        imported, warnings = import_document(document.get('document')), []
+                        imported = convert_2k25_roster_badges(import_document(document.get('document')))
+                        warnings = []
                     if game is not None:
                         imported = game.profile.canonical_document(imported)
-                    return self.reply(200, {'roster': imported, 'warnings': warnings})
+                        if document.get('merge'):
+                            sync_roster = game.profile.canonical_document(sync_roster)
+                    response = {'roster': imported, 'warnings': warnings}
+                    if document.get('merge'):
+                        response['sync_roster'] = sync_roster
+                    return self.reply(200, response)
                 if game is None:
                     raise RosterError('No player offset profile loaded.')
                 if self.path == '/api/game/settings':

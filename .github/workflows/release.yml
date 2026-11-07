@@ -37,20 +37,21 @@ jobs:
         run: |
           gh release view $env:RELEASE_TAG *> $null
           if ($LASTEXITCODE -eq 0) {
-            if ($env:RELEASE_TAG -eq 'v0.4.0') {
+            if ($env:RELEASE_TAG -in @('v0.4.0', 'v0.4.1')) {
               $assets = gh release view $env:RELEASE_TAG --json assets --jq '.assets[].name'
-              if ($assets -contains 'Trace-0.4.0-windows-x64.zip') {
-                gh release delete-asset $env:RELEASE_TAG Trace-0.4.0-windows-x64.zip --yes
+              $asset = "TRACE-$($env:RELEASE_TAG.Substring(1))-windows-x64.zip"
+              if ($assets -contains $asset) {
+                gh release delete-asset $env:RELEASE_TAG $asset --yes
               }
-              if ($assets -contains 'Trace-0.4.0-windows-x64.zip.sha256') {
-                gh release delete-asset $env:RELEASE_TAG Trace-0.4.0-windows-x64.zip.sha256 --yes
+              if ($assets -contains "$asset.sha256") {
+                gh release delete-asset $env:RELEASE_TAG "$asset.sha256" --yes
               }
-              gh release edit $env:RELEASE_TAG --title "TRACE 0.4.0 Beta" --notes-file docs/releases/0.4.0.md
+              gh release edit $env:RELEASE_TAG --title "TRACE $($env:RELEASE_TAG.Substring(1)) Beta" --notes-file "docs/releases/$($env:RELEASE_TAG.Substring(1)).md"
             }
             gh release upload $env:RELEASE_TAG dist/*.zip dist/*.sha256 --clobber
           } else {
-            if ($env:RELEASE_TAG -eq 'v0.4.0') {
-              gh release create $env:RELEASE_TAG dist/*.zip dist/*.sha256 --verify-tag --prerelease --notes-file docs/releases/0.4.0.md --title "TRACE 0.4.0 Beta"
+            if ($env:RELEASE_TAG -in @('v0.4.0', 'v0.4.1')) {
+              gh release create $env:RELEASE_TAG dist/*.zip dist/*.sha256 --verify-tag --prerelease --notes-file "docs/releases/$($env:RELEASE_TAG.Substring(1)).md" --title "TRACE $($env:RELEASE_TAG.Substring(1)) Beta"
             } else {
               gh release create $env:RELEASE_TAG dist/*.zip dist/*.sha256 --verify-tag --generate-notes --title "TRACE $env:RELEASE_TAG"
             }

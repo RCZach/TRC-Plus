@@ -21,13 +21,13 @@ assert(footer.indexOf('id="review"')<footer.indexOf('id="save"'));
 assert(footer.indexOf('id="save"')<footer.indexOf('id="game-preview"'));
 assert(footer.includes('Review game writes'));
 const controls=new Map(),storage=new Map(),nav=['players','teams','changes','settings'].map(view=>({dataset:{view},classList:{toggle(){}}}));
-const element=(tag,text)=>({tag,text,children:[],replaceChildren(...items){this.children=items;}});
+const element=(tag,text)=>({tag,text,children:[],classList:{toggle(){}},setAttribute(){},replaceChildren(...items){this.children=items;}});
 const get=id=>{if(!controls.has(id))controls.set(id,element('div'));return controls.get(id);};
 const roster={players:[{player_id:'p',name:'Player',attributes:{Potential:85},vitals:{'Birth Year':1980}}],teams:[]};
 const original=JSON.stringify(roster);
 let fieldRenders=0;
 const context=vm.createContext({$:get,element,roster,view:'players',selected:'p',category:'vitals',fieldGroup:'',pageIndex:0,
- showAdvancedFields:false,gameLoaded:true,idKey:kind=>kind==='players'?'player_id':'team_id',
+ showAdvancedFields:false,gameLoaded:true,showTrcMatches:false,trcMatchesKnown:false,trcMatchedIds:new Set(),idKey:kind=>kind==='players'?'player_id':'team_id',
  document:{querySelectorAll:()=>nav,createTextNode:text=>({text})},Option:function(text,value){this.text=text;this.value=value;},
  localStorage:{getItem:key=>storage.get(key)??null,setItem:(key,value)=>storage.set(key,value)},
  updateLiveControls(){},refreshStatus(){},renderChanges(){},renderInspector(){fieldRenders++;},renderList(){}});
@@ -339,7 +339,7 @@ const element=(tag,text)=>({tag,text,children:[],append(...items){this.children.
  replaceChildren(...items){this.children=items;},setAttribute(){}});
 const get=id=>{if(!controls.has(id))controls.set(id,element('div'));return controls.get(id);};
 get('search').value='';get('team-filter').value='';
-Object.assign(context,{$:get,element,idKey:()=> 'player_id',view:'players',pageIndex:0,PAGE_SIZE:100,selected:'game-0',renderInspector(){}});
+Object.assign(context,{$:get,element,idKey:()=> 'player_id',view:'players',pageIndex:0,PAGE_SIZE:100,selected:'game-0',showTrcMatches:false,trcMatchedIds:new Set(),renderInspector(){}});
 context.roster.teams[0].metadata={abbreviation:'ATL'};
 context.roster.players=[
  {player_id:'game-0',name:'Mike Bibby',team_id:'atl',metadata:{position:'PG',overall:76,overall_source:'game'},attributes:{Speed:99}},
@@ -358,6 +358,9 @@ assert.strictEqual(rows[1].children[3].text,'88');
 assert.strictEqual(rows[2].children[1].text,'—');
 assert.strictEqual(rows[2].children[3].text,'—');
 assert.strictEqual(rows[3].children[1].text,'FA');
+context.showTrcMatches=true;context.trcMatchedIds=new Set(['game-1']);context.renderList();
+assert.strictEqual(get('record-list').children.length,1);
+assert.strictEqual(get('record-list').children[0].children[0].children[0].children[1].children[0].text,'Joe Johnson');
 """
     result = subprocess.run(['node', '-e', script], capture_output=True, text=True, timeout=10)
     assert result.returncode == 0, result.stderr
@@ -396,6 +399,37 @@ vm.runInContext(source.slice(source.indexOf("$('apply-game').onclick=async()=>{"
 
 
 @pytest.mark.skipif(shutil.which('node') is None, reason='Node.js is needed for the frontend check')
+def test_trc_player_toggle_only_filters_loaded_roster():
+    script = r"""
+const fs=require('fs'),vm=require('vm'),assert=require('assert');
+const source=fs.readFileSync('src/trace_app/ui/app.js','utf8');
+const controls=new Map();const get=id=>{if(!controls.has(id))controls.set(id,{});return controls.get(id);};
+const roster={players:[{player_id:'p1',name:'Kelly Jordan'},{player_id:'p2',name:'NBA Player'}],teams:[]};
+const original=JSON.stringify(roster),calls=[],notices=[];
+const context=vm.createContext({$:get,roster,gameLoaded:true,gameBusy:false,pageIndex:0,
+ trcMatchedIds:new Set(),trcMatchesKnown:false,showTrcMatches:false,
+ normalizedPlayerName:name=>name.normalize('NFKC').toLowerCase().trim().replace(/\s+/g,' '),
+ updateLiveControls(){},render(){},toast:message=>notices.push(message),
+ api:async(path,body)=>{calls.push(path);assert.deepStrictEqual(Array.from(body.names),['Kelly Jordan','NBA Player']);
+  return {roster:{players:[{name:'Kelly Jordan'}]}};}});
+vm.runInContext(source.slice(source.indexOf("$('all-records').onclick="),source.indexOf('function renderSettings(){')),context);
+(async()=>{
+ await get('trc-records').onclick();
+ assert.deepStrictEqual(calls,['/api/trc/export']);
+ assert.strictEqual(context.showTrcMatches,true);assert.strictEqual(context.trcMatchesKnown,true);
+ assert.deepStrictEqual(Array.from(context.trcMatchedIds),['p1']);
+ assert.strictEqual(JSON.stringify(roster),original);
+ await get('trc-records').onclick();assert.strictEqual(context.showTrcMatches,false);
+ await get('trc-records').onclick();assert.strictEqual(context.showTrcMatches,true);
+ assert.strictEqual(calls.length,1);
+ get('all-records').onclick();assert.strictEqual(context.showTrcMatches,false);
+})().catch(error=>{console.error(error);process.exitCode=1;});
+"""
+    result = subprocess.run(['node', '-e', script], capture_output=True, text=True, timeout=10)
+    assert result.returncode == 0, result.stderr
+
+
+@pytest.mark.skipif(shutil.which('node') is None, reason='Node.js is needed for the frontend check')
 def test_website_sync_stages_without_writing_and_preserves_match_warnings():
     script = r"""
 const fs=require('fs'),vm=require('vm'),assert=require('assert');
@@ -405,15 +439,19 @@ const get=id=>{if(!controls.has(id))controls.set(id,{});return controls.get(id);
 const calls=[];
 const initial={players:[{player_id:'game-1',name:'Custom Player'}],teams:[]};
 const merged={players:[{player_id:'game-1',name:'Custom Player',attributes:{Speed:80}}],teams:[]};
+const scoped={players:[{player_id:'game-1',name:'Custom Player',attributes:{Speed:80}}],teams:[]};
 let previews=0;
 get('game-preview').onclick=async()=>{previews++;assert.strictEqual(context.gameBusy,false);};
 const context=vm.createContext({$:get,gameBusy:false,livePending:0,liveTimers:new Map(),
  gameLoaded:true,gameStatus:{connected:true},roster:initial,gamePlan:null,workspaceNeedsSave:false,
- syncWarnings:[],dirtyRecords:new Set(),stopLiveLocally(){calls.push('stop-live');},
+ syncWarnings:[],syncPreviewRoster:null,trcMatchedIds:new Set(),trcMatchesKnown:false,showTrcMatches:false,
+ normalizedPlayerName:name=>name.normalize('NFKC').toLowerCase().trim().replace(/\s+/g,' '),
+ dirtyRecords:new Set(),stopLiveLocally(){calls.push('stop-live');},
  updateLiveControls(){},updateGameStatus(){},setView(){},toast(){},
+ setTrcSyncStatus(message){get('trc-sync-status').textContent=message;},
  api:async(path,body)=>{calls.push(path);
-  if(path==='/api/trc/export')return {roster:{players:[{name:'Custom Player'},{name:'Missing Player'}]}};
-  if(path==='/api/import'){assert.strictEqual(body.merge,true);return {roster:merged,warnings:['Missing Player: skipped.']};}
+  if(path==='/api/trc/export'){assert.deepStrictEqual(Array.from(body.names),['Custom Player']);return {roster:{players:[{name:'Custom Player'},{name:'Missing Player'}]}};}
+  if(path==='/api/import'){assert.strictEqual(body.merge,true);return {roster:merged,sync_roster:scoped,warnings:['Missing Player: skipped.']};}
   if(path==='/api/game/live'){assert.strictEqual(body.enabled,false);return {};}
   throw Error('Unexpected request: '+path);
  }});
@@ -421,12 +459,45 @@ vm.runInContext(source.slice(source.indexOf('const showGamePreview='),source.ind
 (async()=>{await get('trc-sync').onclick();
  assert.strictEqual(previews,1);assert.strictEqual(context.roster,merged);
  assert.strictEqual(context.syncWarnings[0],'Missing Player: skipped.');
+ assert.strictEqual(context.syncPreviewRoster,scoped);
  assert.strictEqual(context.gameBusy,false);assert.strictEqual(context.workspaceNeedsSave,true);
+ assert.strictEqual(context.showTrcMatches,true);
+ assert.strictEqual(context.trcMatchesKnown,true);
+ assert.deepStrictEqual(Array.from(context.trcMatchedIds),['game-1']);
+ assert.deepStrictEqual(Array.from(context.dirtyRecords),['players:game-1']);
  assert.deepStrictEqual(calls,['/api/trc/export','/api/import','/api/game/live','stop-live']);
+ assert.strictEqual(get('trc-sync-status').textContent,'');
 })().catch(error=>{console.error(error);process.exitCode=1;});
 """
     result = subprocess.run(['node', '-e', script], capture_output=True, text=True, timeout=10)
     assert result.returncode == 0, result.stderr
+@pytest.mark.skipif(shutil.which('node') is None, reason='Node.js is needed for the frontend check')
+def test_large_game_preview_renders_in_bounded_batches():
+    script = r"""
+const fs=require('fs'),vm=require('vm'),assert=require('assert');
+const source=fs.readFileSync('src/trace_app/ui/app.js','utf8');
+const controls=new Map();
+const get=id=>{if(!controls.has(id))controls.set(id,{children:[],replaceChildren(...items){this.children=items;},append(...items){this.children.push(...items);}});return controls.get(id);};
+const element=(tag,value,cls)=>({tag,textContent:value,className:cls,children:[],append(...items){this.children.push(...items);}});
+const changes=Array.from({length:11820},(_,i)=>({name:`Player ${i%92}`,category:'attributes',field:`Field ${i}`,old:25,value:80}));
+const warnings=Array.from({length:3894},(_,i)=>`Skipped ${i}`);
+const context=vm.createContext({$:get,element,gamePlan:{changes},gameWarningMessages:[],gameWarningsShown:0,gameChangesShown:0,
+ GAME_CHANGE_BATCH:100,GAME_WARNING_BATCH:50,teamCategories:{},categories:{attributes:'Attributes'},display:value=>String(value)});
+vm.runInContext(source.slice(source.indexOf('function showGameWarnings('),source.indexOf('const liveKey=')),context);
+vm.runInContext('showGameChanges(gamePlan.changes);showGameWarnings('+JSON.stringify(warnings)+')',context);
+assert.strictEqual(get('game-changes').children.length,100);
+assert.strictEqual(get('game-warnings').children.length,50);
+assert.strictEqual(get('more-game-changes').hidden,false);
+assert.strictEqual(get('more-game-warnings').hidden,false);
+assert(get('game-change-breakdown').textContent.includes('92 players'));
+get('more-game-changes').onclick();get('more-game-warnings').onclick();
+assert.strictEqual(get('game-changes').children.length,200);
+assert.strictEqual(get('game-warnings').children.length,100);
+"""
+    result = subprocess.run(['node', '-e', script], capture_output=True, text=True, timeout=10)
+    assert result.returncode == 0, result.stderr
+
+
 @pytest.mark.skipif(shutil.which('node') is None, reason='Node.js is needed for the frontend check')
 def test_updates_require_saved_edits_and_install_only_after_user_click():
     script = r"""

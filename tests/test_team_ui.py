@@ -46,7 +46,7 @@ assert.strictEqual(get('fields').children.flatMap(row=>row.children).filter(c=>c
 assert.strictEqual(JSON.stringify(roster),before);
 get('field-search').value='';delete team.coaching;context.category='coaching';context.renderFields();
 inputs=get('fields').children.flatMap(row=>row.children).filter(c=>c.tag==='input');
-assert(inputs.every(input=>input.value==='—'&&input.readOnly));
+assert(inputs.every(input=>input.value==='\u2014'&&input.readOnly));
 delete team.staff;context.category='staff';context.renderFields();
 assert(get('fields').children.some(c=>c.text?.includes('No validated staff data')));
 """
@@ -66,8 +66,15 @@ const baseline={players:[],teams:[JSON.parse(JSON.stringify(team))]},roster={pla
 const context=vm.createContext({$:get,element,current:()=>team,view:'teams',category:'coaching',liveEnabled:false,gameLoaded:true,gameStatus:{connected:true},teamGameValues:new Map([['t',{...team.coaching.values}]]),roster,baseline,dirtyRecords:new Set(),refreshStatus(){},cancelLiveTimer(){},queueTeamLiveEdit:(...args)=>writes.push(args)});
 vm.runInContext(source.slice(source.indexOf('const teamCategories='),source.indexOf('function renderInspector(){')),context);
 vm.runInContext(source.slice(source.indexOf('function renderTeamFields('),source.indexOf('function renderFields(){')),context);
+team.coaching.values['Coach Offense']=65;team.coaching.rating_fields=['Coach Offense'];team.coaching.field_order=[...Object.keys(team.coaching.values)];team.coaching.writable_fields.push('Coach Offense');baseline.teams[0]=JSON.parse(JSON.stringify(team));
 context.renderTeamFields(team);
 let inputs=get('fields').children.flatMap(row=>row.children).filter(c=>c.tag==='input');
+assert.strictEqual(inputs.length,4);
+context.category='staff';get('fields').replaceChildren();context.renderTeamFields(team);
+let ratings=get('fields').children.flatMap(row=>row.children).filter(c=>c.tag==='input'&&!c.readOnly);
+assert.strictEqual(ratings.length,1);assert.strictEqual(ratings[0].value,65);
+context.category='coaching';get('fields').replaceChildren();context.renderTeamFields(team);
+inputs=get('fields').children.flatMap(row=>row.children).filter(c=>c.tag==='input');
 assert(inputs.every(input=>input.type==='number'&&input.min===0&&input.max===100&&input.step===1));
 const help=inputs[0];help.value='51';help.oninput();
 assert.strictEqual(team.coaching.values['Help Defense'],51);assert.strictEqual(writes.length,0);assert(context.dirtyRecords.has('teams:t'));

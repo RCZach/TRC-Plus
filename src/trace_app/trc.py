@@ -11,6 +11,39 @@ CATEGORIES = {'Attributes': 'attributes', 'Tendencies': 'tendencies',
               'Advanced Fields': 'advanced', 'Gear': 'gear', 'Accessories': 'accessories',
               'Hotzones': 'hotzones', 'Appearance': 'appearance'}
 
+# TRC stores NBA 2K25 badges. These are the user's selected single targets in
+# NBA 2K27; the other halves of the split badges remain untouched.
+BADGES_2K25_TO_2K27 = {
+    'Boxout Beast': 'Boxout Boss',
+    'On-Ball Menace': 'Seatbelt',
+    'Post-Up Poet': 'Post Spin Catalyst',
+    'Rebound Chaser': 'Possession Closer',
+    'Set Shot Specialist': 'Set and Fire',
+    'Shifty Shooter': 'Arc Cadence',
+}
+
+
+def convert_2k25_badges(badges: dict, existing: dict | None = None) -> dict:
+    """Translate old badge names without reducing existing 2K27 tiers."""
+    converted = copy.deepcopy(badges)
+    existing = existing or {}
+    for old, new in BADGES_2K25_TO_2K27.items():
+        if old not in converted:
+            continue
+        tier = converted.pop(old)
+        if new in converted or tier == 0:
+            continue  # An explicit 2K27 value wins; zero does not clear a badge.
+        converted[new] = max(tier, existing.get(new, 0))
+    return converted
+
+
+def convert_2k25_roster_badges(document: dict) -> dict:
+    """Convert an imported TRC document without a game roster to merge into."""
+    result = validate_roster(document)
+    for player in result['players']:
+        player['badges'] = convert_2k25_badges(player['badges'])
+    return result
+
 
 def normalized_name(name: str) -> str:
     return ' '.join(unicodedata.normalize('NFKC', name).casefold().split())
@@ -38,10 +71,17 @@ def import_document(document: object) -> dict:
     return validate_roster({'name': 'TRC export', 'players': players, 'teams': []})
 
 
-def merge_trc(source: dict, target: dict) -> tuple[dict, list[str]]:
-    """Keep target IDs/team assignments; refuse ambiguous name matching."""
+def merge_trc_with_scope(source: dict, target: dict) -> tuple[dict, dict, list[str]]:
+    """Merge supplied values and build a preview limited to those values."""
     source, result = import_document(source), validate_roster(target)
+    scope = copy.deepcopy(result)
+    for player in scope['players']:
+        for category in CATEGORIES.values():
+            player[category] = {}
+    for team in scope['teams']:
+        team.pop('coaching', None)
     source_names, target_names = {}, {}
+    scope_players = {player['player_id']: player for player in scope['players']}
     for record in source['players']:
         source_names.setdefault(normalized_name(record['name']), []).append(record)
     for record in result['players']:
@@ -54,6 +94,18 @@ def merge_trc(source: dict, target: dict) -> tuple[dict, list[str]]:
             continue
         source_player, player = records[0], matches[0]
         for category in CATEGORIES.values():
-            player[category].update(copy.deepcopy(source_player[category]))
+            values = (convert_2k25_badges(source_player[category], player[category])
+                      if category == 'badges' else copy.deepcopy(source_player[category]))
+            if category == 'badges':
+                for old in BADGES_2K25_TO_2K27:
+                    player[category].pop(old, None)
+            player[category].update(values)
+            scope_players[player['player_id']][category] = copy.deepcopy(values)
         player['metadata'].update(copy.deepcopy(source_player['metadata']))
-    return validate_roster(result), warnings
+    return validate_roster(result), validate_roster(scope), warnings
+
+
+def merge_trc(source: dict, target: dict) -> tuple[dict, list[str]]:
+    """Keep target IDs/team assignments; refuse ambiguous name matching."""
+    merged, _, warnings = merge_trc_with_scope(source, target)
+    return merged, warnings

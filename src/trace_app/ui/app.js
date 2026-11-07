@@ -13,6 +13,11 @@ let workspaceNeedsSave=false, dirtyRecords=new Set();
 let desktopUpdates=false, updateBusy=false;
 let liveEnabled=false, livePending=0, liveQueue=Promise.resolve(), liveTimers=new Map(), gameValues=new Map(), teamGameValues=new Map(), undoCount=0, redoCount=0;
 let syncWarnings=[];
+let syncPreviewRoster=null;
+let gameWarningMessages=[],gameWarningsShown=0,gameChangesShown=0;
+const GAME_CHANGE_BATCH=100,GAME_WARNING_BATCH=50;
+let trcMatchedIds=new Set(),trcMatchesKnown=false,showTrcMatches=false;
+const normalizedPlayerName=name=>name.normalize('NFKC').toLowerCase().trim().replace(/\s+/g,' ');
 let importDocument, gameStatus, gameLoaded = false, gamePlan, plannedRoster, gameBusy = false, connectionSettings, fieldValues={}, learningField;
 async function api(path, document){
  const options=document===undefined?{}:{method:'POST',headers:{'Content-Type':'application/json','X-Editor-Token':token},body:JSON.stringify(document)};
@@ -106,6 +111,7 @@ function personalityFields(fields){
 const idKey = kind => kind === 'players' ? 'player_id' : 'team_id';
 const element = (tag, text, cls) => {const e = document.createElement(tag); if(text !== undefined)e.textContent=text; if(cls)e.className=cls; return e;};
 function toast(message, error = false){$('toast').textContent=message;$('toast').className=error?'error':'';$('toast').hidden=false;clearTimeout(toastTimer);toastTimer=setTimeout(()=>$('toast').hidden=true,error?9000:4500);}
+function setTrcSyncStatus(message){const status=$('trc-sync-status');status.textContent=message;status.hidden=!message;}
 function teamName(id){return roster.teams.find(t=>t.team_id===id)?.name || 'Free agent';}
 function playerTeamName(record){return roster.teams.find(t=>t.team_id===record.team_id)?.name || (record.metadata?.team_status==='unknown'||record.team_id?'Unknown team':'Free agent');}
 function isFreeAgent(record){return !record.team_id&&record.metadata?.team_status!=='unknown';}
@@ -144,7 +150,7 @@ function refreshStatus(){
  $('change-count').textContent=count;$('pending').textContent=count?`${count} unsaved change${count===1?'':'s'}`:workspaceNeedsSave?'Game roster loaded · JSON copy not saved':'No unsaved changes';
  $('save').disabled=saving||(!count&&!workspaceNeedsSave);$('save-status').textContent=count?'Unsaved changes':workspaceNeedsSave?'Game roster not saved to JSON':'No unsaved changes';
  $('footer-status').textContent=count?'Workspace has unsaved edits':'Ready to edit';
- $('edit-status').textContent=view==='teams'?category==='coaching'&&hasEditableCoaching(current())?'Coach defaults are editable':'Team readouts · read only':count?'Edited values are highlighted':'Select a value to edit';
+ $('edit-status').textContent=view==='teams'?['coaching','staff'].includes(category)&&hasEditableCoaching(current())?'Coach values are editable':'Team readouts · read only':count?'Edited values are highlighted':'Select a value to edit';
  if(gamePlan&&plannedRoster!==JSON.stringify(roster))$('apply-game').disabled=true;
 }
 function setView(next){
@@ -167,12 +173,17 @@ function render(){
  $('team-filter').replaceChildren(new Option('All teams',''),new Option('Free agents','__free'),new Option('Unknown team','__unknown'),...roster.teams.map(t=>new Option(t.name,t.team_id)));
  $('team-filter').value=filter;$('team-filter').hidden=view==='teams';
  $('all-records').textContent=view==='players'?'All players':'All teams';
+ $('all-records').classList.toggle('active',!showTrcMatches||view!=='players');
+ $('trc-records').hidden=view!=='players'||!gameLoaded;
+ $('trc-records').textContent='Only show TRC players';
+ $('trc-records').classList.toggle('active',showTrcMatches&&view==='players');
+ $('trc-records').setAttribute('aria-pressed',String(showTrcMatches&&view==='players'));
  renderList();renderInspector();refreshStatus();
 }
 function renderList(){
  if(view!=='players'&&view!=='teams')return;
  const query=$('search').value.toLowerCase(),filter=$('team-filter').value;
- const list=roster[view].filter(r=>(`${r.name} ${r[idKey(view)]}`).toLowerCase().includes(query)&&(view!=='players'||!filter||(filter==='__free'?isFreeAgent(r):filter==='__unknown'?r.metadata?.team_status==='unknown':r.team_id===filter)));
+ const list=roster[view].filter(r=>(`${r.name} ${r[idKey(view)]}`).toLowerCase().includes(query)&&(view!=='players'||!showTrcMatches||trcMatchedIds.has(r.player_id))&&(view!=='players'||!filter||(filter==='__free'?isFreeAgent(r):filter==='__unknown'?r.metadata?.team_status==='unknown':r.team_id===filter)));
  const pages=Math.max(1,Math.ceil(list.length/PAGE_SIZE));pageIndex=Math.max(0,Math.min(pageIndex,pages-1));
  const page=list.slice(pageIndex*PAGE_SIZE,(pageIndex+1)*PAGE_SIZE),previousSelection=selected;
  if(page.length&&!page.some(record=>record[idKey(view)]===selected))selected=page[0][idKey(view)];
@@ -214,9 +225,28 @@ function renderTeamFields(record){
  $('field-groups').replaceChildren();$('field-groups').hidden=true;
  const query=$('field-search').value.trim().toLowerCase(),pane=$('fields');
  const caption=element('div',undefined,'team-detail-heading');
- caption.append(element('strong',teamCategories[category]||'Team'),element('span',category==='coaching'&&hasEditableCoaching(record)?liveEnabled?'Live':'Editable':'Read only','pill'));pane.append(caption);
+ caption.append(element('strong',teamCategories[category]||'Team'),element('span',(category==='coaching'||category==='staff'&&record.coaching?.rating_fields?.length)&&hasEditableCoaching(record)?liveEnabled?'Live':'Editable':'Read only','pill'));pane.append(caption);
  const matches=text=>String(text).toLowerCase().includes(query);
  const readout=(label,value)=>{const row=element('div',undefined,'field team-readout'),input=element('input');input.type='text';input.readOnly=true;input.value=value??'—';input.setAttribute('aria-label',label);row.append(element('label',label),input);pane.append(row);};
+ const ratingNames=Array.isArray(record.coaching?.rating_fields)?record.coaching.rating_fields:[];
+ const renderCoachValues=names=>{
+  let shown=0;
+  for(const name of names){
+   const value=record.coaching?.values?.[name];if(!matches(name))continue;
+   const valid=Number.isInteger(value)&&value>=0&&value<=100;
+   if(hasEditableCoaching(record)&&record.coaching.writable_fields.includes(name)&&valid){
+    const row=element('div',undefined,'field team-readout'),input=element('input');input.type='number';input.min=0;input.max=100;input.step=1;input.value=value;input.setAttribute('aria-label',name);
+    const original=baseline.teams.find(t=>t.team_id===record.team_id)?.coaching?.values?.[name];
+    const highlight=()=>row.classList.toggle('changed',record.coaching.values[name]!==original);highlight();
+    const commit=()=>{if(liveEnabled&&input.checkValidity())queueTeamLiveEdit(record,name,record.coaching.values[name]);};
+    input.oninput=()=>{cancelLiveTimer(`team:${record.team_id}`,'coaching',name);const next=Number(input.value),valid=input.value!==''&&Number.isInteger(next)&&next>=0&&next<=100;input.setCustomValidity(valid?'':'Enter a whole number from 0 to 100.');if(!valid)return;record.coaching.values[name]=next;dirtyRecords.add(`teams:${record.team_id}`);highlight();refreshStatus();gamePlan=null;if(liveEnabled){const key=liveKey(`team:${record.team_id}`,'coaching',name);liveTimers.set(key,setTimeout(()=>{liveTimers.delete(key);commit();},450));updateLiveControls();}};
+    input.onchange=()=>{cancelLiveTimer(`team:${record.team_id}`,'coaching',name);commit();};input.onkeydown=e=>{if(e.key==='Enter'){e.preventDefault();input.blur();}};
+    row.append(element('label',name),input);pane.append(row);
+   }else readout(name,valid?String(value):undefined);
+   shown++;
+  }
+  return shown;
+ };
  if(category==='rotation'){
   const players=roster.players.filter(p=>p.team_id===record.team_id),byId=new Map(players.map(p=>[p.player_id,p]));
   const ids=Array.isArray(record.rotation?.player_ids)?record.rotation.player_ids:[];
@@ -234,22 +264,8 @@ function renderTeamFields(record){
   pane.append(element('p',`Team total: ${Number.isInteger(total)?total:'—'} min`,'team-total'));
  }else if(category==='coaching'){
   if(typeof record.coaching?.coach==='string')pane.append(element('p',`Coach defaults · ${record.coaching.coach}`,'team-source'));
-  let shown=0;
   const names=Array.isArray(record.coaching?.field_order)?record.coaching.field_order:['Help Defense','Run Plays Frequency','Zone Usage Frequency','Tempo'];
-  for(const name of names){
-   const value=record.coaching?.values?.[name];if(!matches(name))continue;
-   const valid=Number.isInteger(value)&&value>=0&&value<=100;
-   if(hasEditableCoaching(record)&&record.coaching.writable_fields.includes(name)&&valid){
-    const row=element('div',undefined,'field team-readout'),input=element('input');input.type='number';input.min=0;input.max=100;input.step=1;input.value=value;input.setAttribute('aria-label',name);
-    const original=baseline.teams.find(t=>t.team_id===record.team_id)?.coaching?.values?.[name];
-    const highlight=()=>row.classList.toggle('changed',record.coaching.values[name]!==original);highlight();
-    const commit=()=>{if(liveEnabled&&input.checkValidity())queueTeamLiveEdit(record,name,record.coaching.values[name]);};
-    input.oninput=()=>{cancelLiveTimer(`team:${record.team_id}`,'coaching',name);const next=Number(input.value),valid=input.value!==''&&Number.isInteger(next)&&next>=0&&next<=100;input.setCustomValidity(valid?'':'Enter a whole number from 0 to 100.');if(!valid)return;record.coaching.values[name]=next;dirtyRecords.add(`teams:${record.team_id}`);highlight();refreshStatus();gamePlan=null;if(liveEnabled){const key=liveKey(`team:${record.team_id}`,'coaching',name);liveTimers.set(key,setTimeout(()=>{liveTimers.delete(key);commit();},450));updateLiveControls();}};
-    input.onchange=()=>{cancelLiveTimer(`team:${record.team_id}`,'coaching',name);commit();};input.onkeydown=e=>{if(e.key==='Enter'){e.preventDefault();input.blur();}};
-    row.append(element('label',name),input);pane.append(row);
-   }else readout(name,valid?String(value):undefined);
-   shown++;
-  }
+  const shown=renderCoachValues(names.filter(name=>!ratingNames.includes(name)));
   if(!shown)pane.append(element('div','No matching fields.','empty'));
  }else if(category==='staff'){
   const entries=Array.isArray(record.staff?.entries)?record.staff.entries.filter(entry=>entry&&typeof entry.name==='string'):[];
@@ -259,6 +275,7 @@ function renderTeamFields(record){
    const label=roles[entry.role]||String(entry.role||'Staff').replaceAll('_',' ');
    if(!matches(`${label} ${entry.name}`))continue;readout(label,entry.name);shown++;
   }
+  if(ratingNames.some(matches)){pane.append(element('p',`Coach ratings${record.coaching?.coach?' · '+record.coaching.coach:''}`,'team-source'));shown+=renderCoachValues(ratingNames);}
   if(!shown)pane.append(element('div',query?'No matching staff.':'No validated staff data is available for this team.','empty'));
  }
 }
@@ -363,6 +380,25 @@ function renderChanges(){
  $('discard').disabled=!list.length||liveEnabled||livePending>0;
 }
 $('search').oninput=()=>{pageIndex=0;renderList();};$('team-filter').onchange=()=>{pageIndex=0;renderList();};$('page-prev').onclick=()=>{if(pageIndex>0){pageIndex--;renderList();}};$('page-next').onclick=()=>{pageIndex++;renderList();};$('field-search').oninput=renderFields;
+$('all-records').onclick=()=>{showTrcMatches=false;pageIndex=0;render();};
+$('trc-records').onclick=async()=>{
+ if(!gameLoaded||gameBusy)return;
+ if(showTrcMatches){showTrcMatches=false;pageIndex=0;render();return;}
+ if(!trcMatchesKnown){
+  gameBusy=true;updateLiveControls();const snapshot=JSON.stringify(roster);
+  $('trc-records').disabled=true;toast('Finding TRC players in the loaded roster…');
+  try{
+   const source=await api('/api/trc/export',{names:roster.players.map(player=>player.name)});
+   if(snapshot!==JSON.stringify(roster))throw Error('Workspace changed while finding TRC players. Try again.');
+   const websiteNames=new Set(source.roster.players.map(player=>normalizedPlayerName(player.name)));
+   trcMatchedIds=new Set(roster.players.filter(player=>websiteNames.has(normalizedPlayerName(player.name))).map(player=>player.player_id));
+   trcMatchesKnown=true;
+  }catch(error){toast(`Could not find TRC players: ${error.message}`,true);return;}
+  finally{gameBusy=false;$('trc-records').disabled=false;updateLiveControls();}
+ }
+ if(!trcMatchedIds.size){toast('No players in the loaded roster matched TRC.');render();return;}
+ showTrcMatches=true;pageIndex=0;render();toast(`Showing ${trcMatchedIds.size} TRC players from the loaded roster.`);
+};
 function renderSettings(){
  $('show-advanced-fields').checked=showAdvancedFields;
 }
@@ -377,7 +413,7 @@ $('discard').onclick=()=>{if(liveEnabled||livePending)return;roster=clone(baseli
 $('import').onclick=()=>$('file').click();
 $('file').onchange=async()=>{const file=$('file').files[0];if(!file)return;try{if(file.size>128_000_000)throw Error('Roster must be smaller than 128 MB.');importDocument=JSON.parse(await file.text());const result=await api('/api/import',{document:importDocument});imported=result.roster;$('merge-import').checked=gameLoaded;$('import-summary').textContent=`${file.name} · ${imported.players.length} players · ${imported.teams.length} teams`;$('import-warnings').replaceChildren();$('import-dialog').showModal();}catch(error){toast(`Import failed: ${error.message}`,true);}finally{$('file').value='';}};
 $('cancel-import').onclick=()=>$('import-dialog').close();
-$('confirm-import').onclick=async()=>{if(!imported)return;const button=$('confirm-import');button.disabled=true;try{stopLiveLocally();const merging=$('merge-import').checked;const snapshot=JSON.stringify(roster);const result=merging?await api('/api/import',{document:importDocument,merge:true,target:roster}):{roster:imported,warnings:[]};if(snapshot!==JSON.stringify(roster))throw Error('Workspace changed during import. Try again.');roster=result.roster;syncWarnings=[];for(const kind of ['players','teams'])for(const record of roster[kind])dirtyRecords.add(`${kind}:${record[idKey(kind)]}`);imported=null;gamePlan=null;$('import-dialog').close();setView('players');if(result.warnings.length){showGameWarnings(result.warnings);$('game-changes').replaceChildren();$('game-summary').textContent='Import completed. These players were skipped:';$('apply-game').disabled=true;$('game-dialog').showModal();}toast(merging?'TRC values merged. Review changes before saving or applying.':'Roster imported. Review and save your workspace.');}catch(error){toast(`Import failed: ${error.message}`,true);}finally{button.disabled=false;}};
+$('confirm-import').onclick=async()=>{if(!imported)return;const button=$('confirm-import');button.disabled=true;try{stopLiveLocally();const merging=$('merge-import').checked;const snapshot=JSON.stringify(roster);const result=merging?await api('/api/import',{document:importDocument,merge:true,target:roster}):{roster:imported,warnings:[]};if(snapshot!==JSON.stringify(roster))throw Error('Workspace changed during import. Try again.');roster=result.roster;syncWarnings=[];syncPreviewRoster=null;trcMatchedIds=new Set();trcMatchesKnown=false;showTrcMatches=false;for(const kind of ['players','teams'])for(const record of roster[kind])dirtyRecords.add(`${kind}:${record[idKey(kind)]}`);imported=null;gamePlan=null;$('import-dialog').close();setView('players');if(result.warnings.length){showGameWarnings(result.warnings);$('game-changes').replaceChildren();$('game-change-breakdown').textContent='';$('more-game-changes').hidden=true;$('game-summary').textContent='Import completed. These players were skipped:';$('download-game-preview').disabled=false;$('apply-game').disabled=true;$('game-dialog').showModal();}toast(merging?'TRC values merged. Review changes before saving or applying.':'Roster imported. Review and save your workspace.');}catch(error){toast(`Import failed: ${error.message}`,true);}finally{button.disabled=false;}};
 $('export').onclick=()=>{const blob=new Blob([JSON.stringify(roster,null,2)],{type:'application/json'}),url=URL.createObjectURL(blob),link=element('a');link.href=url;link.download='TRACE-roster.json';link.click();setTimeout(()=>URL.revokeObjectURL(url),1000);toast('Roster exported, including unsaved edits.');};
 $('save').onclick=async()=>{
  if(saving||(!changes().length&&!workspaceNeedsSave))return;
@@ -413,8 +449,40 @@ $('install-update').onclick=async()=>{
 };
 window.addEventListener('keydown',e=>{if((e.ctrlKey||e.metaKey)&&e.key==='s'){e.preventDefault();$('save').click();}});
 function showGameWarnings(warnings){
- $('game-warnings').replaceChildren(...warnings.map(message=>element('p',message)));
+ gameWarningMessages=warnings;gameWarningsShown=0;$('game-warnings').replaceChildren();appendGameWarnings();
 }
+function appendGameWarnings(){
+ const next=Math.min(gameWarningsShown+GAME_WARNING_BATCH,gameWarningMessages.length);
+ for(let i=gameWarningsShown;i<next;i++)$('game-warnings').append(element('p',gameWarningMessages[i]));
+ gameWarningsShown=next;
+ $('game-warning-summary').textContent=gameWarningMessages.length?`${gameWarningMessages.length.toLocaleString()} warnings. These fields were skipped; no uncertain values will be written.`:'';
+ const more=$('more-game-warnings');more.hidden=next===gameWarningMessages.length;more.textContent=`Show more warnings (${next.toLocaleString()} of ${gameWarningMessages.length.toLocaleString()})`;
+}
+function appendGameChanges(){
+ const changes=gamePlan?.changes||[],next=Math.min(gameChangesShown+GAME_CHANGE_BATCH,changes.length);
+ for(let i=gameChangesShown;i<next;i++){
+  const change=changes[i],row=element('div',undefined,'change-row'),label=element('div',change.name);
+  label.append(element('small',`${teamCategories[change.category]||categories[change.category]||change.category} / ${change.field}`));
+  row.append(label,element('div',`${display(change.old)} → ${display(change.value)}`));$('game-changes').append(row);
+ }
+ gameChangesShown=next;
+ const more=$('more-game-changes');more.hidden=next===changes.length;more.textContent=`Show more changes (${next.toLocaleString()} of ${changes.length.toLocaleString()})`;
+}
+function showGameChanges(changes){
+ gameChangesShown=0;$('game-changes').replaceChildren();
+ const players=new Set(),byCategory=new Map();
+ for(const change of changes){if(change.name)players.add(change.name);const label=teamCategories[change.category]||categories[change.category]||change.category;byCategory.set(label,(byCategory.get(label)||0)+1);}
+ $('game-change-breakdown').textContent=changes.length?`${players.size.toLocaleString()} players · ${[...byCategory].map(([label,count])=>`${label}: ${count.toLocaleString()}`).join(' · ')}. Showing ${Math.min(GAME_CHANGE_BATCH,changes.length).toLocaleString()} at a time; download the full preview to review every change.`:'';
+ appendGameChanges();
+}
+$('more-game-changes').onclick=appendGameChanges;
+$('more-game-warnings').onclick=appendGameWarnings;
+$('download-game-preview').onclick=()=>{
+ if(!gamePlan&&!gameWarningMessages.length)return;
+ const report={changes:gamePlan?.changes||[],warnings:gameWarningMessages};
+ const blob=new Blob([JSON.stringify(report,null,2)],{type:'application/json'}),url=URL.createObjectURL(blob),link=element('a');
+ link.href=url;link.download='TRACE-game-update-preview.json';link.click();setTimeout(()=>URL.revokeObjectURL(url),1000);
+};
 const liveKey=(id,cat,field)=>JSON.stringify([id,cat,field]);
 function cancelLiveTimer(id,cat,field){const key=liveKey(id,cat,field);clearTimeout(liveTimers.get(key));liveTimers.delete(key);}
 function stopLiveLocally(){liveEnabled=false;for(const timer of liveTimers.values())clearTimeout(timer);liveTimers.clear();updateLiveControls();}
@@ -509,15 +577,17 @@ $('game-connect').onclick=async()=>{if(gameBusy)return;gameBusy=true;$('game-con
 $('game-load').onclick=async()=>{
  if(gameBusy||livePending)return;stopLiveLocally();if(changes().length&&!window.confirm('Loading the game roster replaces unsaved workspace edits. Continue?'))return;
  gameBusy=true;updateGameStatus(gameStatus);const snapshot=JSON.stringify(roster);toast('Reading the game roster…');
- try{const result=await api('/api/game/load',{});if(snapshot!==JSON.stringify(roster))throw Error('Workspace changed while reading the game. Load again when ready.');stopLiveLocally();roster=result.roster;syncWarnings=[];baseline=clone(roster);dirtyRecords.clear();workspaceNeedsSave=true;fieldValues=result.field_values||{};rememberGameValues();gameLoaded=true;gamePlan=null;updateGameStatus(result.status);setView('players');toast(Array.isArray(result.status.writable_fields)?`Loaded ${roster.players.length} players. ${result.status.writable_fields.length} mapped fields available for live editing.`:result.status.array_source==='validated community path'?`Loaded ${roster.players.length} players using a recovered roster location. Live editing needs a verified build profile.`:`Loaded ${roster.players.length} players from NBA 2K27.`);}
+ try{const result=await api('/api/game/load',{});if(snapshot!==JSON.stringify(roster))throw Error('Workspace changed while reading the game. Load again when ready.');stopLiveLocally();roster=result.roster;syncWarnings=[];syncPreviewRoster=null;trcMatchedIds=new Set();trcMatchesKnown=false;showTrcMatches=false;baseline=clone(roster);dirtyRecords.clear();workspaceNeedsSave=true;fieldValues=result.field_values||{};rememberGameValues();gameLoaded=true;gamePlan=null;updateGameStatus(result.status);setView('players');toast(Array.isArray(result.status.writable_fields)?`Loaded ${roster.players.length} players. Search by name for custom players; ${result.status.writable_fields.length} mapped fields available.`:result.status.array_source==='validated community path'?`Loaded ${roster.players.length} players using a recovered roster location. Live editing needs a verified build profile.`:`Loaded ${roster.players.length} players from NBA 2K27. Search by name for custom players.`);}
  catch(error){toast(`Game load failed: ${error.message}`,true);}finally{gameBusy=false;if(gameStatus)updateGameStatus(gameStatus);}
 };
 $('game-preview').onclick=async()=>{
  if(gameBusy||livePending||liveTimers.size)return;if(document.querySelector('input:invalid')){document.querySelector('input:invalid').reportValidity();return;}
  gameBusy=true;updateGameStatus(gameStatus);const snapshot=JSON.stringify(roster);
- try{const result=await api('/api/game/preview',roster);if(snapshot!==JSON.stringify(roster))throw Error('Workspace changed during preview. Preview again.');gamePlan=result;plannedRoster=snapshot;$('game-summary').textContent=`${result.changes.length} supported field changes. ${result.writes_enabled?'Apply writes these values to the running game.':'Read only: close this preview and click Start live editing once to enable writes, then preview again.'}`;
- $('game-changes').replaceChildren(...result.changes.map(change=>{const row=element('div',undefined,'change-row'),label=element('div',change.name);label.append(element('small',`${teamCategories[change.category]||categories[change.category]} / ${change.field}`));row.append(label,element('div',`${display(change.old)} → ${display(change.value)}`));return row;}));showGameWarnings([...syncWarnings,...result.warnings]);$('apply-game').disabled=!result.writes_enabled||!result.changes.length;$('game-dialog').showModal();}
- catch(error){toast(`Preview failed: ${error.message}`,true);}finally{gameBusy=false;if(gameStatus)updateGameStatus(gameStatus);}
+ const previewRoster=syncPreviewRoster?clone(syncPreviewRoster):roster;
+ if(syncPreviewRoster){const current=new Map(roster.players.map(player=>[player.player_id,player]));for(const player of previewRoster.players){const updated=current.get(player.player_id);if(!updated)continue;for(const category of ['attributes','tendencies','badges','vitals','signatures','advanced','gear','accessories','hotzones','appearance'])for(const field of Object.keys(player[category])){if(Object.hasOwn(updated[category],field))player[category][field]=updated[category][field];else delete player[category][field];}}}
+ try{setTrcSyncStatus(syncPreviewRoster?'Comparing TRC values with the game…':'Preparing game preview…');const result=await api('/api/game/preview',previewRoster);if(snapshot!==JSON.stringify(roster))throw Error('Workspace changed during preview. Preview again.');gamePlan=result;plannedRoster=snapshot;$('game-summary').textContent=`${result.changes.length.toLocaleString()} supported field changes. ${result.writes_enabled?'Apply writes these values to the running game.':'Read only: close this preview and click Start live editing once to enable writes, then preview again.'}`;
+ showGameChanges(result.changes);showGameWarnings([...syncWarnings,...result.warnings]);$('download-game-preview').disabled=false;$('apply-game').disabled=!result.writes_enabled||!result.changes.length;$('game-dialog').showModal();}
+ catch(error){toast(`Preview failed: ${error.message}`,true);}finally{setTrcSyncStatus('');gameBusy=false;if(gameStatus)updateGameStatus(gameStatus);}
 };
 $('cancel-game').onclick=()=>$('game-dialog').close();
 const showGamePreview=$('game-preview').onclick;
@@ -525,26 +595,32 @@ $('trc-sync').onclick=async()=>{
  if(gameBusy||livePending||liveTimers.size||!gameLoaded||!gameStatus?.connected)return;
  gameBusy=true;updateLiveControls();const snapshot=JSON.stringify(roster);let ready=false;
  try{
-  const source=await api('/api/trc/export',{});
-  if(!source.roster.players.length){toast('TRC has no pending player upgrades.');return;}
+  setTrcSyncStatus('Finding matching TRC players…');
+  const source=await api('/api/trc/export',{names:roster.players.map(player=>player.name)});
+  if(!source.roster.players.length){toast('No players in the loaded roster matched TRC.');return;}
+  setTrcSyncStatus(`Matching values for ${source.roster.players.length} TRC players…`);
   const result=await api('/api/import',{document:source.roster,merge:true,target:roster});
   if(snapshot!==JSON.stringify(roster))throw Error('Workspace changed during sync. Try again when ready.');
   // Stop automatic writes before staging a batch; Apply remains a separate action.
+  setTrcSyncStatus('Preparing a read-only game preview…');
   await api('/api/game/live',{enabled:false});stopLiveLocally();
   if(snapshot!==JSON.stringify(roster))throw Error('Workspace changed during sync. Try again when ready.');
-  roster=result.roster;syncWarnings=result.warnings;gamePlan=null;workspaceNeedsSave=true;
-  for(const player of roster.players)dirtyRecords.add(`players:${player.player_id}`);
+  roster=result.roster;syncWarnings=result.warnings;syncPreviewRoster=result.sync_roster;gamePlan=null;workspaceNeedsSave=true;
+  const websiteNames=new Set(source.roster.players.map(player=>normalizedPlayerName(player.name)));
+  trcMatchedIds=new Set(roster.players.filter(player=>websiteNames.has(normalizedPlayerName(player.name))).map(player=>player.player_id));
+  trcMatchesKnown=true;
+  showTrcMatches=true;
+  for(const id of trcMatchedIds)dirtyRecords.add(`players:${id}`);
   setView('players');ready=true;
-  const matched=source.roster.players.length-result.warnings.length;
-  toast(`Fetched ${source.roster.players.length} TRC players; matched ${matched}. Review before applying.`);
+  toast(`Fetched ${source.roster.players.length} matching TRC players. Review skipped names and changes before applying.`);
   gameBusy=false;updateLiveControls();await showGamePreview();
  }catch(error){toast(`TRC sync failed: ${error.message}`,true);}
- finally{gameBusy=false;updateLiveControls();if(!ready&&gameStatus)updateGameStatus(gameStatus);}
+ finally{setTrcSyncStatus('');gameBusy=false;updateLiveControls();if(!ready&&gameStatus)updateGameStatus(gameStatus);}
 };
 $('apply-game').onclick=async()=>{
  if(gameBusy||!gamePlan)return;if(plannedRoster!==JSON.stringify(roster)){toast('Workspace changed. Preview game changes again.',true);$('apply-game').disabled=true;return;}
  gameBusy=true;$('apply-game').disabled=true;
- try{const result=await api('/api/game/apply',{plan_id:gamePlan.plan_id});gamePlan=null;acceptGameChanges(result);$('game-dialog').close();toast(`Applied ${result.applied} game field changes. Save the roster in-game to keep them.`);}
+ try{const result=await api('/api/game/apply',{plan_id:gamePlan.plan_id});gamePlan=null;syncPreviewRoster=null;acceptGameChanges(result);$('game-dialog').close();toast(`Applied ${result.applied} game field changes. Save the roster in-game to keep them.`);}
  catch(error){gamePlan=null;toast(`Game update failed: ${error.message}`,true);}finally{gameBusy=false;updateLiveControls();}
 };
 fetch('/api/session').then(async response=>{if(!response.ok)throw Error('Could not load the editor session.');return response.json();}).then(session=>{if(session.api_version!==6)throw Error('An older editor is still running. Close its terminal and relaunch TRACE, then use the newly opened page.');roster=session.roster;baseline=clone(roster);profile=session.profile;token=session.token;connectionSettings=session.game_settings;desktopUpdates=session.desktop_updates;$('app-version').textContent=`v${session.app_version}`;fillConnectionSettings();selected=roster.players[0]?.player_id;render();}).catch(error=>{document.querySelectorAll('button,input,select').forEach(control=>control.disabled=true);toast(error.message,true);});

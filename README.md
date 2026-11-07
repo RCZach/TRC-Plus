@@ -1,6 +1,6 @@
 # TRACE
 
-[Download the TRACE 0.4.0 beta](https://github.com/RCZach/TRC-Plus/releases/tag/v0.4.0).
+[Download the TRACE 0.4.1 beta](https://github.com/RCZach/TRC-Plus/releases/tag/v0.4.1).
 Beta downloads are manual; the in-app updater checks stable releases only. See
 [publishing updates](docs/updates.md) for the release process.
 
@@ -8,7 +8,7 @@ Beta downloads are manual; the in-app updater checks stable releases only. See
 
 ### Portable Windows release
 
-Extract the entire `TRACE-0.4.0-windows-x64.zip`, then double-click
+Extract the entire `TRACE-0.4.1-windows-x64.zip`, then double-click
 `TRACE.exe`. It opens its own desktop window. Keep its `_internal` folder beside
 the executable. Closing the app window also stops its local backend.
 Python and Cheat Engine are not
@@ -55,11 +55,11 @@ If the requested port is occupied, the launcher opens this editor on a separate 
 - Shoes / Gear follows Body, with the game's ordered shoe, sock, undershirt, shorts, and bagginess controls. Other existing gear definitions remain under Other Gear. Display labels retain their original Gear, Accessories, or Appearance storage and build-specific write restrictions; unverified IDs remain unnamed.
 - On build `6AD2E48C:36532000`, 48 additional numeric controls are verified through the running game’s setter code: accessory frequencies/colors, Preferred Shorts Type, undershirt colors, Shorts Length, Skin Type, and Bagginess. Unknown choice labels remain numeric. These controls require matching native code, field layouts, and value limits before opt-in writes. See [the mapping audit](docs/setter-audit-2k27.md).
 - Accessories follows Shoes / Gear, with Upper Body and Lower Body filters based on the existing profile groups. Field search works within either group; custom fields without a group remain under Other. The shorts controls shown in Shoes / Gear are not duplicated here. Displaying existing definitions does not verify their in-game choice labels or enable writes on an unsupported connection.
-- Hot Zones includes all 14 court zones in game order, with Cold, Neutral, and Hot choices. Each mapping was confirmed against controlled in-game changes on build `6AD2E48C:36532000`; opt-in live edits use the existing verification and Undo controls. Other builds remain read-only until verified.
+- Hot Zones includes all 14 court zones in game order, with Cold, Neutral, and Hot choices. Each mapping was confirmed against controlled in-game changes on build `6AD2E48C:36532000`; TRC sync resolves these names from the verified profile without **Learn name**, and opt-in live edits use the existing verification and Undo controls. Other builds remain read-only until verified.
 - Filter Attributes by scoring, playmaking, athleticism, defense, durability, or miscellaneous (Intangibles and Potential) alongside field search. Custom fields without a category remain available under Other.
 - Tendencies has Jump Shooting, Layups and Dunks, Drive Setup, Driving, Passing, Post Game, Freelance, and Defense filters. Badges has Finishing, Shooting, Playmaking, Defense, Physicals, Rebounding, and Personality filters. All 99 tendencies and 69 badges are grouped. Build `6AD2E48C:36532000` supports 16 Personality mappings: Reserved through Enforcer use Unequipped/Equipped; Work Ethic and Marketability use Unequipped/Bronze/Silver/Gold/Hall of Fame. These exact-build fields support opt-in live editing and Undo; other builds cannot write them. Unknown tier patterns are omitted and cannot be overwritten. Search combines with these filters, and custom fields remain under Other. See [Personality mapping evidence](docs/personality-mappings.md).
 
-- Teams has Rotation, Coaching Emphasis, and Staff tabs. On build `6AD2E48C:36532000`, 16 validated coach-default controls support opt-in live editing and reviewed bulk writes, including Help Defense, Run Plays Frequency, Zone Usage Frequency, and Tempo. Coaching edits share journaling, readback verification, rollback, and Undo/Redo with player edits. Shared or uncertain coach records stay read-only. Rotation minutes and Staff assignments/names remain read-only; playbook editing is not enabled. See [coaching mapping and write support](docs/team-mapping-notes.md#coaching-write-support).
+- Teams has Rotation, Coaching Emphasis, and Staff tabs. On build `6AD2E48C:36532000`, 32 validated coach controls support opt-in live editing and reviewed bulk writes. Coaching Emphasis includes Help Defense, Run Plays Frequency, Zone Usage Frequency, Tempo, tendencies, and Lineup Form Factor. Staff shows seven coach ratings and eight system proficiencies alongside the assigned staff names. Coaching edits share journaling, readback verification, rollback, and Undo/Redo with player edits. Shared or uncertain coach records stay read-only. Rotation minutes and Staff assignments/names remain read-only; playbook editing is not enabled. See [coaching mapping and write support](docs/team-mapping-notes.md#coaching-write-support) and the [November mapping audit](docs/unattended-mapping-2026-11-01.md).
 - Review before/after changes, revert a record, discard unsaved changes, or save with Ctrl+S.
 - Import a JSON roster after a summary preview, and export the current workspace, including unsaved changes.
 
@@ -73,9 +73,15 @@ The editor supports local JSON workspaces and direct Windows process access for 
 
 ### Direct website sync
 
-With your intended custom roster open in NBA 2K27, connect and **Load game roster**, then select **Sync from TRC**. This fetches the current pending-upgrade export from `https://russellcup.xyz/logs/upgrades/download/`, merges unique matching names into the loaded workspace, and opens the game-change preview. Review skipped players and unsupported fields before **Apply to game**. If writes are disabled, select **Start live editing** once and preview again. Save the roster inside NBA 2K27 afterward.
+With your intended custom roster open in NBA 2K27, connect and **Load game roster**, then select **Sync from TRC**. Trace sends the names in that loaded roster to `https://russellcup.xyz/logs/roster/download/` in one read-only lookup and fetches only matching website players, including players with no pending upgrades. It merges unique matching names into the loaded workspace and opens a game-change preview limited to the seven sections in the existing TRC export: attributes, badges, tendencies, hot zones, signatures, gear, and accessories. Review skipped players and unsupported fields before **Apply to game**. If writes are disabled, select **Start live editing** once and preview again; that preview keeps the same TRC field scope. Save the roster inside NBA 2K27 afterward.
 
-The website currently serves this export without a login. No website changes or credentials are needed. Fetching is read only and does not mark upgrades completed. An empty export means no pending upgrades. It contains players with incomplete upgrade logs, rather than every league player. Game record IDs and team assignments are retained. Duplicate or missing names are reported and skipped; players must already exist in the loaded roster. Sync stages changes in the workspace and pauses individual live editing; it never automatically applies the batch. Existing local workspace edits are included in the preview. Manual **Import JSON** remains available if the website is unreachable.
+NBA 2K27 uses [Easy Anti-Cheat](https://support.nba2k.com/hc/en-us/articles/42216723600659-NBA-2K-Anti-Cheat-on-PC). Keep Cheat Engine and debugger tools closed while the game is running; the game exited after Cheat Engine was launched during a mapping investigation. Trace does not require Cheat Engine. If the game reports a security violation during process access, stop live game operations and continue with offline JSON review instead.
+
+TRC's six NBA 2K25 badge names that are absent in 2K27 convert to the selected 2K27 counterparts during import or sync. A zero old tier leaves the new badge untouched, and a positive old tier does not lower a higher existing 2K27 tier. The other new 2K27 badges retain their game values. See the [2K25-to-2K27 field review](docs/2k25-to-2k27-field-review.md) for the exact mapping and possible future choices.
+
+Anyone with Trace can use the read-only player-value endpoint without a token or website login. The endpoint requires requested player names and returns only matching players' seven game-value sections, names, and website player IDs; it does not include account details. Fetching does not mark upgrades completed. Game record IDs and team assignments are retained. Duplicate or missing names are reported and skipped; players must already exist in the loaded roster. Sync stages changes in the workspace and pauses individual live editing; it never automatically applies the batch. Existing local workspace edits are included in the preview. Manual **Import JSON** remains available if the website is unreachable.
+
+NBA 2K27 may keep thousands of NBA and custom players in the same game table. After loading, select **Only show TRC players** to look up matching website names and filter the list without changing any values; select **All players** to return to the full game table. **Sync from TRC** also switches to this filtered view after staging its preview.
 
 ### Manual export
 

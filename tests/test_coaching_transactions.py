@@ -7,7 +7,7 @@ import pytest
 
 from test_connections import FakeGame, FakeMemory
 from trace_app.roster import RosterError
-from trace_app.team_sections import COACH_FIELDS, CODE_PROOFS, PROPERTY_PROOFS
+from trace_app.team_sections import COACH_FIELDS, CODE_PROOFS, PROPERTY_PROOFS, DISPATCH_PROOFS
 
 
 class CoachMemory(FakeMemory):
@@ -21,6 +21,8 @@ class CoachMemory(FakeMemory):
         self.blocks = {}
         proof = json.loads((Path(__file__).parent / 'fixtures' / 'team_layout_2k27.json').read_text())
         for rva, raw in proof['code'].items():
+            self.blocks[self.module_base + int(rva, 16)] = bytearray.fromhex(raw)
+        for rva, raw in proof['dispatch'].items():
             self.blocks[self.module_base + int(rva, 16)] = bytearray.fromhex(raw)
         for item in proof['properties']:
             self.blocks[self.module_base + item['rva']] = bytearray.fromhex(item['hex'])
@@ -92,7 +94,7 @@ def coach_game(tmp_path, shared=False, unnamed=False, mutate=None):
 
 def test_coaching_live_undo_redo_all_fields_and_exact_neighbors(tmp_path):
     game, loaded = coach_game(tmp_path)
-    assert len(COACH_FIELDS) == 16
+    assert len(COACH_FIELDS) == 32
     team = loaded['roster']['teams'][0]
     assert not team['coaching']['read_only']
     assert set(team['coaching']['writable_fields']) == set(COACH_FIELDS)
@@ -256,6 +258,35 @@ def test_coaching_edits_preserve_unrelated_fresh_staff_bytes(tmp_path):
     game.undo()
     assert game.memory.blocks[game.memory.coach][COACH_FIELDS['Help Defense']] == 50
     assert game.memory.blocks[game.memory.coach][0x170] == 77
+
+
+@pytest.mark.parametrize('key', list(DISPATCH_PROOFS))
+def test_native_dispatch_changes_disable_coaching_before_writing(tmp_path, key):
+    game, loaded = coach_game(tmp_path)
+    game.set_live(True)
+    address = game.memory.module_base + DISPATCH_PROOFS[key][0]
+    game.memory.blocks[address][0] ^= 1
+    with pytest.raises(RosterError, match='code or property'):
+        game.edit({'team_id': loaded['roster']['teams'][0]['team_id'], 'category': 'coaching',
+                   'field': 'Coach Potential', 'value': 51})
+    assert not game.memory.writes
+    reloaded = game.load()
+    assert 'coaching' not in reloaded['roster']['teams'][0]
+
+
+def test_potential_preserves_all_other_bits_in_its_reflected_word(tmp_path):
+    game, loaded = coach_game(tmp_path)
+    game.set_live(True)
+    raw = game.memory.blocks[game.memory.coach]
+    raw[0x130], raw[0x132], raw[0x133] = 0xA5, 0x5A, 0xCA
+    before = bytes(raw)
+    game.edit({'team_id': loaded['roster']['teams'][0]['team_id'], 'category': 'coaching',
+               'field': 'Coach Potential', 'value': 99})
+    expected = bytearray(before)
+    expected[0x131] = 99
+    assert raw == expected
+    game.undo()
+    assert raw == before
 
 
 def test_mixed_source_player_renames_do_not_invalidate_coach_ownership(tmp_path):

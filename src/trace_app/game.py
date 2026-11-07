@@ -627,6 +627,16 @@ class GameConnection:
         if isinstance(value, str) and field and field.kind != 'utf16':
             if not self.identity:
                 raise RosterError('Load a game roster to resolve build-specific named values.')
+            if category == 'hotzones':
+                if not field.verified_build or self.identity['build'].casefold() != field.verified_build.casefold():
+                    raise RosterError(f'{name}: hot-zone choices are not verified for this game build.')
+                options = next((item.get('options') for item in self.profile.document['Hotzones']
+                                if item.get('name') == name), None)
+                matches = [code for label, code in (options or {}).items()
+                           if label.casefold() == value.strip().casefold()]
+                if len(matches) != 1:
+                    raise RosterError(f'{name}: choose a verified hot-zone value (Cold, Neutral, or Hot).')
+                return matches[0]
             return self.catalog.resolve(self.identity['build'], category, name, value)
         return value
 

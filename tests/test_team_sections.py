@@ -19,11 +19,14 @@ def fixture_data(failure=None):
     proof = json.loads((Path(__file__).parent / 'fixtures' / 'team_layout_2k27.json').read_text())
     module, base, root, staff = 0x100000, 0x200000, 0x400000, 0x500000
     memory = {module + int(rva, 16): bytearray.fromhex(raw) for rva, raw in proof['code'].items()}
+    for rva, raw in proof['dispatch'].items():
+        memory[module + int(rva, 16)] = bytearray.fromhex(raw)
     for entry in proof['properties']:
         memory[module + entry['rva']] = bytearray.fromhex(entry['hex'])
     if failure == 'canonical_type':
         for name in ('HelpDefense', 'RunPlayTendency', 'ZoneUsage', 'Tempo'):
             memory[module + PROPERTY_PROOFS[name][0]][4:8] = zlib.crc32(b'u8').to_bytes(4, 'little')
+        memory[module + PROPERTY_PROOFS['GrowthPotential'][0]][4:8] = zlib.crc32(b'u32').to_bytes(4, 'little')
     if failure == 'code':
         memory[module + CODE_PROOFS['PLAYERDATA::SetPlayingTime'][0]][0] ^= 1
     if failure == 'property':

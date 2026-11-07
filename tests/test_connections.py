@@ -16,7 +16,8 @@ from trace_app.game import (GameConnection, COMMUNITY_ROOT_RVA,
                             COMMUNITY_PLAYER_COUNT_OFFSET, COMMUNITY_PLAYER_TABLE_OFFSET,
                             OBSERVED_PLAYER_POINTERS)
 from trace_app.roster import RosterError, demo_roster
-from trace_app.trc import import_document, merge_trc
+from trace_app.trc import (BADGES_2K25_TO_2K27, convert_2k25_roster_badges,
+                           import_document, merge_trc, merge_trc_with_scope)
 
 
 SOURCE = {'Marcus Bennett': {'Attributes': {'Driving Layup': 95},
@@ -54,6 +55,88 @@ def test_merge_keeps_game_ids_and_teams_and_rejects_ambiguous_names():
     assert 'ambiguous' in warnings[0]
     _, warnings = merge_trc({'Unknown Player': SOURCE['Marcus Bennett']}, target)
     assert 'not found' in warnings[0]
+
+
+def test_trc_sync_scope_contains_only_supplied_fields_and_matched_players():
+    target = demo_roster()
+    target['teams'][0]['coaching'] = {'values': {'Tempo': 85}}
+    target['players'][0]['attributes']['Speed'] = 90
+    target['players'][0]['vitals']['Weight'] = 220
+    source = {'Marcus Bennett': {'Attributes': {'Driving Layup': 95},
+                                 'Badges': {'Float Game': 2}}}
+    merged, scope, warnings = merge_trc_with_scope(source, target)
+    assert not warnings
+    assert merged['players'][0]['attributes']['Speed'] == 90
+    assert merged['players'][0]['vitals']['Weight'] == 220
+    assert scope['players'][0]['player_id'] == target['players'][0]['player_id']
+    assert scope['players'][0]['attributes'] == {'Driving Layup': 95}
+    assert scope['players'][0]['badges'] == {'Float Game': 2}
+    assert scope['players'][0]['vitals'] == {}
+    assert scope['players'][1]['attributes'] == {}
+    assert 'coaching' not in scope['teams'][0]
+
+
+def test_all_six_2k25_badges_map_to_selected_2k27_targets():
+    source = {'Marcus Bennett': {'Badges': dict.fromkeys(BADGES_2K25_TO_2K27, 3)}}
+    target = demo_roster()
+    target['players'][0]['badges'].update({'Ghost Stepper': 2, 'Crasher': 1,
+                                          'Static Middy': 4, 'Smooth Operator': 2})
+    merged, scope, warnings = merge_trc_with_scope(source, target)
+    assert not warnings
+    expected = dict.fromkeys(BADGES_2K25_TO_2K27.values(), 3)
+    assert scope['players'][0]['badges'] == expected
+    assert merged['players'][0]['badges'] == {**target['players'][0]['badges'], **expected}
+    assert not set(BADGES_2K25_TO_2K27) & merged['players'][0]['badges'].keys()
+    assert scope['players'][1]['badges'] == {}
+
+
+def test_converted_badges_preserve_higher_existing_tiers_and_ignore_old_zero():
+    target = demo_roster()
+    target['players'][0]['badges'].update({'Boxout Boss': 4, 'Seatbelt': 2,
+                                          'Post Spin Catalyst': 3, 'Possession Closer': 1,
+                                          'Set and Fire': 5, 'Arc Cadence': 2})
+    source = {'Marcus Bennett': {'Badges': {
+        'Boxout Beast': 3, 'On-Ball Menace': 0, 'Post-Up Poet': 2,
+        'Rebound Chaser': 4, 'Set Shot Specialist': 1, 'Shifty Shooter': 3}}}
+    merged, scope, _ = merge_trc_with_scope(source, target)
+    assert merged['players'][0]['badges'] == {**target['players'][0]['badges'],
+                                              'Possession Closer': 4, 'Arc Cadence': 3}
+    assert scope['players'][0]['badges'] == {
+        'Boxout Boss': 4, 'Post Spin Catalyst': 3, 'Possession Closer': 4,
+        'Set and Fire': 5, 'Arc Cadence': 3}
+    assert convert_2k25_roster_badges(import_document(source))['players'][0]['badges'] == {
+        'Boxout Boss': 3, 'Post Spin Catalyst': 2, 'Possession Closer': 4,
+        'Set and Fire': 1, 'Arc Cadence': 3}
+
+
+def test_explicit_2k27_badge_value_wins_when_source_contains_both_names():
+    source = {'Marcus Bennett': {'Badges': {'Boxout Beast': 4, 'Boxout Boss': 1}}}
+    merged, scope, _ = merge_trc_with_scope(source, demo_roster())
+    assert scope['players'][0]['badges'] == {'Boxout Boss': 1}
+    assert merged['players'][0]['badges']['Boxout Boss'] == 1
+
+
+def test_verified_hotzone_names_use_profile_options_without_learning_game_ids():
+    game = GameConnection.__new__(GameConnection)
+    game.profile = RecordProfile(json.loads(DEFAULT_PROFILE.read_text(encoding='utf-8')))
+    game.identity = {'build': '6AD2E48C:36532000'}
+    game.catalog = type('NoCatalog', (), {'resolve': lambda *args: pytest.fail('hotzones must not use learned IDs')})()
+    before = bytes(game.profile.stride)
+    fields = [item['name'] for item in game.profile.document['Hotzones']]
+    after, changes, warnings = game.profile.patch(
+        before, {'hotzones': {name: ' Neutral ' for name in fields}},
+        game.normalize_value, game.identity['build'])
+    assert warnings == []
+    assert len(changes) == 14
+    assert all(change['value'] == 1 for change in changes)
+    assert all(game.profile.fields['hotzones', name].decode(after) == 1 for name in fields)
+    assert game.normalize_value('hotzones', 'Under Basket', 'Cold') == 0
+    assert game.normalize_value('hotzones', 'Under Basket', 'Hot') == 2
+    with pytest.raises(RosterError, match='choose a verified hot-zone value'):
+        game.normalize_value('hotzones', 'Under Basket', 'Unknown')
+    game.identity = {'build': 'another-build'}
+    with pytest.raises(RosterError, match='not verified for this game build'):
+        game.normalize_value('hotzones', 'Under Basket', 'Hot')
 
 
 def test_rating_and_cross_byte_badge_encoding_preserve_neighbor_bits():

@@ -119,3 +119,14 @@ The final regression run reported 326 passed and the same two pre-existing
 failures: the updater archive case for `TRACE/trc+.exe` and the website API
 mock serialization case. Coaching transaction, team reader and UI checks
 passed; JavaScript syntax validation also passed.
+
+## November 1 extension
+
+The [unattended audit](unattended-mapping-2026-11-01.md) adds sixteen more
+controls, bringing supported coach values to 32. Lineup Form Factor appears
+under Coaching Emphasis. Seven coach ratings and eight system proficiencies
+appear under Staff; assignment/name entries stay read-only. Complete native
+attribute/system setter bodies, their dispatch tables, and the additional
+named property headers are now pinned. The original coaching setter's two
+dispatch tables are also checked explicitly. All 77 observed teams passed
+the expanded mapping checks using read-only game access.

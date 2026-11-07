@@ -244,12 +244,20 @@ reject moved memberships, player identities, staff arrays/records and minutes.
 Missing or invalid values are omitted, with no fabricated zero or staff name.
 
 These sections contain portable roster data; runtime pointers are never
-serialized into a workspace. Rotation and Staff remain read-only. Coaching
-values are staff defaults, distinct from franchise game-plan overrides.
+serialized into a workspace. Rotation and Staff assignments/names remain
+read-only. The Staff tab also exposes the assigned coach's ratings and system
+proficiencies through the same guarded coaching mapping. Coaching values are
+staff defaults, distinct from franchise game-plan overrides.
 Playbooks and advanced rotation timelines remain out of scope.
 
-`coaching.py` prepares 16 independently verified, integer 0–100 coach-default
-byte updates. It does not execute a separate writer. Team changes use the
+`coaching.py` prepares 32 independently verified, integer 0–100 coach-default
+byte updates. Whole native coach, attribute and system setters, their dispatch
+tables, and each named reflection header are checked. System proficiencies
+use a conservative 0–100 subset of the native byte setter's accepted domain;
+no claim about the exact in-game menu limits is made. Coach Potential occupies
+one byte within a reflected four-byte packed word; surrounding bits are
+preserved. Only known u8/u32 type aliases are allowed during reflection checks.
+There is no separate writer. Team changes use the
 existing session-protected edit endpoint and `GameConnection` transaction
 engine alongside player/Body changes, with the same journal, rollback,
 readback and Undo/Redo behavior. They require a separate private team mapping;

@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "TRACE"
-version = "0.4.0"
+version = "0.4.1"
 description = "TRACE roster editor and TRC player data synchronization for NBA 2K27"
 requires-python = ">=3.11"
 dependencies = []

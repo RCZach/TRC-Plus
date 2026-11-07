@@ -23,6 +23,47 @@ STAFF_ROLES = ['COACH', 'SCOUT', 'TRAINER', 'GM', 'CFO', 'OWNER', 'HEAD_ASSISTAN
 
 COACH_PROPERTY_NAMES = ('HelpDefense', 'RunPlayTendency', 'ZoneUsage', 'Tempo', 'OffBallDefAggressiveness', 'OnBallDefAggressiveness', 'Fastbreak', 'Crashboard', 'DoubleTeamTendency', 'ShotInsideTendency', 'ShotCloseTendency', 'ShotMediumTendency', 'ShotThreeTendency', 'DriveTendency', 'PostUpTendency', 'AlleyOopTendency')
 
+# Each addition is named by its own reflection descriptor and written by the
+# pinned native scalar setter; ratings are displayed under Staff.
+COACH_RATING_FIELDS = ('Coach Offense', 'Coach Defense', 'Coach Business', 'Coach Training', 'Coach Charisma', 'Coach Analytics', 'Coach Potential')
+COACH_FIELDS.update({'Lineup Form Factor': 345, 'Coach Offense': 362, 'Coach Defense': 363, 'Coach Business': 364, 'Coach Training': 365, 'Coach Charisma': 366, 'Coach Analytics': 367, 'Coach Potential': 305})
+COACH_PROPERTY_NAMES += ('LineupFormFactor', 'Offense', 'Defense', 'Business', 'Training', 'Charisma', 'Analytics', 'GrowthPotential')
+PROPERTY_PROOFS.update({
+    'LineupFormFactor': (144904008, 'd7e1c60811c0ab8e59010000010000000008000401000000'),
+    'Offense': (144904688, 'bdea8b9011c0ab8e6a010000010000000008000401000000'),
+    'Defense': (144904728, 'e9cc181411c0ab8e6b010000010000000008000401000000'),
+    'Business': (144904768, '6e0ca5f111c0ab8e6c010000010000000008000401000000'),
+    'Training': (144904808, 'd9e8642c11c0ab8e6d010000010000000008000401000000'),
+    'Charisma': (144904848, '115dacc011c0ab8e6e010000010000000008000401000000'),
+    'Analytics': (144904888, '2b64336811c0ab8e6f010000010000000008000401000000'),
+    'GrowthPotential': (144901328, 'e0e28efe81f32a0e30010000040000000008082401000000'),
+})
+CODE_PROOFS["STAFFDATA::SetAttribute"] = (49807680, 247, '1bd6fb20d665b1163e53cb6c70e561e8d1aabb7b037f2a48ae41f627a3395a1b')
+DISPATCH_PROOFS = {
+    'STAFFDATA::SetAttribute:0': (124993668, 28, 'de22b1c3a421a79348eb974c8b11a1aa60163b6ec9f7ebafc0def7914a0858ab'),
+    'STAFFDATA::SetCoachAttribute:0': (124993820, 96, 'fd600301513d3dc693bb581c2809b4b2c4b829af20027220b4ac033abd4c7a19'),
+    'STAFFDATA::SetCoachAttribute:1': (124993916, 28, '59f0844fedb712d956dc3eb9e2d54ba34e3b1931e67d3b27c50fcf411b8b3dc3'),
+}
+
+# The system setter stores an unsigned byte without additional receiver updates.
+# TRACE intentionally accepts only 0–100, a subset of the native byte domain.
+COACH_SYSTEM_FIELDS = ('Balanced Proficiency', 'Grit and Grind Proficiency', 'Pace and Space Proficiency', 'Perimeter Proficiency', 'Post Proficiency', 'Triangle Proficiency', 'Seven Seconds Proficiency', 'Defense First Proficiency')
+COACH_RATING_FIELDS += COACH_SYSTEM_FIELDS
+COACH_FIELDS.update({'Balanced Proficiency': 368, 'Grit and Grind Proficiency': 369, 'Pace and Space Proficiency': 370, 'Perimeter Proficiency': 371, 'Post Proficiency': 372, 'Triangle Proficiency': 373, 'Seven Seconds Proficiency': 374, 'Defense First Proficiency': 375})
+COACH_PROPERTY_NAMES += ('SystemBalanced', 'SystemGritAndGrind', 'SystemPaceAndSpace', 'SystemPerimeter', 'SystemPost', 'SystemTriangle', 'SystemSevenSeconds', 'SystemDefenseFirst')
+PROPERTY_PROOFS.update({
+    'SystemBalanced': (144904928, 'a8e65d6e11c0ab8e70010000010000000008000401000000'),
+    'SystemGritAndGrind': (144904968, '99d80f3511c0ab8e71010000010000000008000401000000'),
+    'SystemPaceAndSpace': (144905008, '715ed12511c0ab8e72010000010000000008000401000000'),
+    'SystemPerimeter': (144905048, '5855900f11c0ab8e73010000010000000008000401000000'),
+    'SystemPost': (144905088, '4273363511c0ab8e74010000010000000008000401000000'),
+    'SystemTriangle': (144905128, 'e7eabe7311c0ab8e75010000010000000008000401000000'),
+    'SystemSevenSeconds': (144905168, '86493d1811c0ab8e76010000010000000008000401000000'),
+    'SystemDefenseFirst': (144905208, '08413f2a11c0ab8e77010000010000000008000401000000'),
+})
+CODE_PROOFS["STAFFDATA::SetSystemAbilityByIndex"] = (49809696, 258, '8931d2da371500a7f1195718eda8651adf8ec86675731b3b86d28042c4d3d39f')
+DISPATCH_PROOFS["STAFFDATA::SetSystemAbilityByIndex:0"] = (124993976, 32, '2a8ffba3a888c64440ef390d4e81c4bb9fa3e36e08b53e55082b6522c862d62f')
+
 
 def verified_team_sections(process, profile):
     if process.build.casefold() != TEAM_BUILD or profile.stride != 0x4F8:
@@ -39,14 +80,21 @@ def verified_team_sections(process, profile):
         try:
             raw = process.read(process.module_base + rva, len(expected))
             if name in COACH_PROPERTY_NAMES:
-                # Startup resolves the uint8_t type alias to canonical u8.
+                # Startup resolves uint8_t/uint32_t aliases to canonical u8/u32.
                 property_ok[name] = (len(raw) == 24 and raw[:4] == expected[:4] and raw[8:] == expected[8:] and
                                      int.from_bytes(raw[4:8], 'little') in
-                                     (zlib.crc32(b'uint8_t'), zlib.crc32(b'u8')))
+                                     ((zlib.crc32(b'uint32_t'), zlib.crc32(b'u32')) if name == 'GrowthPotential' else
+                                      (zlib.crc32(b'uint8_t'), zlib.crc32(b'u8'))))
             else:
                 property_ok[name] = raw == expected
         except (RosterError, OSError):
             property_ok[name] = False
+    dispatch_ok = True
+    for rva, size, digest in DISPATCH_PROOFS.values():
+        try:
+            dispatch_ok = dispatch_ok and hashlib.sha256(process.read(process.module_base + rva, size)).hexdigest() == digest
+        except (RosterError, OSError):
+            dispatch_ok = False
     enabled = set()
     field = profile.fields.get(('advanced', 'PLAYINGTIME'))
     if (code_ok['TEAMDATA::SetLineupPlayerByIndex'] and code_ok['PLAYERDATA::SetPlayingTime'] and field and
@@ -55,7 +103,9 @@ def verified_team_sections(process, profile):
     if (code_ok['TEAMDATA::SetStaff_Internal'] and
             all(property_ok.get(k) for k in ('FirstName', 'LastName', 'Job', 'STAFFDATA_JOB'))):
         enabled.add('staff')
-        if code_ok['STAFFDATA::SetCoachAttribute'] and all(property_ok.get(k) for k in COACH_PROPERTY_NAMES):
+        if (code_ok['STAFFDATA::SetCoachAttribute'] and code_ok['STAFFDATA::SetAttribute'] and
+                code_ok['STAFFDATA::SetSystemAbilityByIndex'] and dispatch_ok and
+                all(property_ok.get(k) for k in COACH_PROPERTY_NAMES)):
             enabled.add('coaching')
     return enabled
 
@@ -146,7 +196,7 @@ def populate_team_sections(process, profile, base, players, records, teams, snap
                                       if coach[1][offset] <= 100}
                             sections['coaching'] = {'values': values, 'coach': coach[0]['name'],
                                                     'read_only': True, 'source': 'coach_defaults',
-                                                    'field_order': list(COACH_FIELDS)}
+                                                    'field_order': list(COACH_FIELDS), 'rating_fields': list(COACH_RATING_FIELDS)}
                 except (RosterError, OSError, struct.error):
                     pass
             # Avoid combining a moved team or changed minutes with old members.
