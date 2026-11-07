@@ -1,6 +1,6 @@
 # TRACE
 
-[Download the TRACE 0.4.1 beta](https://github.com/RCZach/TRC-Plus/releases/tag/v0.4.1).
+[Download the TRACE 0.5.0 beta](https://github.com/RCZach/TRC-Plus/releases/tag/v0.5.0).
 Beta downloads are manual; the in-app updater checks stable releases only. See
 [publishing updates](docs/updates.md) for the release process.
 
@@ -8,7 +8,7 @@ Beta downloads are manual; the in-app updater checks stable releases only. See
 
 ### Portable Windows release
 
-Extract the entire `TRACE-0.4.1-windows-x64.zip`, then double-click
+Extract the entire `TRACE-0.5.0-windows-x64.zip`, then double-click
 `TRACE.exe`. It opens its own desktop window. Keep its `_internal` folder beside
 the executable. Closing the app window also stops its local backend.
 Python and Cheat Engine are not

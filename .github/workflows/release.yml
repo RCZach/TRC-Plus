@@ -37,7 +37,7 @@ jobs:
         run: |
           gh release view $env:RELEASE_TAG *> $null
           if ($LASTEXITCODE -eq 0) {
-            if ($env:RELEASE_TAG -in @('v0.4.0', 'v0.4.1')) {
+            if ($env:RELEASE_TAG -in @('v0.4.0', 'v0.4.1', 'v0.5.0', 'v0.5.1')) {
               $assets = gh release view $env:RELEASE_TAG --json assets --jq '.assets[].name'
               $asset = "TRACE-$($env:RELEASE_TAG.Substring(1))-windows-x64.zip"
               if ($assets -contains $asset) {
@@ -50,7 +50,7 @@ jobs:
             }
             gh release upload $env:RELEASE_TAG dist/*.zip dist/*.sha256 --clobber
           } else {
-            if ($env:RELEASE_TAG -in @('v0.4.0', 'v0.4.1')) {
+            if ($env:RELEASE_TAG -in @('v0.4.0', 'v0.4.1', 'v0.5.0', 'v0.5.1')) {
               gh release create $env:RELEASE_TAG dist/*.zip dist/*.sha256 --verify-tag --prerelease --notes-file "docs/releases/$($env:RELEASE_TAG.Substring(1)).md" --title "TRACE $($env:RELEASE_TAG.Substring(1)) Beta"
             } else {
               gh release create $env:RELEASE_TAG dist/*.zip dist/*.sha256 --verify-tag --generate-notes --title "TRACE $env:RELEASE_TAG"
