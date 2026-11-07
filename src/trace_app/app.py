@@ -46,8 +46,8 @@ def create_server(port: int, data_path: Path, profile_path: Path = DEFAULT_PROFI
     profile = expand_profile(json.loads(profile_path.read_text(encoding='utf-8'))) if profile_path.exists() else {}
     roster = validate_roster(json.loads(data_path.read_text(encoding='utf-8'))) if data_path.exists() else demo_roster()
     connection_settings = load_settings(settings_path)
-    # Ignore legacy saved write authorization; the UI now enables writes only
-    # through the explicit, session-scoped Start live editing action.
+    # Ignore legacy saved write authorization. Individual edits require Start
+    # live editing; a reviewed batch gets one-time authorization at Apply.
     connection_settings['verified_build'] = ''
     connection_settings['enable_writes'] = False
     for key, value in [('game_path', game_path), ('verified_build', game_build), ('enable_writes', enable_game_writes)]:

@@ -1,6 +1,6 @@
 # TRACE
 
-[Download the TRACE 0.4.1 beta](https://github.com/RCZach/TRC-Plus/releases/tag/v0.4.1).
+[Download the TRACE 0.5.1 beta](https://github.com/RCZach/TRC-Plus/releases/tag/v0.5.1).
 Beta downloads are manual; the in-app updater checks stable releases only. See
 [publishing updates](docs/updates.md) for the release process.
 
@@ -8,7 +8,7 @@ Beta downloads are manual; the in-app updater checks stable releases only. See
 
 ### Portable Windows release
 
-Extract the entire `TRACE-0.4.1-windows-x64.zip`, then double-click
+Extract the entire `TRACE-0.5.1-windows-x64.zip`, then double-click
 `TRACE.exe`. It opens its own desktop window. Keep its `_internal` folder beside
 the executable. Closing the app window also stops its local backend.
 Python and Cheat Engine are not
@@ -73,7 +73,7 @@ The editor supports local JSON workspaces and direct Windows process access for 
 
 ### Direct website sync
 
-With your intended custom roster open in NBA 2K27, connect and **Load game roster**, then select **Sync from TRC**. Trace sends the names in that loaded roster to `https://russellcup.xyz/logs/roster/download/` in one read-only lookup and fetches only matching website players, including players with no pending upgrades. It merges unique matching names into the loaded workspace and opens a game-change preview limited to the seven sections in the existing TRC export: attributes, badges, tendencies, hot zones, signatures, gear, and accessories. Review skipped players and unsupported fields before **Apply to game**. If writes are disabled, select **Start live editing** once and preview again; that preview keeps the same TRC field scope. Save the roster inside NBA 2K27 afterward.
+With your intended custom roster open in NBA 2K27, connect and **Load game roster**, then select **Sync from TRC**. Trace sends the names in that loaded roster to `https://russellcup.xyz/logs/roster/download/` in one read-only lookup and fetches only matching website players, including players with no pending upgrades. It merges unique matching names into the loaded workspace and opens a game-change preview limited to the seven sections in the existing TRC export: attributes, badges, tendencies, hot zones, signatures, gear, and accessories. Review skipped players and unsupported fields before **Apply to game**. That button authorizes only the reviewed batch; **Start live editing** is for automatic individual edits. Save the roster inside NBA 2K27 afterward.
 
 NBA 2K27 uses [Easy Anti-Cheat](https://support.nba2k.com/hc/en-us/articles/42216723600659-NBA-2K-Anti-Cheat-on-PC). Keep Cheat Engine and debugger tools closed while the game is running; the game exited after Cheat Engine was launched during a mapping investigation. Trace does not require Cheat Engine. If the game reports a security violation during process access, stop live game operations and continue with offline JSON review instead.
 
@@ -91,7 +91,7 @@ NBA 2K27 may keep thousands of NBA and custom players in the same game table. Af
 4. Select **Import JSON** with your TRC export and leave **Merge matching players** checked. The converter supports name-keyed exports. Target record IDs and team assignments are retained; unmatched or ambiguous names are skipped and reported. Current and historical versions of a player can share a name, so ambiguous matches require an explicit record selection rather than guessing. You can also import directly for local editing without connecting.
 5. For individual edits, click **Start live editing** once. This authorizes writes for the loaded game session and checks Windows write access. Change a supported field: it writes after a 450 ms pause, pressing Enter, or leaving the field. No preview/apply step is needed. Supported fields include numeric values, learned animation names, and first/last names under Vitals. Fields without a supported memory mapping and blank values remain local only. On an error, live editing pauses and reports the failure.
 6. **Undo game edit** restores the last live edit or bulk update; **Redo** reapplies it. This history belongs to the loaded game session and resets when you reload the roster, change connection settings, or restart the editor. Stopping live editing stops automatic writes; existing edits remain and can still be undone. Local record reverts/discard are disabled while live editing is active; use game Undo instead.
-7. For imported batches, use **Review game writes → Apply to game**. Start live editing to enable writes for the current session. Names with multiple player versions are still reported rather than automatically matched.
+7. For imported batches, use **Review game writes → Apply to game**. Applying the reviewed batch does not start live editing. Names with multiple player versions are still reported rather than automatically matched.
 8. **Save JSON workspace** saves a local roster copy, and **Export JSON** creates a named download of your working roster. Save the roster **inside NBA 2K27** to persist game memory edits. Writing a JSON file does not invoke the game's Save action. The game may cache a screen's values; leave and reopen its player edit screen if needed to see a verified memory change.
 
 The editor uses Windows `OpenProcess`, `ReadProcessMemory`, and `WriteProcessMemory` through Python's standard library. It checks the executable's full path, module base, PE headers, PID, process creation time, and current player-array pointer. Read operations request read access; write access is requested only when applying an enabled, matching-build plan. Windows access failures are reported directly. The editor does not install drivers or modify game protections. If the game is running elevated, the editor may need matching privileges.

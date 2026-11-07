@@ -430,6 +430,33 @@ vm.runInContext(source.slice(source.indexOf("$('all-records').onclick="),source.
 
 
 @pytest.mark.skipif(shutil.which('node') is None, reason='Node.js is needed for the frontend check')
+def test_reviewed_game_preview_allows_apply_without_live_editing():
+    script = r"""
+const fs=require('fs'),vm=require('vm'),assert=require('assert');
+const source=fs.readFileSync('src/trace_app/ui/app.js','utf8');
+const controls=new Map();
+const get=id=>{if(!controls.has(id))controls.set(id,{showModal(){this.open=true;}});return controls.get(id);};
+const roster={players:[],teams:[]};
+const context=vm.createContext({$:get,gameBusy:false,livePending:0,liveTimers:new Map(),
+ roster,syncPreviewRoster:null,syncWarnings:[],gameStatus:{connected:true},
+ document:{querySelector(){return null;}},setTrcSyncStatus(){},updateGameStatus(){},
+ showGameChanges(){},showGameWarnings(){},toast(message){throw Error(message);},
+ api:async path=>{assert.strictEqual(path,'/api/game/preview');return {
+  plan_id:'reviewed',changes:[{field:'Speed'}],warnings:[],writes_enabled:false,can_apply:true};}
+});
+vm.runInContext(source.slice(source.indexOf("$('game-preview').onclick=async()=>{"),
+ source.indexOf("$('cancel-game').onclick=")),context);
+(async()=>{await get('game-preview').onclick();
+ assert.strictEqual(get('apply-game').disabled,false);
+ assert.strictEqual(get('game-dialog').open,true);
+ assert.match(get('game-summary').textContent,/Apply writes these reviewed values/);
+})().catch(error=>{console.error(error);process.exitCode=1;});
+"""
+    result = subprocess.run(['node', '-e', script], capture_output=True, text=True, timeout=10)
+    assert result.returncode == 0, result.stderr
+
+
+@pytest.mark.skipif(shutil.which('node') is None, reason='Node.js is needed for the frontend check')
 def test_website_sync_stages_without_writing_and_preserves_match_warnings():
     script = r"""
 const fs=require('fs'),vm=require('vm'),assert=require('assert');
@@ -437,24 +464,24 @@ const source=fs.readFileSync('src/trace_app/ui/app.js','utf8');
 const controls=new Map();
 const get=id=>{if(!controls.has(id))controls.set(id,{});return controls.get(id);};
 const calls=[];
-const initial={players:[{player_id:'game-1',name:'Custom Player'}],teams:[]};
-const merged={players:[{player_id:'game-1',name:'Custom Player',attributes:{Speed:80}}],teams:[]};
-const scoped={players:[{player_id:'game-1',name:'Custom Player',attributes:{Speed:80}}],teams:[]};
+const initial={players:[{player_id:'game-1',name:'Zachary James Jr.'}],teams:[]};
+const merged={players:[{player_id:'game-1',name:'Zachary James Jr.',attributes:{Speed:80}}],teams:[]};
+const scoped={players:[{player_id:'game-1',name:'Zachary James Jr.',attributes:{Speed:80}}],teams:[]};
 let previews=0;
 get('game-preview').onclick=async()=>{previews++;assert.strictEqual(context.gameBusy,false);};
 const context=vm.createContext({$:get,gameBusy:false,livePending:0,liveTimers:new Map(),
  gameLoaded:true,gameStatus:{connected:true},roster:initial,gamePlan:null,workspaceNeedsSave:false,
  syncWarnings:[],syncPreviewRoster:null,trcMatchedIds:new Set(),trcMatchesKnown:false,showTrcMatches:false,
- normalizedPlayerName:name=>name.normalize('NFKC').toLowerCase().trim().replace(/\s+/g,' '),
  dirtyRecords:new Set(),stopLiveLocally(){calls.push('stop-live');},
  updateLiveControls(){},updateGameStatus(){},setView(){},toast(){},
  setTrcSyncStatus(message){get('trc-sync-status').textContent=message;},
  api:async(path,body)=>{calls.push(path);
-  if(path==='/api/trc/export'){assert.deepStrictEqual(Array.from(body.names),['Custom Player']);return {roster:{players:[{name:'Custom Player'},{name:'Missing Player'}]}};}
+  if(path==='/api/trc/export'){assert.deepStrictEqual(Array.from(body.names),['Zachary James Jr.']);return {roster:{players:[{name:'Zachary James Jr'},{name:'Missing Player'}]}};}
   if(path==='/api/import'){assert.strictEqual(body.merge,true);return {roster:merged,sync_roster:scoped,warnings:['Missing Player: skipped.']};}
   if(path==='/api/game/live'){assert.strictEqual(body.enabled,false);return {};}
   throw Error('Unexpected request: '+path);
  }});
+vm.runInContext(source.match(/^const normalizedPlayerName=.*$/m)[0],context);
 vm.runInContext(source.slice(source.indexOf('const showGamePreview='),source.indexOf("$('apply-game').onclick=")),context);
 (async()=>{await get('trc-sync').onclick();
  assert.strictEqual(previews,1);assert.strictEqual(context.roster,merged);

@@ -49,6 +49,11 @@ def normalized_name(name: str) -> str:
     return ' '.join(unicodedata.normalize('NFKC', name).casefold().split())
 
 
+def matching_name(name: str) -> str:
+    """Compare complete names while tolerating optional periods after words."""
+    return ' '.join(part.rstrip('.') for part in normalized_name(name).split())
+
+
 def import_document(document: object) -> dict:
     if isinstance(document, dict) and ('players' in document or 'teams' in document):
         return validate_roster(document)
@@ -83,9 +88,9 @@ def merge_trc_with_scope(source: dict, target: dict) -> tuple[dict, dict, list[s
     source_names, target_names = {}, {}
     scope_players = {player['player_id']: player for player in scope['players']}
     for record in source['players']:
-        source_names.setdefault(normalized_name(record['name']), []).append(record)
+        source_names.setdefault(matching_name(record['name']), []).append(record)
     for record in result['players']:
-        target_names.setdefault(normalized_name(record['name']), []).append(record)
+        target_names.setdefault(matching_name(record['name']), []).append(record)
     warnings = []
     for name, records in source_names.items():
         matches = target_names.get(name, [])

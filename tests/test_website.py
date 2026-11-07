@@ -45,6 +45,20 @@ def test_empty_loaded_roster_does_not_fetch():
         factory.assert_not_called()
 
 
+def test_suffix_punctuation_variants_fetch_only_requested_multiword_names():
+    with patch('trace_app.website.build_opener') as factory:
+        factory.return_value.open.return_value = response({'players': [
+            {'player_id': '9988', 'name': 'Zachary James Jr', 'attributes': {'Speed': 80}},
+            {'player_id': '9762', 'name': 'Colton Fishscale Barkberg'},
+        ], 'teams': []})
+        roster = fetch_export(['Zachary James Jr.', 'Colton Fishscale Barkberg'])
+        request = factory.return_value.open.call_args.args[0]
+    assert json.loads(request.data)['names'] == [
+        'Zachary James Jr.', 'Colton Fishscale Barkberg', 'Zachary James Jr']
+    assert [player['name'] for player in roster['players']] == [
+        'Zachary James Jr', 'Colton Fishscale Barkberg']
+
+
 def test_rejects_unrequested_players():
     with patch('trace_app.website.build_opener') as factory:
         factory.return_value.open.return_value = response({'players': [

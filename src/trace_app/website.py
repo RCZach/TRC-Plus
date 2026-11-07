@@ -5,10 +5,11 @@ from urllib.error import HTTPError, URLError
 from urllib.request import HTTPRedirectHandler, Request, build_opener
 
 from .roster import RosterError, validate_roster
-from .trc import import_document, normalized_name
+from .trc import import_document, matching_name, normalized_name
 
 EXPORT_URL = 'https://russellcup.xyz/logs/roster/download/'
 MAX_EXPORT_BYTES = 128_000_000
+SUFFIXES = {'jr', 'sr', 'ii', 'iii', 'iv', 'v'}
 
 
 class NoRedirects(HTTPRedirectHandler):
@@ -24,7 +25,18 @@ def fetch_export(names):
     unique = list({normalized_name(name): name.strip() for name in names}.values())
     if not unique:
         return validate_roster({'name': 'TRC matched players', 'players': [], 'teams': []})
-    request = Request(EXPORT_URL, data=json.dumps({'names': unique}).encode('utf-8'),
+    queries = list(unique)
+    seen = {normalized_name(name) for name in queries}
+    for name in unique:
+        parts = name.split()
+        if len(parts) < 3 or parts[-1].rstrip('.').casefold() not in SUFFIXES:
+            continue
+        alternate = ' '.join([*parts[:-1], parts[-1].rstrip('.') if parts[-1].endswith('.') else parts[-1] + '.'])
+        key = normalized_name(alternate)
+        if key not in seen and len(queries) < 6000:
+            queries.append(alternate)
+            seen.add(key)
+    request = Request(EXPORT_URL, data=json.dumps({'names': queries}).encode('utf-8'),
                       headers={'Accept': 'application/json', 'Content-Type': 'application/json',
                                'User-Agent': 'TRACE/0.1'})
     try:
@@ -35,8 +47,8 @@ def fetch_export(names):
         if len(payload) > MAX_EXPORT_BYTES:
             raise RosterError('The TRC export must be smaller than 128 MB.')
         imported = import_document(json.loads(payload.decode('utf-8-sig')))
-        requested = {normalized_name(name) for name in unique}
-        if any(normalized_name(player['name']) not in requested for player in imported['players']):
+        requested = {matching_name(name) for name in unique}
+        if any(matching_name(player['name']) not in requested for player in imported['players']):
             raise RosterError('TRC returned players outside the loaded roster request.')
         return imported
     except RosterError:

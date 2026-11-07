@@ -742,7 +742,8 @@ class GameConnection:
         plan_id = secrets.token_urlsafe(24)
         self.plans = {plan_id: {'created': time.monotonic(), 'patches': patches, 'changes': changes}}
         return {'plan_id': plan_id, 'changes': self._public_changes(changes), 'warnings': warnings,
-                'writes_enabled': self.identity['writes_enabled']}
+                'writes_enabled': self.identity['writes_enabled'],
+                'can_apply': self.identity['array_source'] == 'profile' or bool(self.identity.get('writable_fields'))}
 
     def _log(self, plan_id, status, plan, outcome):
         self.audit_path.parent.mkdir(parents=True, exist_ok=True)
@@ -856,7 +857,29 @@ class GameConnection:
             raise RosterError('Plan expired. Preview game changes again.')
         if not plan['changes']:
             raise RosterError('No supported game changes to apply.')
-        self._write_changes(plan['changes'], 'bulk', plan_id)
+        if self.identity is None:
+            raise RosterError('Game connection changed. Reload its roster.')
+        temporary_writes = not self.identity['writes_enabled']
+        previous_build, previous_writes = self.expected_build, self.enable_writes
+        if temporary_writes:
+            if self.identity['array_source'] != 'profile' and not self.identity.get('writable_fields'):
+                raise RosterError('This game build has no verified fields available for writes.')
+        try:
+            if temporary_writes:
+                with self.memory.open() as process:
+                    status = self._status(process)
+                    if status != self.identity:
+                        raise RosterError('Game connection changed. Reload its roster.')
+                    self.expected_build, self.enable_writes = status['build'], True
+                    self.identity = self._status(process)
+                    if not self.identity['writes_enabled']:
+                        raise RosterError('This game build has no verified fields available for writes.')
+            self._write_changes(plan['changes'], 'bulk', plan_id)
+        finally:
+            if temporary_writes:
+                self.expected_build, self.enable_writes = previous_build, previous_writes
+                if self.identity is not None:
+                    self.identity['writes_enabled'] = False
         self.undo_stack.append(plan['changes'])
         self.redo_stack = []
         return {'applied': len(plan['changes']), 'changes': self._public_changes(plan['changes']), **self.history_state()}

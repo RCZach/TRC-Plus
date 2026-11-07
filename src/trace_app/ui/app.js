@@ -17,7 +17,7 @@ let syncPreviewRoster=null;
 let gameWarningMessages=[],gameWarningsShown=0,gameChangesShown=0;
 const GAME_CHANGE_BATCH=100,GAME_WARNING_BATCH=50;
 let trcMatchedIds=new Set(),trcMatchesKnown=false,showTrcMatches=false;
-const normalizedPlayerName=name=>name.normalize('NFKC').toLowerCase().trim().replace(/\s+/g,' ');
+const normalizedPlayerName=name=>name.normalize('NFKC').toLowerCase().trim().replace(/\s+/g,' ').replace(/\.(?=\s|$)/g,'');
 let importDocument, gameStatus, gameLoaded = false, gamePlan, plannedRoster, gameBusy = false, connectionSettings, fieldValues={}, learningField;
 async function api(path, document){
  const options=document===undefined?{}:{method:'POST',headers:{'Content-Type':'application/json','X-Editor-Token':token},body:JSON.stringify(document)};
@@ -585,8 +585,8 @@ $('game-preview').onclick=async()=>{
  gameBusy=true;updateGameStatus(gameStatus);const snapshot=JSON.stringify(roster);
  const previewRoster=syncPreviewRoster?clone(syncPreviewRoster):roster;
  if(syncPreviewRoster){const current=new Map(roster.players.map(player=>[player.player_id,player]));for(const player of previewRoster.players){const updated=current.get(player.player_id);if(!updated)continue;for(const category of ['attributes','tendencies','badges','vitals','signatures','advanced','gear','accessories','hotzones','appearance'])for(const field of Object.keys(player[category])){if(Object.hasOwn(updated[category],field))player[category][field]=updated[category][field];else delete player[category][field];}}}
- try{setTrcSyncStatus(syncPreviewRoster?'Comparing TRC values with the game…':'Preparing game preview…');const result=await api('/api/game/preview',previewRoster);if(snapshot!==JSON.stringify(roster))throw Error('Workspace changed during preview. Preview again.');gamePlan=result;plannedRoster=snapshot;$('game-summary').textContent=`${result.changes.length.toLocaleString()} supported field changes. ${result.writes_enabled?'Apply writes these values to the running game.':'Read only: close this preview and click Start live editing once to enable writes, then preview again.'}`;
- showGameChanges(result.changes);showGameWarnings([...syncWarnings,...result.warnings]);$('download-game-preview').disabled=false;$('apply-game').disabled=!result.writes_enabled||!result.changes.length;$('game-dialog').showModal();}
+ try{setTrcSyncStatus(syncPreviewRoster?'Comparing TRC values with the game…':'Preparing game preview…');const result=await api('/api/game/preview',previewRoster);if(snapshot!==JSON.stringify(roster))throw Error('Workspace changed during preview. Preview again.');gamePlan=result;plannedRoster=snapshot;$('game-summary').textContent=`${result.changes.length.toLocaleString()} supported field changes. ${result.can_apply?'Apply writes these reviewed values to the running game.':'Read only: no verified game writes are available for this build.'}`;
+ showGameChanges(result.changes);showGameWarnings([...syncWarnings,...result.warnings]);$('download-game-preview').disabled=false;$('apply-game').disabled=!result.can_apply||!result.changes.length;$('game-dialog').showModal();}
  catch(error){toast(`Preview failed: ${error.message}`,true);}finally{setTrcSyncStatus('');gameBusy=false;if(gameStatus)updateGameStatus(gameStatus);}
 };
 $('cancel-game').onclick=()=>$('game-dialog').close();

@@ -57,6 +57,29 @@ def test_merge_keeps_game_ids_and_teams_and_rejects_ambiguous_names():
     assert 'not found' in warnings[0]
 
 
+def test_multiword_last_names_and_suffix_periods_merge_only_unique_players():
+    target = demo_roster()
+    template = copy.deepcopy(target['players'][0])
+    target['players'] = []
+    for index, name in enumerate(('Zachary James Jr.', 'Colton Fishscale Barkberg',
+                                  'Peligro Danger II')):
+        player = copy.deepcopy(template)
+        player['player_id'], player['name'] = f'game-{index}', name
+        target['players'].append(player)
+    source = {name: {'Attributes': {'Driving Layup': 80 + index}}
+              for index, name in enumerate(('Zachary James Jr', 'Colton Fishscale Barkberg',
+                                            'Peligro Danger Ii'))}
+    merged, warnings = merge_trc(source, target)
+    assert not warnings
+    assert [player['attributes']['Driving Layup'] for player in merged['players']] == [80, 81, 82]
+    duplicate = copy.deepcopy(target['players'][0])
+    duplicate['player_id'], duplicate['name'] = 'game-3', 'Zachary James Jr'
+    target['players'].append(duplicate)
+    merged, warnings = merge_trc(source, target)
+    assert any('Zachary James Jr: ambiguous name' in warning for warning in warnings)
+    assert merged['players'][0]['attributes'] == target['players'][0]['attributes']
+
+
 def test_trc_sync_scope_contains_only_supplied_fields_and_matched_players():
     target = demo_roster()
     target['teams'][0]['coaching'] = {'values': {'Tempo': 85}}
@@ -533,14 +556,19 @@ def test_observed_build_lookup_and_verified_field_write_guards(tmp_path, failure
         assert not memory.writes
 
 
-def test_preview_is_read_only_and_apply_requires_build_and_consumes_plan(tmp_path):
+def test_preview_is_read_only_and_reviewed_apply_does_not_enable_live_editing(tmp_path):
     game = FakeGame(tmp_path)
     preview = game.preview(game_document())
     assert len(preview['changes']) == 2
+    assert preview['can_apply'] and not preview['writes_enabled']
     assert not game.memory.writes
-    with pytest.raises(RosterError, match='Writes require'):
-        game.apply(preview['plan_id'])
     assert not any(game.memory.write_requests)
+    assert game.apply(preview['plan_id'])['applied'] == 2
+    assert game.memory.writes
+    assert not game.live_enabled and not game.enable_writes
+    assert not game.identity['writes_enabled'] and not game.status()['writes_enabled']
+    with pytest.raises(RosterError, match='Start live editing'):
+        game.edit({'player_id': 'game-0', 'category': 'attributes', 'field': 'Driving Layup', 'value': 96})
     game = FakeGame(tmp_path, writes=True)
     preview = game.preview(game_document())
     assert game.apply(preview['plan_id'])['applied'] == 2
@@ -551,6 +579,28 @@ def test_preview_is_read_only_and_apply_requires_build_and_consumes_plan(tmp_pat
     with pytest.raises(RosterError, match='expired'):
         game.apply(preview['plan_id'])
     assert not game.preview(game_document())['changes']
+
+
+def test_reviewed_apply_rejects_changed_game_before_authorizing_writes(tmp_path):
+    game = FakeGame(tmp_path)
+    preview = game.preview(game_document())
+    game.memory.build = 'DIFFERENT:BUILD'
+    with pytest.raises(RosterError, match='Game connection changed'):
+        game.apply(preview['plan_id'])
+    assert not game.enable_writes and not game.live_enabled
+    assert not game.memory.writes
+
+
+def test_failed_reviewed_apply_does_not_leave_writes_authorized(tmp_path):
+    game = FakeGame(tmp_path)
+    original = bytes(game.memory.data)
+    preview = game.preview(game_document())
+    game.memory.fail_write = 1
+    with pytest.raises(RosterError, match='rolled-back'):
+        game.apply(preview['plan_id'])
+    assert not game.enable_writes and not game.live_enabled
+    assert game.identity is None
+    assert bytes(game.memory.data) == original
 
 
 @pytest.mark.parametrize('identity', ['pid', 'created', 'base', 'build'])
