@@ -14,7 +14,7 @@ from trace_app.app import create_server
 from trace_app.update_installer import replace_application
 
 
-def release(version='0.5.2', **overrides):
+def release(version='0.5.3', **overrides):
     name = f'TRACE-{version}-windows-x64.zip'
     return {'tag_name': 'v' + version, 'body': 'New features', 'assets': [
         {'name': name, 'size': 1, 'digest': 'sha256:' + 'a' * 64,
