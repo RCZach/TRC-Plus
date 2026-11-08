@@ -21,7 +21,7 @@ def release(version='0.5.2', **overrides):
          'browser_download_url': f'https://github.com/{updates.REPOSITORY}/releases/download/v{version}/{name}'}], **overrides}
 
 
-@pytest.mark.parametrize('version,newer', [('0.2.0', False), ('0.4.1', False), ('0.5.0', False), ('0.5.1', False), ('0.5.2', True), ('0.10.0', True), ('1.0.0', True)])
+@pytest.mark.parametrize('version,newer', [('0.2.0', False), ('0.4.1', False), ('0.5.0', False), ('0.5.1', False), ('0.5.2', False), ('0.5.3', True), ('0.10.0', True), ('1.0.0', True)])
 def test_version_check_is_numeric_and_never_downgrades(monkeypatch, version, newer):
     monkeypatch.setattr(updates, 'read_url', lambda *args: json.dumps(release(version)).encode())
     manager = updates.UpdateManager()

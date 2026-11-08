@@ -17,7 +17,6 @@ let syncPreviewRoster=null;
 let gameWarningMessages=[],gameWarningsShown=0,gameChangesShown=0;
 const GAME_CHANGE_BATCH=100,GAME_WARNING_BATCH=50;
 let trcMatchedIds=new Set(),trcMatchesKnown=false,showTrcMatches=false;
-const normalizedPlayerName=name=>name.normalize('NFKC').toLowerCase().trim().replace(/\s+/g,' ').replace(/\.(?=\s|$)/g,'');
 let importDocument, gameStatus, gameLoaded = false, gamePlan, plannedRoster, gameBusy = false, connectionSettings, fieldValues={}, learningField;
 async function api(path, document){
  const options=document===undefined?{}:{method:'POST',headers:{'Content-Type':'application/json','X-Editor-Token':token},body:JSON.stringify(document)};
@@ -390,8 +389,9 @@ $('trc-records').onclick=async()=>{
   try{
    const source=await api('/api/trc/export',{names:roster.players.map(player=>player.name)});
    if(snapshot!==JSON.stringify(roster))throw Error('Workspace changed while finding TRC players. Try again.');
-   const websiteNames=new Set(source.roster.players.map(player=>normalizedPlayerName(player.name)));
-   trcMatchedIds=new Set(roster.players.filter(player=>websiteNames.has(normalizedPlayerName(player.name))).map(player=>player.player_id));
+   const matches=await api('/api/trc/matches',{source_names:source.roster.players.map(player=>player.name),players:roster.players.map(player=>({player_id:player.player_id,name:player.name}))});
+   if(snapshot!==JSON.stringify(roster))throw Error('Workspace changed while finding TRC players. Try again.');
+   trcMatchedIds=new Set(matches.matched_player_ids);
    trcMatchesKnown=true;
   }catch(error){toast(`Could not find TRC players: ${error.message}`,true);return;}
   finally{gameBusy=false;$('trc-records').disabled=false;updateLiveControls();}
@@ -606,8 +606,7 @@ $('trc-sync').onclick=async()=>{
   await api('/api/game/live',{enabled:false});stopLiveLocally();
   if(snapshot!==JSON.stringify(roster))throw Error('Workspace changed during sync. Try again when ready.');
   roster=result.roster;syncWarnings=result.warnings;syncPreviewRoster=result.sync_roster;gamePlan=null;workspaceNeedsSave=true;
-  const websiteNames=new Set(source.roster.players.map(player=>normalizedPlayerName(player.name)));
-  trcMatchedIds=new Set(roster.players.filter(player=>websiteNames.has(normalizedPlayerName(player.name))).map(player=>player.player_id));
+  trcMatchedIds=new Set(result.matched_player_ids);
   trcMatchesKnown=true;
   showTrcMatches=true;
   for(const id of trcMatchedIds)dirtyRecords.add(`players:${id}`);
@@ -623,4 +622,4 @@ $('apply-game').onclick=async()=>{
  try{const result=await api('/api/game/apply',{plan_id:gamePlan.plan_id});gamePlan=null;syncPreviewRoster=null;acceptGameChanges(result);$('game-dialog').close();toast(`Applied ${result.applied} game field changes. Save the roster in-game to keep them.`);}
  catch(error){gamePlan=null;toast(`Game update failed: ${error.message}`,true);}finally{gameBusy=false;updateLiveControls();}
 };
-fetch('/api/session').then(async response=>{if(!response.ok)throw Error('Could not load the editor session.');return response.json();}).then(session=>{if(session.api_version!==6)throw Error('An older editor is still running. Close its terminal and relaunch TRACE, then use the newly opened page.');roster=session.roster;baseline=clone(roster);profile=session.profile;token=session.token;connectionSettings=session.game_settings;desktopUpdates=session.desktop_updates;$('app-version').textContent=`v${session.app_version}`;fillConnectionSettings();selected=roster.players[0]?.player_id;render();}).catch(error=>{document.querySelectorAll('button,input,select').forEach(control=>control.disabled=true);toast(error.message,true);});
+fetch('/api/session').then(async response=>{if(!response.ok)throw Error('Could not load the editor session.');return response.json();}).then(session=>{if(session.api_version!==7)throw Error('An older editor is still running. Close its terminal and relaunch TRACE, then use the newly opened page.');roster=session.roster;baseline=clone(roster);profile=session.profile;token=session.token;connectionSettings=session.game_settings;desktopUpdates=session.desktop_updates;$('app-version').textContent=`v${session.app_version}`;fillConnectionSettings();selected=roster.players[0]?.player_id;render();}).catch(error=>{document.querySelectorAll('button,input,select').forEach(control=>control.disabled=true);toast(error.message,true);});

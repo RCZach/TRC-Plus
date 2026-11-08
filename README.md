@@ -1,6 +1,6 @@
 # TRACE
 
-[Download the TRACE 0.5.1 beta](https://github.com/RCZach/TRC-Plus/releases/tag/v0.5.1).
+[Download the TRACE 0.5.2 beta](https://github.com/RCZach/TRC-Plus/releases/tag/v0.5.2).
 Beta downloads are manual; the in-app updater checks stable releases only. See
 [publishing updates](docs/updates.md) for the release process.
 
@@ -8,7 +8,7 @@ Beta downloads are manual; the in-app updater checks stable releases only. See
 
 ### Portable Windows release
 
-Extract the entire `TRACE-0.5.1-windows-x64.zip`, then double-click
+Extract the entire `TRACE-0.5.2-windows-x64.zip`, then double-click
 `TRACE.exe`. It opens its own desktop window. Keep its `_internal` folder beside
 the executable. Closing the app window also stops its local backend.
 Python and Cheat Engine are not
@@ -57,6 +57,7 @@ If the requested port is occupied, the launcher opens this editor on a separate 
 - Accessories follows Shoes / Gear, with Upper Body and Lower Body filters based on the existing profile groups. Field search works within either group; custom fields without a group remain under Other. The shorts controls shown in Shoes / Gear are not duplicated here. Displaying existing definitions does not verify their in-game choice labels or enable writes on an unsupported connection.
 - Hot Zones includes all 14 court zones in game order, with Cold, Neutral, and Hot choices. Each mapping was confirmed against controlled in-game changes on build `6AD2E48C:36532000`; TRC sync resolves these names from the verified profile without **Learn name**, and opt-in live edits use the existing verification and Undo controls. Other builds remain read-only until verified.
 - Filter Attributes by scoring, playmaking, athleticism, defense, durability, or miscellaneous (Intangibles and Potential) alongside field search. Custom fields without a category remain available under Other.
+- Pass Vision uses the `0x46E` player-record byte on build `6AD2E48C:36532000`, matching the existing raw `PASSVISION` definition. It supports reviewed, opt-in game writes on that build. Confirm the result with one player in game before a bulk update.
 - Tendencies has Jump Shooting, Layups and Dunks, Drive Setup, Driving, Passing, Post Game, Freelance, and Defense filters. Badges has Finishing, Shooting, Playmaking, Defense, Physicals, Rebounding, and Personality filters. All 99 tendencies and 69 badges are grouped. Build `6AD2E48C:36532000` supports 16 Personality mappings: Reserved through Enforcer use Unequipped/Equipped; Work Ethic and Marketability use Unequipped/Bronze/Silver/Gold/Hall of Fame. These exact-build fields support opt-in live editing and Undo; other builds cannot write them. Unknown tier patterns are omitted and cannot be overwritten. Search combines with these filters, and custom fields remain under Other. See [Personality mapping evidence](docs/personality-mappings.md).
 
 - Teams has Rotation, Coaching Emphasis, and Staff tabs. On build `6AD2E48C:36532000`, 32 validated coach controls support opt-in live editing and reviewed bulk writes. Coaching Emphasis includes Help Defense, Run Plays Frequency, Zone Usage Frequency, Tempo, tendencies, and Lineup Form Factor. Staff shows seven coach ratings and eight system proficiencies alongside the assigned staff names. Coaching edits share journaling, readback verification, rollback, and Undo/Redo with player edits. Shared or uncertain coach records stay read-only. Rotation minutes and Staff assignments/names remain read-only; playbook editing is not enabled. See [coaching mapping and write support](docs/team-mapping-notes.md#coaching-write-support) and the [November mapping audit](docs/unattended-mapping-2026-11-01.md).

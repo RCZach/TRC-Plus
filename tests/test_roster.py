@@ -50,7 +50,7 @@ def test_editor_api_save_reload_validation_and_session_guard(tmp_path):
     try:
         with urlopen(base + '/api/session') as response:
             session = json.load(response)
-        assert session['api_version'] == 6
+        assert session['api_version'] == 7
         roster = session['roster']
         roster['players'][0]['attributes']['Speed'] = 95
         def post(document, token):

@@ -5,7 +5,7 @@ from urllib.error import HTTPError, URLError
 from urllib.request import HTTPRedirectHandler, Request, build_opener
 
 from .roster import RosterError, validate_roster
-from .trc import import_document, matching_name, normalized_name
+from .trc import NAME_ALIASES, import_document, matching_name, normalized_name
 
 EXPORT_URL = 'https://russellcup.xyz/logs/roster/download/'
 MAX_EXPORT_BYTES = 128_000_000
@@ -25,9 +25,10 @@ def fetch_export(names):
     unique = list({normalized_name(name): name.strip() for name in names}.values())
     if not unique:
         return validate_roster({'name': 'TRC matched players', 'players': [], 'teams': []})
-    queries = list(unique)
+    queries = list({normalized_name(query): query for name in unique
+                    for query in [NAME_ALIASES.get(normalized_name(name), name)]}.values())
     seen = {normalized_name(name) for name in queries}
-    for name in unique:
+    for name in list(queries):
         parts = name.split()
         if len(parts) < 3 or parts[-1].rstrip('.').casefold() not in SUFFIXES:
             continue

@@ -408,20 +408,21 @@ const roster={players:[{player_id:'p1',name:'Kelly Jordan'},{player_id:'p2',name
 const original=JSON.stringify(roster),calls=[],notices=[];
 const context=vm.createContext({$:get,roster,gameLoaded:true,gameBusy:false,pageIndex:0,
  trcMatchedIds:new Set(),trcMatchesKnown:false,showTrcMatches:false,
- normalizedPlayerName:name=>name.normalize('NFKC').toLowerCase().trim().replace(/\s+/g,' '),
  updateLiveControls(){},render(){},toast:message=>notices.push(message),
- api:async(path,body)=>{calls.push(path);assert.deepStrictEqual(Array.from(body.names),['Kelly Jordan','NBA Player']);
-  return {roster:{players:[{name:'Kelly Jordan'}]}};}});
+ api:async(path,body)=>{calls.push(path);
+  if(path==='/api/trc/export'){assert.deepStrictEqual(Array.from(body.names),['Kelly Jordan','NBA Player']);return {roster:{players:[{name:'Kelly Jordan'}]}};}
+  assert.strictEqual(path,'/api/trc/matches');assert.deepStrictEqual(Array.from(body.source_names),['Kelly Jordan']);
+  return {matched_player_ids:['p1']};}});
 vm.runInContext(source.slice(source.indexOf("$('all-records').onclick="),source.indexOf('function renderSettings(){')),context);
 (async()=>{
  await get('trc-records').onclick();
- assert.deepStrictEqual(calls,['/api/trc/export']);
+ assert.deepStrictEqual(calls,['/api/trc/export','/api/trc/matches']);
  assert.strictEqual(context.showTrcMatches,true);assert.strictEqual(context.trcMatchesKnown,true);
  assert.deepStrictEqual(Array.from(context.trcMatchedIds),['p1']);
  assert.strictEqual(JSON.stringify(roster),original);
  await get('trc-records').onclick();assert.strictEqual(context.showTrcMatches,false);
  await get('trc-records').onclick();assert.strictEqual(context.showTrcMatches,true);
- assert.strictEqual(calls.length,1);
+ assert.strictEqual(calls.length,2);
  get('all-records').onclick();assert.strictEqual(context.showTrcMatches,false);
 })().catch(error=>{console.error(error);process.exitCode=1;});
 """
@@ -477,11 +478,10 @@ const context=vm.createContext({$:get,gameBusy:false,livePending:0,liveTimers:ne
  setTrcSyncStatus(message){get('trc-sync-status').textContent=message;},
  api:async(path,body)=>{calls.push(path);
   if(path==='/api/trc/export'){assert.deepStrictEqual(Array.from(body.names),['Zachary James Jr.']);return {roster:{players:[{name:'Zachary James Jr'},{name:'Missing Player'}]}};}
-  if(path==='/api/import'){assert.strictEqual(body.merge,true);return {roster:merged,sync_roster:scoped,warnings:['Missing Player: skipped.']};}
+  if(path==='/api/import'){assert.strictEqual(body.merge,true);return {roster:merged,sync_roster:scoped,warnings:['Missing Player: skipped.'],matched_player_ids:['game-1']};}
   if(path==='/api/game/live'){assert.strictEqual(body.enabled,false);return {};}
   throw Error('Unexpected request: '+path);
  }});
-vm.runInContext(source.match(/^const normalizedPlayerName=.*$/m)[0],context);
 vm.runInContext(source.slice(source.indexOf('const showGamePreview='),source.indexOf("$('apply-game').onclick=")),context);
 (async()=>{await get('trc-sync').onclick();
  assert.strictEqual(previews,1);assert.strictEqual(context.roster,merged);

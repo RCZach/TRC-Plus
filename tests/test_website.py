@@ -59,6 +59,19 @@ def test_suffix_punctuation_variants_fetch_only_requested_multiword_names():
         'Zachary James Jr', 'Colton Fishscale Barkberg']
 
 
+def test_confirmed_colton_alias_queries_exact_website_name():
+    with patch('trace_app.website.build_opener') as factory:
+        factory.return_value.open.return_value = response({'players': [
+            {'player_id': '9762', 'name': 'Colton Fishscale Barkberg',
+             'attributes': {'Passing Vision': 99}},
+        ], 'teams': []})
+        roster = fetch_export(['Colton Fishcale Barkberg'])
+        request = factory.return_value.open.call_args.args[0]
+    assert json.loads(request.data)['names'] == ['colton fishscale barkberg']
+    assert roster['players'][0]['name'] == 'Colton Fishscale Barkberg'
+    assert roster['players'][0]['attributes']['Passing Vision'] == 99
+
+
 def test_rejects_unrequested_players():
     with patch('trace_app.website.build_opener') as factory:
         factory.return_value.open.return_value = response({'players': [
@@ -139,6 +152,31 @@ def test_website_api_requires_session_and_does_not_save_or_write(tmp_path):
         worker.join()
 
 
+def test_trc_match_endpoint_uses_confirmed_alias_without_guessing_duplicates(tmp_path):
+    server = create_server(0, tmp_path / 'roster.json')
+    worker = Thread(target=server.serve_forever, daemon=True)
+    worker.start()
+    base = f'http://127.0.0.1:{server.server_port}'
+    try:
+        with urlopen(base + '/api/session') as stream:
+            token = json.load(stream)['token']
+        payload = {'source_names': ['Colton Fishscale Barkberg', 'Colton Fishscale Barkberger'],
+                   'players': [{'player_id': 'game-1', 'name': 'Colton Fishcale Barkberg'}]}
+        request = Request(base + '/api/trc/matches', data=json.dumps(payload).encode(),
+                          headers={'Content-Type': 'application/json', 'X-Editor-Token': token})
+        with urlopen(request) as stream:
+            assert json.load(stream)['matched_player_ids'] == ['game-1']
+        payload['players'].append({'player_id': 'game-2', 'name': 'Colton Fishscale Barkberg'})
+        request = Request(base + '/api/trc/matches', data=json.dumps(payload).encode(),
+                          headers={'Content-Type': 'application/json', 'X-Editor-Token': token})
+        with urlopen(request) as stream:
+            assert json.load(stream)['matched_player_ids'] == []
+    finally:
+        server.shutdown()
+        server.server_close()
+        worker.join()
+
+
 def test_trc_shoe_alias_overwrites_game_value_before_canonicalization(tmp_path):
     game = Mock()
     game.profile = RecordProfile(json.loads(DEFAULT_PROFILE.read_text(encoding='utf-8')))
@@ -152,26 +190,32 @@ def test_trc_shoe_alias_overwrites_game_value_before_canonicalization(tmp_path):
         document = {
             'merge': True,
             'document': {'players': [{'player_id': 'trc-1', 'name': 'Adrian Higgins',
-                                      'gear': {'Shoe Away': 'Kobe XI All Star'}}], 'teams': []},
+                                      'gear': {'Shoe Away': 'Kobe XI All Star'},
+                                      'attributes': {'Pass Vision': 75}}], 'teams': []},
             'target': {'players': [{'player_id': 'game-1', 'name': 'Adrian Higgins',
-                                   'gear': {'Shoe Away Style': 123, 'Shoe Home Style': 456}}], 'teams': []},
+                                   'gear': {'Shoe Away Style': 123, 'Shoe Home Style': 456},
+                                   'attributes': {'Passing Vision': 25}}], 'teams': []},
         }
         request = Request(base + '/api/import', data=json.dumps(document).encode(),
                           headers={'Content-Type': 'application/json', 'X-Editor-Token': token})
         with urlopen(request) as stream:
             result = json.load(stream)
         assert result['warnings'] == []
+        assert result['matched_player_ids'] == ['game-1']
         assert result['roster']['players'][0]['gear'] == {
             'Shoe Away Style': 'Kobe XI All Star', 'Shoe Home Style': 456}
         assert result['sync_roster']['players'][0]['gear'] == {
             'Shoe Away Style': 'Kobe XI All Star'}
+        assert result['roster']['players'][0]['attributes'] == {'Passing Vision': 75}
+        assert result['sync_roster']['players'][0]['attributes'] == {'Passing Vision': 75}
         catalog = ValueCatalog(DEFAULT_PROFILE.parent / 'field_values.json')
         _, changes, skipped = game.profile.patch(
             bytes(game.profile.stride), result['sync_roster']['players'][0],
-            lambda category, name, value: catalog.resolve('6AD2E48C:36532000', category, name, value),
+            lambda category, name, value: (catalog.resolve('6AD2E48C:36532000', category, name, value)
+                                           if category == 'gear' else value),
             '6AD2E48C:36532000',
         )
-        assert changes == []
+        assert changes == [{'field': 'Passing Vision', 'category': 'attributes', 'old': 25, 'value': 75}]
         assert any('Shoe Away Style' in warning and 'no verified game ID' in warning for warning in skipped)
         assert not game.mock_calls
     finally:

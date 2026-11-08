@@ -128,6 +128,8 @@ class RecordProfile:
         self.aliases['accessories', label_key('Headband Logo')] = 'Headband Logo Position'
         if ('attributes', 'Miscellaneous Durability') in self.fields:
             self.aliases['attributes', label_key('Miscanellous Durability')] = 'Miscellaneous Durability'
+        if ('attributes', 'Passing Vision') in self.fields:
+            self.aliases['attributes', label_key('Pass Vision')] = 'Passing Vision'
 
     def canonical_name(self, category, name):
         return self.aliases.get((category, label_key(name)), name)

@@ -9,6 +9,7 @@ from trace_app.app import DEFAULT_PROFILE
 from trace_app.fields import RecordProfile
 from trace_app.mappings import ValueCatalog, expand_profile
 from trace_app.roster import RosterError, validate_roster
+from trace_app.trc import merge_trc_with_scope
 from test_connections import FakeGame
 
 
@@ -90,6 +91,43 @@ def test_miscellaneous_durability_keeps_legacy_spelling_compatible(tmp_path):
     document['players'][0]['attributes']['Miscellaneous Durability'] = 81
     with pytest.raises(RosterError, match='conflicting values'):
         game.profile.canonical_document(document)
+
+
+def test_pass_vision_alias_uses_exact_build_raw_field_byte(tmp_path):
+    game = FakeGame(tmp_path)
+    field = game.profile.fields['attributes', 'Passing Vision']
+    assert field.offset == 0x46E
+    assert field.verified_build == '6AD2E48C:36532000'
+    assert field.offset == game.profile.fields['advanced', 'PASSVISION'].offset + 2
+    before = bytearray(game.profile.stride)
+    field.encode(before, 86)
+    before[0x46F] = 210
+    source = {'players': [{'player_id': 'trc-1', 'name': 'Test Player',
+                           'attributes': {'Pass Vision': 75}}], 'teams': []}
+    canonical = game.profile.canonical_document(source)
+    assert canonical['players'][0]['attributes'] == {'Passing Vision': 75}
+    target = {'players': [{'player_id': 'game-1', 'name': 'Test Player',
+                           'attributes': {'Passing Vision': 25}}], 'teams': []}
+    merged, scope, merge_warnings = merge_trc_with_scope(canonical, target)
+    assert merge_warnings == []
+    assert merged['players'][0]['attributes'] == {'Passing Vision': 75}
+    assert scope['players'][0]['attributes'] == {'Passing Vision': 75}
+    after, changes, warnings = game.profile.patch(bytes(before), canonical['players'][0], build='6AD2E48C:36532000')
+    assert warnings == []
+    assert changes == [{'field': 'Passing Vision', 'category': 'attributes', 'old': 86, 'value': 75}]
+    assert after[0x46E] == (75 - 25) * 3
+    assert after[0x46F] == before[0x46F]
+    assert after[:0x46E] == before[:0x46E]
+    assert after[0x470:] == before[0x470:]
+    game_request = copy.deepcopy(canonical)
+    game_request['players'][0]['player_id'] = 'game-0'
+    preview = game.preview(game_request)
+    assert preview['changes'] == []
+    assert any('Passing Vision: no enabled memory mapping' in warning for warning in preview['warnings'])
+    assert not game.memory.writes
+    source['players'][0]['attributes']['Passing Vision'] = 76
+    with pytest.raises(RosterError, match='conflicting values'):
+        game.profile.canonical_document(source)
 
 
 def test_bundled_shoe_catalog_is_build_and_field_scoped():

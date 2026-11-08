@@ -13,7 +13,7 @@ from urllib.parse import urlparse
 from .roster import RosterError, demo_roster, save_roster, validate_roster
 from .game import GameConnection
 from .settings import load_settings, save_settings, validate_settings
-from .trc import import_document, merge_trc_with_scope, convert_2k25_roster_badges
+from .trc import import_document, merge_trc_with_scope, matched_player_ids, convert_2k25_roster_badges
 from .mappings import expand_profile
 from .website import fetch_export
 from .paths import resource_root, user_root
@@ -23,7 +23,7 @@ from .version import VERSION
 UI = Path(__file__).parent / 'ui'
 DEFAULT_PROFILE = resource_root() / 'config' / 'offsets_2k27.json'
 DEFAULT_SETTINGS = user_root() / 'config' / 'game_connection.json'
-API_VERSION = 6
+API_VERSION = 7
 MAX_DOCUMENT_BYTES = 128_000_000
 
 
@@ -104,7 +104,7 @@ def create_server(port: int, data_path: Path, profile_path: Path = DEFAULT_PROFI
             nonlocal roster, connection_settings
             if not self.valid_host() or self.headers.get('X-Editor-Token') != token:
                 return self.reply(403, {'error': 'Invalid editor session. Reload the page.'})
-            if self.path not in ('/api/updates/check', '/api/updates/download', '/api/updates/install', '/api/trc/export', '/api/roster', '/api/import', '/api/game/settings', '/api/game/load', '/api/game/diagnostics', '/api/game/preview', '/api/game/apply', '/api/game/live', '/api/game/edit', '/api/game/undo', '/api/game/redo', '/api/game/learn-value', '/api/game/capture', '/api/game/compare'):
+            if self.path not in ('/api/updates/check', '/api/updates/download', '/api/updates/install', '/api/trc/export', '/api/trc/matches', '/api/roster', '/api/import', '/api/game/settings', '/api/game/load', '/api/game/diagnostics', '/api/game/preview', '/api/game/apply', '/api/game/live', '/api/game/edit', '/api/game/undo', '/api/game/redo', '/api/game/learn-value', '/api/game/capture', '/api/game/compare'):
                 return self.reply(404, {'error': 'Not found.'})
             try:
                 length = int(self.headers.get('Content-Length', '0'))
@@ -130,12 +130,25 @@ def create_server(port: int, data_path: Path, profile_path: Path = DEFAULT_PROFI
                     return
                 if self.path == '/api/trc/export':
                     return self.reply(200, {'roster': fetch_export(document.get('names'))})
+                if self.path == '/api/trc/matches':
+                    names = document.get('source_names')
+                    players = document.get('players')
+                    if (not isinstance(names, list) or not isinstance(players, list) or
+                            len(names) > 6000 or len(players) > 6000 or
+                            any(not isinstance(name, str) or not name.strip() for name in names) or
+                            any(not isinstance(player, dict) or
+                                not isinstance(player.get('player_id'), str) or
+                                not isinstance(player.get('name'), str) for player in players)):
+                        raise RosterError('TRC matching requires valid player names and IDs.')
+                    return self.reply(200, {'matched_player_ids': sorted(matched_player_ids(names, players))})
                 if self.path == '/api/import':
                     if document.get('merge'):
                         source = import_document(document.get('document'))
                         if game is not None:
                             source = game.profile.canonical_document(source)
-                        imported, sync_roster, warnings = merge_trc_with_scope(source, document.get('target'))
+                        matched_ids = set()
+                        imported, sync_roster, warnings = merge_trc_with_scope(
+                            source, document.get('target'), matched_ids)
                     else:
                         imported = convert_2k25_roster_badges(import_document(document.get('document')))
                         warnings = []
@@ -146,6 +159,7 @@ def create_server(port: int, data_path: Path, profile_path: Path = DEFAULT_PROFI
                     response = {'roster': imported, 'warnings': warnings}
                     if document.get('merge'):
                         response['sync_roster'] = sync_roster
+                        response['matched_player_ids'] = sorted(matched_ids)
                     return self.reply(200, response)
                 if game is None:
                     raise RosterError('No player offset profile loaded.')

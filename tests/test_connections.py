@@ -17,7 +17,7 @@ from trace_app.game import (GameConnection, COMMUNITY_ROOT_RVA,
                             OBSERVED_PLAYER_POINTERS)
 from trace_app.roster import RosterError, demo_roster
 from trace_app.trc import (BADGES_2K25_TO_2K27, convert_2k25_roster_badges,
-                           import_document, merge_trc, merge_trc_with_scope)
+                           import_document, matched_player_ids, merge_trc, merge_trc_with_scope)
 
 
 SOURCE = {'Marcus Bennett': {'Attributes': {'Driving Layup': 95},
@@ -78,6 +78,27 @@ def test_multiword_last_names_and_suffix_periods_merge_only_unique_players():
     merged, warnings = merge_trc(source, target)
     assert any('Zachary James Jr: ambiguous name' in warning for warning in warnings)
     assert merged['players'][0]['attributes'] == target['players'][0]['attributes']
+
+
+def test_confirmed_colton_spelling_alias_matches_only_unique_full_name():
+    target = {'players': [{'player_id': 'game-1', 'name': 'Colton Fishcale Barkberg',
+                           'attributes': {'Passing Vision': 25}}], 'teams': []}
+    source = {'players': [
+        {'player_id': 'trc-1', 'name': 'Colton Fishscale Barkberg',
+         'attributes': {'Passing Vision': 99}},
+        {'player_id': 'trc-2', 'name': 'Colton Fishscale Barkberger',
+         'attributes': {'Passing Vision': 90}}], 'teams': []}
+    ids = set()
+    merged, scope, warnings = merge_trc_with_scope(source, target, ids)
+    assert warnings == ['Colton Fishscale Barkberger: not found in workspace; skipped.']
+    assert ids == {'game-1'}
+    assert matched_player_ids([p['name'] for p in source['players']], target['players']) == ids
+    assert merged['players'][0]['attributes']['Passing Vision'] == 99
+    assert scope['players'][0]['attributes'] == {'Passing Vision': 99}
+    target['players'].append({'player_id': 'game-2', 'name': 'Colton Fishscale Barkberg'})
+    assert not matched_player_ids([p['name'] for p in source['players']], target['players'])
+    _, _, warnings = merge_trc_with_scope(source, target)
+    assert 'ambiguous name' in warnings[0]
 
 
 def test_trc_sync_scope_contains_only_supplied_fields_and_matched_players():

@@ -130,7 +130,7 @@ OBSERVED_BUILD_WRITABLE_FIELDS = {
 # These hashes describe layouts, not individual in-game verification results.
 APPROVED_BUILD_SECTION_LAYOUTS = {
     '6ad2e48c:36532000': {
-        'attributes': '2c723b277ae8b108d37f43d6c5663b6d938f259b0cf636fa03c9f731158bfa82',
+        'attributes': 'd3fbbdf134a9735a4cf2b79fa5a8e209209a11ac64a13e860464aa0c47689bd3',
         'tendencies': '1ce733f432acde2ddbcd82833981e237d4533d7093783dad20cf4fd870ee8acd',
         'badges': '3052a6823311c2e948ae097cdb40371e469acb299af602777464a42842fd4a10',
         'signatures': '0e9d663aee7c993f5414c2144a1b3cbcb33be8fc5ded83369475dee03824e6a6',
@@ -392,11 +392,11 @@ class GameConnection:
                     allowed_fields.add(key)
             for category, expected_layout in APPROVED_BUILD_SECTION_LAYOUTS.get(process.build.casefold(), {}).items():
                 fields = [field for field in self.profile.fields.values()
-                          if field.category == category and field.writable]
+                          if field.category == category]
                 layouts = sorted((field.name, field.offset, field.bits, field.shift, field.kind) for field in fields)
                 actual_layout = hashlib.sha256(json.dumps(layouts, separators=(',', ':')).encode()).hexdigest()
                 if actual_layout == expected_layout:
-                    allowed_fields.update((field.category, field.name) for field in fields)
+                    allowed_fields.update((field.category, field.name) for field in fields if field.writable)
             if body_model:
                 allowed_fields.update(('vitals', name) for name in ('Height', 'Wingspan', 'Shoulder Width', 'Neck Length', 'Trunk Length'))
             allowed_fields.update(verified_setter_fields(process, self.profile))

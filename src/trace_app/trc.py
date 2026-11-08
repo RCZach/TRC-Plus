@@ -22,6 +22,9 @@ BADGES_2K25_TO_2K27 = {
     'Shifty Shooter': 'Arc Cadence',
 }
 
+# Confirmed game-roster spelling paired with the distinct TRC player name.
+NAME_ALIASES = {'colton fishcale barkberg': 'colton fishscale barkberg'}
+
 
 def convert_2k25_badges(badges: dict, existing: dict | None = None) -> dict:
     """Translate old badge names without reducing existing 2K27 tiers."""
@@ -51,7 +54,21 @@ def normalized_name(name: str) -> str:
 
 def matching_name(name: str) -> str:
     """Compare complete names while tolerating optional periods after words."""
-    return ' '.join(part.rstrip('.') for part in normalized_name(name).split())
+    key = ' '.join(part.rstrip('.') for part in normalized_name(name).split())
+    return NAME_ALIASES.get(key, key)
+
+
+def matched_player_ids(source_names: list[str], target_players: list[dict]) -> set[str]:
+    """Return only unique, full-name matches for the roster filter."""
+    source_counts = {}
+    target_groups = {}
+    for name in source_names:
+        key = matching_name(name)
+        source_counts[key] = source_counts.get(key, 0) + 1
+    for player in target_players:
+        target_groups.setdefault(matching_name(player['name']), []).append(player['player_id'])
+    return {ids[0] for key, ids in target_groups.items()
+            if len(ids) == 1 and source_counts.get(key) == 1}
 
 
 def import_document(document: object) -> dict:
@@ -76,7 +93,7 @@ def import_document(document: object) -> dict:
     return validate_roster({'name': 'TRC export', 'players': players, 'teams': []})
 
 
-def merge_trc_with_scope(source: dict, target: dict) -> tuple[dict, dict, list[str]]:
+def merge_trc_with_scope(source: dict, target: dict, matched_ids: set[str] | None = None) -> tuple[dict, dict, list[str]]:
     """Merge supplied values and build a preview limited to those values."""
     source, result = import_document(source), validate_roster(target)
     scope = copy.deepcopy(result)
@@ -98,6 +115,8 @@ def merge_trc_with_scope(source: dict, target: dict) -> tuple[dict, dict, list[s
             warnings.append(f"{records[0]['name']}: {'ambiguous name' if len(records) > 1 or len(matches) > 1 else 'not found in workspace'}; skipped.")
             continue
         source_player, player = records[0], matches[0]
+        if matched_ids is not None:
+            matched_ids.add(player['player_id'])
         for category in CATEGORIES.values():
             values = (convert_2k25_badges(source_player[category], player[category])
                       if category == 'badges' else copy.deepcopy(source_player[category]))
