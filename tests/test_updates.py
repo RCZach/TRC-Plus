@@ -94,7 +94,7 @@ def test_download_checks_digest_before_extracting(tmp_path, monkeypatch, valid):
     manager = updates.UpdateManager()
     asset = release()['assets'][0]
     asset['size'] = len(payload)
-    manager.release = {'tag': 'v0.5.2', 'asset': asset,
+    manager.release = {'tag': 'v0.5.3', 'asset': asset,
                        'sha256': hashlib.sha256(payload).hexdigest() if valid else '0' * 64}
     if valid:
         assert manager.download()['ready']
