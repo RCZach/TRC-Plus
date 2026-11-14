@@ -7,7 +7,7 @@ from dataclasses import dataclass
 from .roster import RosterError
 from .trc import CATEGORIES
 from .mappings import expand_profile
-from .mappings import label_key
+from .mappings import label_key, SIGNATURE_ALIASES
 
 
 def number(value):
@@ -125,6 +125,9 @@ class RecordProfile:
         for alias, name in gear_aliases.items():
             if ('gear', name) in self.fields:
                 self.aliases['gear', label_key(alias)] = name
+        for alias, name in SIGNATURE_ALIASES.items():
+            if ('signatures', name) in self.fields:
+                self.aliases['signatures', label_key(alias)] = name
         self.aliases['accessories', label_key('Headband Logo')] = 'Headband Logo Position'
         if ('attributes', 'Miscellaneous Durability') in self.fields:
             self.aliases['attributes', label_key('Miscanellous Durability')] = 'Miscellaneous Durability'
@@ -134,16 +137,27 @@ class RecordProfile:
     def canonical_name(self, category, name):
         return self.aliases.get((category, label_key(name)), name)
 
-    def canonical_document(self, document):
+    def canonical_document(self, document, *, conflict_warnings=None):
         from .roster import validate_roster
         result = validate_roster(document)
         for player in result['players']:
             for category in CATEGORIES.values():
-                normalized = {}
+                normalized, groups = {}, {}
                 for name, value in player[category].items():
                     key = self.canonical_name(category, name)
-                    if key in normalized and normalized[key] != value:
-                        raise RosterError(f'{player["name"]}: conflicting values for {key}.')
+                    groups.setdefault(key, []).append((name, value))
+                for key, entries in groups.items():
+                    value = entries[0][1]
+                    if any(other != value for _, other in entries[1:]):
+                        if conflict_warnings is None:
+                            raise RosterError(f'{player["name"]}: conflicting values for {key}.')
+                        # Import sources may skip an ambiguous field, but previews
+                        # and writes keep strict canonicalization by default.
+                        details = '; '.join(f'{name}={value!r}' for name, value in entries)
+                        conflict_warnings.append(
+                            f'{player["name"]}: conflicting source values for {key} ({details}); '
+                            'skipped this field; existing workspace value retained.')
+                        continue
                     normalized[key] = value
                 player[category] = normalized
         return result

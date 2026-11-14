@@ -70,6 +70,9 @@ def main():
             assert not any('/data/' in name or name.endswith('game_connection.json') for name in names)
             bundle.extractall(work)
         executable = work / 'TRACE' / 'TRACE.exe'
+        signature_values = json.loads((work / 'TRACE' / '_internal' / 'config' /
+                                       'signature_values_2k27.json').read_text(encoding='utf-8'))
+        assert signature_values['fields'] and signature_values['enums'], 'Native animation catalog is missing'
         pythonnet_assembly = work / 'TRACE' / '_internal' / 'pythonnet' / 'runtime' / 'Python.Runtime.dll'
         internet_mark = Path(str(pythonnet_assembly) + ':Zone.Identifier')
         internet_mark.write_text('[ZoneTransfer]\nZoneId=3\n', encoding='ascii')
@@ -98,6 +101,7 @@ def main():
                 assert b"link.download='TRACE-roster.json'" in script
                 assert len(request(url + '/style.css')) > 1000
                 session = json.loads(request(url + '/api/session'))
+                assert session['app_version'] == version, 'Packaged app version is incorrect'
                 assert session['profile']['Attributes']
                 assert session['game_settings']['enable_writes'] is False
                 token = session['token']

@@ -52,6 +52,7 @@ def main():
         '--exclude-module', 'webview.platforms.cef',
         '--add-data', f'{ROOT / "config" / "offsets_2k27.json"};config',
         '--add-data', f'{ROOT / "config" / "field_values.json"};config',
+        '--add-data', f'{ROOT / "config" / "signature_values_2k27.json"};config',
         str(ROOT / 'packaging' / 'windows_launcher.py'),
     ], cwd=ROOT, check=True)
     subprocess.run([
@@ -61,6 +62,9 @@ def main():
         '--paths', str(ROOT / 'src'), str(ROOT / 'packaging' / 'updater_launcher.py'),
     ], cwd=ROOT, check=True)
     shutil.copyfile(ROOT / 'packaging' / 'START HERE.txt', release_root / APP_NAME / 'START HERE.txt')
+    notes = ROOT / 'docs' / f'release-{version}.md'
+    if notes.exists():
+        shutil.copyfile(notes, release_root / APP_NAME / 'RELEASE NOTES.md')
     archive = Path(shutil.make_archive(
         str(ROOT / 'dist' / f'TRACE-{version}-windows-x64'),
         'zip', root_dir=release_root, base_dir=APP_NAME,

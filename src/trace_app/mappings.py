@@ -27,6 +27,37 @@ DISPLAY_NAMES = {
     'GUMCHEWER': 'Chew Gum',
 }
 
+# Display names confirmed in the supplied 2K27 Signature menu screenshots.
+# These translate names only; the existing profile and native catalog retain
+# their canonical field names, layouts, enum IDs and build restrictions.
+SIGNATURE_ALIASES = {
+    'Lower/Base': 'Jumpshot Base',
+    'Upper Release 1': 'Release 1',
+    'Upper Release 2': 'Release 2',
+    'Animation Blending': 'Jumpshot Blending',
+    'Go-To Dunk Package': 'Dunk Package 1',
+    'Crossover Combos': 'Iso Cross Combo',
+    'Crossover Escape': 'Iso Escape Cross',
+    'Between the Legs Escape': 'Iso Escape Tween',
+    'Behind the Back Escape': 'Iso Escape Behind Back',
+    'Misdirection Hesitation': 'Iso Mis Direct Hes',
+    'Misdirection Crossover': 'Iso Mis Direct Cross',
+    'Misdirection Behind Back': 'Iso Mis Direct Behind Back',
+    'Hesitation Cross Combo': 'Iso Combo Hesi Cross',
+    'Double Cross Combo': 'Iso Combo Double Cross',
+    'Moving Behind the Back Launch': 'Iso Behind Back Launch',
+    'Moving Cross Spin': 'Iso Cross Spin',
+    'In and Out': 'Iso Inandout',
+    'Moving Lateral Hesitation': 'Iso Hesitation Lateral',
+    'Moving Stepback Cross': 'Iso Step Back Cross',
+    'Moving LateralStepback': 'Iso Step Back Lateral',
+    'NBA Jumpball Ritual': 'Jumpball Ritual',
+    # The export's regular (stationary) category is the displayed Breakdown
+    # Combos control. Aggressive Breakdown Combos has no confirmed equivalent;
+    # it is deliberately not assigned to Moving Breakdown Combos.
+    'Regular Breakdown Combos': 'Breakdown Combos',
+}
+
 
 def expand_profile(document):
     profile = copy.deepcopy(document)

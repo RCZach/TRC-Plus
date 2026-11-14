@@ -1,6 +1,6 @@
 # TRACE
 
-[Download the TRACE 0.5.2 beta](https://github.com/RCZach/TRC-Plus/releases/tag/v0.5.2).
+[Download TRACE 0.6.0](https://github.com/RCZach/TRC-Plus/releases/tag/v0.6.0).
 Beta downloads are manual; the in-app updater checks stable releases only. See
 [publishing updates](docs/updates.md) for the release process.
 
@@ -8,7 +8,7 @@ Beta downloads are manual; the in-app updater checks stable releases only. See
 
 ### Portable Windows release
 
-Extract the entire `TRACE-0.5.2-windows-x64.zip`, then double-click
+Extract the entire `TRACE-0.6.0-windows-x64.zip`, then double-click
 `TRACE.exe`. It opens its own desktop window. Keep its `_internal` folder beside
 the executable. Closing the app window also stops its local backend.
 Python and Cheat Engine are not
@@ -148,7 +148,35 @@ The editor expands the existing offset profile into 406 writable field definitio
 
 `config/field_values.json` stores observed display-name → numeric-ID pairs separately for each executable build and field. The initial catalog contains 29 observations from the supplied Tyrese Maxey signature screenshots, paired with native memory reads. It does not assume, for example, that a player's name has the same ID for a jumpshot, release, and dribble style.
 
-Mapped signature, gear, and accessory fields accept either a numeric game ID or an observed name. Learned names appear as input suggestions. Unknown named values are rejected during live editing and reported during bulk preview. To expand the catalog, select the exact game player, open the corresponding field in 2K, click **Learn name** in TRACE, and enter the name currently shown in 2K. The editor reads the ID without writing to the game. Conflicting observations cannot overwrite an existing name mapping. Game numeric IDs are still available when no display name has been learned.
+Mapped signature, gear, and accessory fields accept either a numeric game ID or a known name. Learned names appear as input suggestions. Unknown named values are rejected during live editing and reported during bulk preview. To expand the catalog, select the exact game player, open the corresponding field in 2K, click **Learn name** in TRACE, and enter the name currently shown in 2K. The editor reads the ID without writing to the game. Conflicting observations cannot overwrite an existing name mapping. Game numeric IDs are still available when no display name has been learned.
+
+Build `6AD2E48C:36532000` also includes native animation dictionaries bound to
+71 existing Signature fields. Unique matching names resolve automatically in
+TRC previews and individual edits, with punctuation/case differences accepted.
+The catalog comes from explicit enum tables and packed field definitions in
+the installed executable, rather than 2K25 list positions. An HQ glossary
+crosswalk supplies English labels only when their exact symbols exist in
+those native tables, including many descriptive dunks and abbreviated layup
+names. Chew Gum also accepts Off/On through its native boolean definition. Unknown names,
+unmatched categories, abbreviated layup names, and descriptive dunk labels
+without a matching native symbol remain skipped. IDs are specific to each
+field and build; imports do not apply them automatically. Existing users keep
+their learned names, and contradictory learned/native IDs block that lookup.
+See [animation mapping evidence and remaining gaps](docs/2k27-signature-id-research.md).
+
+TRC's Go-To Dunk Package translates to the first dunk slot, Crossover Combos
+to the native combo control, and Regular Breakdown Combos to Breakdown Combos.
+These translations retain the existing field layouts and separate dunk slots.
+Aggressive Breakdown Combos, Escape Moves, Dunk Emotion and Post Spin Shot
+remain unresolved; no automatic substitute is applied. See
+[the supplied Signature menu observations](docs/signature-menu-observations.md).
+
+If a TRC sync source supplies conflicting aliases for one field (for example,
+different values for Go-To Dunk Package and Dunk Package 1), that field is
+skipped with a warning listing both values. The existing workspace slot is
+retained, and the remaining fields and players can still reach review. The
+conflicting field is absent from the TRC write scope. Game previews and direct
+roster validation continue to reject ambiguous aliases; no value wins silently.
 
 Build `6AD2E48C:36532000` includes 559 Home Shoe names obtained from two agreeing loaded shoe catalogs, checked against Air Jordan III, Air Jordan 2010, and Air Jordan XXXIII selections. Duplicate-name conflicts and entries whose two catalog IDs differ are excluded. These names apply to Home Shoe on that build; they do not automatically populate other fields or game builds.
 

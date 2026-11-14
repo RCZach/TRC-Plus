@@ -14,6 +14,7 @@ from .roster import RosterError, validate_roster
 from .settings import DEFAULT_GAME_PATH
 from .windows_memory import WindowsMemory
 from .mappings import ValueCatalog
+from . import signature_catalog
 from .paths import default_values_path
 from .player_summary import player_summary, read_teams
 from .player_body import (read_body, read_body_model, snapshot_body, encode_body,
@@ -606,6 +607,12 @@ class GameConnection:
         result = {category: {field: {label: entry['value'] for label, entry in values.items()}
                            for field, values in fields.items()}
                 for category, fields in self.catalog.document['builds'].get(build, {}).items()}
+        for (category, name), field in self.profile.fields.items():
+            if category == 'signatures':
+                native = signature_catalog.choices(build, field)
+                if native:
+                    native.update(result.get(category, {}).get(name, {}))
+                    result.setdefault(category, {})[name] = native
         if self.college_catalog:
             result.setdefault('vitals', {})['College / From'] = {name: name for name in self.college_catalog['choices']}
         return result
@@ -637,6 +644,20 @@ class GameConnection:
                 if len(matches) != 1:
                     raise RosterError(f'{name}: choose a verified hot-zone value (Cold, Neutral, or Hot).')
                 return matches[0]
+            if category == 'signatures':
+                try:
+                    native = signature_catalog.resolve(self.identity['build'], field, value)
+                except RosterError:
+                    native = None
+                if native is not None:
+                    # A contradictory user observation needs investigation, never
+                    # silently replace it with an extracted ID (or vice versa).
+                    observed = [entry['value'] for label, entry in self.catalog.values(
+                        self.identity['build'], category, name).items()
+                                if signature_catalog.label_key(label) == signature_catalog.label_key(value)]
+                    if any(code != native for code in observed):
+                        raise RosterError(f'{name}: learned and native animation IDs disagree; skipped.')
+                    return native
             return self.catalog.resolve(self.identity['build'], category, name, value)
         return value
 

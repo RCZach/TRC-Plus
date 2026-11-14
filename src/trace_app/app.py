@@ -144,11 +144,13 @@ def create_server(port: int, data_path: Path, profile_path: Path = DEFAULT_PROFI
                 if self.path == '/api/import':
                     if document.get('merge'):
                         source = import_document(document.get('document'))
+                        warnings = []
                         if game is not None:
-                            source = game.profile.canonical_document(source)
+                            source = game.profile.canonical_document(source, conflict_warnings=warnings)
                         matched_ids = set()
-                        imported, sync_roster, warnings = merge_trc_with_scope(
+                        imported, sync_roster, merge_warnings = merge_trc_with_scope(
                             source, document.get('target'), matched_ids)
+                        warnings.extend(merge_warnings)
                     else:
                         imported = convert_2k25_roster_badges(import_document(document.get('document')))
                         warnings = []

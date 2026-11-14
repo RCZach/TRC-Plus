@@ -15,6 +15,50 @@ from trace_app.roster import RosterError
 from trace_app.website import EXPORT_URL, NoRedirects, fetch_export
 
 
+def test_import_endpoint_reports_duplicate_slot_without_aborting_other_players(tmp_path):
+    game = Mock()
+    game.profile = RecordProfile(json.loads(DEFAULT_PROFILE.read_text(encoding='utf-8')))
+    workspace = tmp_path / 'roster.json'
+    server = create_server(0, workspace, game=game)
+    try:
+        # Exercise the real handler without a client socket: some managed
+        # Windows environments block loopback clients even though binding works.
+        handler = server.RequestHandlerClass.__new__(server.RequestHandlerClass)
+        handler.server = server
+        handler.headers = Message()
+        handler.headers['Host'] = f'127.0.0.1:{server.server_port}'
+        replies = []
+        handler.reply = lambda status, body: replies.append((status, body))
+        handler.path = '/api/session'
+        handler.do_GET()
+        token = replies[-1][1]['token']
+        payload = {'merge': True, 'document': {
+            'Player A': {'Signatures': {'Dunk Package 1': 'Elite Contact Dunks Off Two',
+                                       'Go-To Dunk Package': 'Elite Contact Dunks Off One',
+                                       'Dunk Package 2': 'Pro Contact Dunks Off Two'}},
+            'Player B': {'Attributes': {'Speed': 90}}},
+            'target': {'players': [
+                {'player_id': 'game-1', 'name': 'Player A', 'signatures': {'Dunk Package 1': 166}},
+                {'player_id': 'game-2', 'name': 'Player B', 'attributes': {'Speed': 75}}], 'teams': []}}
+        body = json.dumps(payload).encode()
+        handler.path = '/api/import'
+        handler.headers['X-Editor-Token'] = token
+        handler.headers['Content-Length'] = str(len(body))
+        handler.rfile = BytesIO(body)
+        handler.do_POST()
+        status, result = replies[-1]
+        assert status == 200
+        assert len(result['warnings']) == 1 and 'Player A' in result['warnings'][0]
+        assert 'Dunk Package 1' in result['warnings'][0]
+        assert result['roster']['players'][0]['signatures']['Dunk Package 1'] == 166
+        assert result['sync_roster']['players'][0]['signatures'] == {'Dunk Package 2': 'Pro Contact Dunks Off Two'}
+        assert result['roster']['players'][1]['attributes']['Speed'] == 90
+        assert result['matched_player_ids'] == ['game-1', 'game-2']
+        assert not workspace.exists() and not game.mock_calls
+    finally:
+        server.server_close()
+
+
 def response(document, content_type='application/json'):
     result = BytesIO(json.dumps(document).encode())
     result.headers = Message()
